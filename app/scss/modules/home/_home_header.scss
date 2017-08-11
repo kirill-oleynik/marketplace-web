@@ -1,0 +1,20 @@
+.home-header {
+  background-image: linear-gradient(to bottom, color(blue-200), color(blue-500));
+}
+.home-header__content {
+  text-align: center;
+  padding-top: 50px;
+}
+.home-header__main-title {
+  font-size: 36px;
+  color: white;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+.home-header__descr {
+  font-size: 20px;
+  color: white;
+  line-height: 1.6;
+  margin-bottom: 60px;
+}

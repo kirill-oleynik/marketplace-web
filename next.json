@@ -1,0 +1,15 @@
+{
+  "apps": [
+    {
+      "name": "next",
+      "instances": -1,
+      "combine_logs": true,
+      "script": "server.js",
+      "exec_mode": "cluster",
+      "max_memory_restart": "500M",
+      "pid_file": "tmp/pids/next.pid",
+      "out_file": "log/production.log",
+      "error_file": "log/production.log"
+    }
+  ]
+}

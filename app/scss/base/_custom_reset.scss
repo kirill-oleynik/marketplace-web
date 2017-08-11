@@ -1,0 +1,24 @@
+body {
+  box-sizing: border-box;
+}
+button {
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  &:focus {
+    outline: none;
+  }
+}
+p {
+  margin-bottom: 15px;
+}
+img {
+  max-width: 100%;
+}
+ul {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}

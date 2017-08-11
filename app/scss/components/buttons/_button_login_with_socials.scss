@@ -1,0 +1,19 @@
+.button-login-with-socials {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 8px 20px 8px;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 4px;
+}
+.button-login-with-socials--linkedin {
+  color: white;
+  background-color: color(blue-700);
+}
+.button-login-with-socials__icon {
+  font-size: 16px;
+  padding-right: 10px;
+  margin-right: 10px;
+  border-right: 1px solid rgba(white, 0.2);
+}

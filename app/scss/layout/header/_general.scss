@@ -1,0 +1,56 @@
+.main-header {
+  background-color: color(blue-200);
+}
+.main-header__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+}
+.main-header__main-logo {
+  font-size: 14px;
+  color: white;
+  font-weight: 900;
+  letter-spacing: 0.3px;
+  &:hover {
+    color: rgba(white, 0.8);
+    text-decoration: none;
+  }
+}
+.main-header__link {
+  display: inline-block;
+  font-size: 14px;
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 5px;
+  margin-left: 25px;
+  margin-right: 25px;
+  cursor: pointer;
+  &:hover {
+    color: rgba(white, 0.8);
+    text-decoration: none;
+  }
+}
+.main-header__search-btn {
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  &:focus,
+  &:hover {
+    text-decoration: none;
+    color: rgba(white, 0.8);
+  }
+}
+.main-header__btn-menu {
+  display: inline-block;
+  font-size: 20px;
+  color: white;
+  padding: 5px;
+  &:focus,
+  &:hover {
+    color: rgba(white, 0.8);
+    text-decoration: none;
+  }
+}
+

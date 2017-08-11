@@ -1,0 +1,39 @@
+{
+  "scripts": {
+    "dev": "yarn run clean && node server.js",
+    "start": "pm2 kill && pm2 start next.json",
+    "build": "yarn run clean && next build app && yarn run cp-css && yarn run gzip",
+    "clean": "rm -rf build",
+    "cp-css": "cp build/styles.css app/static/css/styles.css",
+    "gzip": "yarn run gzip-css && yarn run gzip-fonts",
+    "gzip-css": "gzip -rkf9 app/static/css",
+    "gzip-fonts": "gzip -rkf9 app/static/fonts"
+  },
+  "devDependencies": {
+    "css-loader": "^0.28.4",
+    "dotenv": "^4.0.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "node-sass": "^4.5.3",
+    "postcss": "^6.0.8",
+    "postcss-assets": "^4.2.0",
+    "postcss-import": "^10.0.0",
+    "postcss-loader": "^2.0.6",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^6.0.6"
+  },
+  "dependencies": {
+    "bootstrap": "4.0.0-alpha.6",
+    "classnames": "^2.2.5",
+    "express": "^4.15.3",
+    "http-proxy-middleware": "^0.17.4",
+    "morgan": "^1.8.2",
+    "next": "^3.0.3",
+    "pm2": "^2.6.1",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-textarea-autosize": "^5.1.0",
+    "react-transition-group": "^2.2.0",
+    "reactstrap": "^4.8.0"
+  }
+}

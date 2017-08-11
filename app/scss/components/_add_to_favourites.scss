@@ -1,0 +1,36 @@
+.favourites-add:hover .favourites-add__text {
+  opacity: 0.6;
+}
+.favourites-add__text {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.favourites-activities {
+  display: inline-block;
+  position: relative;
+}
+.favourites-activities__remove {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+}
+.favourites-activities:hover {
+  .favourites-activities__addeded {
+    opacity: 0;
+  }
+  .favourites-activities__remove {
+    opacity: 1;
+  }
+}
+.favourites-activities__remove-cross {
+  color: black;
+  font-size: 6px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: -2px;
+}

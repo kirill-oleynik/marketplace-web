@@ -1,0 +1,29 @@
+$app-colors: (
+  'white'         : white,
+  'black'         : black,
+  white-010       : rgba(white, 0.1),
+  white-025       : rgba(white, 0.25),
+  white-035       : rgba(white, 0.35),
+  white-050       : rgba(white, 0.5),
+  black-005       : rgba(black, 0.05),
+  black-015       : rgba(black, 0.15),
+  black-035       : rgba(black, 0.35),
+  black-050       : rgba(black, 0.5),
+  blue-200        : #54c2f5,
+  blue-500        : #3389fc, //#3288fc
+  blue-700        : #0077b5,
+  red-500         : #f33,
+);
+
+@each $color in $app-colors {
+  .in-#{nth($color, 1)} {
+    color: nth($color, 2) !important;
+  }
+  .bg-#{nth($color, 1)} {
+    background-color: nth($color, 2) !important;
+  }
+}
+
+@function color($color) {
+  @return map-get($app-colors, $color)
+}

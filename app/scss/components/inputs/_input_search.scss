@@ -1,0 +1,37 @@
+@import "../../utils/mixins";
+
+.input-search__wrap {
+  position: relative;
+  max-width: 550px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+.input-search__input {
+  width: 100%;
+  font-size: 14px;
+  color: white;
+  line-height: 1.4;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(white, 0.5);
+  padding-right: 30px;
+  padding-bottom: 8px;
+  @include input-placeholder-text {
+    color: rgba(white, 0.8);
+  }
+  &:hover,
+  &:focus {
+    border-color: currentColor;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+.input-search__icon {
+  font-size: 20px;
+  color: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
