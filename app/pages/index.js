@@ -1,7 +1,9 @@
 import Head from 'next/head';
-import { Container } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import MainHeader from './../components/header';
 import InputSearch from './../components/input_search';
+import Categories from './../components/categories';
+import CategoriesDropdown from './../components/categories_dropdown';
 
 export default () => (
   <div>
@@ -27,6 +29,24 @@ export default () => (
             </div>
           </Container>
         </section>
+        <section className="hidden-md-up">
+          <CategoriesDropdown />
+        </section>
+        <Container>
+          <section className="home-content">
+            <Row>
+              <Col xs="12" md="4" className="hidden-sm-down">
+                <Categories />
+              </Col>
+              <Col xs="12" md="8">
+                <div>
+                  <h3>Research</h3>
+                  <p>Organize, manage, and track your project with tools that build on top of issues and pull requests</p>
+                </div>
+              </Col>
+            </Row>
+          </section>
+        </Container>
       </main>
     </div>
   </div>
