@@ -6,8 +6,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const scssFolders = ['scss', 'node_modules'];
 const scssPaths = scssFolders.map((dir) => path.join(__dirname, dir))
-                             .map((path) => glob.sync(path))
-                             .reduce((accum, glob) => accum.concat(glob), []);
+                             .map((filePath) => glob.sync(filePath))
+                             .reduce((accum, match) => accum.concat(match), []);
 
 const commonScssLoaders = [
   {
@@ -74,4 +74,4 @@ module.exports = {
 
     return config;
   }
-}
+};

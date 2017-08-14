@@ -2,19 +2,19 @@ import Document, { Head, Main, NextScript } from 'next/document';
 import styles from '../scss/main.scss';
 
 export default class CustomDocument extends Document {
-  static getInitialProps ({ renderPage }) {
+  static getInitialProps({ renderPage }) {
     return renderPage();
   }
 
-  render () {
+  render() {
     const { __NEXT_DATA__: next } = this.props;
 
     return (
-      <html>
+      <html lang="en">
         <Head>
-          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
           <title>App</title>
-          <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700,900" rel="stylesheet"/>
+          <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700,900" rel="stylesheet" />
 
           {
             process.env.NODE_ENV === 'production' ? (
@@ -38,4 +38,4 @@ export default class CustomDocument extends Document {
       </html>
     );
   }
-};
+}

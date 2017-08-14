@@ -1,19 +1,22 @@
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const MainCheckbox = ({ name, text, className }) => {
-  return (
-    <label className={classNames('main-checkbox', className)}>
-      <input type="checkbox" className="main-checkbox__input" name={name} />
-      <span className="main-checkbox__icon icon" />
-      <span className="main-checkbox__text">{text}</span>
-    </label>
-  )
-}
+const MainCheckbox = ({ name, text, className }) => (
+  <label className={classNames('main-checkbox', className)} htmlFor={name}>
+    <input type="checkbox" className="main-checkbox__input" name={name} />
+    <span className="main-checkbox__icon icon" />
+    <span className="main-checkbox__text">{text}</span>
+  </label>
+);
 
 MainCheckbox.propTypes = {
-  name: PropTypes.string,
-  text: PropTypes.string
-}
+  className: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired
+};
 
-export default MainCheckbox
+MainCheckbox.defaultProps = {
+  className: ''
+};
+
+export default MainCheckbox;

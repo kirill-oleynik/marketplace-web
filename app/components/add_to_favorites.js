@@ -1,10 +1,9 @@
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
+import PropTypes from 'prop-types';
 
 const AddToFavorites = ({ added }) => {
   if (added) {
     return (
-      <button type="button" className="favourites-activities" added={added}>
+      <button type="button" className="favourites-activities">
         <span className="favourites-activities__addeded">
           <i className="icon icon-heart-filled in-black-035 mr-10" />
           <span className="favourites-add__text">Added to Favorites</span>
@@ -17,18 +16,22 @@ const AddToFavorites = ({ added }) => {
           <span className="favourites-add__text">Remove</span>
         </span>
       </button>
-    )
+    );
   }
   return (
     <button type="button" className="favourites-add">
       <i className="icon icon-heart in-black-035 mr-10" />
       <span className="favourites-add__text">Add to Favorites</span>
     </button>
-  )
-}
+  );
+};
+
+AddToFavorites.defaultProps = {
+  added: false
+};
 
 AddToFavorites.propTypes = {
-  added: PropTypes.string
-}
+  added: PropTypes.bool.isRequired
+};
 
-export default AddToFavorites
+export default AddToFavorites;
