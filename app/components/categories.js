@@ -5,4 +5,4 @@ export default () => (
       <a href="/" className="categories-link">Portfolio Management</a>
     </div>
   </div>
-)
+);

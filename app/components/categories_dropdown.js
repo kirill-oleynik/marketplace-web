@@ -1,4 +1,5 @@
-import { PropTypes } from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 
 class CategoriesDropdown extends React.Component {
@@ -19,27 +20,33 @@ class CategoriesDropdown extends React.Component {
 
   render() {
     return (
-      <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} className="main-dropdown categories__dropdown">
-        <DropdownToggle  className={`main-dropdown__toggle categories__dropdown-btn categories__dropdown-btn--${this.props.color}`} caret>
+      <Dropdown
+        isOpen={this.state.dropdownOpen}
+        toggle={this.toggle}
+        className="main-dropdown categories__dropdown"
+      >
+        <DropdownToggle
+          caret={this.props.caret}
+          className={`main-dropdown__toggle categories__dropdown-btn categories__dropdown-btn--${this.props.color}`}
+        >
           Categories
         </DropdownToggle>
+
         <DropdownMenu className="categories__dropdown-menu">
           <a href="/" className="categories-link">Portfolio Management</a>
         </DropdownMenu>
       </Dropdown>
-    )
+    );
   }
 }
 
-Dropdown.propTypes = {
-  isOpen: PropTypes.bool,
-  toggle: PropTypes.func,
-  color: PropTypes.string
+CategoriesDropdown.propTypes = {
+  color: PropTypes.string.isRequired,
+  caret: PropTypes.bool
 };
 
-DropdownToggle.propTypes = {
-  caret: PropTypes.bool,
-  className: PropTypes.string,
+CategoriesDropdown.defaultProps = {
+  caret: false
 };
 
-export default CategoriesDropdown
+export default CategoriesDropdown;

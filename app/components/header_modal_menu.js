@@ -1,8 +1,8 @@
-import { PropTypes } from 'react';
+import PropTypes from 'prop-types';
 import { Container, Modal, ModalHeader } from 'reactstrap';
 import MainButton from './main_button';
 
-export default ({ isOpen, toggle }) => (
+const HeaderModalMenu = ({ isOpen, toggle }) => (
   <Modal isOpen={isOpen} toggle={toggle} className="header-modal">
     <Container>
       <ModalHeader toggle={toggle} />
@@ -31,9 +31,15 @@ export default ({ isOpen, toggle }) => (
       </a>
     </Container>
   </Modal>
-)
+);
 
-Modal.propTypes = {
-  isOpen:  PropTypes.bool,
-  toggle:  PropTypes.func
+HeaderModalMenu.propTypes = {
+  isOpen: PropTypes.bool,
+  toggle: PropTypes.func.isRequired
 };
+
+HeaderModalMenu.defaultProps = {
+  isOpen: false
+};
+
+export default HeaderModalMenu;

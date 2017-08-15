@@ -55,6 +55,13 @@
     text-decoration: none;
   }
 }
+.header-modal__link--dark {
+  color: black;
+  &:focus,
+  &:hover {
+    color: rgba(black, 0.8);
+  }
+}
 .header-modal__user-name {
   font-size: 14px;
   color: white;

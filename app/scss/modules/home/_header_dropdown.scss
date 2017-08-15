@@ -1,0 +1,21 @@
+.header-dropdown {
+  .header-dropdown__btn {
+    color: white;
+    &.active,
+    &:hover {
+       color: white;
+    }
+  }
+  .header-dropdown__menu {
+    width: 240px;
+    top: calc(100% + 10px);
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 16px 12px 0 color(black-005);
+  }
+}
+.header-dropdown__menu-wrap {
+  padding-top: 20px;
+  padding-left: 16px;
+  padding-right: 14px;
+}

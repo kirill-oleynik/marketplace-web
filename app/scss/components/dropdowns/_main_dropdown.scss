@@ -3,6 +3,10 @@
   .dropdown-menu {
     padding: 0;
   }
+  &.show > .main-dropdown__toggle {
+    background-color: transparent;
+    border-color: transparent;
+  }
 }
 .main-dropdown__toggle {
   border: none;
@@ -11,22 +15,15 @@
   background-color: transparent;
   border-color: transparent;
   box-shadow: none;
+  padding: 10px;
   &:hover {
     background-color: transparent;
   }
   &:after {
     margin-left: 15px;
   }
-}
-.main-dropdown__header {
-  color: black;
-  padding: 20px;
-  border-bottom: 1px solid color(black-015);
-}
-.main-dropdown__body {
-  padding: 20px;
-}
-.main-dropdown__footer {
-  padding: 15px 20px;
-  border-top: 1px solid color(black-015);
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
 }
