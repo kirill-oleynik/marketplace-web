@@ -25,10 +25,7 @@ class CategoriesDropdown extends React.Component {
         toggle={this.toggle}
         className="main-dropdown categories__dropdown"
       >
-        <DropdownToggle
-          caret={this.props.caret}
-          className={`main-dropdown__toggle categories__dropdown-btn categories__dropdown-btn--${this.props.color}`}
-        >
+        <DropdownToggle caret className={`main-dropdown__toggle categories__dropdown-btn categories__dropdown-btn--${this.props.color}`}>
           Categories
         </DropdownToggle>
 
@@ -41,8 +38,7 @@ class CategoriesDropdown extends React.Component {
 }
 
 CategoriesDropdown.propTypes = {
-  color: PropTypes.string.isRequired,
-  caret: PropTypes.bool
+  color: PropTypes.string.isRequired
 };
 
 CategoriesDropdown.defaultProps = {

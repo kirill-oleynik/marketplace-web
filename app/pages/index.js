@@ -4,6 +4,9 @@ import MainHeader from './../components/header';
 import InputSearch from './../components/input_search';
 import Categories from './../components/categories';
 import CategoriesDropdown from './../components/categories_dropdown';
+import AppBlock from './../components/app_block';
+import AppBlockVertical from './../components/app_block_vertical';
+import GoTopLink from './../components/go_top_link';
 
 export default () => (
   <div>
@@ -40,17 +43,17 @@ export default () => (
                 <Categories />
               </Col>
               <Col xs="12" md="8">
-                <div>
-                  <h3>Research</h3>
-                  <p>
-                    Organize, manage, and track your project with tools that build on top
-                  </p>
-                </div>
+                <AppBlock />
+                <div className="divider divider--dark mb-30" />
+                <AppBlockVertical />
+                <div className="divider divider--dark" />
               </Col>
             </Row>
+            <GoTopLink />
           </section>
         </Container>
       </main>
+      <MainHeader />
     </div>
   </div>
 );

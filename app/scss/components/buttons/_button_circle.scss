@@ -1,16 +1,19 @@
 .button-circle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  display: inline-block;
   $size: 44px;
   height: $size;
   width: $size;
+  line-height: $size;
   border-radius: 50%;
 }
 .button-circle--sm {
   $size: 36px;
   height: $size;
   width: $size;
+  line-height: $size;
   .icon {
     font-size: 14px;
   }

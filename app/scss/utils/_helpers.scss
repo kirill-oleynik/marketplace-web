@@ -1,4 +1,4 @@
-@each $font in (8, 12, 14, 18, 20) {
+@each $font in (8, 12, 14, 16, 18, 20) {
   .font-#{$font} {
     font-size: #{$font}px !important;
   }

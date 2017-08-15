@@ -1,4 +1,9 @@
 .home-content {
-  display: flex;
+  // display: flex;
   padding-top: 30px;
+}
+.home-content__title {
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 1.6;
 }
