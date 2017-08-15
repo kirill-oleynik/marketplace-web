@@ -1,0 +1,35 @@
+@import "../../utils/mixins";
+
+.login-form__title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.login-form__link {
+  display: inline-block;
+  color: color(blue-500);
+  text-decoration: underline;
+  margin-bottom: 10px;
+  &:hover {
+    color: color(blue-500);
+    text-decoration: none;
+  }
+}
+.login-form__divider {
+  display: inline-block;
+  width: 150px;
+}
+.login-form__info-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@include media-breakpoint-up(sm) {
+  .login-form__info-wrap {
+    flex-direction: row;
+  }
+}

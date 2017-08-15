@@ -79,6 +79,17 @@
     }
   }
 }
+.main-input__icon {
+  display: inline-block;
+  font-size: 22px;
+  color: color(blue-500);
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  &:hover {
+    color: rgba(color(blue-500), 0.8);
+  }
+}
 .main-input__field--textarea  {
   resize: none;
   min-height: 94px;

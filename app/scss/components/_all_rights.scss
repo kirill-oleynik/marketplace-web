@@ -1,0 +1,9 @@
+.rights-link {
+  color: color(black-035);
+  text-decoration: underline;
+  margin-right: 5px;
+  margin-left: 5px;
+  &:hover {
+    color: color(black-035);
+  }
+}
