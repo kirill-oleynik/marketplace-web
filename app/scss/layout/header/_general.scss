@@ -2,6 +2,7 @@
   background-color: color(blue-200);
 }
 .main-header__content {
+  min-height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,6 +13,7 @@
   color: white;
   font-weight: 900;
   letter-spacing: 0.3px;
+  margin-bottom: 10px;
   &:hover {
     color: rgba(white, 0.8);
     text-decoration: none;
@@ -47,6 +49,7 @@
   font-size: 20px;
   color: white;
   padding: 5px;
+  cursor: pointer;
   &:focus,
   &:hover {
     color: rgba(white, 0.8);

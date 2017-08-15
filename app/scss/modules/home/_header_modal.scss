@@ -1,0 +1,81 @@
+.modal-backdrop {
+  background-color: transparent;
+}
+.header-modal {
+  &.modal-dialog {
+    width: 100%;
+    margin: 0;
+    max-width: 100%;
+  }
+  .modal-content {
+    display: block;
+    border-radius: 0;
+    border: none;
+    background-color: color(blue-500);
+    padding-bottom: 20px;
+  }
+  .modal-header {
+    display: block;
+    padding: 25px 0;
+    border: none;
+  }
+  .close {
+    @include icon-base;
+    @extend .icon-cross;
+    display: inline-block;
+    font-size: 16px;
+    color: white;
+    padding: 5px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    float: unset;
+    &:focus,
+    &:hover {
+      color: rgba(white, 0.8);
+      text-decoration: none;
+    }
+    span {
+      display: none;
+    }
+  }
+  & + .modal-backdrop {
+    background-color: transparent;
+  }
+}
+.header-modal__link {
+  display: block;
+  font-size: 14px;
+  color: white;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  cursor: pointer;
+  &:focus,
+  &:hover {
+    color: rgba(white, 0.8);
+    text-decoration: none;
+  }
+}
+.header-modal__link--dark {
+  color: black;
+  &:focus,
+  &:hover {
+    color: rgba(black, 0.8);
+  }
+}
+.header-modal__user-name {
+  font-size: 14px;
+  color: white;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.header-modal__user-email {
+  font-size: 12px;
+  color: rgba(white, 0.5);
+  margin-bottom: 20px;
+}
+.header-modal__logout {
+  display: inline-block;
+  font-size: 22px;
+  vertical-align: middle;
+  margin-right: 10px;
+}

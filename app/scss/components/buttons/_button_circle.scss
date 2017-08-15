@@ -11,6 +11,9 @@
   $size: 36px;
   height: $size;
   width: $size;
+  .icon {
+    font-size: 14px;
+  }
 }
 .button-circle--grey {
   background-color: color(black-005);
