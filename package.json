@@ -2,7 +2,7 @@
   "scripts": {
     "dev": "yarn run clean && node server.js",
     "lint": "eslint app --ext .js",
-    "start": "pm2 kill && pm2 start next.json",
+    "start": "pm2 kill && pm2 start web.json",
     "build": "yarn run clean && next build app && yarn run cp-css && yarn run gzip",
     "clean": "rm -rf build",
     "cp-css": "cp build/styles.css app/static/css/styles.css",
