@@ -1,7 +1,5 @@
 import MainInput from './../components/main_input';
 import MainButton from './../components/main_button';
-import LogInWithSocials from './../components/log_in_with_socials';
-import MainCheckbox from './../components/main_checkbox';
 
 export default () => (
   <form className="login-form">

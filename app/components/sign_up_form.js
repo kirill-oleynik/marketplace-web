@@ -3,7 +3,7 @@ import MainButton from './../components/main_button';
 import LogInWithSocials from './../components/log_in_with_socials';
 
 export default () => (
-  <form >
+  <form>
     <div className="mb-15">
       <h2 className="login-form__title">Sign Up</h2>
       <span className="d-inline-block font-14 mb-10">

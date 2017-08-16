@@ -4,6 +4,7 @@ import MainHeader from './../components/header';
 import AllRights from './../components/all_rights';
 import ResetPasswordForm from './../components/reset_password_form';
 // import SignUpForm from './../components/sign_up_form';
+// import SignUpFormSecondStep from './../components/sign_up_form_second_step';
 // import LogInForm from './../components/log_in_form';
 
 
@@ -18,9 +19,10 @@ export default () => (
       <main className="login__container flex-grow-1">
         <div className="login__wrap">
           <Container>
+            <ResetPasswordForm />
             {/* <LogInForm /> */}
             {/* <SignUpForm /> */}
-            <ResetPasswordForm />
+            {/* <SignUpFormSecondStep /> */}
             <AllRights />
           </Container>
         </div>
