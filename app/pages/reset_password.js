@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { Container } from 'reactstrap';
 import MainHeader from './../components/header';
 import AllRights from './../components/all_rights';
-import LogInForm from './../components/log_in_form';
+import ResetPasswordForm from './../components/reset_password_form';
 
 export default () => (
   <div>
@@ -15,7 +15,7 @@ export default () => (
       <main className="login__container flex-grow-1">
         <div className="login__wrap">
           <Container>
-            <LogInForm />
+            <ResetPasswordForm />
             <AllRights />
           </Container>
         </div>
