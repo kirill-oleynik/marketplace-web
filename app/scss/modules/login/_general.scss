@@ -1,5 +1,16 @@
 .login__wrap {
   max-width: 360px;
+  padding-top: 30px;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 30px;
+}
+
+@include media-breakpoint-up(sm) {
+  .login__container {
+    display: flex;
+  }
+  .login__wrap {
+    align-self: center;
+  }
 }

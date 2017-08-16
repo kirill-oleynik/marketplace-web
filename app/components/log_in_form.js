@@ -4,7 +4,7 @@ import LogInWithSocials from './../components/log_in_with_socials';
 import MainCheckbox from './../components/main_checkbox';
 
 export default () => (
-  <form>
+  <form className="login-form">
     <div className="mb-15">
       <h2 className="login-form__title">Log In</h2>
       <span className="d-inline-block font-14 mb-10">
