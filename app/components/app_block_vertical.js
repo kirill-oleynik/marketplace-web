@@ -1,12 +1,12 @@
 import React from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import AppItem from './../components/app_item';
 import ButtonLinkWithIcon from './../components/button_link_with_icon';
 
 const AppBlock = () => (
   <div className="mb-20">
     <div className="mb-30">
-      <h3 className="home-content__title">Research</h3>
+      <h3 className="font-20 font-700">Research</h3>
       <p className="font-16">
         Organize, manage, and track your project with tools that build on top
       </p>

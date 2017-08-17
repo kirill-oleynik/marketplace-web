@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { Container, Row, Col } from 'reactstrap';
-// import { StickyContainer, Sticky } from 'react-sticky';
 import MainHeader from './../components/header';
 import MainFooter from './../components/footer';
 import InputSearch from './../components/input_search';
@@ -39,7 +38,7 @@ export default () => (
           <CategoriesDropdown />
         </section>
         <Container>
-          <section className="home-content">
+          <section className="pt-30">
             <Row>
               <Col xs="12" md="4" className="hidden-sm-down">
                 <Categories />
@@ -51,9 +50,9 @@ export default () => (
                 <div className="divider divider--dark" />
               </Col>
             </Row>
-            <GoTopLink />
           </section>
         </Container>
+        <GoTopLink />
       </main>
       <MainFooter />
     </div>

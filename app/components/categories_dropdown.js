@@ -38,11 +38,12 @@ class CategoriesDropdown extends React.Component {
 }
 
 CategoriesDropdown.propTypes = {
-  color: PropTypes.string.isRequired
+  color: PropTypes.string
 };
 
 CategoriesDropdown.defaultProps = {
-  caret: false
+  caret: false,
+  color: ''
 };
 
 export default CategoriesDropdown;

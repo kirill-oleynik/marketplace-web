@@ -23,7 +23,7 @@ ButtonLinkWithIcon.propTypes = {
   text: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
   type: PropTypes.string,
-  type: PropTypes.string
+  className: PropTypes.string
 };
 
 ButtonLinkWithIcon.defaultProps = {

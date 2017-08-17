@@ -1,12 +1,6 @@
-@import '../base/variables';
-
 .go-top-link {
   position: fixed;
-  right: 40px;
-  // bottom: $footer-height-min + 40px;
-  bottom: 0 ;
-}
-
-@include media-breakpoint-up(md) {
-
+  left: 0;
+  right: 0;
+  bottom: 0;
 }

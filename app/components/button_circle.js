@@ -20,7 +20,7 @@ ButtonCircle.propTypes = {
   href: PropTypes.string,
   icon: PropTypes.string.isRequired,
   type: PropTypes.string,
-  size: PropTypes.string.isRequired,
+  size: PropTypes.string,
   color: PropTypes.string.isRequired,
   className: PropTypes.string
 };
@@ -28,7 +28,8 @@ ButtonCircle.propTypes = {
 ButtonCircle.defaultProps = {
   href: '',
   className: '',
-  type: 'button'
+  type: 'button',
+  size: ''
 };
 
 export default ButtonCircle;
