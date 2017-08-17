@@ -1,9 +1,6 @@
 import React from 'react';
 import { Container } from 'reactstrap';
-// import MainButton from './main_button';
-import ButtonCircle from './button_circle';
-import HeaderModalMenu from './header_modal_menu';
-import HeaderDropdownMenu from './header_dropdown_menu';
+import AllRights from './all_rights';
 
 class MainFooter extends React.Component {
   constructor(props) {
@@ -22,20 +19,18 @@ class MainFooter extends React.Component {
 
   render() {
     return (
-    <footer className="main-header">
-      <Container>
-        <div className="main-header__content">
-        <Row>
-        <Col xs="12">
-          <a href="/" className="main-header__main-logo">Application</a>
-        </Col>
-        <Col xs="12">
-
-        </Col>
-        </Row>
+    <Container>
+      <footer className="main-footer">
+        <div className="main-footer__wrap">
+          <a href="/" className="page-main-logo in-blue-500">Application</a>
+          <p className="font-12 in-black-035 ml-10 mb-10">©2017 All Rights Reserved</p>
         </div>
-      </Container>
-    </footer>
+        <div className="main-footer__wrap">
+          <a href="/" className="main-footer__link">Terms of Use</a>
+          <a href="/" className="main-footer__link">Privacy Policy</a>
+        </div>
+      </footer>
+    </Container>
     );
   }
 }

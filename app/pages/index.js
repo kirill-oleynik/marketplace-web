@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { Container, Row, Col } from 'reactstrap';
+// import { StickyContainer, Sticky } from 'react-sticky';
 import MainHeader from './../components/header';
 import MainFooter from './../components/footer';
 import InputSearch from './../components/input_search';

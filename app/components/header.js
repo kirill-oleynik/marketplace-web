@@ -34,7 +34,7 @@ class MainHeader extends React.Component {
                 />
               </div>
 
-              <a href="/" className="main-header__main-logo">Application</a>
+              <a href="/" className="page-main-logo mb-0">Application</a>
 
               {/* <div className="hidden-sm-down">
                 <MainButton color="transparent" size="md">Submit App</MainButton>
