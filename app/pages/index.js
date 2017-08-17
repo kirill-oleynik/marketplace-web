@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { Container, Row, Col } from 'reactstrap';
 import MainHeader from './../components/header';
+import MainFooter from './../components/footer';
 import InputSearch from './../components/input_search';
 import Categories from './../components/categories';
 import CategoriesDropdown from './../components/categories_dropdown';
@@ -53,7 +54,7 @@ export default () => (
           </section>
         </Container>
       </main>
-      <MainHeader />
+      <MainFooter />
     </div>
   </div>
 );
