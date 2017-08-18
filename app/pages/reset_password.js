@@ -1,10 +1,12 @@
 import Head from 'next/head';
 import { Container } from 'reactstrap';
+import withRedux from 'next-redux-wrapper';
 import MainHeader from './../components/header';
 import AllRights from './../components/all_rights';
 import ResetPasswordForm from './../components/reset_password_form';
+import initStore from './../store/init_store';
 
-export default () => (
+const ResetPassword = () => (
   <div>
     <Head>
       <title>Home</title>
@@ -23,3 +25,5 @@ export default () => (
     </div>
   </div>
 );
+
+export default withRedux(initStore, null, {})(ResetPassword);

@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { Container, Row, Col } from 'reactstrap';
+import withRedux from 'next-redux-wrapper';
 import MainHeader from './../components/header';
 import MainFooter from './../components/footer';
 import InputSearch from './../components/input_search';
@@ -8,8 +9,9 @@ import CategoriesDropdown from './../components/categories_dropdown';
 import AppBlock from './../components/app_block';
 import AppBlockVertical from './../components/app_block_vertical';
 import GoTopLink from './../components/go_top_link';
+import initStore from './../store/init_store';
 
-export default () => (
+const Index = () => (
   <div>
     <Head>
       <title>Home</title>
@@ -58,3 +60,5 @@ export default () => (
     </div>
   </div>
 );
+
+export default withRedux(initStore, null, {})(Index);

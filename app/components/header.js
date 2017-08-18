@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from 'reactstrap';
-// import MainButton from './main_button';
+import MainButton from './main_button';
 import ButtonCircle from './button_circle';
 import HeaderModalMenu from './header_modal_menu';
 import HeaderDropdownMenu from './header_dropdown_menu';
@@ -21,6 +21,8 @@ class MainHeader extends React.Component {
   }
 
   render() {
+    const { currentUser } = this.props;
+
     return (
       <div>
         <header className="main-header">
@@ -36,21 +38,34 @@ class MainHeader extends React.Component {
 
               <a href="/" className="page-main-logo mb-0">Application</a>
 
-              {/* <div className="hidden-sm-down">
-                <MainButton color="transparent" size="md">Submit App</MainButton>
-                <a href="/" className="main-header__link">Log In</a>
-                <MainButton color="white" size="md">Sign Up</MainButton>
-              </div> */}
+              {
+                currentUser.id ? (
+                  <div className="d-flex align-items-center hidden-sm-down">
+                    <ButtonCircle
+                      size="sm"
+                      color="grey-light"
+                      icon="heart-filled"
+                      className="in-white mr-20"
+                    />
 
-              <div className="d-flex align-items-center hidden-sm-down">
-                <ButtonCircle
-                  className="in-white mr-20"
-                  icon="heart-filled"
-                  color="grey-light"
-                  size="sm"
-                />
-                <HeaderDropdownMenu />
-              </div>
+                    <HeaderDropdownMenu />
+                  </div>
+                ) : (
+                  <div className="hidden-sm-down">
+                    <MainButton color="transparent" size="md">
+                      Submit App
+                    </MainButton>
+
+                    <a href="/" className="main-header__link">
+                      Log In
+                    </a>
+
+                    <MainButton color="white" size="md">
+                      Sign Up
+                    </MainButton>
+                  </div>
+                )
+              }
 
               <div className="hidden-md-up">
                 <a href="/" className="main-header__search-btn icon icon-search" />
@@ -58,6 +73,7 @@ class MainHeader extends React.Component {
             </div>
           </Container>
         </header>
+
         <HeaderModalMenu
           isOpen={this.state.modal}
           toggle={this.toggle}
