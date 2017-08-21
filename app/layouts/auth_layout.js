@@ -1,7 +1,8 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Container } from 'reactstrap';
-import Header from './../containers/header_container';
-import AllRights from './../components/all_rights';
+import Header from '../containers/header_container';
+import AllRights from '../components/all_rights';
 
 const AuthLayout = ({ children }) => (
   <div>

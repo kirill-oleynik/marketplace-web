@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<div>
+  <div
+    className="page-container"
+  >
+    <Header />
+    <main
+      className="login__container flex-grow-1"
+    >
+      <div
+        className="login__wrap"
+      >
+        <div
+          className="container"
+        >
+          <div>
+            Hello
+          </div>
+          <p
+            className="font-12 in-black-035"
+          >
+            ©2017 All Rights Reserved. Appreview®.
+            <a
+              className="rights-link"
+              href="/"
+            >
+              Privacy Policy
+            </a>
+            and
+            <a
+              className="rights-link"
+              href="/"
+            >
+              Terms of Use
+            </a>
+          </p>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;

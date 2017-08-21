@@ -2,21 +2,22 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import reducer from './../reducers';
+import requestMiddleware from './request_middleware';
+import reducer from '../reducers';
 
 const serverComposeFactory = () => compose(
-  applyMiddleware(thunk)
+  applyMiddleware(thunk, requestMiddleware)
 );
 
 const browserComposeFactory = () => {
   if (process.NODE_ENV === 'production') {
     return compose(
-      applyMiddleware(thunk)
+      applyMiddleware(thunk, requestMiddleware)
     );
   }
 
   return composeWithDevTools(
-    applyMiddleware(logger, thunk)
+    applyMiddleware(thunk, requestMiddleware, logger)
   );
 };
 

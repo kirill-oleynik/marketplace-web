@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<div
+  className="main-input"
+>
+  <div
+    className="main-input__field-box"
+  >
+    <input
+      className="main-input__field"
+      name="test"
+      type="text"
+      value=""
+    />
+    <label
+      className="main-input__label"
+      htmlFor="test"
+    >
+      Test
+    </label>
+  </div>
+</div>
+`;

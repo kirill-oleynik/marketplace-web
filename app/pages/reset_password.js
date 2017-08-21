@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { Container } from 'reactstrap';
 import withRedux from 'next-redux-wrapper';
-import MainHeader from './../components/header';
+import Header from './../containers/header_container';
 import AllRights from './../components/all_rights';
 import ResetPasswordForm from './../components/reset_password_form';
 import initStore from './../store/init_store';
@@ -13,7 +13,7 @@ const ResetPassword = () => (
     </Head>
 
     <div className="page-container">
-      <MainHeader />
+      <Header />
       <main className="login__container flex-grow-1">
         <div className="login__wrap">
           <Container>

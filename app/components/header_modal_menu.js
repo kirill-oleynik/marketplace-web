@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Modal, ModalHeader } from 'reactstrap';
 import MainButton from './main_button';

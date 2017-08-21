@@ -1,0 +1,10 @@
+{
+  "common": {
+    "header": {
+      "signIn": "Sign In"
+    },
+    "validations": {
+      "isNotEmpty": "{{prop}} should not be empty."
+    }
+  }
+}

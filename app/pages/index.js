@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import { Container, Row, Col } from 'reactstrap';
 import withRedux from 'next-redux-wrapper';
-import MainHeader from './../components/header';
 import MainFooter from './../components/footer';
+import Header from './../containers/header_container';
 import InputSearch from './../components/input_search';
 import Categories from './../components/categories';
 import CategoriesDropdown from './../components/categories_dropdown';
@@ -18,7 +18,7 @@ const Index = () => (
     </Head>
 
     <div className="page-container">
-      <MainHeader />
+      <Header />
       <main className="flex-grow-1">
         <section className="home-header">
           <Container className="pb-50">

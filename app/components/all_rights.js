@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default () => (
   <p className="font-12 in-black-035">
     ©2017 All Rights Reserved. Appreview®.

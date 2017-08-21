@@ -1,0 +1,17 @@
+{
+  "signUp": {
+    "title": "Sign Up",
+    "alreadyHaveAccount": "Already have an Appreview account?",
+    "logInHere": "Log in here",
+    "or": "or",
+    "agree": "By clicking Sign up, you agree to our Privacy Policy and Terms of Use",
+    "submit": "Sign Up",
+    "fields": {
+      "email": "Email",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "password": "Password",
+      "passwordConfirmation": "Password Confirmation"
+    }
+  }
+}

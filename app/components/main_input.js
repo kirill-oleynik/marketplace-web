@@ -1,43 +1,67 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const MainInput = ({ name, label, hint, type, icon, className }) => {
-  if (icon) {
-    return (
-      <div className={classNames('main-input', className)}>
-        <div className="main-input__field-box">
-          <i className={classNames(`main-input__icon icon icon-${icon}`)} />
-          <input type={type} name={name} className="main-input__field" />
-          <label htmlFor={name} className="main-input__label">{label}</label>
-        </div>
-        <div className="main-input__hint">{hint}</div>
-      </div>
-    );
-  }
-  return (
-    <div className={classNames('main-input', className)}>
-      <div className="main-input__field-box">
-        <input type={type} name={name} className="main-input__field" />
-        <label htmlFor={name} className="main-input__label">{label}</label>
-      </div>
-      <div className="main-input__hint">{hint}</div>
+const MainInput = ({
+  name, value, label, error, type, icon, onIconClick, className, ...rest
+}) => (
+  <div
+    className={
+      classNames(
+        'main-input',
+        className,
+        { 'is-invalid': !!error },
+        { 'with-icon': !!icon }
+      )
+    }
+  >
+    <div className="main-input__field-box">
+      {
+        icon ? (
+          <i
+            onClick={onIconClick}
+            className={classNames(`main-input__icon icon icon-${icon}`)}
+          />
+        ) : null
+      }
+
+      <input
+        type={type}
+        name={name}
+        value={value}
+        className={classNames('main-input__field', { 'has-text': !!value.length })}
+        {...rest}
+      />
+
+      <label htmlFor={name} className="main-input__label">{label}</label>
     </div>
-  );
-};
+
+    {
+      error ? (
+        <div className="main-input__error">{error}</div>
+      ) : null
+    }
+  </div>
+);
 
 MainInput.propTypes = {
-  name: PropTypes.string.isRequired,
   type: PropTypes.string,
-  hint: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
   icon: PropTypes.string,
-  className: PropTypes.string
+  error: PropTypes.string,
+  value: PropTypes.string,
+  className: PropTypes.string,
+  onIconClick: PropTypes.func,
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired
 };
 
 MainInput.defaultProps = {
-  type: 'text',
   icon: '',
-  className: ''
+  error: '',
+  value: '',
+  className: '',
+  type: 'text',
+  onIconClick: () => {}
 };
 
 export default MainInput;
