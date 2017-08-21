@@ -1,3 +1,4 @@
+import React from 'react';
 import MainInput from './../components/main_input';
 import MainButton from './../components/main_button';
 

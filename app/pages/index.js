@@ -1,22 +1,24 @@
 import Head from 'next/head';
 import { Container, Row, Col } from 'reactstrap';
-import MainHeader from './../components/header';
+import withRedux from 'next-redux-wrapper';
 import MainFooter from './../components/footer';
+import Header from './../containers/header_container';
 import InputSearch from './../components/input_search';
 import Categories from './../components/categories';
 import CategoriesDropdown from './../components/categories_dropdown';
 import AppBlock from './../components/app_block';
 import AppBlockVertical from './../components/app_block_vertical';
 import GoTopLink from './../components/go_top_link';
+import initStore from './../store/init_store';
 
-export default () => (
+const Index = () => (
   <div>
     <Head>
       <title>Home</title>
     </Head>
 
     <div className="page-container">
-      <MainHeader />
+      <Header />
       <main className="flex-grow-1">
         <section className="home-header">
           <Container className="pb-50">
@@ -58,3 +60,5 @@ export default () => (
     </div>
   </div>
 );
+
+export default withRedux(initStore, null, {})(Index);

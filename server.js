@@ -26,18 +26,16 @@ const proxy = proxyMiddleware('/api', {
   target: process.env.API_PROXY_URL,
   pathRewrite: {
     '^/api': '/'
-  },
+  }
 });
 
-const unlinkSocket = (path) => new Promise((resolve) => (
-  fs.unlink(path, () => resolve())
+const unlinkSocket = (unlinkPath) => new Promise((resolve) => (
+  fs.unlink(unlinkPath, () => resolve())
 ));
 
 app
   .prepare()
-  .then(() => {
-    return unlinkSocket(socketPath);
-  })
+  .then(() => unlinkSocket(socketPath))
   .then(() => {
     const server = express();
     const nextHandler = app.getRequestHandler();

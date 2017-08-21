@@ -12,9 +12,14 @@
   &:focus {
     outline: none;
   }
-  &.disabled {
+  &:disabled {
     color: white;
+    cursor: default;
     background-color: rgba(black, 0.2);
+
+    &:hover {
+      background-color: rgba(black, 0.2);
+    }
   }
 }
 .main-btn--white {
@@ -35,8 +40,9 @@
     color: color(blue-500);
     background-color: white;
   }
-  &.disabled {
+  &:disabled {
     opacity: 0.5;
+    cursor: default;
     background-color: transparent;
   }
 }
