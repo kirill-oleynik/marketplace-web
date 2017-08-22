@@ -1,30 +1,60 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Head from 'next/head';
-import { Container } from 'reactstrap';
 import withRedux from 'next-redux-wrapper';
-import Header from './../containers/header_container';
-import AllRights from './../components/all_rights';
-import LogInForm from './../components/log_in_form';
+import { I18nextProvider } from 'react-i18next';
+import createI18n from './../services/i18n';
+import { getCurrentUser } from './../selectors/current_user_selectors';
+import { getTranslations } from './../services/api';
 import initStore from './../store/init_store';
+import AuthLayout from './../layouts/auth_layout';
+import LogInContainer from './../containers/log_in_container';
 
-const LogIn = () => (
-  <div>
-    <Head>
-      <title>Home</title>
-    </Head>
+class LogIn extends Component {
+  static propTypes = {
+    translations: PropTypes.object.isRequired
+  }
 
-    <div className="page-container">
-      <Header />
-      <main className="login__container flex-grow-1">
-        <div className="login__wrap">
-          <Container>
-            <LogInForm />
-            <AllRights />
-          </Container>
+  static async getInitialProps({ res, store }) {
+    const currentUser = getCurrentUser(
+      store.getState()
+    );
+
+    if (currentUser.id) {
+      return res.redirect('/');
+    }
+
+    const commonTranslations = await getTranslations('common');
+    const logInTranslations = await getTranslations('log_in');
+
+    return {
+      translations: { ...commonTranslations, ...logInTranslations }
+    };
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.i18n = createI18n(props.translations);
+  }
+
+  render() {
+    return (
+      <I18nextProvider i18n={this.i18n}>
+        <div>
+          <Head>
+            <title>
+              {this.i18n.t('logIn:title')}
+            </title>
+          </Head>
+
+          <AuthLayout>
+            <LogInContainer />
+          </AuthLayout>
         </div>
-      </main>
-    </div>
-  </div>
-);
+      </I18nextProvider>
+    );
+  }
+}
 
 export default withRedux(initStore, null, {})(LogIn);

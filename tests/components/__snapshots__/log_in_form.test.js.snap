@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<form
+  className="login-form"
+  onSubmit={[Function]}
+>
+  <div
+    className="main-input mb-15"
+  >
+    <div
+      className="main-input__field-box"
+    >
+      <input
+        className="main-input__field"
+        name="email"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+      <label
+        className="main-input__label"
+        htmlFor="email"
+      >
+        fields.email
+      </label>
+    </div>
+  </div>
+  <div
+    className="main-input mb-20 with-icon"
+  >
+    <div
+      className="main-input__field-box"
+    >
+      <i
+        className="main-input__icon icon icon-eye"
+        onClick={[Function]}
+      />
+      <input
+        className="main-input__field"
+        name="password"
+        onChange={[Function]}
+        type="password"
+        value=""
+      />
+      <label
+        className="main-input__label"
+        htmlFor="password"
+      >
+        fields.password
+      </label>
+    </div>
+  </div>
+  <button
+    className="main-btn main-btn--blue main-btn--lg disabled w-100 mb-20"
+    type="submit"
+  >
+    submit
+  </button>
+  <div
+    className="login-form__info-wrap mb-20"
+  >
+    <a
+      className="login-form__link mb-20"
+      href="/"
+    >
+      forgotPassword
+    </a>
+    <div>
+      <label
+        className="main-checkbox mb-20"
+        htmlFor="keep me logged in"
+      >
+        <input
+          checked={false}
+          className="main-checkbox__input"
+          name="keep me logged in"
+          type="checkbox"
+        />
+        <span
+          className="main-checkbox__icon icon"
+          onClick={[Function]}
+        />
+        <span
+          className="main-checkbox__text"
+        >
+          rememberMe
+        </span>
+      </label>
+      
+    </div>
+  </div>
+</form>
+`;

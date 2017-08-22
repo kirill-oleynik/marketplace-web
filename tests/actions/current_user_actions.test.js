@@ -23,3 +23,25 @@ describe('#signUp', () => {
     moxios.uninstall();
   });
 });
+
+describe('#logIn', () => {
+  let action;
+
+  beforeEach(() => {
+    moxios.install();
+
+    action = currentUserActions.logIn();
+  });
+
+  test('it has CURRENT_USER_LOG_IN type', () => {
+    expect(action.type).toEqual(currentUserConstants.CURRENT_USER_LOG_IN);
+  });
+
+  test('it has request in payload', () => {
+    expect(action.payload.request).toBeDefined();
+  });
+
+  afterEach(() => {
+    moxios.uninstall();
+  });
+});

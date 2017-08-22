@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<div>
+  <div
+    className="mb-15"
+  >
+    <h2
+      className="login-form__title"
+    >
+      title
+    </h2>
+    <span
+      className="d-inline-block font-14 mb-10"
+    >
+      newToAppreview
+      <a
+        className="login-form__link ml-5"
+        href="/"
+      >
+        createAccount
+      </a>
+    </span>
+    <button
+      className="button-login-with-socials button-login-with-socials--linkedin w-100 mb-20"
+      type="button"
+    >
+      <i
+        className="icon icon-linkedin button-login-with-socials__icon"
+      />
+      <span>
+        Log in with Linkedin
+      </span>
+    </button>
+    <div
+      className="d-flex align-items-center justify-content-between mb-10"
+    >
+      <div
+        className="login-form__divider divider divider--dark"
+      />
+      <span
+        className="font-14 mr-20 ml-20"
+      >
+        or
+      </span>
+      <div
+        className="login-form__divider divider divider--dark"
+      />
+    </div>
+  </div>
+  <Form
+    errors={Object {}}
+    initialState={
+      Object {
+        "email": "",
+        "password": "",
+        "rememberMe": false,
+      }
+    }
+    onSubmit={[Function]}
+    rules={
+      Object {
+        "email": Array [
+          Array [
+            [Function],
+            "common:validations.isNotEmpty",
+          ],
+        ],
+        "password": Array [
+          Array [
+            [Function],
+            "common:validations.isNotEmpty",
+          ],
+        ],
+        "rememberMe": Array [
+          Array [
+            [Function],
+            "common:validations.isBoolean",
+          ],
+        ],
+      }
+    }
+    validateOnChange={true}
+    validateSingle={true}
+  />
+</div>
+`;

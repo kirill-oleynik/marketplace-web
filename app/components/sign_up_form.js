@@ -89,7 +89,7 @@ export class SignUpForm extends Component {
         </div>
 
         <MainInput
-          icon="eye"
+          icon={passwordShown ? 'eye-cross' : 'eye'}
           name="password"
           className="mb-20"
           value={values.password}
@@ -128,4 +128,3 @@ export class SignUpForm extends Component {
 export default Revalidation(
   translate(['signUp'])(SignUpForm)
 );
-
