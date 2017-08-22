@@ -6,9 +6,9 @@ import { translate } from 'react-i18next';
 import { signUp } from '../actions/current_user_actions';
 import { getSignUpErrors } from '../selectors/sign_up_selectors';
 import { isNotEmpty } from '../services/validations';
-import LogInWithSocials from '../components/log_in_with_socials';
-import SignUpForm from '../components/sign_up_form';
-import AuthTypesDivider from '../components/auth_types_divider';
+import LogInWithSocials from '../components/auth/log_in_with_socials';
+import SignUpForm from '../components/auth/sign_up_form';
+import AuthTypesDivider from '../components/auth/auth_types_divider';
 
 export class SignUpContainer extends Component {
   static propTypes = {

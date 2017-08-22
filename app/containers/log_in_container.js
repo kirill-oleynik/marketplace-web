@@ -5,9 +5,9 @@ import { translate } from 'react-i18next';
 import { logIn } from '../actions/current_user_actions';
 import { getLogInErrors } from '../selectors/log_in_selectors';
 import { isNotEmpty, isBoolean } from '../services/validations';
-import LogInWithSocials from './../components/log_in_with_socials';
-import LogInForm from '../components/log_in_form';
-import AuthTypesDivider from '../components/auth_types_divider';
+import LogInWithSocials from './../components/auth/log_in_with_socials';
+import LogInForm from '../components/auth/log_in_form';
+import AuthTypesDivider from '../components/auth/auth_types_divider';
 
 export class LogInContainer extends Component {
   static propTypes = {

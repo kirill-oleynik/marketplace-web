@@ -1,6 +1,6 @@
 const React = require('react');
 const renderer = require('react-test-renderer');
-const { LogInForm } = require('../../app/components/log_in_form.js');
+const { LogInForm } = require('../../../app/components/auth/log_in_form.js');
 
 describe('#render', () => {
   test('it renders correctly', () => {
@@ -10,7 +10,11 @@ describe('#render', () => {
         onSubmit={() => {}}
         errors={{}}
         revalidation={{
-          form: {},
+          form: {
+            values: [{
+              rememberMe: false
+            }]
+          },
           onChange: (value) => () => {}
         }}
       />

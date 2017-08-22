@@ -9,6 +9,7 @@ describe('#render', () => {
         name="test"
         text="Test"
         value={true}
+        onClick={() => {}}
       />
     ).toJSON();
 

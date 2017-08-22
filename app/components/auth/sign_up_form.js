@@ -4,8 +4,8 @@ import flow from 'lodash/flow';
 import first from 'lodash/first';
 import Revalidation from 'revalidation';
 import { translate } from 'react-i18next';
-import MainInput from './main_input';
-import MainButton from './main_button';
+import MainInput from './../main_input';
+import MainButton from './../main_button';
 
 const getError = (clientError = [], serverError = []) => (
   first(clientError) || first(serverError)

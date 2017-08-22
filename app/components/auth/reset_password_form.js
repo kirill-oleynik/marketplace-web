@@ -1,6 +1,6 @@
 import React from 'react';
-import MainInput from './../components/main_input';
-import MainButton from './../components/main_button';
+import MainInput from './../main_input';
+import MainButton from './../main_button';
 
 export default () => (
   <form className="login-form">

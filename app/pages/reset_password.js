@@ -3,7 +3,7 @@ import { Container } from 'reactstrap';
 import withRedux from 'next-redux-wrapper';
 import Header from './../containers/header_container';
 import AllRights from './../components/all_rights';
-import ResetPasswordForm from './../components/reset_password_form';
+import ResetPasswordForm from './../components/auth/reset_password_form';
 import initStore from './../store/init_store';
 
 const ResetPassword = () => (

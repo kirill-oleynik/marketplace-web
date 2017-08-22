@@ -1,6 +1,6 @@
 const React = require('react');
 const renderer = require('react-test-renderer');
-const { SignUpForm } = require('../../app/components/sign_up_form');
+const { SignUpForm } = require('../../../app/components/auth/sign_up_form');
 
 describe('#render', () => {
   test('it renders correctly', () => {

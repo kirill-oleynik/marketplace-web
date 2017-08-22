@@ -5,9 +5,9 @@ import { translate } from 'react-i18next';
 import flow from 'lodash/flow';
 import first from 'lodash/first';
 import some from 'lodash/some';
-import MainInput from './../components/main_input';
-import MainButton from './../components/main_button';
-import MainCheckbox from './../components/main_checkbox';
+import MainInput from './../main_input';
+import MainButton from './../main_button';
+import MainCheckbox from './../main_checkbox';
 
 const getError = (clientError = [], serverError = []) => (
   first(clientError) || first(serverError)
