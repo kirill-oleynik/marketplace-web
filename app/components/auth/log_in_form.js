@@ -103,11 +103,9 @@ export class LogInForm extends Component {
 
         {
           some(serverErrors.authentication) && (
-            <div className="">
-              <p className="">
-                {t('badCredentials')}
-              </p>
-            </div>
+            <p className="main-error">
+              {t('badCredentials')}
+            </p>
           )
         }
 
