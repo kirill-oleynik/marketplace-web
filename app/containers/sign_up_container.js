@@ -6,8 +6,9 @@ import { translate } from 'react-i18next';
 import { signUp } from '../actions/current_user_actions';
 import { getSignUpErrors } from '../selectors/sign_up_selectors';
 import { isNotEmpty } from '../services/validations';
-import LogInWithSocials from '../components/log_in_with_socials';
-import SignUpForm from '../components/sign_up_form';
+import LogInWithSocials from '../components/auth/log_in_with_socials';
+import SignUpForm from '../components/auth/sign_up_form';
+import AuthTypesDivider from '../components/auth/auth_types_divider';
 
 export class SignUpContainer extends Component {
   static propTypes = {
@@ -31,31 +32,41 @@ export class SignUpContainer extends Component {
       email: [
         [
           isNotEmpty,
-          props.t('common:validations.isNotEmpty', { prop: 'Email' })
+          props.t('common:validations.isNotEmpty', {
+            prop: props.t('fields.email')
+          })
         ]
       ],
       firstName: [
         [
           isNotEmpty,
-          props.t('common:validations.isNotEmpty', { prop: 'First Name' })
+          props.t('common:validations.isNotEmpty', {
+            prop: props.t('fields.firstName')
+          })
         ]
       ],
       lastName: [
         [
           isNotEmpty,
-          props.t('common:validations.isNotEmpty', { prop: 'Last Name' })
+          props.t('common:validations.isNotEmpty', {
+            prop: props.t('fields.lastName')
+          })
         ]
       ],
       password: [
         [
           isNotEmpty,
-          props.t('common:validations.isNotEmpty', { prop: 'Password' })
+          props.t('common:validations.isNotEmpty', {
+            prop: props.t('fields.password')
+          })
         ]
       ],
       passwordConfirmation: [
         [
           isNotEmpty,
-          props.t('common:validations.isNotEmpty', { prop: 'Password Confirmation' })
+          props.t('common:validations.isNotEmpty', {
+            prop: props.t('fields.passwordConfirmation')
+          })
         ]
       ]
     };
@@ -87,11 +98,7 @@ export class SignUpContainer extends Component {
 
           <LogInWithSocials type="button" className="w-100 mb-20" />
 
-          <div className="d-flex align-items-center justify-content-between mb-10">
-            <div className="login-form__divider divider divider--dark" />
-            <span className="font-14 mr-20 ml-20">{t('or')}</span>
-            <div className="login-form__divider divider divider--dark" />
-          </div>
+          <AuthTypesDivider dividerText={t('or')} />
         </div>
 
         <SignUpForm

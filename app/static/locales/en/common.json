@@ -4,7 +4,8 @@
       "signIn": "Sign In"
     },
     "validations": {
-      "isNotEmpty": "{{prop}} should not be empty."
+      "isNotEmpty": "{{prop}} should not be empty.",
+      "isBoolean": "{{prop}} shuld be true of false."
     }
   }
 }

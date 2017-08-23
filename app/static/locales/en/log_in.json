@@ -1,0 +1,16 @@
+{
+  "logIn": {
+    "title": "Log In",
+    "newToAppreview": "New to Appreview?",
+    "createAccount": "Create an account",
+    "or": "or",
+    "forgotPassword": "Forgot password?",
+    "submit": "Log In",
+    "fields": {
+      "email": "Email",
+      "password": "Password"
+    },
+    "rememberMe": "Keep me logged in",
+    "badCredentials": "User with such email and/or password doesn't exist."
+  }
+}
