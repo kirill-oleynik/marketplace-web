@@ -26,6 +26,7 @@ export default class CustomDocument extends Document {
                 }
               />
             ) : (
+              // eslint-disable-next-line react/no-danger
               <style dangerouslySetInnerHTML={{ __html: styles }} />
             )
           }
