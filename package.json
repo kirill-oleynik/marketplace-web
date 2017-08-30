@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "yarn run clean && node server.js",
+    "dev": "yarn run clean && node server",
     "lint": "eslint app --ext .js",
     "test": "jest",
     "start": "pm2 kill && pm2 start web.json",

@@ -1,11 +1,13 @@
 const uuidv4 = require('uuid/v4');
 const expressSession = require('express-session');
-const redisClient = require('redis').createClient();
+const redisClient = require('redis').createClient({
+  url: process.env.REDIS_URL
+});
 const ConnectRedis = require('connect-redis')(expressSession);
 
 const redisStore = new ConnectRedis({ client: redisClient });
 
-class SessionService {
+class Session {
   static create() {
     return expressSession({
       store: redisStore,
@@ -39,4 +41,4 @@ class SessionService {
   }
 }
 
-module.exports = SessionService;
+module.exports = Session;

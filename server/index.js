@@ -5,10 +5,10 @@ const path = require('path');
 const next = require('next');
 const morgan = require('morgan');
 const express = require('express');
-const proxy = require('./app/services/proxy.js');
-const SessionService = require('./app/services/session.js');
+const apiProxy = require('./proxy');
+const Session = require('./session.js');
 
-const session = SessionService.create();
+const session = Session.create();
 const env = process.env.NODE_ENV;
 const dev = env !== 'production';
 const port = process.env.PORT || 3000;
@@ -35,7 +35,7 @@ app
 
     server.use(logger);
     server.use(session);
-    server.use('/api', proxy);
+    server.use('/api', apiProxy);
     server.all('*', (req, res) => nextHandler(req, res));
 
     server.listen(listenTo, (err) => {
