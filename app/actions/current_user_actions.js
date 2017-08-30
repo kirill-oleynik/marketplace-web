@@ -1,4 +1,6 @@
+import Router from 'next/router';
 import { createUser, logInUser } from '../services/api';
+import { homePage } from '../routes';
 
 import {
   CURRENT_USER_SIGN_UP,
@@ -18,3 +20,20 @@ export const logIn = (data) => ({
     request: logInUser(data)
   }
 });
+
+export const logInAndRedirect = (data) => (dispatch) => (
+  dispatch(logIn(data))
+    .then(() => Router.push(homePage))
+    .catch(() => {})
+);
+
+export const signUpAndLogIn = (data) => (dispatch) => (
+  dispatch(signUp(data))
+    .then(() => dispatch(
+      logInAndRedirect({
+        email: data.email,
+        password: data.password
+      })
+    ))
+    .catch(() => {})
+);

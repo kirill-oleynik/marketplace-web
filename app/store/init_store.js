@@ -10,7 +10,7 @@ const serverComposeFactory = () => compose(
 );
 
 const browserComposeFactory = () => {
-  if (process.NODE_ENV === 'production') {
+  if (process.env.NODE_ENV === 'production') {
     return compose(
       applyMiddleware(thunk, requestMiddleware)
     );

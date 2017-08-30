@@ -4,7 +4,7 @@
       "name": "web",
       "instances": -1,
       "combine_logs": true,
-      "script": "server.js",
+      "script": "server/index.js",
       "exec_mode": "cluster",
       "max_memory_restart": "500M",
       "pid_file": "tmp/pids/web.pid",

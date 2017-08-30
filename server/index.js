@@ -5,8 +5,10 @@ const path = require('path');
 const next = require('next');
 const morgan = require('morgan');
 const express = require('express');
-const proxyMiddleware = require('http-proxy-middleware');
+const apiProxy = require('./proxy');
+const Session = require('./session.js');
 
+const session = Session.create();
 const env = process.env.NODE_ENV;
 const dev = env !== 'production';
 const port = process.env.PORT || 3000;
@@ -20,15 +22,6 @@ const app = next({
 
 const logger = morgan(dev ? 'dev' : 'short');
 
-const proxy = proxyMiddleware('/api', {
-  logLevel: 'error',
-  changeOrigin: true,
-  target: process.env.API_PROXY_URL,
-  pathRewrite: {
-    '^/api': '/'
-  }
-});
-
 const unlinkSocket = (unlinkPath) => new Promise((resolve) => (
   fs.unlink(unlinkPath, () => resolve())
 ));
@@ -41,7 +34,8 @@ app
     const nextHandler = app.getRequestHandler();
 
     server.use(logger);
-    server.use(proxy);
+    server.use(session);
+    server.use('/api', apiProxy);
     server.all('*', (req, res) => nextHandler(req, res));
 
     server.listen(listenTo, (err) => {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
-import { logIn } from '../actions/current_user_actions';
+import { logInAndRedirect } from '../actions/current_user_actions';
 import { getLogInErrors } from '../selectors/log_in_selectors';
 import { isNotEmpty, isBoolean } from '../services/validations';
 import LogInWithSocials from './../components/auth/log_in_with_socials';
@@ -12,7 +12,7 @@ import AuthTypesDivider from '../components/auth/auth_types_divider';
 export class LogInContainer extends Component {
   static propTypes = {
     t: PropTypes.func.isRequired,
-    logIn: PropTypes.func.isRequired,
+    logInAndRedirect: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired
   }
 
@@ -54,7 +54,7 @@ export class LogInContainer extends Component {
   }
 
   handleFormSubmit = (values) => {
-    this.props.logIn(values);
+    this.props.logInAndRedirect(values);
   }
 
   render() {
@@ -106,7 +106,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  logIn
+  logInAndRedirect
 };
 
 

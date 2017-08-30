@@ -17,7 +17,7 @@ class GoTopLink extends React.Component {
     this.mainFooter = document.querySelector('.main-footer-js');
     window.addEventListener('scroll', this.position);
     window.addEventListener('resize', this.position);
-    this.position();
+    // this.position();
   }
 
   position() {
@@ -30,7 +30,7 @@ class GoTopLink extends React.Component {
   }
 
   render() {
-    return (
+    return true ? null : (
       <div className="go-top-link" style={{ bottom: this.state.delta, visibility: this.state.visible ? 'visible' : 'hidden' }}>
         <Container className="text-right">
           <ButtonCircle
