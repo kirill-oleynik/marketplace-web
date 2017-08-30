@@ -23,9 +23,10 @@ export default function requestMiddleware() {
   return (next) => (action) => {
     const {
       type,
-      payload = {},
-      payload: { request }
+      payload = {}
     } = action;
+
+    const { request } = payload;
 
     if (!request) {
       return next(action);
