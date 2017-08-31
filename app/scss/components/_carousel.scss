@@ -1,0 +1,49 @@
+.carousel-viewport {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.carousel {
+  display: flex;
+}
+.carousel__item {
+  margin-right: 20px;
+  border-radius: 4px;
+  background-color: color(white-025);
+  color: white;
+  width: 210px;
+  flex-shrink: 0;
+  padding: 15px;
+  text-align: center;
+  display: inline-block;
+  &:hover {
+    color: white;
+  }
+}
+.carousel__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 44px;
+  color: white;
+  cursor: pointer;
+}
+.carousel__arrow--left {
+  left: 20px;
+}
+.carousel__arrow--right {
+  right: 20px;
+}
+@include media-breakpoint-up(sm) {
+  .carousel__item {
+    width: 280px;
+  }
+}
+@include media-breakpoint-up(md) {
+  .carousel__arrow--left {
+    left: 40px;
+  }
+  .carousel__arrow--right {
+    right: 40px;
+  }
+}

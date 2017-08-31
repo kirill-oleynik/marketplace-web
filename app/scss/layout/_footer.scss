@@ -1,3 +1,6 @@
+footer {
+  border-top: 1px solid color(black-015);
+}
 .main-footer {
   min-height: 80px;
   text-align: center;
@@ -13,7 +16,7 @@
   color: black;
   padding-right: 5px;
   padding-left: 5px;
-  margin: 10px;
+  margin: 10px 10px 0;
   cursor: pointer;
   &:hover {
     color: rgba(black, 0.8);
@@ -21,7 +24,7 @@
   }
 }
 
-@include media-breakpoint-up(md) {
+@include media-breakpoint-up(sm) {
   .main-footer {
     display: flex;
     align-items: center;

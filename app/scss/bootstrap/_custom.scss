@@ -1,1 +1,33 @@
 $font-family-sans-serif: 'Muli', sans-serif;
+$font-size-base: 0.875rem;
+$body-color: black;
+$link-hover-decoration: none;
+$link-hover-color: reset; // invalid value to unset the hover color
+$link-color: unset;
+
+$gutter-xs: 20px;
+$gutter-sm: 20px;
+$gutter-md: 20px;
+$gutter-lg: 20px;
+
+$container-max-width-sm: 720px;
+$container-max-width-md: 860px;
+$container-max-width-lg: 1120px;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 760px,
+  md: 940px,
+  lg: 1200px
+);
+$container-max-widths: (
+  sm: $container-max-width-sm,
+  md: $container-max-width-md,
+  lg: $container-max-width-lg
+);
+$grid-gutter-widths: (
+  xs: $gutter-xs * 2,
+  sm: $gutter-sm * 2,
+  md: $gutter-md * 2,
+  lg: $gutter-lg * 2
+);

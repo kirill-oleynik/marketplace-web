@@ -1,16 +1,20 @@
 .app-item {
   display: flex;
   margin-bottom: 20px;
+  &:hover {
+    .app-item__img {
+      box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.03);
+    }
+    .app-item__title {
+      color: color(blue-500);
+    }
+  }
 }
 .app-item--vertical {
   display: block;
 }
 .app-item__img {
-  margin-right: 25px;
-  margin-bottom: 5px;
-}
-.app-item__img {
-  display: block;
+  display: inline-block;
   $size: 70px;
   width: $size;
   height: $size;
@@ -25,6 +29,7 @@
   font-weight: 700;
   line-height: 1.5;
   margin-bottom: 5px;
+  color: black;
 }
 .app-item__text {
   font-size: 14px;

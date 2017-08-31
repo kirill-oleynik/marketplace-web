@@ -3,7 +3,7 @@ import { Row, Col } from 'reactstrap';
 import AppItem from './../components/app_item';
 import ButtonLinkWithIcon from './../components/button_link_with_icon';
 
-const AppBlock = () => (
+const AppBlockVertical = () => (
   <div className="mb-20">
     <div className="mb-30">
       <h3 className="font-20 font-700">Research</h3>
@@ -36,4 +36,4 @@ const AppBlock = () => (
   </div>
 );
 
-export default AppBlock;
+export default AppBlockVertical;

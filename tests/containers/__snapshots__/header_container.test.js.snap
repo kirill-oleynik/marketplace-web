@@ -21,10 +21,10 @@ exports[`#render it renders correctly 1`] = `
           />
         </div>
         <a
-          className="main-header__main-logo"
+          className="page-main-logo"
           href="/"
         >
-          Application
+          Appreview
         </a>
         <div
           className="hidden-sm-down"

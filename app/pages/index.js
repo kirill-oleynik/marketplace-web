@@ -10,6 +10,7 @@ import AppBlock from './../components/app_block';
 import AppBlockVertical from './../components/app_block_vertical';
 import GoTopLink from './../components/go_top_link';
 import initStore from './../store/init_store';
+import Carousel from './../components/carousel';
 
 const Index = () => (
   <div>
@@ -21,7 +22,7 @@ const Index = () => (
       <Header />
       <main className="flex-grow-1">
         <section className="home-header">
-          <Container className="pb-50">
+          <Container>
             <div className="home-header__content">
               <div className="mb-45">
                 <h1 className="home-header__main-title">
@@ -35,6 +36,7 @@ const Index = () => (
               <InputSearch />
             </div>
           </Container>
+          <Carousel />
         </section>
         <section className="hidden-md-up">
           <CategoriesDropdown />
@@ -42,14 +44,13 @@ const Index = () => (
         <Container>
           <section className="pt-30">
             <Row>
-              <Col xs="12" md="4" className="hidden-sm-down">
+              <Col xs="12" md="3" className="hidden-sm-down">
                 <Categories />
               </Col>
-              <Col xs="12" md="8">
+              <Col xs="12" md="9">
                 <AppBlock />
                 <div className="divider divider--dark mb-30" />
                 <AppBlockVertical />
-                <div className="divider divider--dark" />
               </Col>
             </Row>
           </section>

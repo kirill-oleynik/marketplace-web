@@ -44,7 +44,7 @@ export class HeaderContainer extends Component {
                 />
               </div>
 
-              <a href="/" className="main-header__main-logo">Application</a>
+              <a href="/" className="page-main-logo">Appreview</a>
 
               {
                 currentUser.id ? (

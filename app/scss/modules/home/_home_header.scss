@@ -1,19 +1,32 @@
 .home-header {
   background-image: linear-gradient(to bottom, color(blue-200), color(blue-500));
+  padding-bottom: 35px;
 }
 .home-header__content {
   text-align: center;
   padding-top: 50px;
+  padding-bottom: 25px;
 }
 .home-header__main-title {
-  font-size: 36px;
+  font-size: 24px;
   color: white;
   font-weight: 700;
   line-height: 1.5;
   margin-bottom: 20px;
 }
 .home-header__descr {
-  font-size: 20px;
+  font-size: 16px;
   color: white;
   line-height: 1.6;
+}
+@include media-breakpoint-up(sm) {
+  .home-header__main-title {
+    font-size: 36px;
+  }
+  .home-header__descr {
+    font-size: 20px;
+  }
+  .home-header__content {
+    padding-bottom: 60px;
+  }
 }

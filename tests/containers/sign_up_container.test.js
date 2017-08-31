@@ -9,7 +9,7 @@ describe('#render', () => {
     const tree = renderer.create(
       <SignUpContainer
         errors={{}}
-        signUp={() => {}}
+        signUpAndLogIn={() => {}}
         t={(translation) => translation}
       />
     ).toJSON();

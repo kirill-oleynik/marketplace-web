@@ -5,10 +5,10 @@ const AppItem = () => {
     backgroundImage: "url('http://www.geolog.com/files/img/SWN-logo.png')"
   };
   return (
-    <div className="app-item app-item--vertical">
+    <a href="" className="app-item app-item--vertical">
       {/* Put class '.app-item--vertical' for vertical view */}
       <div>
-        <span className="app-item__img" style={appLogo} />
+        <span className="app-item__img mb-5 mr-25" style={appLogo} />
       </div>
       <div>
         <h4 className="app-item__title">My Finances</h4>
@@ -16,7 +16,7 @@ const AppItem = () => {
           My Finances is a perfect tool for expense control and manage home budget.
         </p>
       </div>
-    </div>
+    </a>
   );
 };
 

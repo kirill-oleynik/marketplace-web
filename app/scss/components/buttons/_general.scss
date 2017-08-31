@@ -6,9 +6,6 @@
   transition: 0.15s all ease-in-out;
   border: 2px solid transparent;
   border-radius: 4px;
-  &:hover {
-    background-color: rgba(white, 0.8);
-  }
   &:focus {
     outline: none;
   }
@@ -16,7 +13,6 @@
     color: white;
     cursor: default;
     background-color: rgba(black, 0.2);
-
     &:hover {
       background-color: rgba(black, 0.2);
     }
@@ -25,18 +21,24 @@
 .main-btn--white {
   background-color: white;
   color: color(blue-500);
+  &:hover,
+  &:focus {
+    background-color: rgba(white, 0.8);
+  }
 }
 .main-btn--blue {
   color: white;
   background-color: color(blue-500);
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: rgba(color(blue-500), 0.8);
   }
 }
 .main-btn--transparent {
   color: white;
   border-color: white;
-  &:hover {
+  &:hover,
+  &:focus {
     color: color(blue-500);
     background-color: white;
   }

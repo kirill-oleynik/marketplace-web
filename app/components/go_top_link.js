@@ -30,7 +30,7 @@ class GoTopLink extends React.Component {
   }
 
   render() {
-    return true ? null : (
+    return (
       <div className="go-top-link" style={{ bottom: this.state.delta, visibility: this.state.visible ? 'visible' : 'hidden' }}>
         <Container className="text-right">
           <ButtonCircle
