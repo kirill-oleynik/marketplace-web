@@ -16,12 +16,13 @@ const MainTextarea = ({ name, label, hint, className }) => (
 MainTextarea.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  hint: PropTypes.string.isRequired,
+  hint: PropTypes.string,
   className: PropTypes.string
 };
 
 MainTextarea.defaultProps = {
-  className: ''
+  className: '',
+  hint: ''
 };
 
 export default MainTextarea;

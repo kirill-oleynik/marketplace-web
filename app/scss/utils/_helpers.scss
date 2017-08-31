@@ -11,7 +11,7 @@
     }
   }
 }
-@each $size in (5, 15, 20, 30, 40, 50, 60) {
+@each $size in (5, 15, 20, 30, 40, 50, 60, 90) {
   @each $prop in (t: top, b: bottom, l: left, r: right) {
     .p#{nth($prop, 1)}-#{$size} {
       padding-#{nth($prop, 2)}: #{$size}px !important;

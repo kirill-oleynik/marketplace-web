@@ -1,0 +1,18 @@
+.main-modal {
+  margin: 0 auto;
+  max-width: none;
+  min-height: 100vh;
+  background: white;
+  .modal-content {
+    border: none;
+    border-radius: 0;
+  }
+}
+.main-modal__content {
+  padding-top: 20px;
+}
+@include media-breakpoint-up(sm) {
+  .main-modal__content {
+    padding-top: 90px;
+  }
+}
