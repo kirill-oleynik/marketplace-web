@@ -38,16 +38,16 @@ const Index = () => (
           </Container>
           <Carousel />
         </section>
-        <section className="hidden-md-up">
+        <section className="hidden-sm-up">
           <CategoriesDropdown />
         </section>
         <Container>
           <section className="pt-30">
             <Row>
-              <Col xs="12" md="3" className="hidden-sm-down">
+              <Col xs="12" sm="3" className="hidden-xs-down">
                 <Categories />
               </Col>
-              <Col xs="12" md="9">
+              <Col xs="12" sm="9">
                 <AppBlock />
                 <div className="divider divider--dark mb-30" />
                 <AppBlockVertical />

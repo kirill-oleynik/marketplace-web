@@ -1,9 +1,10 @@
+@import './bootstrap/module';
 @import '~bootstrap/scss/bootstrap.scss';
 
-@import './bootstrap/module';
 @import './base/module';
 @import './layout/module';
 @import './components/module';
 @import './modules/module';
 @import './utils/helpers';
 @import './utils/mixins';
+@import '~react-image-gallery/styles/scss/image-gallery.scss';

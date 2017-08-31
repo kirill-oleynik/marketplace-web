@@ -1,17 +1,17 @@
-@each $font in (8, 12, 14, 16, 18, 20) {
+@each $font in (8, 12, 14, 16, 18, 20, 24, 54) {
   .font-#{$font} {
     font-size: #{$font}px !important;
   }
 }
 
-@each $size in (5, 10, 15, 20, 30, 40, 45) {
+@each $size in (5, 10, 15, 20, 25, 30, 40, 45, 50, 70) {
   @each $prop in (b: bottom, l: left, r: right) {
     .m#{nth($prop, 1)}-#{$size} {
       margin-#{nth($prop, 2)}: #{$size}px !important;
     }
   }
 }
-@each $size in (5, 20, 30, 40, 50) {
+@each $size in (5, 15, 20, 30, 40, 50, 60) {
   @each $prop in (t: top, b: bottom, l: left, r: right) {
     .p#{nth($prop, 1)}-#{$size} {
       padding-#{nth($prop, 2)}: #{$size}px !important;
@@ -21,6 +21,9 @@
 
 .font-700 {
   font-weight: bold;
+}
+.lh-1-2 {
+  line-height: 1.2;
 }
 .relative {
   position: relative;
@@ -34,4 +37,12 @@
 }
 .divider--dark {
   background-color: color(black-015);
+}
+.flex-sm-wrap-down {
+  flex-wrap: wrap;
+}
+@include media-breakpoint-up(sm) {
+  .flex-sm-wrap-down {
+    flex-wrap: nowrap;
+  }
 }

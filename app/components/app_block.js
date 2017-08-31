@@ -12,11 +12,11 @@ const AppBlock = () => (
       </p>
     </div>
     <Row>
-      <Col xs="12" lg="6">
+      <Col xs="12" md="6">
         <AppItem />
         <AppItem />
       </Col>
-      <Col xs="12" lg="6">
+      <Col xs="12" md="6">
         <AppItem />
         <AppItem />
       </Col>

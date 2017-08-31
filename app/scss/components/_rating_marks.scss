@@ -1,0 +1,28 @@
+.rating-marks {
+  color: color(black-050);
+  td {
+    padding-top: 1px;
+    padding-bottom: 2px;
+  }
+}
+.rating-marks__line {
+  width: 170px;
+  height: 2px;
+  background-color: color(black-015);
+  border-radius: 4px;
+}
+.rating-marks__line-value {
+  height: 100%;
+  border-radius: 4px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: color(blue-500);
+}
+.rating-marks__value {
+  margin-left: 20px;
+  border: 1px solid color(black-015);
+  border-radius: 2px;
+  font-size: 10px;
+  padding: 1px 7px;
+}

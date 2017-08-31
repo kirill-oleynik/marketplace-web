@@ -12,7 +12,7 @@ exports[`#render it renders correctly 1`] = `
         className="main-header__content"
       >
         <div
-          className="hidden-md-up"
+          className="hidden-sm-up"
         >
           <a
             className="main-header__btn-menu icon icon-menu in-white"
@@ -27,7 +27,7 @@ exports[`#render it renders correctly 1`] = `
           Appreview
         </a>
         <div
-          className="hidden-sm-down"
+          className="hidden-xs-down"
         >
           <button
             className="main-btn main-btn--transparent main-btn--md"
@@ -51,7 +51,7 @@ exports[`#render it renders correctly 1`] = `
           </button>
         </div>
         <div
-          className="hidden-md-up"
+          className="hidden-sm-up"
         >
           <a
             className="main-header__search-btn icon icon-search"

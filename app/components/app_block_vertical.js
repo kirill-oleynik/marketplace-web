@@ -12,16 +12,16 @@ const AppBlockVertical = () => (
       </p>
     </div>
     <Row>
-      <Col xs="12" md="6" lg="3">
+      <Col xs="12" sm="6" md="3">
         <AppItem />
       </Col>
-      <Col xs="12" md="6" lg="3">
+      <Col xs="12" sm="6" md="3">
         <AppItem />
       </Col>
-      <Col xs="12" md="6" lg="3">
+      <Col xs="12" sm="6" md="3">
         <AppItem />
       </Col>
-      <Col xs="12" md="6" lg="3">
+      <Col xs="12" sm="6" md="3">
         <AppItem />
       </Col>
     </Row>

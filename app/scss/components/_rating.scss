@@ -1,0 +1,26 @@
+.rating {
+  font-size: 14px;
+}
+.rating__stars {
+  color: color(black-035);
+  display: inline-block;
+}
+.rating__stars-item {
+  margin-right: 5px;
+}
+.rating--sm {
+  font-size: 12px;
+  .rating__stars {
+    display: block;
+  }
+  .rating__stars-item {
+    font-size: 12px;
+  }
+}
+.rating__stars-1 .rating__stars-item:nth-child(1),
+.rating__stars-2 .rating__stars-item:nth-child(-n+2),
+.rating__stars-3 .rating__stars-item:nth-child(-n+3),
+.rating__stars-4 .rating__stars-item:nth-child(-n+4),
+.rating__stars-5 .rating__stars-item:nth-child(-n+5) {
+  color: color(blue-500);
+}

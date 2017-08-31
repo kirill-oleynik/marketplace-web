@@ -36,7 +36,7 @@ export class HeaderContainer extends Component {
         <header className="main-header">
           <Container>
             <div className="main-header__content">
-              <div className="hidden-md-up">
+              <div className="hidden-sm-up">
                 <a
                   href="/#"
                   className="main-header__btn-menu icon icon-menu in-white"
@@ -48,7 +48,7 @@ export class HeaderContainer extends Component {
 
               {
                 currentUser.id ? (
-                  <div className="d-flex align-items-center hidden-sm-down">
+                  <div className="d-flex align-items-center hidden-xs-down">
                     <ButtonCircle
                       size="sm"
                       color="grey-light"
@@ -59,7 +59,7 @@ export class HeaderContainer extends Component {
                     <HeaderDropdownMenu />
                   </div>
                 ) : (
-                  <div className="hidden-sm-down">
+                  <div className="hidden-xs-down">
                     <MainButton color="transparent" size="md">
                       Submit App
                     </MainButton>
@@ -79,7 +79,7 @@ export class HeaderContainer extends Component {
                 )
               }
 
-              <div className="hidden-md-up">
+              <div className="hidden-sm-up">
                 <a href="/" className="main-header__search-btn icon icon-search" />
               </div>
             </div>
