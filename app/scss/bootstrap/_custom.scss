@@ -31,3 +31,6 @@ $grid-gutter-widths: (
   md: $gutter-md * 2,
   lg: $gutter-lg * 2
 );
+.container {
+  width: 320px;
+}

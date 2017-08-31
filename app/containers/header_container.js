@@ -95,7 +95,6 @@ export class HeaderContainer extends Component {
         <SubmitApp
           toggle={this.toggle}
         />
-
       </div>
     );
   }

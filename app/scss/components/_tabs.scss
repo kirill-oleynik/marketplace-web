@@ -1,0 +1,40 @@
+.main-tabs {
+  width: 100%;
+  box-shadow: 0 14px 24px 0 rgba(0,0,0,0.08);
+  .tab-content > .tab-pane {
+    padding: 30px 20px 20px;
+  }
+}
+.main-tabs__nav {
+  border-bottom: none;
+  .nav-item {
+    flex-basis: 0;
+    flex-grow: 1;
+    font-size: 16px;
+    background-color: color(black-005);
+    color: color(black-035);
+    text-align: center;
+  }
+  .nav-link {
+    padding: 13px 10px;
+    cursor: pointer;
+    border-radius: 0;
+    &.active {
+      color: black;
+      cursor: default;
+      &:hover {
+        color: black;
+      }
+    }
+  }
+  .nav-link,
+  .nav-link:hover {
+    border: none;
+  }
+}
+@include media-breakpoint-up(sm) {
+  .main-tabs .tab-content > .tab-pane {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
