@@ -33,3 +33,5 @@ export const createUser = (data) => http.post('api/users', data);
 export const logInUser = (data) => http.post('api/sessions', data);
 
 export const createProfile = (data) => http.post('api/profile', data);
+
+export const fetchCurrentUser = () => http.get('api/current_user');

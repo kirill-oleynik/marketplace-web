@@ -1,9 +1,14 @@
 import { combineReducers } from 'redux';
-import { CURRENT_USER_LOG_IN_FAILURE } from '../constants/current_user_constants';
+import {
+  CURRENT_USER_GET_CREDENTIALS_FAILURE,
+  CURRENT_USER_GET_INFO_FAILURE
+} from '../constants/current_user_constants';
 
 const errors = (state = {}, action) => {
   switch (action.type) {
-    case CURRENT_USER_LOG_IN_FAILURE:
+    case CURRENT_USER_GET_CREDENTIALS_FAILURE:
+      return action.payload.error.violations || {};
+    case CURRENT_USER_GET_INFO_FAILURE:
       return action.payload.error.violations || {};
     default:
       return state;
