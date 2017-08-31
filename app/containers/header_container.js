@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { Container } from 'reactstrap';
 import { connect } from 'react-redux';
+import { translate } from 'react-i18next';
 import { getCurrentUser } from '../selectors/current_user_selectors';
 import MainButton from '../components/main_button';
 import ButtonCircle from '../components/button_circle';
@@ -12,7 +13,8 @@ import SubmitApp from '../components/submit_app';
 
 export class HeaderContainer extends Component {
   static propTypes = {
-    currentUser: PropTypes.object.isRequired
+    currentUser: PropTypes.object.isRequired,
+    t: PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -30,7 +32,7 @@ export class HeaderContainer extends Component {
   }
 
   render() {
-    const { currentUser } = this.props;
+    const { t, currentUser } = this.props;
 
     return (
       <div>
@@ -45,7 +47,9 @@ export class HeaderContainer extends Component {
                 />
               </div>
 
-              <a href="/" className="page-main-logo">Appreview</a>
+              <a href="/" className="page-main-logo">
+                { t('applicationName') }
+              </a>
 
               {
                 currentUser.id ? (
@@ -57,23 +61,32 @@ export class HeaderContainer extends Component {
                       className="in-white mr-20"
                     />
 
-                    <HeaderDropdownMenu />
+                    <HeaderDropdownMenu
+                      currentUser={currentUser}
+                      t={t}
+                    />
                   </div>
                 ) : (
                   <div className="hidden-xs-down">
-                    <MainButton color="transparent" size="md">
-                      Submit App
+                    <MainButton
+                      color="transparent"
+                      size="md"
+                    >
+                      { t('submitApp') }
                     </MainButton>
 
                     <Link href="/log_in">
                       <a className="main-header__link">
-                        Log In
+                        { t('logIn') }
                       </a>
                     </Link>
 
                     <Link href="/sign_up">
-                      <MainButton color="white" size="md">
-                        Sign Up
+                      <MainButton
+                        color="white"
+                        size="md"
+                      >
+                        { t('signUp') }
                       </MainButton>
                     </Link>
                   </div>
@@ -81,7 +94,10 @@ export class HeaderContainer extends Component {
               }
 
               <div className="hidden-sm-up">
-                <a href="/" className="main-header__search-btn icon icon-search" />
+                <a
+                  href="/"
+                  className="main-header__search-btn icon icon-search"
+                />
               </div>
             </div>
           </Container>
@@ -90,6 +106,8 @@ export class HeaderContainer extends Component {
         <HeaderModalMenu
           isOpen={this.state.modal}
           toggle={this.toggle}
+          currentUser={currentUser}
+          t={t}
         />
 
         <SubmitApp
@@ -104,4 +122,6 @@ const mapStateToProps = (state) => ({
   currentUser: getCurrentUser(state)
 });
 
-export default connect(mapStateToProps, null)(HeaderContainer);
+export default connect(mapStateToProps, null)(
+  translate(['header'])(HeaderContainer)
+);

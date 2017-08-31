@@ -28,9 +28,14 @@ class SignUp extends Component {
 
     const commonTranslations = await getTranslations('common');
     const signUpTranslations = await getTranslations('sign_up');
+    const headerTranslations = await getTranslations('header');
 
     return {
-      translations: { ...commonTranslations, ...signUpTranslations }
+      translations: {
+        ...commonTranslations,
+        ...headerTranslations,
+        ...signUpTranslations
+      }
     };
   }
 

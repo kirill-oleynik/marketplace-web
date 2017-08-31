@@ -1,34 +1,82 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Modal, ModalHeader } from 'reactstrap';
+import Link from 'next/link';
 import MainButton from './main_button';
 
-const HeaderModalMenu = ({ isOpen, toggle }) => (
-  <Modal isOpen={isOpen} toggle={toggle} className="header-modal">
+const HeaderModalMenu = ({ isOpen, toggle, t, currentUser }) => (
+  <Modal
+    isOpen={isOpen}
+    toggle={toggle}
+    className="header-modal"
+  >
     <Container>
-      <ModalHeader toggle={toggle} />
+      <ModalHeader
+        toggle={toggle}
+      />
+
       <div>
-        <h4 className="header-modal__user-name">Steve Adams</h4>
-        <p className="header-modal__user-email">steveadams@gmail.com</p>
-        <div>
-          <a href="/" className="header-modal__link">Log In</a>
-          <a href="/" className="header-modal__link">Sign Up</a>
-        </div>
+        {
+          currentUser.id ? (
+            <div>
+              <h4 className="header-modal__user-name">
+                { currentUser.fullName }
+              </h4>
+
+              <p className="header-modal__user-email">
+                { currentUser.email }
+              </p>
+            </div>
+          ) : (
+            <div>
+              <Link href="/log_in">
+                <a className="header-modal__link">
+                  { t('logIn') }
+                </a>
+              </Link>
+
+              <Link href="/sign_up">
+                <a className="header-modal__link">
+                  { t('signUp') }
+                </a>
+              </Link>
+            </div>
+          )
+        }
       </div>
     </Container>
+
     <div className="divider mb-20" />
+
     <Container>
       <div>
-        <a href="/" className="header-modal__link">View Profile</a>
-        <a href="/" className="header-modal__link">Favorites</a>
+        <a href="/" className="header-modal__link">
+          { t('viewProfile') }
+        </a>
+
+        <a href="/" className="header-modal__link">
+          { t('favorites') }
+        </a>
       </div>
-      <MainButton color="white" size="sm" className="w-100 mb-30">Submit App</MainButton>
+
+      <MainButton
+        color="white"
+        size="sm"
+        className="w-100 mb-30"
+      >
+        { t('submitApp') }
+      </MainButton>
     </Container>
+
     <div className="divider mb-20" />
+
     <Container>
       <a href="/" className="header-modal__link">
         <i className="header-modal__logout icon icon-log-out" />
-        <span className="d-inline-block align-middle">Log Out</span>
+
+        <span className="d-inline-block align-middle">
+          { t('logOut') }
+        </span>
       </a>
     </Container>
   </Modal>
@@ -36,7 +84,9 @@ const HeaderModalMenu = ({ isOpen, toggle }) => (
 
 HeaderModalMenu.propTypes = {
   isOpen: PropTypes.bool,
-  toggle: PropTypes.func.isRequired
+  toggle: PropTypes.func.isRequired,
+  currentUser: PropTypes.object.isRequired,
+  t: PropTypes.func.isRequired
 };
 
 HeaderModalMenu.defaultProps = {

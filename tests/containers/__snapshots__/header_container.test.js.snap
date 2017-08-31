@@ -23,32 +23,24 @@ exports[`#render it renders correctly 1`] = `
         <a
           className="page-main-logo"
           href="/"
-        >
-          Appreview
-        </a>
+        />
         <div
           className="hidden-xs-down"
         >
           <button
             className="main-btn main-btn--transparent main-btn--md"
             type="button"
-          >
-            Submit App
-          </button>
+          />
           <a
             className="main-header__link"
             href="/log_in"
             onClick={[Function]}
-          >
-            Log In
-          </a>
+          />
           <button
             className="main-btn main-btn--white main-btn--md"
             onClick={[Function]}
             type="button"
-          >
-            Sign Up
-          </button>
+          />
         </div>
         <div
           className="hidden-sm-up"
