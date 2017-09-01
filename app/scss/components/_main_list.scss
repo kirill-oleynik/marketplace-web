@@ -1,0 +1,31 @@
+.main-list-item {
+  padding-left: 30px;
+  text-indent: -30px;
+  margin-bottom: 15px;
+  &:before {
+    content: "";
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background-color: color(black-050);
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 15px;
+  }
+}
+.main-list-numbered {
+  list-style: none;
+  padding-left: 0;
+  counter-reset: item;
+  .main-list-numbered__item {
+    padding-left: 40px;
+    text-indent: -40px;
+    margin-bottom: 15px;
+    &:before {
+      content: counter(item) ".";
+      counter-increment: item;
+      margin-left: 10px;
+      margin-right: 15px;
+    }
+  }
+}
