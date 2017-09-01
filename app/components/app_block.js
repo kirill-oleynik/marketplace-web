@@ -14,10 +14,14 @@ const AppBlock = () => (
     <Row>
       <Col xs="12" md="6">
         <AppItem />
+      </Col>
+      <Col xs="12" md="6">
         <AppItem />
       </Col>
       <Col xs="12" md="6">
         <AppItem />
+      </Col>
+      <Col xs="12" md="6">
         <AppItem />
       </Col>
     </Row>

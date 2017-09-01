@@ -13,16 +13,16 @@ const AppBlockVertical = () => (
     </div>
     <Row>
       <Col xs="12" sm="6" md="3">
-        <AppItem />
+        <AppItem position="vertical" />
       </Col>
       <Col xs="12" sm="6" md="3">
-        <AppItem />
+        <AppItem position="vertical" />
       </Col>
       <Col xs="12" sm="6" md="3">
-        <AppItem />
+        <AppItem position="vertical" />
       </Col>
       <Col xs="12" sm="6" md="3">
-        <AppItem />
+        <AppItem position="vertical" />
       </Col>
     </Row>
     <div className="text-center text-md-left">

@@ -10,6 +10,14 @@
     }
   }
 }
+.app-item--remove:hover {
+  .app-item__icon {
+    opacity: 1;
+  }
+}
+.app-item__icon {
+  opacity: 0;
+}
 .app-item--vertical {
   display: block;
 }
