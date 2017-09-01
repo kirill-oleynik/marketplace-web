@@ -33,8 +33,9 @@ class Session {
   static setHeaders(proxyReqOpts, srcReq) {
     const { accessToken } = srcReq.session;
     const requestOpts = proxyReqOpts;
+
     if (accessToken) {
-      requestOpts.headers['x-auth-token'] = accessToken;
+      requestOpts.headers.Authorization = `Bearer ${accessToken}`;
     }
 
     return requestOpts;

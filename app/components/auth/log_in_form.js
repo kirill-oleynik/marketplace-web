@@ -3,16 +3,11 @@ import PropTypes from 'prop-types';
 import Revalidation from 'revalidation';
 import { translate } from 'react-i18next';
 import flow from 'lodash/flow';
-import first from 'lodash/first';
 import some from 'lodash/some';
 import MainInput from './../main_input';
 import MainButton from './../main_button';
 import MainCheckbox from './../main_checkbox';
-
-const getError = (clientError = [], serverError = []) => (
-  first(clientError) || first(serverError)
-);
-const getValue = (event) => event.target.value;
+import { getValue, getError } from '../../helpers/form_helpers';
 
 export class LogInForm extends Component {
   static propTypes = {

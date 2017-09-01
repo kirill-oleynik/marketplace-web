@@ -8,10 +8,10 @@ import { getCurrentUser } from '../selectors/current_user_selectors';
 import { getTranslations } from '../services/api';
 import initStore from '../store/init_store';
 import AuthLayout from '../layouts/auth_layout';
-import SignUpContainer from '../containers/sign_up_container';
-import { home } from '../routes';
+import AddExtraInfoContainer from '../containers/add_extra_info_container';
+import { logIn, homePage } from '../routes';
 
-class SignUp extends Component {
+class AddExtraInfo extends Component {
   static propTypes = {
     translations: PropTypes.object.isRequired
   }
@@ -21,12 +21,16 @@ class SignUp extends Component {
       store.getState()
     );
 
-    if (currentUser.id) {
-      return res.redirect(home);
+    if (!currentUser.id) {
+      return res.redirect(logIn);
+    }
+
+    if (currentUser.phone || currentUser.jobTitle || currentUser.organization) {
+      return res.redirect(homePage);
     }
 
     const commonTranslations = await getTranslations('common');
-    const signUpTranslations = await getTranslations('sign_up');
+    const signUpTranslations = await getTranslations('add_extra_info');
 
     return {
       translations: { ...commonTranslations, ...signUpTranslations }
@@ -45,12 +49,12 @@ class SignUp extends Component {
         <div>
           <Head>
             <title>
-              {this.i18n.t('signUp:title')}
+              {this.i18n.t('addExtraInfo:title')}
             </title>
           </Head>
 
           <AuthLayout>
-            <SignUpContainer />
+            <AddExtraInfoContainer />
           </AuthLayout>
         </div>
       </I18nextProvider>
@@ -58,4 +62,4 @@ class SignUp extends Component {
   }
 }
 
-export default withRedux(initStore, null, {})(SignUp);
+export default withRedux(initStore, null, {})(AddExtraInfo);

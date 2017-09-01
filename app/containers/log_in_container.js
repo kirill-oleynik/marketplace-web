@@ -64,17 +64,17 @@ export class LogInContainer extends Component {
       <div>
         <div className="mb-15">
           <h2 className="login-form__title">
-            { t('title') }
+            {t('title')}
           </h2>
 
           <span className="d-inline-block font-14 mb-10">
-            { t('newToAppreview') }
+            {t('newToAppreview')}
 
             <a
               href="/"
               className="login-form__link ml-5"
             >
-              { t('createAccount') }
+              {t('createAccount')}
             </a>
           </span>
 

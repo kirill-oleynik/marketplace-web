@@ -45,7 +45,22 @@ const proxy = httpProxy(process.env.API_PROXY_URL, {
         .then((response) => (
           resolve(convertToCamelCase(response))
         ))
-        .catch(() => resolve(camelCaseData));
+        .catch(({ response }) => {
+          if (response.status === 401) {
+            return resolve(camelCaseData);
+          }
+
+          userRes.status(response.status);
+
+          Object
+            .keys(response.headers)
+            .filter((item) => item !== 'transfer-encoding')
+            .forEach((item) => userRes.set(item, response.headers[item]));
+
+          return resolve(
+            convertToCamelCase(response.data)
+          );
+        });
     })
   )
 });

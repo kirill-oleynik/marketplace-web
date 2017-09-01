@@ -1,0 +1,13 @@
+{
+  "addExtraInfo": {
+    "title": "Add Extra Information",
+    "tellUsMore": "Tell us a little more about yourself",
+    "continue": "Continue",
+    "later": "Remind me later",
+    "fields": {
+      "organization": "Organization",
+      "jobTitle": "Job Title",
+      "phone": "Phone"
+    }
+  }
+}

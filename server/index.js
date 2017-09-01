@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const next = require('next');
 const morgan = require('morgan');
+const bodyParser = require('body-parser');
 const express = require('express');
 const apiProxy = require('./proxy');
 const Session = require('./session.js');
@@ -33,6 +34,7 @@ app
     const server = express();
     const nextHandler = app.getRequestHandler();
 
+    server.use(bodyParser.json());
     server.use(logger);
     server.use(session);
     server.use('/api', apiProxy);

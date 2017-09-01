@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "yarn run clean && node server",
+    "dev": "yarn run clean && nodemon server",
     "lint": "eslint app --ext .js",
     "test": "jest",
     "start": "pm2 kill && pm2 start web.json",
@@ -38,6 +38,7 @@
   "dependencies": {
     "antd": "^2.12.8",
     "axios": "^0.16.2",
+    "body-parser": "^1.17.2",
     "bootstrap": "4.0.0-alpha.6",
     "classnames": "^2.2.5",
     "connect-redis": "^3.3.0",
@@ -49,6 +50,7 @@
     "morgan": "^1.8.2",
     "next": "^3.0.3",
     "next-redux-wrapper": "^1.3.2",
+    "nodemon": "^1.11.0",
     "pm2": "^2.6.1",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
