@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
+import redirect from 'next-redirect';
 import withRedux from 'next-redux-wrapper';
 import { I18nextProvider } from 'react-i18next';
 import createI18n from '../services/i18n';
@@ -16,17 +17,17 @@ class AddExtraInfo extends Component {
     translations: PropTypes.object.isRequired
   }
 
-  static async getInitialProps({ res, store }) {
+  static async getInitialProps(ctx) {
     const currentUser = getCurrentUser(
-      store.getState()
+      ctx.store.getState()
     );
 
     if (!currentUser.id) {
-      return res.redirect(logIn);
+      return redirect(ctx, logIn);
     }
 
     if (currentUser.phone || currentUser.jobTitle || currentUser.organization) {
-      return res.redirect(homePage);
+      return redirect(ctx, homePage);
     }
 
     const commonTranslations = await getTranslations('common');
