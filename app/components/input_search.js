@@ -1,14 +1,28 @@
-import React from 'react';
+import { Icon, Input, AutoComplete } from 'antd';
 
-const InputSearch = ({ ...rest }) => (
-  <div className="input-search">
-    <input className="input-search__input" placeholder="Search App and Categories" {...rest} />
-    <i className="input-search__icon icon icon-search" />
-  </div>
+const dataSource = [
+  'Account Management',
+  'Management Overview',
+  'Donor Management'
+];
+
+const filterOption = (inputValue, option) => (
+  option.props.children.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
 );
 
-InputSearch.defaultProps = {
-  type: 'text'
-};
+const suffixIcon = () => <Icon type="search" className="icon icon-search" />;
 
-export default InputSearch;
+const inputSearch = () => (
+  <AutoComplete
+    className="input-search"
+    dataSource={dataSource}
+    placeholder="Search App and Categories"
+    filterOption={filterOption}
+  >
+    <Input
+      suffix={suffixIcon}
+    />
+  </AutoComplete>
+);
+
+export default inputSearch;

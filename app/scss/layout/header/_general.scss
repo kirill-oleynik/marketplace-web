@@ -45,4 +45,32 @@
     text-decoration: none;
   }
 }
-
+@include media-breakpoint-down(sm) {
+  .input-search.ant-select {
+    position: absolute;
+    right: 10px;
+    left: 10px;
+    width: calc(100% - 20px);
+    max-width: 550px;
+    &.ant-select-focused {
+      background-color: #3389FC;
+    }
+  }
+}
+@include media-breakpoint-down(md) {
+  .main-header {
+    .input-search:not(.ant-select-focused) {
+      .ant-select-selection {
+        border-bottom: none !important;
+        width: 25px;
+        float: right;
+      }
+      .ant-select-selection__placeholder {
+        opacity: 0;
+      }
+    }
+    .ant-select-selection {
+      transition: none;
+    }
+  }
+}

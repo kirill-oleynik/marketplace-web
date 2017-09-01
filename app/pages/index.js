@@ -33,7 +33,11 @@ const Index = () => (
                   Discover categories in order to find more than 100 resources to make your business
                 </p>
               </div>
-              <InputSearch />
+              <Row>
+                <Col xs="12" sm={{ size: 8, offset: 2 }} md={{ size: 6, offset: 3 }} >
+                  <InputSearch />
+                </Col>
+              </Row>
             </div>
           </Container>
           <Carousel />
