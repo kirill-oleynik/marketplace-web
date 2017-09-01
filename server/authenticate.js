@@ -1,25 +1,39 @@
 const axios = require('axios');
 const Session = require('./session.js');
 
-const refreshSession = (refreshToken, clientId) => (
-  axios.put(`${process.env.API_PROXY_URL}/sessions`, null, {
-    headers: {
-      'x-auth-token': refreshToken,
-      'client-id': clientId
-    }
-  })
-);
+const refreshSession = (refreshToken, clientId) => {
+  const headers = {};
 
-const retryRequest = (request, token) => (
-  axios({
+  if (refreshToken) {
+    headers['x-auth-token'] = refreshToken;
+  }
+
+  if (clientId) {
+    headers['client-id'] = clientId;
+  }
+
+  return axios.put(`${process.env.API_PROXY_URL}/sessions/refresh`, null, {
+    headers
+  });
+};
+
+const retryRequest = (request, token) => {
+  const options = {
     method: request.method,
     url: process.env.API_PROXY_URL + request.url,
-    data: request.data,
     headers: {
-      'x-auth-token': token
+      Authorization: `Bearer ${token}`
     }
-  })
-);
+  };
+
+  if (request.method === 'GET') {
+    options.params = request.query;
+  } else {
+    options.data = request.body;
+  }
+
+  return axios(options);
+};
 
 module.exports = function authenticate(req, res) {
   return refreshSession(req.session.refreshToken, req.session.clientId)

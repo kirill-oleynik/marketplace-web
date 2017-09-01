@@ -5,7 +5,9 @@
     },
     "validations": {
       "isNotEmpty": "{{prop}} should not be empty.",
-      "isBoolean": "{{prop}} shuld be true of false."
+      "isBoolean": "{{prop}} should be true of false.",
+      "isNumeric": "{{prop}} should contain only numbers.",
+      "isLessThan": "{{prop}} should contain less than {{count}} chars."
     }
   }
 }
