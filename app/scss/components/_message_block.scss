@@ -8,8 +8,14 @@
   width: 116px;
   margin-bottom: 30px;
 }
+.message-block__img--lg {
+  width: 290px;
+}
 @include media-breakpoint-up(sm) {
   .message-block__img {
     width: 172px;
+  }
+  .message-block__img--lg {
+    width: 360px;
   }
 }
