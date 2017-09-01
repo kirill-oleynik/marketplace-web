@@ -23,12 +23,6 @@ export const getAuthCredentials = (data) => ({
   }
 });
 
-export const logInAndRedirect = (data) => (dispatch) => (
-  dispatch(logIn(data))
-    .then(() => Router.push(addExtraInfo))
-    .catch(() => {})
-);
-
 export const getCurrentUserInfo = () => ({
   type: CURRENT_USER_GET_INFO,
   payload: {
@@ -40,6 +34,12 @@ export const logIn = (data) => (dispatch) => (
   dispatch(getAuthCredentials(data))
     .then(() => dispatch(getCurrentUserInfo()))
     .then(() => Router.push(homePage))
+    .catch(() => {})
+);
+
+export const logInAndRedirect = (data) => (dispatch) => (
+  dispatch(logIn(data))
+    .then(() => Router.push(addExtraInfo))
     .catch(() => {})
 );
 

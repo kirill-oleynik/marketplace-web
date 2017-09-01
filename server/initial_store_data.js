@@ -3,7 +3,7 @@ const Session = require('./session');
 
 const restoreCurrentUser = (headers) => (
   axios.get(
-    `${process.env.API_PROXY_URL}/current_user`,
+    `${process.env.API_PROXY_URL}/users/current`,
     { headers: headers }
   )
 );
