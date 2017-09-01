@@ -96,4 +96,4 @@ class Index extends Component {
   }
 }
 
-export default withRedux(initStore, null, {})(Index);
+export default withRedux({ createStore: initStore, debug: true })(Index);

@@ -25,7 +25,11 @@ const composeFactory = () => (
   typeof window === 'undefined' ? serverComposeFactory() : browserComposeFactory()
 );
 
-export default function initStore(initialState = {}) {
+export default function initStore(initialState = {}, options) {
+  if (options.req) {
+    Object.assign(initialState, { currentUser: options.req.currentUser });
+  }
+
   return createStore(
     reducer,
     initialState,

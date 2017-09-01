@@ -8,6 +8,8 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const apiProxy = require('./proxy');
 const Session = require('./session.js');
+const getInitialStoreData = require('./initial_store_data');
+const toCamelCase = require('../app/services/helpers').convertToCamelCase;
 
 const session = Session.create();
 const env = process.env.NODE_ENV;
@@ -38,7 +40,17 @@ app
     server.use(logger);
     server.use(session);
     server.use('/api', apiProxy);
-    server.all('*', (req, res) => nextHandler(req, res));
+    server.all('*', (req, res) => (
+      new Promise((resolve) => {
+        getInitialStoreData(req)
+          .then((response) => {
+            const request = req;
+            request.currentUser = toCamelCase(response.data.data);
+            resolve(nextHandler(request, res));
+          })
+          .catch(() => resolve(nextHandler(req, res)))
+      })
+    ));
 
     server.listen(listenTo, (err) => {
       if (err) {
