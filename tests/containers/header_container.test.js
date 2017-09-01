@@ -7,6 +7,7 @@ describe('#render', () => {
     const tree = renderer.create(
       <HeaderContainer
         currentUser={{}}
+        t={() => {}}
       />
     ).toJSON();
 

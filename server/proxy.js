@@ -1,24 +1,7 @@
 const httpProxy = require('express-http-proxy');
-const isArray = require('lodash/isArray');
-const isPlainObject = require('lodash/isPlainObject');
-const camelCase = require('lodash/camelCase');
 const Session = require('./session.js');
 const authenticate = require('./authenticate.js');
-
-const convertToCamelCase = (data) => {
-  if (isArray(data)) {
-    return data.map(convertToCamelCase);
-  }
-
-  if (isPlainObject(data)) {
-    return Object.keys(data).reduce((accumulator, key) => {
-      accumulator[camelCase(key)] = convertToCamelCase(data[key]);
-      return accumulator;
-    }, {});
-  }
-
-  return data;
-};
+const toCamelCase = require('../app/services/helpers').convertToCamelCase;
 
 const proxy = httpProxy(process.env.API_PROXY_URL, {
   proxyReqOptDecorator: (proxyReqOpts, srcReq) => (
@@ -30,7 +13,7 @@ const proxy = httpProxy(process.env.API_PROXY_URL, {
   userResDecorator: (proxyRes, proxyResData, userReq, userRes) => (
     new Promise((resolve) => {
       const rawData = JSON.parse(proxyResData.toString('utf8'));
-      const camelCaseData = convertToCamelCase(rawData);
+      const camelCaseData = toCamelCase(rawData);
 
       if (userReq.url === '/sessions') {
         Session.update(rawData, userReq.session);

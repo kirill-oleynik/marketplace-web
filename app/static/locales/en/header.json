@@ -1,0 +1,11 @@
+{
+  "header": {
+    "applicationName": "Appreview",
+    "submitApp": "Submit App",
+    "logIn": "Log In",
+    "signUp": "Sign Up",
+    "viewProfile": "View Profile",
+    "logOut": "Log Out",
+    "favorites": "Favorites"
+  }
+}
