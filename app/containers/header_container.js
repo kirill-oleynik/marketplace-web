@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { translate } from 'react-i18next';
 import { getCurrentUser } from '../selectors/current_user_selectors';
 import Header from '../components/header';
 import UserProfileModal from '../components/user_profile_modal';
 
 export class HeaderContainer extends Component {
   static propTypes = {
-    currentUser: PropTypes.object.isRequired,
-    t: PropTypes.func.isRequired
+    currentUser: PropTypes.object.isRequired
   }
 
   constructor(props) {
@@ -35,12 +33,11 @@ export class HeaderContainer extends Component {
   }
 
   render() {
-    const { t, currentUser } = this.props;
+    const { currentUser } = this.props;
 
     return (
       <div>
         <Header
-          t={t}
           currentUser={currentUser}
           openUserProfile={this.openUserProfile}
         />
@@ -59,6 +56,4 @@ const mapStateToProps = (state) => ({
   currentUser: getCurrentUser(state)
 });
 
-export default connect(mapStateToProps, null)(
-  translate(['header'])(HeaderContainer)
-);
+export default connect(mapStateToProps, null)(HeaderContainer);

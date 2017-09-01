@@ -27,14 +27,9 @@ class LogIn extends Component {
 
     const commonTranslations = await getTranslations('common');
     const logInTranslations = await getTranslations('log_in');
-    const headerTranslations = await getTranslations('header');
 
     return {
-      translations: {
-        ...commonTranslations,
-        ...headerTranslations,
-        ...logInTranslations
-      }
+      translations: { ...commonTranslations, ...logInTranslations }
     };
   }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 import { Container, Modal, ModalHeader } from 'reactstrap';
 import Link from 'next/link';
 import MainButton from './main_button';
@@ -20,24 +21,24 @@ const HeaderModalMenu = ({ isOpen, toggle, t, currentUser }) => (
           currentUser.id ? (
             <div>
               <h4 className="header-modal__user-name">
-                { currentUser.fullName }
+                {currentUser.fullName}
               </h4>
 
               <p className="header-modal__user-email">
-                { currentUser.email }
+                {currentUser.email}
               </p>
             </div>
           ) : (
             <div>
               <Link href="/log_in">
                 <a className="header-modal__link">
-                  { t('logIn') }
+                  {t('header.logIn')}
                 </a>
               </Link>
 
               <Link href="/sign_up">
                 <a className="header-modal__link">
-                  { t('signUp') }
+                  {t('header.signUp')}
                 </a>
               </Link>
             </div>
@@ -51,11 +52,11 @@ const HeaderModalMenu = ({ isOpen, toggle, t, currentUser }) => (
     <Container>
       <div>
         <a href="/" className="header-modal__link">
-          { t('viewProfile') }
+          {t('header.viewProfile')}
         </a>
 
         <a href="/" className="header-modal__link">
-          { t('favorites') }
+          {t('header.favorites')}
         </a>
       </div>
 
@@ -64,7 +65,7 @@ const HeaderModalMenu = ({ isOpen, toggle, t, currentUser }) => (
         size="sm"
         className="w-100 mb-30"
       >
-        { t('submitApp') }
+        {t('header.submitApp')}
       </MainButton>
     </Container>
 
@@ -75,7 +76,7 @@ const HeaderModalMenu = ({ isOpen, toggle, t, currentUser }) => (
         <i className="header-modal__logout icon icon-log-out" />
 
         <span className="d-inline-block align-middle">
-          { t('logOut') }
+          {t('header.logOut')}
         </span>
       </a>
     </Container>
@@ -93,4 +94,4 @@ HeaderModalMenu.defaultProps = {
   isOpen: false
 };
 
-export default HeaderModalMenu;
+export default translate(['common'])(HeaderModalMenu);

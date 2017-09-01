@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Container } from 'reactstrap';
 import Link from 'next/link';
+import { translate } from 'react-i18next';
 import HeaderDropdownMenu from '../components/header_dropdown_menu';
 import ButtonCircle from '../components/button_circle';
 import MainButton from '../components/main_button';
@@ -40,7 +41,7 @@ class Header extends Component {
               </div>
 
               <a href="/" className="page-main-logo">
-                { t('applicationName') }
+                {t('header.applicationName')}
               </a>
 
               {
@@ -55,7 +56,6 @@ class Header extends Component {
 
                     <HeaderDropdownMenu
                       currentUser={currentUser}
-                      t={t}
                       openUserProfile={openUserProfile}
                     />
                   </div>
@@ -65,12 +65,12 @@ class Header extends Component {
                       color="transparent"
                       size="md"
                     >
-                      { t('submitApp') }
+                      {t('header.submitApp')}
                     </MainButton>
 
                     <Link href="/log_in">
                       <a className="main-header__link">
-                        { t('logIn') }
+                        {t('header.logIn')}
                       </a>
                     </Link>
 
@@ -79,7 +79,7 @@ class Header extends Component {
                         color="white"
                         size="md"
                       >
-                        { t('signUp') }
+                        {t('header.signUp')}
                       </MainButton>
                     </Link>
                   </div>
@@ -100,7 +100,6 @@ class Header extends Component {
           isOpen={this.state.modal}
           toggle={this.toggle}
           currentUser={currentUser}
-          t={t}
         />
 
         <SubmitApp
@@ -117,4 +116,4 @@ Header.propTypes = {
   openUserProfile: PropTypes.func.isRequired
 };
 
-export default Header;
+export default translate(['common'])(Header);

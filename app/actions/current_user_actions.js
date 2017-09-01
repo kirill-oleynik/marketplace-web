@@ -1,6 +1,6 @@
 import Router from 'next/router';
 import { createUser, logInUser, fetchCurrentUser } from '../services/api';
-import { addExtraInfo, homePage } from '../routes';
+import { addExtraInfo } from '../routes';
 
 
 import {

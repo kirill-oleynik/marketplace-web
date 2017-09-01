@@ -23,10 +23,10 @@ class Index extends Component {
   }
 
   static async getInitialProps() {
-    const headerTranslations = await getTranslations('header');
+    const commonTranslations = await getTranslations('common');
 
     return {
-      translations: { ...headerTranslations }
+      translations: { ...commonTranslations }
     };
   }
 

@@ -1,7 +1,13 @@
 {
   "common": {
     "header": {
-      "signIn": "Sign In"
+      "applicationName": "Appreview",
+      "submitApp": "Submit App",
+      "logIn": "Log In",
+      "signUp": "Sign Up",
+      "viewProfile": "View Profile",
+      "logOut": "Log Out",
+      "favorites": "Favorites"
     },
     "validations": {
       "isNotEmpty": "{{prop}} should not be empty.",
