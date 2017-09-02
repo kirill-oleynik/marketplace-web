@@ -89,7 +89,7 @@ export class SignUpContainer extends Component {
           <span className="d-inline-block font-14 mb-10">
             {t('alreadyHaveAccount')}&nbsp;
 
-            <Link href="/">
+            <Link href="/log_in">
               <a className="login-form__link ml-5">
                 {t('logInHere')}
               </a>

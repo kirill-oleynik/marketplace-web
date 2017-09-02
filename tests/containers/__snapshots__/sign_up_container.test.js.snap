@@ -17,7 +17,7 @@ exports[`#render it renders correctly 1`] = `
        
       <a
         className="login-form__link ml-5"
-        href="/"
+        href="/log_in"
         onClick={[Function]}
       >
         logInHere
