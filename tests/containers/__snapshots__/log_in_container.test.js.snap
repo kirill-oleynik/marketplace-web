@@ -14,12 +14,12 @@ exports[`#render it renders correctly 1`] = `
       className="d-inline-block font-14 mb-10"
     >
       newToAppreview
-      <a
+      <p
         className="login-form__link ml-5"
-        href="/"
+        onClick={[Function]}
       >
         createAccount
-      </a>
+      </p>
     </span>
     <button
       className="button-login-with-socials button-login-with-socials--linkedin w-100 mb-20"

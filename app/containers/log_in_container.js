@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
+import Link from 'next/link';
 import { logIn } from '../actions/current_user_actions';
 import { getLogInErrors } from '../selectors/log_in_selectors';
 import { isNotEmpty, isBoolean } from '../services/validations';
@@ -70,12 +71,11 @@ export class LogInContainer extends Component {
           <span className="d-inline-block font-14 mb-10">
             {t('newToAppreview')}
 
-            <a
-              href="/"
-              className="login-form__link ml-5"
-            >
-              {t('createAccount')}
-            </a>
+            <Link href="/sign_up">
+              <p className="login-form__link ml-5">
+                {t('createAccount')}
+              </p>
+            </Link>
           </span>
 
           <LogInWithSocials
