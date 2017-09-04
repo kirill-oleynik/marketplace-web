@@ -1,7 +1,11 @@
 const httpProxy = require('express-http-proxy');
 const Session = require('./session.js');
-const authenticate = require('./authenticate.js');
-const toCamelCase = require('../app/services/helpers').convertToCamelCase;
+const retryRequest = require('./retry_request');
+const copyResponse = require('./copy_response');
+const refreshSession = require('./refresh_session');
+const convertToCamelCase = require('./convert_to_camel_case');
+
+const CREATE_SESSIONS_URL = '/sessions';
 
 const proxy = httpProxy(process.env.API_PROXY_URL, {
   proxyReqOptDecorator: (proxyReqOpts, srcReq) => (
@@ -10,42 +14,43 @@ const proxy = httpProxy(process.env.API_PROXY_URL, {
     ))
   ),
 
-  userResDecorator: (proxyRes, proxyResData, userReq, userRes) => (
-    new Promise((resolve) => {
-      const rawData = JSON.parse(proxyResData.toString('utf8'));
-      const camelCaseData = toCamelCase(rawData);
+  userResDecorator: (proxyRes, proxyResData, userReq, userRes) => {
+    const responseData = convertToCamelCase(
+      JSON.parse(proxyResData.toString('utf8'))
+    );
 
-      if (userReq.url === '/sessions') {
-        Session.update(rawData, userReq.session);
-        return resolve(camelCaseData);
-      }
+    if (userReq.url === CREATE_SESSIONS_URL && proxyRes.statusCode < 400) {
+      Session.update(responseData, userReq.session);
+      return responseData;
+    }
 
-      if (proxyRes.statusCode !== 401) {
-        return resolve(camelCaseData);
-      }
+    if (proxyRes.statusCode !== 401) {
+      return responseData;
+    }
 
-      return authenticate(userReq, userRes)
-        .then((response) => (
-          resolve(convertToCamelCase(response))
-        ))
-        .catch(({ response }) => {
-          if (response.status === 401) {
-            return resolve(camelCaseData);
-          }
+    const { clientId, refreshToken } = userReq.session || {};
 
-          userRes.status(response.status);
+    return refreshSession(clientId, refreshToken)
+      .then((response) => {
+        Session.update(convertToCamelCase(response.data), userReq.session);
 
-          Object
-            .keys(response.headers)
-            .filter((item) => item !== 'transfer-encoding')
-            .forEach((item) => userRes.set(item, response.headers[item]));
+        return retryRequest(userReq, userReq.session.accessToken);
+      })
+      .then((response) => {
+        copyResponse(response, userRes);
 
-          return resolve(
-            convertToCamelCase(response.data)
-          );
-        });
-    })
-  )
+        return convertToCamelCase(response.data);
+      })
+      .catch(({ response }) => {
+        if (response.status === 401) {
+          return responseData;
+        }
+
+        copyResponse(response, userRes);
+
+        return convertToCamelCase(response.data);
+      });
+  }
 });
 
 module.exports = proxy;

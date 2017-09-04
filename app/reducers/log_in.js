@@ -7,7 +7,9 @@ import {
 const errors = (state = {}, action) => {
   switch (action.type) {
     case CURRENT_USER_GET_CREDENTIALS_FAILURE:
-      return action.payload.error.violations || {};
+      return action.payload.error.violations ?
+        action.payload.error.violations :
+        { authentication: action.payload.error.message };
     case CURRENT_USER_GET_INFO_FAILURE:
       return action.payload.error.violations || {};
     default:
