@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col, Modal } from 'reactstrap';
-import UserProfileTabs from './user_profile_modal_tabs';
+import ProfileTabs from './profile_modal_tabs';
 
-const UserProfileModal = ({ isOpen, closeModal, currentUser }) => (
+const ProfileModal = ({ isOpen, closeModal, currentUser }) => (
   <Modal
     isOpen={isOpen}
     className="main-modal"
@@ -28,21 +28,21 @@ const UserProfileModal = ({ isOpen, closeModal, currentUser }) => (
             { currentUser.fullName }
           </p>
 
-          <UserProfileTabs />
+          <ProfileTabs />
         </Col>
       </Row>
     </Container>
   </Modal>
 );
 
-UserProfileModal.propTypes = {
+ProfileModal.propTypes = {
   isOpen: PropTypes.bool,
   closeModal: PropTypes.func.isRequired,
   currentUser: PropTypes.object.isRequired
 };
 
-UserProfileModal.defaultProps = {
+ProfileModal.defaultProps = {
   isOpen: false
 };
 
-export default UserProfileModal;
+export default ProfileModal;

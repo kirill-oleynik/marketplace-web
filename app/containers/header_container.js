@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentUser } from '../selectors/current_user_selectors';
 import Header from '../components/header';
-import UserProfileModal from '../components/user_profile_modal';
+import ProfileModal from '../components/profile_modal';
 
 export class HeaderContainer extends Component {
   static propTypes = {
@@ -16,17 +16,17 @@ export class HeaderContainer extends Component {
       userProfileModalActive: false
     };
 
-    this.openUserProfile = this.openUserProfile.bind(this);
-    this.closeUserProfile = this.closeUserProfile.bind(this);
+    this.openProfile = this.openProfile.bind(this);
+    this.closeProfile = this.closeProfile.bind(this);
   }
 
-  openUserProfile() {
+  openProfile() {
     this.setState({
       userProfileModalActive: true
     });
   }
 
-  closeUserProfile() {
+  closeProfile() {
     this.setState({
       userProfileModalActive: false
     });
@@ -39,12 +39,12 @@ export class HeaderContainer extends Component {
       <div>
         <Header
           currentUser={currentUser}
-          openUserProfile={this.openUserProfile}
+          openProfile={this.openProfile}
         />
 
-        <UserProfileModal
+        <ProfileModal
           isOpen={this.state.userProfileModalActive}
-          closeModal={this.closeUserProfile}
+          closeModal={this.closeProfile}
           currentUser={currentUser}
         />
       </div>

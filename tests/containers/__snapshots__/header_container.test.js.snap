@@ -4,9 +4,9 @@ exports[`#render it renders correctly 1`] = `
 <div>
   <Header
     currentUser={Object {}}
-    openUserProfile={[Function]}
+    openProfile={[Function]}
   />
-  <User Profile
+  <Profile
     closeModal={[Function]}
     currentUser={Object {}}
     isOpen={false}

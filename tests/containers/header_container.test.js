@@ -3,7 +3,7 @@ const renderer = require('react-test-renderer');
 const { HeaderContainer } = require('../../app/containers/header_container');
 
 jest.mock('../../app/components/header', () => 'Header');
-jest.mock('../../app/components/user_profile_modal', () => 'User Profile');
+jest.mock('../../app/components/profile_modal', () => 'Profile');
 
 describe('#render', () => {
   test('it renders correctly', () => {

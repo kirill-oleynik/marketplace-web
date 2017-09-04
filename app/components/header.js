@@ -26,7 +26,7 @@ class Header extends Component {
   }
 
   render() {
-    const { t, currentUser, openUserProfile } = this.props;
+    const { t, currentUser, openProfile } = this.props;
 
     return (
       <div>
@@ -57,7 +57,7 @@ class Header extends Component {
 
                     <HeaderDropdownMenu
                       currentUser={currentUser}
-                      openUserProfile={openUserProfile}
+                      openProfile={openProfile}
                     />
                   </div>
                 ) : (
@@ -114,7 +114,7 @@ class Header extends Component {
 Header.propTypes = {
   t: PropTypes.func.isRequired,
   currentUser: PropTypes.object.isRequired,
-  openUserProfile: PropTypes.func.isRequired
+  openProfile: PropTypes.func.isRequired
 };
 
 export default translate(['common'])(Header);
