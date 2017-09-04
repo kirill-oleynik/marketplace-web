@@ -17,9 +17,7 @@ class Session {
       saveUninitialized: false,
       name: process.env.SESSION_COOKIE_NAME,
       secret: process.env.APPLICATION_SECRET,
-      cookie: {
-        secure: process.env.NODE_ENV === 'production'
-      }
+      cookie: {}
     });
   }
 
