@@ -1,8 +1,8 @@
 const React = require('react');
 const renderer = require('react-test-renderer');
-const { ProfileContainer } = require('../../app/containers/profile_container');
+const { ProfileContainer } = require('../../../app/containers/profile/profile_container');
 
-jest.mock('../../app/components/profile/profile_modal', () => 'ProfileModal');
+jest.mock('../../../app/components/profile/profile_modal', () => 'ProfileModal');
 
 describe('#render', () => {
   test('it renders correctly', () => {

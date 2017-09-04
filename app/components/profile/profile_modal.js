@@ -6,6 +6,7 @@ import {
 import classnames from 'classnames';
 import MainButton from '../main_button';
 import MainInput from '../main_input';
+import ProfileFormContainer from '../../containers/profile/profile_form_container';
 
 class ProfileModal extends Component {
   constructor(props) {
@@ -79,58 +80,7 @@ class ProfileModal extends Component {
                   activeTab={this.state.activeTab}
                 >
                   <TabPane tabId="1">
-                    <div className="mb-20">
-                      <Row>
-                        <Col xs="12" sm="6">
-                          <MainInput
-                            name="name"
-                            label="First Name"
-                            className="mb-10"
-                          />
-                        </Col>
-
-                        <Col xs="12" sm="6">
-                          <MainInput
-                            name="name"
-                            label="Last Name"
-                            className="mb-10"
-                          />
-                        </Col>
-                      </Row>
-
-                      <MainInput
-                        type="email"
-                        name="email"
-                        label="Email"
-                        className="mb-10"
-                      />
-
-                      <MainInput
-                        name="organization"
-                        label="Organization"
-                        className="mb-10"
-                      />
-
-                      <MainInput
-                        name="job"
-                        label="Job Title"
-                        className="mb-10"
-                      />
-
-                      <MainInput
-                        name="phone"
-                        label="Phone"
-                        className="mb-10"
-                      />
-                    </div>
-
-                    <MainButton
-                      color="blue"
-                      size="lg"
-                      className="w-100 mb-20"
-                    >
-                      Update Settings
-                    </MainButton>
+                    <ProfileFormContainer />
                   </TabPane>
 
                   <TabPane tabId="2">

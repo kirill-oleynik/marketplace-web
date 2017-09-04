@@ -14,7 +14,8 @@
       "isNotEmpty": "{{prop}} should not be empty.",
       "isBoolean": "{{prop}} should be true of false.",
       "isNumeric": "{{prop}} should contain only numbers.",
-      "isLessThan": "{{prop}} should contain less than {{count}} chars."
+      "isLessThan": "{{prop}} should contain less than {{count}} chars.",
+      "isEmail": "{{prop}} should have format 'example@email.com'"
     }
   }
 }

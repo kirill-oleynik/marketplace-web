@@ -1,0 +1,13 @@
+{
+  "profile": {
+    "profileTab": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "organization": "Organization",
+      "jobTitle": "Job Title",
+      "phone": "Phone",
+      "submit": "Update Settings"
+    }
+  }
+}

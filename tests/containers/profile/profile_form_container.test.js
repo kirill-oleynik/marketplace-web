@@ -1,17 +1,17 @@
 const React = require('react');
 const renderer = require('react-test-renderer');
-const { HeaderContainer } = require('../../app/containers/header_container');
+const { ProfileFormContainer } = require('../../../app/containers/profile/profile_form_container');
 
-jest.mock('../../app/components/header', () => 'Header');
-jest.mock('../../app/containers/profile/profile_container', () => 'ProfileContainer');
+jest.mock('../../../app/components/profile/profile_form', () => 'ProfileForm');
 
 describe('#render', () => {
   test('it renders correctly', () => {
     const tree = renderer.create(
-      <HeaderContainer
+      <ProfileFormContainer
         currentUser={{}}
+        errors={{}}
         t={() => {}}
-        toggleProfileModal={() => {}}
+        updateProfile={() => {}}
       />
     ).toJSON();
 

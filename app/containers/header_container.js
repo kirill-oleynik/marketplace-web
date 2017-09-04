@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentUser } from '../selectors/current_user_selectors';
 import Header from '../components/header';
-import ProfileContainer from './profile_container';
+import ProfileContainer from './profile/profile_container';
 import { toggleProfileModal } from '../actions/profile_actions';
 
 export class HeaderContainer extends Component {

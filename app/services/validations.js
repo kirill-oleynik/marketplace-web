@@ -9,3 +9,5 @@ export const isNumeric = (value) => /^\d+$/.test(value);
 export const isLessThan = curry(
   (length, value) => value.trim().length <= length
 );
+
+export const isEmail = (value) => /^\S+@\S+\.\S+$/.test(value);

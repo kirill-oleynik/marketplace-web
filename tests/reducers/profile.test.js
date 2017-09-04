@@ -17,3 +17,23 @@ describe('#modalIsActive', () => {
     expect(nextState.modalIsActive).toEqual(modalState);
   });
 });
+
+describe('#errors', () => {
+  test('it has correct initial state', () => {
+    const nextState = reducer(undefined, {});
+    expect(nextState.errors).toEqual({});
+  });
+
+  test('it handles PROFILE_UPDATE_FAILURE action type', () => {
+    const nextState = reducer(undefined, {
+      type: profileConstants.PROFILE_UPDATE_FAILURE,
+      payload: {
+        error: {
+          violations: 'Violations'
+        }
+      }
+    });
+
+    expect(nextState.errors).toEqual('Violations');
+  });
+});

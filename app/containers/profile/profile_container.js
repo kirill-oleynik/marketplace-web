@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getProfileModalState } from '../selectors/profile_selectors';
-import { getCurrentUser } from '../selectors/current_user_selectors';
-import ProfileModal from '../components/profile/profile_modal';
-import { toggleProfileModal } from '../actions/profile_actions';
+import { getProfileModalState } from '../../selectors/profile_selectors';
+import { getCurrentUser } from '../../selectors/current_user_selectors';
+import ProfileModal from '../../components/profile/profile_modal';
+import { toggleProfileModal } from '../../actions/profile_actions';
 
 export class ProfileContainer extends Component {
   static propTypes = {

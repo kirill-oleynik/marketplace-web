@@ -9,3 +9,15 @@ describe('#getProfileModalState', () => {
     })).toEqual('Test');
   });
 });
+
+describe('#getProfileErrors', () => {
+  test('it returns correct data', () => {
+    expect(profileSelectors.getProfileErrors({
+      profile: {
+        errors: {
+          test: 'value'
+        }
+      }
+    })).toEqual({test: 'value'});
+  });
+});
