@@ -4,11 +4,13 @@ import signIn from './sign_in';
 import currentUser from './current_user';
 import addExtraInfo from './add_extra_info';
 import categories from './categories';
+import profile from './profile';
 
 export default combineReducers({
   signUp,
   signIn,
   currentUser,
   addExtraInfo,
-  categories
+  categories,
+  profile
 });

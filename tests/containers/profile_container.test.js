@@ -1,16 +1,15 @@
 const React = require('react');
 const renderer = require('react-test-renderer');
-const { HeaderContainer } = require('../../app/containers/header_container');
+const { ProfileContainer } = require('../../app/containers/profile_container');
 
-jest.mock('../../app/components/header', () => 'Header');
-jest.mock('../../app/containers/profile_container', () => 'ProfileContainer');
+jest.mock('../../app/components/profile/profile_modal', () => 'ProfileModal');
 
 describe('#render', () => {
   test('it renders correctly', () => {
     const tree = renderer.create(
-      <HeaderContainer
+      <ProfileContainer
         currentUser={{}}
-        t={() => {}}
+        profileModalActive={false}
         toggleProfileModal={() => {}}
       />
     ).toJSON();

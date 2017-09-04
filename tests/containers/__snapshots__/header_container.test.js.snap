@@ -6,10 +6,6 @@ exports[`#render it renders correctly 1`] = `
     currentUser={Object {}}
     openProfile={[Function]}
   />
-  <Profile
-    closeModal={[Function]}
-    currentUser={Object {}}
-    isOpen={false}
-  />
+  <ProfileContainer />
 </div>
 `;

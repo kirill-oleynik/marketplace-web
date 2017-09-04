@@ -12,3 +12,25 @@ describe('#createProfile', () => {
     });
   });
 });
+
+// const moxios = require('moxios');
+// const profileActions = require('../../app/actions/profile_actions');
+// const profileConstants = require('../../app/constants/profile_constants');
+//
+// describe('#toggleProfileModal', () => {
+//   let action,
+//       state;
+//
+//   beforeEach(() => {
+//     state = Symbol('state');
+//     action = profileActions.toggleProfileModal(state);
+//   });
+//
+//   test('it has PROFILE_MODAL_TOGGLE type', () => {
+//     expect(action.type).toEqual(profileConstants.PROFILE_MODAL_TOGGLE);
+//   });
+//
+//   test('it has state in payload', () => {
+//     expect(action.modalState).toEqual(state);
+//   });
+// });
