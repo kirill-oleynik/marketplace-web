@@ -3,17 +3,18 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 import Link from 'next/link';
-import { logIn } from '../actions/current_user_actions';
-import { getLogInErrors } from '../selectors/log_in_selectors';
+import { signUp } from '../routes';
+import { signIn } from '../actions/auth_actions';
+import { getSignInErrors } from '../selectors/sign_in_selectors';
 import { isNotEmpty, isBoolean } from '../services/validations';
 import LogInWithSocials from './../components/auth/log_in_with_socials';
-import LogInForm from '../components/auth/log_in_form';
+import SignInForm from '../components/auth/sign_in_form';
 import AuthTypesDivider from '../components/auth/auth_types_divider';
 
-export class LogInContainer extends Component {
+export class SignInContainer extends Component {
   static propTypes = {
     t: PropTypes.func.isRequired,
-    logIn: PropTypes.func.isRequired,
+    signIn: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired
   }
 
@@ -55,7 +56,7 @@ export class LogInContainer extends Component {
   }
 
   handleFormSubmit = (values) => {
-    this.props.logIn(values);
+    this.props.signIn(values);
   }
 
   render() {
@@ -71,7 +72,7 @@ export class LogInContainer extends Component {
           <span className="d-inline-block font-14 mb-10">
             {t('newToAppreview')}
 
-            <Link href="/sign_up">
+            <Link href={signUp}>
               <p className="login-form__link ml-5">
                 {t('createAccount')}
               </p>
@@ -88,7 +89,7 @@ export class LogInContainer extends Component {
           />
         </div>
 
-        <LogInForm
+        <SignInForm
           validateSingle
           validateOnChange
           rules={this.validationRules}
@@ -102,13 +103,13 @@ export class LogInContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  errors: getLogInErrors(state)
+  errors: getSignInErrors(state)
 });
 
 const mapDispatchToProps = {
-  logIn
+  signIn
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  translate(['logIn', 'common'])(LogInContainer)
+  translate(['signIn', 'common'])(SignInContainer)
 );

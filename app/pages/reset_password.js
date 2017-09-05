@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { Container } from 'reactstrap';
-import withRedux from 'next-redux-wrapper';
 import { I18nextProvider } from 'react-i18next';
 import createI18n from '../services/i18n';
 import { getTranslations } from '../services/api';
-import Header from './../containers/header_container';
-import AllRights from './../components/all_rights';
-import ResetPasswordForm from './../components/auth/reset_password_form';
-import initStore from './../store/init_store';
+import Header from '../containers/header_container';
+import AllRights from '../components/all_rights';
+import ResetPasswordForm from '../components/auth/reset_password_form';
+import withReduxAndSaga from '../store';
 
 class ResetPassword extends Component {
   static propTypes = {
@@ -55,4 +54,4 @@ class ResetPassword extends Component {
   }
 }
 
-export default withRedux(initStore, null, {})(ResetPassword);
+export default withReduxAndSaga(ResetPassword);

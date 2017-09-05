@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import redirect from 'next-redirect';
-import withRedux from 'next-redux-wrapper';
 import { I18nextProvider } from 'react-i18next';
-import createI18n from './../services/i18n';
-import { getCurrentUser } from './../selectors/current_user_selectors';
-import { getTranslations } from './../services/api';
-import initStore from './../store/init_store';
-import AuthLayout from './../layouts/auth_layout';
-import LogInContainer from './../containers/log_in_container';
+import withReduxAndSaga from '../store';
+import { home } from '../routes';
+import createI18n from '../services/i18n';
+import { getTranslations } from '../services/api';
+import { getCurrentUser } from '../selectors/current_user_selectors';
+import AuthLayout from '../layouts/auth_layout';
+import SignInContainer from '../containers/sign_in_container';
 
-class LogIn extends Component {
+class SignIn extends Component {
   static propTypes = {
     translations: PropTypes.object.isRequired
   }
@@ -22,14 +22,14 @@ class LogIn extends Component {
     );
 
     if (currentUser.id) {
-      return redirect(ctx, '/');
+      return redirect(ctx, home);
     }
 
     const commonTranslations = await getTranslations('common');
-    const logInTranslations = await getTranslations('log_in');
+    const signInTranslations = await getTranslations('sign_in');
 
     return {
-      translations: { ...commonTranslations, ...logInTranslations }
+      translations: { ...commonTranslations, ...signInTranslations }
     };
   }
 
@@ -45,12 +45,12 @@ class LogIn extends Component {
         <div>
           <Head>
             <title>
-              {this.i18n.t('logIn:title')}
+              {this.i18n.t('signIn:title')}
             </title>
           </Head>
 
           <AuthLayout>
-            <LogInContainer />
+            <SignInContainer />
           </AuthLayout>
         </div>
       </I18nextProvider>
@@ -58,4 +58,4 @@ class LogIn extends Component {
   }
 }
 
-export default withRedux(initStore, null, {})(LogIn);
+export default withReduxAndSaga(SignIn);

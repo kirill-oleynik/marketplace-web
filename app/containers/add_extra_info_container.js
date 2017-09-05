@@ -3,10 +3,10 @@ import Router from 'next/router';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
-import { homePage } from '../routes';
+import { home } from '../routes';
 import { isLessThan, isNumeric, isNotEmpty } from '../services/validations';
 import AddExtraInfoForm from '../components/auth/add_extra_info_form';
-import { create as createProfile } from '../actions/profile_actions';
+import { createProfile } from '../actions/profile_actions';
 import { getCurrentUser } from '../selectors/current_user_selectors';
 import {
   getAddExtraInfoErrors,
@@ -122,7 +122,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  cancel: () => Router.push(homePage),
+  cancel: () => Router.push(home),
   createProfile: (data) => dispatch(createProfile(data))
 });
 

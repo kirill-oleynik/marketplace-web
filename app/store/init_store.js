@@ -1,23 +1,26 @@
+import logger from 'redux-logger';
+import createSagaMiddleware from 'redux-saga';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
-import logger from 'redux-logger';
-import requestMiddleware from './request_middleware';
+
+import saga from '../sagas';
 import reducer from '../reducers';
 
+const sagaMiddleware = createSagaMiddleware();
+
 const serverComposeFactory = () => compose(
-  applyMiddleware(thunk, requestMiddleware)
+  applyMiddleware(sagaMiddleware)
 );
 
 const browserComposeFactory = () => {
   if (process.env.NODE_ENV === 'production') {
     return compose(
-      applyMiddleware(thunk, requestMiddleware)
+      applyMiddleware(sagaMiddleware)
     );
   }
 
   return composeWithDevTools(
-    applyMiddleware(thunk, requestMiddleware, logger)
+    applyMiddleware(sagaMiddleware, logger)
   );
 };
 
@@ -30,9 +33,9 @@ export default function initStore(initialState = {}, options) {
     Object.assign(initialState, { currentUser: options.req.currentUser });
   }
 
-  return createStore(
-    reducer,
-    initialState,
-    composeFactory()
-  );
+  const store = createStore(reducer, initialState, composeFactory());
+
+  store.sagaTask = sagaMiddleware.run(saga);
+
+  return store;
 }

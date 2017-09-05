@@ -2,23 +2,22 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { Container, Row, Col } from 'reactstrap';
-import withRedux from 'next-redux-wrapper';
 import { I18nextProvider } from 'react-i18next';
 import createI18n from '../services/i18n';
 import { getTranslations } from '../services/api';
-import MainFooter from './../components/footer';
-import Header from './../containers/header_container';
-import CategoriesDropdown from './../components/categories_dropdown';
-import Categories from './../components/categories';
-import AppBlockVertical from './../components/app_block_vertical';
-import GoTopLink from './../components/go_top_link';
-import initStore from './../store/init_store';
-import MainButton from './../components/main_button';
-import AddToFavorites from './../components/add_to_favorites';
-import Rating from './../components/rating';
-import RatingMarks from './../components/rating_marks';
-import ButtonLinkWithIcon from './../components/button_link_with_icon';
-import ImageGallerySlider from './../components/image_gallery';
+import MainFooter from '../components/footer';
+import Header from '../containers/header_container';
+import CategoriesDropdown from '../components/categories_dropdown';
+import Categories from '../components/categories';
+import AppBlockVertical from '../components/app_block_vertical';
+import GoTopLink from '../components/go_top_link';
+import withReduxAndSaga from '../store';
+import MainButton from '../components/main_button';
+import AddToFavorites from '../components/add_to_favorites';
+import Rating from '../components/rating';
+import RatingMarks from '../components/rating_marks';
+import ButtonLinkWithIcon from '../components/button_link_with_icon';
+import ImageGallerySlider from '../components/image_gallery';
 
 const appProfileLogo = {
   backgroundImage: "url('http://www.geolog.com/files/img/SWN-logo.png')"
@@ -163,4 +162,4 @@ class AppProfile extends Component {
   }
 }
 
-export default withRedux(initStore, null, {})(AppProfile);
+export default withReduxAndSaga(AppProfile);

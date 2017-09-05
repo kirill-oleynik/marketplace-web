@@ -1,5 +1,5 @@
-const { errors } = require('../../app/reducers/sign_up');
-const { FAILURE, AUTH_SIGN_UP } = require('./../../app/constants');
+const { errors } = require('../../app/reducers/sign_in');
+const { FAILURE, AUTH_SIGN_IN } = require('./../../app/constants');
 
 describe('#errors', () => {
   test('it has correct initial state', () => {
@@ -8,10 +8,10 @@ describe('#errors', () => {
     expect(state).toEqual({});
   });
 
-  test('it handles AUTH_SIGN_UP_FAILURE', () => {
+  test('it handles AUTH_SIGN_IN_FAILURE', () => {
     const violations = Symbol('Violations');
     const state = errors(undefined, {
-      type: AUTH_SIGN_UP + FAILURE,
+      type: AUTH_SIGN_IN + FAILURE,
       payload: {
         error: { violations }
       }

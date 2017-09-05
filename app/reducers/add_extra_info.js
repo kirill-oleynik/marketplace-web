@@ -1,26 +1,21 @@
 import { combineReducers } from 'redux';
+import { REQUEST, SUCCESS, FAILURE, PROFILE_CREATE } from '../constants';
 
-import {
-  PROFILE_CREATE_REQUEST,
-  PROFILE_CREATE_SUCCESS,
-  PROFILE_CREATE_FAILURE
-} from '../constants/profile_constants';
-
-const errors = (state = {}, action) => {
+export const errors = (state = {}, action) => {
   switch (action.type) {
-    case PROFILE_CREATE_FAILURE:
-      return action.payload.error.violations;
+    case PROFILE_CREATE + FAILURE:
+      return action.payload.error.violations || {};
     default:
       return state;
   }
 };
 
-const inProgress = (state = false, action) => {
+export const inProgress = (state = false, action) => {
   switch (action.type) {
-    case PROFILE_CREATE_REQUEST:
+    case PROFILE_CREATE + REQUEST:
       return true;
-    case PROFILE_CREATE_SUCCESS:
-    case PROFILE_CREATE_FAILURE:
+    case PROFILE_CREATE + SUCCESS:
+    case PROFILE_CREATE + FAILURE:
       return false;
     default:
       return state;
