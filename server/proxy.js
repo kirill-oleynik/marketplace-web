@@ -19,8 +19,11 @@ const proxy = httpProxy(process.env.API_PROXY_URL, {
       JSON.parse(proxyResData.toString('utf8'))
     );
 
-    if (userReq.url === CREATE_SESSIONS_URL && proxyRes.statusCode < 400) {
-      Session.update(responseData, userReq.session);
+    if (userReq.url === CREATE_SESSIONS_URL) {
+      if (proxyRes.statusCode < 400) {
+        Session.update(responseData, userReq.session);
+      }
+
       return responseData;
     }
 

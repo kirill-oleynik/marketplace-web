@@ -1,4 +1,6 @@
-const { getValue, getError } = require('../../app/helpers/form_helpers');
+const {
+  getValue, getError, getChecked
+} = require('../../app/helpers/form_helpers');
 
 describe('#getValue', () => {
   it('returns value of event target', () => {
@@ -36,5 +38,20 @@ describe('#getError', () => {
     expect(
       getError([], [])
     ).toEqual(undefined);
+  });
+});
+
+describe('#getChecked', () => {
+  it('returns value of event target checked', () => {
+    const value = Symbol('value');
+    const event = {
+      target: {
+        checked: value
+      }
+    };
+
+    expect(
+      getChecked(event)
+    ).toEqual(value);
   });
 });

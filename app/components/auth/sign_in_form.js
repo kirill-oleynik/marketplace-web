@@ -6,8 +6,8 @@ import flow from 'lodash/flow';
 import some from 'lodash/some';
 import MainInput from '../main_input';
 import MainButton from '../main_button';
-import MainCheckbox from '../main_checkbox';
-import { getValue, getError } from '../../helpers/form_helpers';
+import Checkbox from '../form/checkbox';
+import { getValue, getChecked, getError } from '../../helpers/form_helpers';
 
 export class SignInForm extends Component {
   static propTypes = {
@@ -15,11 +15,6 @@ export class SignInForm extends Component {
     errors: PropTypes.object.isRequired,
     onSubmit: PropTypes.func.isRequired,
     revalidation: PropTypes.object.isRequired
-  }
-
-  constructor(props) {
-    super(props);
-    this.handleRememberMeClick = this.handleRememberMeClick.bind(this);
   }
 
   state = {
@@ -50,17 +45,6 @@ export class SignInForm extends Component {
     });
   }
 
-  handlePasswordIconClick() {
-    this.setState({
-      passwordShown: !this.state.passwordShown
-    });
-  }
-
-  handleRememberMeClick() {
-    const { revalidation: { form: values, onChange } } = this.props;
-    return onChange('rememberMe', !values.rememberMe);
-  }
-
   render() {
     const { passwordShown } = this.state;
 
@@ -71,10 +55,7 @@ export class SignInForm extends Component {
     } = this.props;
 
     return (
-      <form
-        className="login-form"
-        onSubmit={this.handleSubmit}
-      >
+      <form className="login-form" onSubmit={this.handleSubmit}>
         <MainInput
           name="email"
           label={t('fields.email')}
@@ -118,16 +99,15 @@ export class SignInForm extends Component {
             {t('forgotPassword')}
           </a>
 
-          <MainCheckbox
-            name="keep me logged in"
-            text={t('rememberMe')}
+          <Checkbox
             className="mb-20"
-            value={values.rememberMe}
-            onClick={this.handleRememberMeClick}
+            name="rememberMe"
+            text={t('rememberMe')}
+            checked={values.rememberMe}
+            onChange={flow([getChecked, onChange('rememberMe')])}
             error={getError(errors.rememberMe, serverErrors.rememberMe)}
           />
         </div>
-
       </form>
     );
   }

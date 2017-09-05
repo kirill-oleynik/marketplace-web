@@ -3,25 +3,24 @@
 exports[`#render it renders correctly 1`] = `
 <div>
   <label
-    className="main-checkbox"
-    htmlFor="test"
+    className="checkbox"
+    htmlFor="checkbox-test"
   >
     <input
-      checked={true}
-      className="main-checkbox__input"
+      checked={false}
+      className="checkbox__input"
+      id="checkbox-test"
       name="test"
       type="checkbox"
     />
     <span
-      className="main-checkbox__icon icon"
-      onClick={[Function]}
+      className="checkbox__icon icon"
     />
     <span
-      className="main-checkbox__text"
+      className="checkbox__text"
     >
       Test
     </span>
   </label>
-  
 </div>
 `;

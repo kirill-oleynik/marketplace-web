@@ -68,26 +68,26 @@ exports[`#render it renders correctly 1`] = `
     </a>
     <div>
       <label
-        className="main-checkbox mb-20"
-        htmlFor="keep me logged in"
+        className="checkbox mb-20"
+        htmlFor="checkbox-rememberMe"
       >
         <input
-          checked={false}
-          className="main-checkbox__input"
-          name="keep me logged in"
+          checked={undefined}
+          className="checkbox__input"
+          id="checkbox-rememberMe"
+          name="rememberMe"
+          onChange={[Function]}
           type="checkbox"
         />
         <span
-          className="main-checkbox__icon icon"
-          onClick={[Function]}
+          className="checkbox__icon icon"
         />
         <span
-          className="main-checkbox__text"
+          className="checkbox__text"
         >
           rememberMe
         </span>
       </label>
-      
     </div>
   </div>
 </form>
