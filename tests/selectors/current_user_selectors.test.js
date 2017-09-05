@@ -1,9 +1,9 @@
-const currentUserSelectors = require('../../app/selectors/current_user_selectors');
+const { getCurrentUser } = require('../../app/selectors/current_user_selectors');
 
 describe('#getCurrentUser', () => {
   test('it returns correct data', () => {
-    expect(currentUserSelectors.getCurrentUser({
-      currentUser: 'Test'
-    })).toEqual('Test');
+    expect(
+      getCurrentUser({ currentUser: 'Test' })
+    ).toEqual('Test');
   });
 });

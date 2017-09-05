@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { translate } from 'react-i18next';
 import { Container, Modal, ModalHeader } from 'reactstrap';
 import Link from 'next/link';
+import { signIn, signUp } from '../routes';
 import MainButton from './main_button';
 
 const HeaderModalMenu = ({ isOpen, toggle, t, currentUser }) => (
@@ -30,13 +31,13 @@ const HeaderModalMenu = ({ isOpen, toggle, t, currentUser }) => (
             </div>
           ) : (
             <div>
-              <Link href="/log_in">
+              <Link href={signIn}>
                 <a className="header-modal__link">
                   {t('header.logIn')}
                 </a>
               </Link>
 
-              <Link href="/sign_up">
+              <Link href={signUp}>
                 <a className="header-modal__link">
                   {t('header.signUp')}
                 </a>

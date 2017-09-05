@@ -3,7 +3,8 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
-import { signUpAndLogIn } from '../actions/current_user_actions';
+import { signIn } from '../routes';
+import { signUp } from '../actions/auth_actions';
 import { getSignUpErrors } from '../selectors/sign_up_selectors';
 import { isNotEmpty } from '../services/validations';
 import LogInWithSocials from '../components/auth/log_in_with_socials';
@@ -13,7 +14,7 @@ import AuthTypesDivider from '../components/auth/auth_types_divider';
 export class SignUpContainer extends Component {
   static propTypes = {
     t: PropTypes.func.isRequired,
-    signUpAndLogIn: PropTypes.func.isRequired,
+    signUp: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired
   }
 
@@ -73,7 +74,7 @@ export class SignUpContainer extends Component {
   }
 
   handleFormSubmit = (values) => {
-    this.props.signUpAndLogIn(values);
+    this.props.signUp(values);
   }
 
   render() {
@@ -89,7 +90,7 @@ export class SignUpContainer extends Component {
           <span className="d-inline-block font-14 mb-10">
             {t('alreadyHaveAccount')}&nbsp;
 
-            <Link href="/log_in">
+            <Link href={signIn}>
               <a className="login-form__link ml-5">
                 {t('logInHere')}
               </a>
@@ -123,7 +124,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  signUpAndLogIn
+  signUp
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(

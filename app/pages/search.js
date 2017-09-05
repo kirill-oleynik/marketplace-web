@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { Container } from 'reactstrap';
-import withRedux from 'next-redux-wrapper';
 import { I18nextProvider } from 'react-i18next';
 import createI18n from '../services/i18n';
 import { getTranslations } from '../services/api';
-import MainFooter from './../components/footer';
-import Header from './../containers/header_container';
-import AppBlock from './../components/app_block';
-import GoTopLink from './../components/go_top_link';
-import initStore from './../store/init_store';
+import MainFooter from '../components/footer';
+import Header from '../containers/header_container';
+import AppBlock from '../components/app_block';
+import GoTopLink from '../components/go_top_link';
+import withReduxAndSaga from '../store';
 
 class Search extends Component {
   static propTypes = {
@@ -61,4 +60,4 @@ class Search extends Component {
   }
 }
 
-export default withRedux(initStore, null, {})(Search);
+export default withReduxAndSaga(Search);

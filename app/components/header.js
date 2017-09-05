@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Container } from 'reactstrap';
 import Link from 'next/link';
 import { translate } from 'react-i18next';
+import { signIn, signUp } from '../routes';
 import HeaderDropdownMenu from '../components/header_dropdown_menu';
 import ButtonCircle from '../components/button_circle';
 import MainButton from '../components/main_button';
@@ -68,13 +69,13 @@ class Header extends Component {
                       {t('header.submitApp')}
                     </MainButton>
 
-                    <Link href="/log_in">
+                    <Link href={signIn}>
                       <a className="main-header__link">
                         {t('header.logIn')}
                       </a>
                     </Link>
 
-                    <Link href="/sign_up">
+                    <Link href={signUp}>
                       <MainButton
                         color="white"
                         size="md"

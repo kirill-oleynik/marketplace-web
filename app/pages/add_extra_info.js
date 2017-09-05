@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import redirect from 'next-redirect';
-import withRedux from 'next-redux-wrapper';
 import { I18nextProvider } from 'react-i18next';
+import withReduxAndSaga from '../store';
 import createI18n from '../services/i18n';
 import { getCurrentUser } from '../selectors/current_user_selectors';
 import { getTranslations } from '../services/api';
-import initStore from '../store/init_store';
 import AuthLayout from '../layouts/auth_layout';
 import AddExtraInfoContainer from '../containers/add_extra_info_container';
-import { logIn, homePage } from '../routes';
+import { signIn, home } from '../routes';
 
 class AddExtraInfo extends Component {
   static propTypes = {
@@ -23,11 +22,11 @@ class AddExtraInfo extends Component {
     );
 
     if (!currentUser.id) {
-      return redirect(ctx, logIn);
+      return redirect(ctx, signIn);
     }
 
     if (currentUser.phone || currentUser.jobTitle || currentUser.organization) {
-      return redirect(ctx, homePage);
+      return redirect(ctx, home);
     }
 
     const commonTranslations = await getTranslations('common');
@@ -63,4 +62,4 @@ class AddExtraInfo extends Component {
   }
 }
 
-export default withRedux(initStore, null, {})(AddExtraInfo);
+export default withReduxAndSaga(AddExtraInfo);

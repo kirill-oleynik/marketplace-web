@@ -2,18 +2,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { Container, Row, Col } from 'reactstrap';
-import withRedux from 'next-redux-wrapper';
 import { I18nextProvider } from 'react-i18next';
 import createI18n from '../services/i18n';
 import { getTranslations } from '../services/api';
-import MainFooter from './../components/footer';
-import Header from './../containers/header_container';
-import CategoriesDropdown from './../components/categories_dropdown';
-import Categories from './../components/categories';
-import AppBlock from './../components/app_block';
-import GoTopLink from './../components/go_top_link';
-import initStore from './../store/init_store';
-import MessageBlock from './../components/message_block';
+import MainFooter from '../components/footer';
+import Header from '../containers/header_container';
+import CategoriesDropdown from '../components/categories_dropdown';
+import Categories from '../components/categories';
+import AppBlock from '../components/app_block';
+import GoTopLink from '../components/go_top_link';
+import withReduxAndSaga from '../store';
+import MessageBlock from '../components/message_block';
 
 class Favorites extends Component {
   static propTypes = {
@@ -71,4 +70,4 @@ class Favorites extends Component {
   }
 }
 
-export default withRedux(initStore, null, {})(Favorites);
+export default withReduxAndSaga(Favorites);

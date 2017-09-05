@@ -4,12 +4,12 @@ import Revalidation from 'revalidation';
 import { translate } from 'react-i18next';
 import flow from 'lodash/flow';
 import some from 'lodash/some';
-import MainInput from './../main_input';
-import MainButton from './../main_button';
-import MainCheckbox from './../main_checkbox';
+import MainInput from '../main_input';
+import MainButton from '../main_button';
+import MainCheckbox from '../main_checkbox';
 import { getValue, getError } from '../../helpers/form_helpers';
 
-export class LogInForm extends Component {
+export class SignInForm extends Component {
   static propTypes = {
     t: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired,
@@ -134,5 +134,5 @@ export class LogInForm extends Component {
 }
 
 export default Revalidation(
-  translate(['logIn'])(LogInForm)
+  translate(['signIn'])(SignInForm)
 );

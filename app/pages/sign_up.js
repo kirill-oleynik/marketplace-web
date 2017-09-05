@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import redirect from 'next-redirect';
-import withRedux from 'next-redux-wrapper';
 import { I18nextProvider } from 'react-i18next';
+import { home } from '../routes';
+import withReduxAndSaga from '../store';
 import createI18n from '../services/i18n';
-import { getCurrentUser } from '../selectors/current_user_selectors';
 import { getTranslations } from '../services/api';
-import initStore from '../store/init_store';
+import { getCurrentUser } from '../selectors/current_user_selectors';
 import AuthLayout from '../layouts/auth_layout';
 import SignUpContainer from '../containers/sign_up_container';
-import { homePage } from '../routes';
 
 class SignUp extends Component {
   static propTypes = {
@@ -23,7 +22,7 @@ class SignUp extends Component {
     );
 
     if (currentUser.id) {
-      return redirect(ctx, homePage);
+      return redirect(ctx, home);
     }
 
     const commonTranslations = await getTranslations('common');
@@ -59,4 +58,4 @@ class SignUp extends Component {
   }
 }
 
-export default withRedux(initStore, null, {})(SignUp);
+export default withReduxAndSaga(SignUp);

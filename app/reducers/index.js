@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import currentUser from './current_user';
 import signUp from './sign_up';
-import logIn from './log_in';
+import signIn from './sign_in';
+import currentUser from './current_user';
 import addExtraInfo from './add_extra_info';
 
 export default combineReducers({
   signUp,
-  logIn,
+  signIn,
   currentUser,
   addExtraInfo
 });

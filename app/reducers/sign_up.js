@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import { CURRENT_USER_SIGN_UP_FAILURE } from '../constants/current_user_constants';
+import { FAILURE, AUTH_SIGN_UP } from '../constants';
 
-const errors = (state = {}, action) => {
+export const errors = (state = {}, action) => {
   switch (action.type) {
-    case CURRENT_USER_SIGN_UP_FAILURE:
+    case AUTH_SIGN_UP + FAILURE:
       return action.payload.error.violations || {};
     default:
       return state;
