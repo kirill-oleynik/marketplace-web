@@ -1,5 +1,5 @@
 const {
-  getValue, getError, getChecked
+  getValue, getError, getChecked, getDifference
 } = require('../../app/helpers/form_helpers');
 
 describe('#getValue', () => {
@@ -53,5 +53,29 @@ describe('#getChecked', () => {
     expect(
       getChecked(event)
     ).toEqual(value);
+  });
+});
+
+describe('#getDifference', () => {
+  const original = {
+    firstName: 'firstName',
+    lastName: 'lastName'
+  };
+
+  const modified = {
+    firstName: 'firstName',
+    lastName: 'modified',
+    email: 'email'
+  };
+
+  it('returns only modified and new values', () => {
+    const expectedResult = {
+      lastName: 'modified',
+      email: 'email'
+    };
+
+    expect(
+      getDifference(original, modified)
+    ).toEqual(expectedResult);
   });
 });

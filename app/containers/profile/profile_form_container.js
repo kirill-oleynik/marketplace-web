@@ -8,7 +8,8 @@ import {
   isLessThan, isNumeric, isNotEmpty, isEmail
 } from '../../services/validations';
 import { getProfileErrors } from '../../selectors/profile_selectors';
-import { update as updateProfile } from '../../actions/profile_actions';
+import { updateProfile } from '../../actions/profile_actions';
+import { getDifference } from '../../helpers/form_helpers';
 
 export class ProfileFormContainer extends Component {
   static propTypes = {
@@ -153,12 +154,17 @@ export class ProfileFormContainer extends Component {
     }
   }
 
+  dataToSubmit = (values) => getDifference(this.initialFormState, values);
+
   handleFormSubmit = (values) => {
-    this.props.updateProfile(values);
+    this.props.updateProfile(
+      this.props.currentUser.id,
+      this.dataToSubmit(values)
+    );
   }
 
   handleEmailChange = (event) => {
-    const sameValue = this.initialFormState.email === event.target.value;
+    const sameValue = this.props.currentUser.email === event.target.value;
     this.definePasswordValidation(sameValue);
     this.setState({
       needPasswordConfirmation: !sameValue

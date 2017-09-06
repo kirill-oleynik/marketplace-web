@@ -32,5 +32,5 @@ export const createUser = (data) => http.post('api/users', data);
 export const fetchCurrentUser = () => http.get('api/users/current');
 export const createSession = (data) => http.post('api/sessions', data);
 export const createProfile = (data) => http.post('api/profile', data);
-export const updateProfile = (data) => http.put('api/profile', data);
 export const fetchAllCategories = () => http.get('api/categories');
+export const updateUser = (id, data) => http.put(`api/users/${id}`, data);

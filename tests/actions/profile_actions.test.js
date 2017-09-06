@@ -1,5 +1,10 @@
-const { createProfile } = require('./../../app/actions/profile_actions');
-const { PROFILE_CREATE } = require('./../../app/constants');
+const {
+  createProfile, toggleProfileModal, updateProfile
+} = require('./../../app/actions/profile_actions');
+
+const {
+  PROFILE_CREATE, PROFILE_MODAL_TOGGLE, PROFILE_UPDATE
+} = require('./../../app/constants');
 
 describe('#createProfile', () => {
   test('it has PROFILE_CREATE type and passed data in payload', () => {
@@ -13,24 +18,27 @@ describe('#createProfile', () => {
   });
 });
 
-// const moxios = require('moxios');
-// const profileActions = require('../../app/actions/profile_actions');
-// const profileConstants = require('../../app/constants/profile_constants');
-//
-// describe('#toggleProfileModal', () => {
-//   let action,
-//       state;
-//
-//   beforeEach(() => {
-//     state = Symbol('state');
-//     action = profileActions.toggleProfileModal(state);
-//   });
-//
-//   test('it has PROFILE_MODAL_TOGGLE type', () => {
-//     expect(action.type).toEqual(profileConstants.PROFILE_MODAL_TOGGLE);
-//   });
-//
-//   test('it has state in payload', () => {
-//     expect(action.modalState).toEqual(state);
-//   });
-// });
+describe('#toggleProfileModal', () => {
+  test('it has PROFILE_MODAL_TOGGLE type and given payload', () => {
+    const state = Symbol('state');
+    const action = toggleProfileModal(state);
+
+    expect(action).toEqual({
+      type: PROFILE_MODAL_TOGGLE,
+      modalState: state
+    });
+  });
+});
+
+describe('#updateProfile', () => {
+  test('it has PROFILE_UPDATE type and given id & payload', () => {
+    const data = Symbol('data');
+    const id = Symbol('id');
+    const action = updateProfile(id, data);
+
+    expect(action).toEqual({
+      type: PROFILE_UPDATE,
+      payload: { id, data }
+    });
+  });
+});

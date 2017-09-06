@@ -1,6 +1,6 @@
 const currentUser = require('../../app/reducers/current_user').default;
 const {
-  SUCCESS, PROFILE_CREATE, AUTH_FETCH_USER
+  SUCCESS, PROFILE_CREATE, AUTH_FETCH_USER, PROFILE_UPDATE
 } = require('./../../app/constants');
 
 describe('#currentUser', () => {
@@ -28,6 +28,24 @@ describe('#currentUser', () => {
       },
       {
         type: PROFILE_CREATE + SUCCESS,
+        payload: { profile }
+      }
+    );
+
+    expect(state).toEqual({
+      id: 1,
+      email: 'johndou@example.com'
+    });
+  });
+
+  test('it handles PROFILE_UPDATE_SUCCESS', () => {
+    const profile = { id: 1 };
+    const state = currentUser(
+      {
+        email: 'johndou@example.com'
+      },
+      {
+        type: PROFILE_UPDATE + SUCCESS,
         payload: { profile }
       }
     );

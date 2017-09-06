@@ -1,5 +1,7 @@
 const reducer = require('../../app/reducers/profile').default;
-const profileConstants = require('../../app/constants/profile_constants');
+const {
+  PROFILE_UPDATE, FAILURE, PROFILE_MODAL_TOGGLE
+} = require('../../app/constants');
 
 describe('#modalIsActive', () => {
   test('it has correct initial state', () => {
@@ -10,7 +12,7 @@ describe('#modalIsActive', () => {
   test('it handles PROFILE_MODAL_TOGGLE action type', () => {
     const modalState = Symbol('modalState');
     const nextState = reducer(undefined, {
-      type: profileConstants.PROFILE_MODAL_TOGGLE,
+      type: PROFILE_MODAL_TOGGLE,
       modalState
     });
 
@@ -26,7 +28,7 @@ describe('#errors', () => {
 
   test('it handles PROFILE_UPDATE_FAILURE action type', () => {
     const nextState = reducer(undefined, {
-      type: profileConstants.PROFILE_UPDATE_FAILURE,
+      type: PROFILE_UPDATE + FAILURE,
       payload: {
         error: {
           violations: 'Violations'
