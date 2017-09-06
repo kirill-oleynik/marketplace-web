@@ -9,6 +9,7 @@
       "logOut": "Log Out",
       "favorites": "Favorites"
     },
+    "categories": "Categories",
     "validations": {
       "isNotEmpty": "{{prop}} should not be empty.",
       "isBoolean": "{{prop}} should be true of false.",

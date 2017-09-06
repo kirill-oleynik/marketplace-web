@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const http = {
-  get(path, params) {
+  get(path, params = {}) {
     return this._request('get', path, { params });
   },
   put(path, data) {
@@ -32,4 +32,4 @@ export const createUser = (data) => http.post('api/users', data);
 export const fetchCurrentUser = () => http.get('api/users/current');
 export const createSession = (data) => http.post('api/sessions', data);
 export const createProfile = (data) => http.post('api/profile', data);
-
+export const fetchAllCategories = () => http.get('api/categories');

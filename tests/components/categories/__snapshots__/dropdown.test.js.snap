@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<Dropdown
+  className="main-dropdown categories__dropdown"
+  isOpen={false}
+  tag="div"
+  toggle={[Function]}
+>
+  <DropdownToggle
+    aria-haspopup={true}
+    caret={true}
+    className="main-dropdown__toggle categories__dropdown-btn categories__dropdown-btn--"
+    color="secondary"
+    data-toggle="dropdown"
+  >
+    categories
+  </DropdownToggle>
+  <DropdownMenu
+    className="categories__dropdown-menu"
+    tag="div"
+  >
+    <a
+      className="categories-link"
+      href="/"
+    >
+      Test1
+    </a>
+    <a
+      className="categories-link"
+      href="/"
+    >
+      Test2
+    </a>
+  </DropdownMenu>
+</Dropdown>
+`;

@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
+import { Sticky, StickyContainer } from 'react-sticky';
 import { Container, Row, Col } from 'reactstrap';
 import { I18nextProvider } from 'react-i18next';
 import MainFooter from '../components/footer';
-import Header from '../containers/header_container';
+import { fetch } from '../actions/categories_actions';
+import CategoriesList from '../components/categories/list';
+import CategoriesDropdown from '../components/categories/dropdown';
+import CategoriesContainer from '../containers/categories_container';
+import HeaderContainer from '../containers/header_container';
 import InputSearch from '../components/input_search';
-import Categories from '../components/categories';
-import CategoriesDropdown from '../components/categories_dropdown';
 import AppBlock from '../components/app_block';
 import AppBlockVertical from '../components/app_block_vertical';
 import GoTopLink from '../components/go_top_link';
@@ -21,8 +24,12 @@ class Index extends Component {
     translations: PropTypes.object.isRequired
   }
 
-  static async getInitialProps() {
+  static async getInitialProps({ store }) {
     const commonTranslations = await getTranslations('common');
+
+    store.dispatch(
+      fetch()
+    );
 
     return {
       translations: { ...commonTranslations }
@@ -44,7 +51,8 @@ class Index extends Component {
           </Head>
 
           <div className="page-container">
-            <Header />
+            <HeaderContainer />
+
             <main className="flex-grow-1">
               <section className="home-header">
                 <Container>
@@ -68,15 +76,39 @@ class Index extends Component {
                 </Container>
                 <Carousel />
               </section>
+
               <section className="hidden-sm-up">
-                <CategoriesDropdown />
+                <CategoriesContainer>
+                  <CategoriesDropdown />
+                </CategoriesContainer>
               </section>
+
               <Container>
                 <section className="pt-30">
                   <Row>
                     <Col xs="12" sm="3" className="hidden-xs-down">
-                      <Categories />
+                      <StickyContainer style={{ height: '100%' }}>
+                        <Sticky topOffset={-30}>
+                          {
+                            (stickyOptions) => (
+                              <CategoriesContainer
+                                stickyOptions={{
+                                  ...stickyOptions,
+                                  style: {
+                                    ...stickyOptions.style,
+                                    top: '30px',
+                                    zIndex: 2
+                                  }
+                                }}
+                              >
+                                <CategoriesList />
+                              </CategoriesContainer>
+                            )
+                          }
+                        </Sticky>
+                      </StickyContainer>
                     </Col>
+
                     <Col xs="12" sm="9">
                       <AppBlock />
                       <div className="divider divider--dark mb-30" />
@@ -87,6 +119,7 @@ class Index extends Component {
               </Container>
               <GoTopLink />
             </main>
+
             <MainFooter />
           </div>
         </div>
