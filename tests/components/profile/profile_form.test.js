@@ -12,6 +12,8 @@ describe('#render', () => {
         errors={{}}
         onSubmit={() => {}}
         revalidation={{}}
+        onEmailChange={() => {}}
+        needPasswordConfirmation={false}
       />
     ).toJSON();
 

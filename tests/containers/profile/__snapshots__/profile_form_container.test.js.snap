@@ -11,9 +11,12 @@ exports[`#render it renders correctly 1`] = `
       "jobTitle": "",
       "lastName": "",
       "organization": "",
+      "password": "",
       "phone": "",
     }
   }
+  needPasswordConfirmation={false}
+  onEmailChange={[Function]}
   onSubmit={[Function]}
   rules={
     Object {

@@ -21,13 +21,18 @@ export class ProfileFormContainer extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      needPasswordConfirmation: false
+    };
+
     this.initialFormState = {
       firstName: props.currentUser.firstName || '',
       lastName: props.currentUser.lastName || '',
       email: props.currentUser.email || '',
       organization: props.currentUser.organization || '',
       jobTitle: props.currentUser.jobTitle || '',
-      phone: props.currentUser.phone || ''
+      phone: props.currentUser.phone || '',
+      password: ''
     };
 
     this.validationRules = {
@@ -79,14 +84,14 @@ export class ProfileFormContainer extends Component {
         [
           isNotEmpty,
           props.t('common:validations.isNotEmpty', {
-            prop: props.t('fields.organization')
+            prop: props.t('profileTab.organization')
           })
         ],
         [
           isLessThan(30),
           props.t('common:validations.isLessThan', {
             count: 30,
-            prop: props.t('fields.organization')
+            prop: props.t('profileTab.organization')
           })
         ]
       ],
@@ -94,14 +99,14 @@ export class ProfileFormContainer extends Component {
         [
           isNotEmpty,
           props.t('common:validations.isNotEmpty', {
-            prop: props.t('fields.jobTitle')
+            prop: props.t('profileTab.jobTitle')
           })
         ],
         [
           isLessThan(30),
           props.t('common:validations.isLessThan', {
             count: 30,
-            prop: props.t('fields.jobTitle')
+            prop: props.t('profileTab.jobTitle')
           })
         ]
       ],
@@ -109,41 +114,69 @@ export class ProfileFormContainer extends Component {
         [
           isNotEmpty,
           props.t('common:validations.isNotEmpty', {
-            prop: props.t('fields.phone')
+            prop: props.t('profileTab.phone')
           })
         ],
         [
           isLessThan(30),
           props.t('common:validations.isLessThan', {
             count: 30,
-            prop: props.t('fields.phone')
+            prop: props.t('profileTab.phone')
           })
         ],
         [
           isNumeric,
           props.t('common:validations.isNumeric', {
-            prop: props.t('fields.phone')
+            prop: props.t('profileTab.phone')
+          })
+        ]
+      ]
+    };
+
+    this.passwordValidationRule = {
+      password: [
+        [
+          isNotEmpty,
+          props.t('common:validations.isNotEmpty', {
+            prop: props.t('profileTab.passwordError')
           })
         ]
       ]
     };
   }
 
+  definePasswordValidation(flag) {
+    if (flag) {
+      delete this.validationRules.password;
+    } else {
+      Object.assign(this.validationRules, this.passwordValidationRule);
+    }
+  }
+
   handleFormSubmit = (values) => {
     this.props.updateProfile(values);
   }
 
-  render() {
-    const { errors } = this.props;
+  handleEmailChange = (event) => {
+    const sameValue = this.initialFormState.email === event.target.value;
+    this.definePasswordValidation(sameValue);
+    this.setState({
+      needPasswordConfirmation: !sameValue
+    });
 
+    return event;
+  }
+
+  render() {
     return (
       <ProfileForm
         validateSingle
         validateOnChange
-        errors={errors}
         rules={this.validationRules}
         initialState={this.initialFormState}
         onSubmit={this.handleFormSubmit}
+        onEmailChange={this.handleEmailChange}
+        needPasswordConfirmation={this.state.needPasswordConfirmation}
         {...this.props}
       />
     );

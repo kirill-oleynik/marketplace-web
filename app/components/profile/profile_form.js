@@ -12,7 +12,9 @@ class ProfileForm extends Component {
     t: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired,
     onSubmit: PropTypes.func.isRequired,
-    revalidation: PropTypes.object.isRequired
+    revalidation: PropTypes.object.isRequired,
+    onEmailChange: PropTypes.func.isRequired,
+    needPasswordConfirmation: PropTypes.bool.isRequired
   };
 
   handleSubmit = (event) => {
@@ -36,6 +38,8 @@ class ProfileForm extends Component {
   render() {
     const {
       t,
+      onEmailChange,
+      needPasswordConfirmation,
       errors: serverErrors,
       revalidation: { form: values, onChange, errors = {} }
     } = this.props;
@@ -72,10 +76,22 @@ class ProfileForm extends Component {
             name="email"
             value={values.email}
             label={t('profileTab.email')}
-            onChange={flow([getValue, onChange('email')])}
+            onChange={flow([onEmailChange, getValue, onChange('email')])}
             error={getError(errors.email, serverErrors.email)}
             className="mb-10"
           />
+
+          { needPasswordConfirmation ? (
+            <MainInput
+              type="password"
+              name="password"
+              value={values.password}
+              label={t('profileTab.passwordLabel')}
+              onChange={flow([getValue, onChange('password')])}
+              error={getError(errors.password, serverErrors.password)}
+              className="mb-10"
+            />
+          ) : null }
 
           <MainInput
             name="organization"

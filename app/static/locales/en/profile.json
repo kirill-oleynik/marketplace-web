@@ -4,6 +4,8 @@
       "firstName": "First Name",
       "lastName": "Last Name",
       "email": "Email",
+      "passwordLabel": "Confirm password (if changing email)",
+      "passwordError": "Password",
       "organization": "Organization",
       "jobTitle": "Job Title",
       "phone": "Phone",
