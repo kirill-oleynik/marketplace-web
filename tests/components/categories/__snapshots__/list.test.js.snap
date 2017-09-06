@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<div
+  className="categories"
+  style={Object {}}
+>
+  <h4
+    className="categories-title"
+  >
+    categories
+  </h4>
+  <div>
+    <a
+      className="categories-link"
+      href="/"
+    >
+      Test1
+    </a>
+    <a
+      className="categories-link"
+      href="/"
+    >
+      Test2
+    </a>
+  </div>
+</div>
+`;
