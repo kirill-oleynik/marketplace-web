@@ -1,20 +1,19 @@
 const React = require('react');
-const renderer = require('react-test-renderer');
+const { shallow } = require('enzyme');
+const toJSON = require('enzyme-to-json').default;
 const { ProfileContainer } = require('../../../app/containers/profile/profile_container');
-
-jest.mock('../../../app/components/profile/profile_modal', () => 'ProfileModal');
 
 describe('#render', () => {
   test('it renders correctly', () => {
-    const tree = renderer.create(
+    const component = shallow(
       <ProfileContainer
         t={() => {}}
         currentUser={{}}
         profileModalActive={false}
         toggleProfileModal={() => {}}
       />
-    ).toJSON();
+    );
 
-    expect(tree).toMatchSnapshot();
+    expect(toJSON(component)).toMatchSnapshot();
   });
 });

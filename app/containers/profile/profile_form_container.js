@@ -146,11 +146,11 @@ export class ProfileFormContainer extends Component {
     };
   }
 
-  definePasswordValidation(flag) {
-    if (flag) {
-      delete this.validationRules.password;
-    } else {
+  definePasswordValidation = () => {
+    if (this.state.needPasswordConfirmation) {
       Object.assign(this.validationRules, this.passwordValidationRule);
+    } else {
+      delete this.validationRules.password;
     }
   }
 
@@ -165,10 +165,9 @@ export class ProfileFormContainer extends Component {
 
   handleEmailChange = (event) => {
     const sameValue = this.props.currentUser.email === event.target.value;
-    this.definePasswordValidation(sameValue);
     this.setState({
       needPasswordConfirmation: !sameValue
-    });
+    }, this.definePasswordValidation);
 
     return event;
   }

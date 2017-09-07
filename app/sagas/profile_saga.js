@@ -32,10 +32,6 @@ export function* createUserProfile(action) {
   }
 }
 
-export function* watchProfileCreate() {
-  yield takeEvery(PROFILE_CREATE, createUserProfile);
-}
-
 export function* updateUserProfile(action) {
   const { id, data } = action.payload;
 
@@ -58,4 +54,8 @@ export function* updateUserProfile(action) {
 
 export function* watchProfileUpdate() {
   yield takeEvery(PROFILE_UPDATE, updateUserProfile);
+}
+
+export function* watchProfileCreate() {
+  yield takeEvery(PROFILE_CREATE, createUserProfile);
 }

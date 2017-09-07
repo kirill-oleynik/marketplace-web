@@ -1,77 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`#render it renders correctly 1`] = `
-<form
+<ProfileForm
+  errors={Object {}}
+  needPasswordConfirmation={false}
+  onEmailChange={[Function]}
   onSubmit={[Function]}
->
-  <div
-    className="mb-20"
-  >
-    <div
-      className="row"
-    >
-      <div
-        className="col-12 col-sm-6"
-      >
-        <Main Input
-          className="mb-10"
-          error={undefined}
-          label={undefined}
-          name="name"
-          onChange={[Function]}
-          value={undefined}
-        />
-      </div>
-      <div
-        className="col-12 col-sm-6"
-      >
-        <Main Input
-          className="mb-10"
-          error={undefined}
-          label={undefined}
-          name="name"
-          onChange={[Function]}
-          value={undefined}
-        />
-      </div>
-    </div>
-    <Main Input
-      className="mb-10"
-      error={undefined}
-      label={undefined}
-      name="email"
-      onChange={[Function]}
-      type="email"
-      value={undefined}
-    />
-    <Main Input
-      className="mb-10"
-      error={undefined}
-      label={undefined}
-      name="organization"
-      onChange={[Function]}
-      value={undefined}
-    />
-    <Main Input
-      className="mb-10"
-      error={undefined}
-      label={undefined}
-      name="job"
-      onChange={[Function]}
-      value={undefined}
-    />
-    <Main Input
-      className="mb-10"
-      error={undefined}
-      label={undefined}
-      name="phone"
-      onChange={[Function]}
-      value={undefined}
-    />
-  </div>
-  <button
-    className="main-btn main-btn--blue main-btn--lg w-100 mb-20"
-    type="submit"
-  />
-</form>
+  revalidation={
+    Object {
+      "UPDATE_FIELD": "UPDATE_FIELD",
+      "VALIDATE": "VALIDATE_ALL",
+      "asyncErrors": Object {},
+      "debounce": Object {},
+      "errors": Object {},
+      "form": Object {},
+      "onChange": [Function],
+      "onSubmit": [Function],
+      "settings": Object {
+        "validateOnChange": false,
+        "validateSingle": false,
+      },
+      "submitted": false,
+      "updateAsyncErrors": [Function],
+      "updateErrors": [Function],
+      "updateState": [Function],
+      "updateValue": [Function],
+      "updateValueAndValidate": [Function],
+      "valid": false,
+      "validateValue": [Function],
+    }
+  }
+  t={[Function]}
+/>
 `;

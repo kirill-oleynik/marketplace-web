@@ -7,7 +7,6 @@ const currentUser = (state = {}, action) => {
     case AUTH_FETCH_USER + SUCCESS:
       return action.payload.user;
     case PROFILE_CREATE + SUCCESS:
-      return { ...state, ...action.payload.profile };
     case PROFILE_UPDATE + SUCCESS:
       return { ...state, ...action.payload.profile };
     default:

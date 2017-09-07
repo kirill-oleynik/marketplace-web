@@ -1,3 +1,153 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`#render it renders correctly 1`] = `null`;
+exports[`#render it renders correctly 1`] = `
+<Modal
+  autoFocus={true}
+  backdrop={true}
+  backdropTransitionTimeout={150}
+  className="main-modal"
+  fade={true}
+  isOpen={true}
+  keyboard={true}
+  modalTransitionTimeout={300}
+  zIndex={1050}
+>
+  <Container
+    tag="div"
+  >
+    <div
+      className="text-right pt-30"
+    >
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        <i
+          className="icon icon-cross font-16 in-black-035"
+        />
+      </button>
+    </div>
+    <Row
+      className="main-modal__content"
+      tag="div"
+    >
+      <Col
+        md={
+          Object {
+            "offset": 3,
+            "size": 6,
+          }
+        }
+        sm={
+          Object {
+            "offset": 2,
+            "size": 8,
+          }
+        }
+        tag="div"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+        xs="12"
+      >
+        <p
+          className="font-24 font-700 mb-30"
+        />
+        <div
+          className="main-tabs"
+        >
+          <Nav
+            className="main-tabs__nav"
+            tabs={true}
+            tag="ul"
+          >
+            <NavItem
+              tag="li"
+            >
+              <NavLink
+                className="active"
+                onClick={[Function]}
+                tag="a"
+              />
+            </NavItem>
+            <NavItem
+              tag="li"
+            >
+              <NavLink
+                className=""
+                onClick={[Function]}
+                tag="a"
+              />
+            </NavItem>
+          </Nav>
+          <TabContent
+            activeTab="profile"
+            tag="div"
+          >
+            <TabPane
+              tabId="profile"
+              tag="div"
+            >
+              <Connect(Translate(ProfileFormContainer)) />
+            </TabPane>
+            <TabPane
+              tabId="password"
+              tag="div"
+            >
+              <div
+                className="mb-20"
+              >
+                <MainInput
+                  className="mb-10"
+                  error=""
+                  icon=""
+                  label="Old Password"
+                  name="old-pass"
+                  onIconClick={[Function]}
+                  type="password"
+                  value=""
+                />
+                <MainInput
+                  className="mb-10"
+                  error=""
+                  icon=""
+                  label="New Password"
+                  name="new-pass"
+                  onIconClick={[Function]}
+                  type="password"
+                  value=""
+                />
+                <MainInput
+                  className="mb-10"
+                  error=""
+                  icon=""
+                  label="Confirm Password"
+                  name="confirm-pass"
+                  onIconClick={[Function]}
+                  type="password"
+                  value=""
+                />
+              </div>
+              <MainButton
+                className="w-100 mb-20"
+                color="blue"
+                disabled={true}
+                size="lg"
+                type="button"
+              >
+                Change Password
+              </MainButton>
+            </TabPane>
+          </TabContent>
+        </div>
+      </Col>
+    </Row>
+  </Container>
+</Modal>
+`;

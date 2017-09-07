@@ -1,12 +1,11 @@
 const React = require('react');
-const renderer = require('react-test-renderer');
+const { shallow } = require('enzyme');
+const toJSON = require('enzyme-to-json').default;
 const ProfileForm = require('../../../app/components/profile/profile_form').default;
-
-jest.mock('../../../app/components/main_input', () => 'Main Input');
 
 describe('#render', () => {
   test('it renders correctly', () => {
-    const tree = renderer.create(
+    const component = shallow(
       <ProfileForm
         t={() => {}}
         errors={{}}
@@ -15,8 +14,8 @@ describe('#render', () => {
         onEmailChange={() => {}}
         needPasswordConfirmation={false}
       />
-    ).toJSON();
+    );
 
-    expect(tree).toMatchSnapshot();
+    expect(toJSON(component)).toMatchSnapshot();
   });
 });
