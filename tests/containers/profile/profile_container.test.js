@@ -8,6 +8,7 @@ describe('#render', () => {
   test('it renders correctly', () => {
     const tree = renderer.create(
       <ProfileContainer
+        t={() => {}}
         currentUser={{}}
         profileModalActive={false}
         toggleProfileModal={() => {}}

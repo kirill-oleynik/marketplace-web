@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { translate } from 'react-i18next';
 import { getProfileModalState } from '../../selectors/profile_selectors';
 import { getCurrentUser } from '../../selectors/current_user_selectors';
 import ProfileModal from '../../components/profile/profile_modal';
@@ -8,6 +9,7 @@ import { toggleProfileModal } from '../../actions/profile_actions';
 
 export class ProfileContainer extends Component {
   static propTypes = {
+    t: PropTypes.func.isRequired,
     currentUser: PropTypes.object.isRequired,
     profileModalActive: PropTypes.bool.isRequired,
     toggleProfileModal: PropTypes.func.isRequired
@@ -24,10 +26,11 @@ export class ProfileContainer extends Component {
   }
 
   render() {
-    const { currentUser, profileModalActive } = this.props;
+    const { t, currentUser, profileModalActive } = this.props;
 
     return (
       <ProfileModal
+        t={t}
         isOpen={profileModalActive}
         closeModal={this.closeProfileModal}
         currentUser={currentUser}
@@ -45,4 +48,6 @@ const mapDispatchToProps = {
   toggleProfileModal
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  translate(['profile'])(ProfileContainer)
+);

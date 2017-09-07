@@ -1,6 +1,7 @@
 {
   "profile": {
     "profileTab": {
+      "title": "Profile",
       "firstName": "First Name",
       "lastName": "Last Name",
       "email": "Email",
@@ -10,6 +11,9 @@
       "jobTitle": "Job Title",
       "phone": "Phone",
       "submit": "Update Settings"
+    },
+    "passwordTab": {
+      "title": "Password"
     }
   }
 }

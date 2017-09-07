@@ -9,17 +9,11 @@ import MainInput from '../main_input';
 import ProfileFormContainer from '../../containers/profile/profile_form_container';
 
 class ProfileModal extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeTab: '1'
-    };
-
-    this.toggleTab = this.toggleTab.bind(this);
+  state = {
+    activeTab: 'profile'
   }
 
-  toggleTab(tab) {
+  changeTab = (tab) => {
     if (this.state.activeTab !== tab) {
       this.setState({
         activeTab: tab
@@ -28,7 +22,9 @@ class ProfileModal extends Component {
   }
 
   render() {
-    const { isOpen, closeModal, currentUser } = this.props;
+    const { t, isOpen, closeModal, currentUser } = this.props;
+    const showPasswordTab = () => this.changeTab('password');
+    const showProfileTab = () => this.changeTab('profile');
 
     return (
       <Modal
@@ -59,19 +55,19 @@ class ProfileModal extends Component {
                 <Nav tabs className="main-tabs__nav">
                   <NavItem>
                     <NavLink
-                      className={classnames({ active: this.state.activeTab === '1' })}
-                      onClick={() => { this.toggleTab('1'); }}
+                      className={classnames({ active: this.state.activeTab === 'profile' })}
+                      onClick={showProfileTab}
                     >
-                      Profile
+                      {t('profileTab.title')}
                     </NavLink>
                   </NavItem>
 
                   <NavItem>
                     <NavLink
-                      className={classnames({ active: this.state.activeTab === '2' })}
-                      onClick={() => { this.toggleTab('2'); }}
+                      className={classnames({ active: this.state.activeTab === 'password' })}
+                      onClick={showPasswordTab}
                     >
-                      Password
+                      {t('passwordTab.title')}
                     </NavLink>
                   </NavItem>
                 </Nav>
@@ -79,11 +75,11 @@ class ProfileModal extends Component {
                 <TabContent
                   activeTab={this.state.activeTab}
                 >
-                  <TabPane tabId="1">
+                  <TabPane tabId="profile">
                     <ProfileFormContainer />
                   </TabPane>
 
-                  <TabPane tabId="2">
+                  <TabPane tabId="password">
                     <div className="mb-20">
                       <MainInput
                         type="password"
@@ -127,6 +123,7 @@ class ProfileModal extends Component {
 }
 
 ProfileModal.propTypes = {
+  t: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
   currentUser: PropTypes.object.isRequired
