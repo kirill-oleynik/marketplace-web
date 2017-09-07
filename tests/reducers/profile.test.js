@@ -1,6 +1,6 @@
 const reducer = require('../../app/reducers/profile').default;
 const {
-  PROFILE_UPDATE, FAILURE, PROFILE_MODAL_TOGGLE
+  PROFILE_UPDATE, FAILURE, PROFILE_MODAL_TOGGLE, PASSWORD_UPDATE
 } = require('../../app/constants');
 
 describe('#modalIsActive', () => {
@@ -29,6 +29,19 @@ describe('#errors', () => {
   test('it handles PROFILE_UPDATE_FAILURE action type', () => {
     const nextState = reducer(undefined, {
       type: PROFILE_UPDATE + FAILURE,
+      payload: {
+        error: {
+          violations: 'Violations'
+        }
+      }
+    });
+
+    expect(nextState.errors).toEqual('Violations');
+  });
+
+  test('it handles PASSWORD_UPDATE_FAILURE action type', () => {
+    const nextState = reducer(undefined, {
+      type: PASSWORD_UPDATE + FAILURE,
       payload: {
         error: {
           violations: 'Violations'

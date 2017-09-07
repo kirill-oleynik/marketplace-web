@@ -1,9 +1,9 @@
 const {
-  createProfile, toggleProfileModal, updateProfile
+  createProfile, toggleProfileModal, updateProfile, updatePassword
 } = require('./../../app/actions/profile_actions');
 
 const {
-  PROFILE_CREATE, PROFILE_MODAL_TOGGLE, PROFILE_UPDATE
+  PROFILE_CREATE, PROFILE_MODAL_TOGGLE, PROFILE_UPDATE, PASSWORD_UPDATE
 } = require('./../../app/constants');
 
 describe('#createProfile', () => {
@@ -41,6 +41,18 @@ describe('#updateProfile', () => {
     expect(action).toEqual({
       type: PROFILE_UPDATE,
       payload: { id, data }
+    });
+  });
+});
+
+describe('#updatePassword', () => {
+  test('it has PASSWORD_UPDATE type and given payload', () => {
+    const data = Symbol('data');
+    const action = updatePassword(data);
+
+    expect(action).toEqual({
+      type: PASSWORD_UPDATE,
+      payload: { data }
     });
   });
 });

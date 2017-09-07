@@ -33,7 +33,13 @@
         "submit": "Update Settings"
       },
       "passwordTab": {
-        "title": "Password"
+        "title": "Password",
+        "fields": {
+          "currentPassword": "Old Password",
+          "password": "New Password",
+          "passwordConfirmation": "Confirm Password"
+        },
+        "submit": "Change Password"
       }
     }
   }

@@ -4,9 +4,8 @@ import {
   TabContent, TabPane, Nav, NavItem, NavLink, Row, Col, Modal, Container
 } from 'reactstrap';
 import classnames from 'classnames';
-import MainButton from '../main_button';
-import MainInput from '../main_input';
 import ProfileFormContainer from '../../containers/profile/profile_form_container';
+import PasswordFormContainer from '../../containers/profile/password_form_container';
 
 class ProfileModal extends Component {
   state = {
@@ -80,37 +79,7 @@ class ProfileModal extends Component {
                   </TabPane>
 
                   <TabPane tabId="password">
-                    <div className="mb-20">
-                      <MainInput
-                        type="password"
-                        name="old-pass"
-                        label="Old Password"
-                        className="mb-10"
-                      />
-
-                      <MainInput
-                        type="password"
-                        name="new-pass"
-                        label="New Password"
-                        className="mb-10"
-                      />
-
-                      <MainInput
-                        type="password"
-                        name="confirm-pass"
-                        label="Confirm Password"
-                        className="mb-10"
-                      />
-                    </div>
-
-                    <MainButton
-                      color="blue"
-                      size="lg"
-                      className="w-100 mb-20"
-                      disabled
-                    >
-                      Change Password
-                    </MainButton>
+                    <PasswordFormContainer />
                   </TabPane>
                 </TabContent>
               </div>

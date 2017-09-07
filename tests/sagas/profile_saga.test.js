@@ -1,12 +1,14 @@
 const Router = require('next/router').default;
 const { put, call } = require('redux-saga/effects');
 const {
-  createUserProfile, updateUserProfile
+  createUserProfile, updateUserProfile, updateUserPassword
 } = require('../../app/sagas/profile_saga');
 const { home } = require('../../app/routes');
-const { createProfile, updateUser } = require('../../app/services/api');
 const {
-  REQUEST, SUCCESS, FAILURE, PROFILE_CREATE, PROFILE_UPDATE
+  createProfile, updateUser, updatePassword
+} = require('../../app/services/api');
+const {
+  REQUEST, SUCCESS, FAILURE, PROFILE_CREATE, PROFILE_UPDATE, PASSWORD_UPDATE
 } = require('../../app/constants');
 
 describe('#createUserProfile', () => {
@@ -127,6 +129,61 @@ describe('#updateUserProfile', () => {
         payload: {
           error,
           response: updateUserError.response
+        }
+      })
+    );
+  });
+});
+
+describe('#updateUserPassword', () => {
+  it('handles successful updatePassword api call', () => {
+    const data = Symbol('data');
+    const profile = Symbol('profile');
+    const updatePasswordResponse = {
+      data: {
+        data: profile
+      }
+    };
+
+    const generator = updateUserPassword({
+      payload: { data }
+    });
+
+    expect(generator.next().value).toEqual(
+      call(updatePassword, data)
+    );
+
+    expect(generator.next(updatePasswordResponse).value).toEqual(
+      put({
+        type: PASSWORD_UPDATE + SUCCESS,
+        payload: { profile }
+      })
+    );
+  });
+
+  it('handles failed createProfile api call', () => {
+    const data = Symbol('data');
+    const error = Symbol('error');
+    const updatePasswordError = {
+      response: {
+        data: { error }
+      }
+    };
+
+    const generator = updateUserPassword({
+      payload: { data }
+    });
+
+    expect(generator.next().value).toEqual(
+      call(updatePassword, data)
+    );
+
+    expect(generator.throw(updatePasswordError).value).toEqual(
+      put({
+        type: PASSWORD_UPDATE + FAILURE,
+        payload: {
+          error,
+          response: updatePasswordError.response
         }
       })
     );

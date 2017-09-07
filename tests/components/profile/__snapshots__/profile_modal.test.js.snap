@@ -100,49 +100,7 @@ exports[`#render it renders correctly 1`] = `
               tabId="password"
               tag="div"
             >
-              <div
-                className="mb-20"
-              >
-                <MainInput
-                  className="mb-10"
-                  error=""
-                  icon=""
-                  label="Old Password"
-                  name="old-pass"
-                  onIconClick={[Function]}
-                  type="password"
-                  value=""
-                />
-                <MainInput
-                  className="mb-10"
-                  error=""
-                  icon=""
-                  label="New Password"
-                  name="new-pass"
-                  onIconClick={[Function]}
-                  type="password"
-                  value=""
-                />
-                <MainInput
-                  className="mb-10"
-                  error=""
-                  icon=""
-                  label="Confirm Password"
-                  name="confirm-pass"
-                  onIconClick={[Function]}
-                  type="password"
-                  value=""
-                />
-              </div>
-              <MainButton
-                className="w-100 mb-20"
-                color="blue"
-                disabled={true}
-                size="lg"
-                type="button"
-              >
-                Change Password
-              </MainButton>
+              <Connect(Translate(PasswordFormContainer)) />
             </TabPane>
           </TabContent>
         </div>
