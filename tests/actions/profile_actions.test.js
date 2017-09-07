@@ -25,7 +25,9 @@ describe('#toggleProfileModal', () => {
 
     expect(action).toEqual({
       type: PROFILE_MODAL_TOGGLE,
-      modalState: state
+      payload: {
+        modalState: state
+      }
     });
   });
 });

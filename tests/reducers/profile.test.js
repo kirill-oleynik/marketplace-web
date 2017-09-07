@@ -13,7 +13,7 @@ describe('#modalIsActive', () => {
     const modalState = Symbol('modalState');
     const nextState = reducer(undefined, {
       type: PROFILE_MODAL_TOGGLE,
-      modalState
+      payload: { modalState }
     });
 
     expect(nextState.modalIsActive).toEqual(modalState);

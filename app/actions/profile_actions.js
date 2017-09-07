@@ -13,6 +13,6 @@ export const updateProfile = (id, data) => ({
 });
 
 export const toggleProfileModal = (modalState) => ({
-  modalState,
-  type: PROFILE_MODAL_TOGGLE
+  type: PROFILE_MODAL_TOGGLE,
+  payload: { modalState }
 });

@@ -5,7 +5,7 @@ import { FAILURE, PROFILE_MODAL_TOGGLE, PROFILE_UPDATE } from '../constants';
 const modalIsActive = (state = false, action = {}) => {
   switch (action.type) {
     case PROFILE_MODAL_TOGGLE:
-      return action.modalState;
+      return action.payload.modalState;
     default:
       return state;
   }
