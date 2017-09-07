@@ -12,13 +12,7 @@ export class HeaderContainer extends Component {
     toggleProfileModal: PropTypes.func.isRequired
   }
 
-  constructor(props) {
-    super(props);
-
-    this.openProfileModal = this.openProfileModal.bind(this);
-  }
-
-  openProfileModal() {
+  openProfileModal = () => {
     this.props.toggleProfileModal(true);
   }
 

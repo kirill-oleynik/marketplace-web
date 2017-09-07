@@ -58,7 +58,7 @@ class ProfileModal extends Component {
                       className={classnames({ active: this.state.activeTab === 'profile' })}
                       onClick={showProfileTab}
                     >
-                      {t('profileTab.title')}
+                      {t('common:profile.profileTab.title')}
                     </NavLink>
                   </NavItem>
 
@@ -67,7 +67,7 @@ class ProfileModal extends Component {
                       className={classnames({ active: this.state.activeTab === 'password' })}
                       onClick={showPasswordTab}
                     >
-                      {t('passwordTab.title')}
+                      {t('common:profile.passwordTab.title')}
                     </NavLink>
                   </NavItem>
                 </Nav>

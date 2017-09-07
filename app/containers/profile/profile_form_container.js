@@ -41,14 +41,14 @@ export class ProfileFormContainer extends Component {
         [
           isNotEmpty,
           props.t('common:validations.isNotEmpty', {
-            prop: props.t('profileTab.firstName')
+            prop: props.t('common:profile.profileTab.fields.firstName')
           })
         ],
         [
           isLessThan(30),
           props.t('common:validations.isLessThan', {
             count: 30,
-            prop: props.t('profileTab.firstName')
+            prop: props.t('common:profile.profileTab.fields.firstName')
           })
         ]
       ],
@@ -56,14 +56,14 @@ export class ProfileFormContainer extends Component {
         [
           isNotEmpty,
           props.t('common:validations.isNotEmpty', {
-            prop: props.t('profileTab.lastName')
+            prop: props.t('common:profile.profileTab.fields.lastName')
           })
         ],
         [
           isLessThan(30),
           props.t('common:validations.isLessThan', {
             count: 30,
-            prop: props.t('profileTab.lastName')
+            prop: props.t('common:profile.profileTab.fields.lastName')
           })
         ]
       ],
@@ -71,13 +71,13 @@ export class ProfileFormContainer extends Component {
         [
           isNotEmpty,
           props.t('common:validations.isNotEmpty', {
-            prop: props.t('profileTab.email')
+            prop: props.t('common:profile.profileTab.fields.email')
           })
         ],
         [
           isEmail,
           props.t('common:validations.isEmail', {
-            prop: props.t('profileTab.email')
+            prop: props.t('common:profile.profileTab.fields.email')
           })
         ]
       ],
@@ -85,14 +85,14 @@ export class ProfileFormContainer extends Component {
         [
           isNotEmpty,
           props.t('common:validations.isNotEmpty', {
-            prop: props.t('profileTab.organization')
+            prop: props.t('common:profile.profileTab.fields.organization')
           })
         ],
         [
           isLessThan(30),
           props.t('common:validations.isLessThan', {
             count: 30,
-            prop: props.t('profileTab.organization')
+            prop: props.t('common:profile.profileTab.fields.organization')
           })
         ]
       ],
@@ -100,14 +100,14 @@ export class ProfileFormContainer extends Component {
         [
           isNotEmpty,
           props.t('common:validations.isNotEmpty', {
-            prop: props.t('profileTab.jobTitle')
+            prop: props.t('common:profile.profileTab.fields.jobTitle')
           })
         ],
         [
           isLessThan(30),
           props.t('common:validations.isLessThan', {
             count: 30,
-            prop: props.t('profileTab.jobTitle')
+            prop: props.t('common:profile.profileTab.fields.jobTitle')
           })
         ]
       ],
@@ -115,20 +115,20 @@ export class ProfileFormContainer extends Component {
         [
           isNotEmpty,
           props.t('common:validations.isNotEmpty', {
-            prop: props.t('profileTab.phone')
+            prop: props.t('common:profile.profileTab.fields.phone')
           })
         ],
         [
           isLessThan(30),
           props.t('common:validations.isLessThan', {
             count: 30,
-            prop: props.t('profileTab.phone')
+            prop: props.t('common:profile.profileTab.fields.phone')
           })
         ],
         [
           isNumeric,
           props.t('common:validations.isNumeric', {
-            prop: props.t('profileTab.phone')
+            prop: props.t('common:profile.profileTab.fields.phone')
           })
         ]
       ]
@@ -139,7 +139,7 @@ export class ProfileFormContainer extends Component {
         [
           isNotEmpty,
           props.t('common:validations.isNotEmpty', {
-            prop: props.t('profileTab.passwordError')
+            prop: props.t('common:profile.profileTab.fields.passwordError')
           })
         ]
       ]

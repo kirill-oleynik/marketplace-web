@@ -26,14 +26,13 @@ class Index extends Component {
 
   static async getInitialProps({ store }) {
     const commonTranslations = await getTranslations('common');
-    const profileTranslations = await getTranslations('profile');
 
     store.dispatch(
       fetch()
     );
 
     return {
-      translations: { ...commonTranslations, ...profileTranslations }
+      translations: { ...commonTranslations }
     };
   }
 

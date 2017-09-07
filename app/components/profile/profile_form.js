@@ -52,7 +52,7 @@ class ProfileForm extends Component {
               <MainInput
                 name="name"
                 value={values.firstName}
-                label={t('profileTab.firstName')}
+                label={t('common:profile.profileTab.fields.firstName')}
                 onChange={flow([getValue, onChange('firstName')])}
                 error={getError(errors.firstName, serverErrors.firstName)}
                 className="mb-10"
@@ -63,7 +63,7 @@ class ProfileForm extends Component {
               <MainInput
                 name="name"
                 value={values.lastName}
-                label={t('profileTab.lastName')}
+                label={t('common:profile.profileTab.fields.lastName')}
                 onChange={flow([getValue, onChange('lastName')])}
                 error={getError(errors.lastName, serverErrors.lastName)}
                 className="mb-10"
@@ -75,7 +75,7 @@ class ProfileForm extends Component {
             type="email"
             name="email"
             value={values.email}
-            label={t('profileTab.email')}
+            label={t('common:profile.profileTab.fields.email')}
             onChange={flow([onEmailChange, getValue, onChange('email')])}
             error={getError(errors.email, serverErrors.email)}
             className="mb-10"
@@ -86,7 +86,7 @@ class ProfileForm extends Component {
               type="password"
               name="password"
               value={values.password}
-              label={t('profileTab.passwordLabel')}
+              label={t('common:profile.profileTab.fields.passwordLabel')}
               onChange={flow([getValue, onChange('password')])}
               error={getError(errors.password, serverErrors.password)}
               className="mb-10"
@@ -96,7 +96,7 @@ class ProfileForm extends Component {
           <MainInput
             name="organization"
             value={values.organization}
-            label={t('profileTab.organization')}
+            label={t('common:profile.profileTab.fields.organization')}
             onChange={flow([getValue, onChange('organization')])}
             error={getError(errors.organization, serverErrors.organization)}
             className="mb-10"
@@ -105,7 +105,7 @@ class ProfileForm extends Component {
           <MainInput
             name="job"
             value={values.jobTitle}
-            label={t('profileTab.jobTitle')}
+            label={t('common:profile.profileTab.fields.jobTitle')}
             onChange={flow([getValue, onChange('jobTitle')])}
             error={getError(errors.jobTitle, serverErrors.jobTitle)}
             className="mb-10"
@@ -114,7 +114,7 @@ class ProfileForm extends Component {
           <MainInput
             name="phone"
             value={values.phone}
-            label={t('profileTab.phone')}
+            label={t('common:profile.profileTab.fields.phone')}
             onChange={flow([getValue, onChange('phone')])}
             error={getError(errors.phone, serverErrors.phone)}
             className="mb-10"
@@ -127,7 +127,7 @@ class ProfileForm extends Component {
           size="lg"
           className="w-100 mb-20"
         >
-          {t('profileTab.submit')}
+          {t('common:profile.profileTab.submit')}
         </MainButton>
       </form>
     );
