@@ -51,4 +51,15 @@ describe('#errors', () => {
 
     expect(nextState.errors).toEqual('Violations');
   });
+
+  test('it handles PROFILE_MODAL_TOGGLE action type', () => {
+    const nextState = reducer(undefined, {
+      type: PROFILE_MODAL_TOGGLE,
+      payload: {
+        modalState: Symbol('any')
+      }
+    });
+
+    expect(nextState.errors).toEqual({});
+  });
 });

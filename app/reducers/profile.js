@@ -18,6 +18,8 @@ const errors = (state = {}, action = {}) => {
     case PROFILE_UPDATE + FAILURE:
     case PASSWORD_UPDATE + FAILURE:
       return action.payload.error.violations;
+    case PROFILE_MODAL_TOGGLE:
+      return {};
     default:
       return state;
   }
