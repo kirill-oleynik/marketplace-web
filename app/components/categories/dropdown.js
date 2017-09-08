@@ -4,6 +4,8 @@ import classNames from 'classnames';
 import { translate } from 'react-i18next';
 import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 
+import CategoryLink from './link';
+
 export class CategoriesDropdown extends Component {
   state = {
     isOpen: false
@@ -39,9 +41,10 @@ export class CategoriesDropdown extends Component {
         <DropdownMenu className="categories__dropdown-menu">
           {
             categories.map((category) => (
-              <a key={category.id} href="/" className="categories-link">
-                {category.title}
-              </a>
+              <CategoryLink
+                key={category.id}
+                category={category}
+              />
             ))
           }
         </DropdownMenu>

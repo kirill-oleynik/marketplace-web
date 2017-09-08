@@ -1,9 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`#render it renders correctly 1`] = `
-<div>
+<div
+  className="categories"
+  style={Object {}}
+>
+  <h4
+    className="categories-title"
+  >
+    categories
+  </h4>
   <div>
-    <Category
+    <CategoryLink
       category={
         Object {
           "id": 1,
@@ -11,12 +19,7 @@ exports[`#render it renders correctly 1`] = `
         }
       }
     />
-    <div
-      className="divider divider--dark mb-30"
-    />
-  </div>
-  <div>
-    <Category
+    <CategoryLink
       category={
         Object {
           "id": 2,

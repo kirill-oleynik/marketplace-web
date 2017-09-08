@@ -1,35 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { translate } from 'react-i18next';
+import Category from './category';
 
-export const CategoriesList = ({ t, categories, stickyOptions }) => (
-  <div className="categories" style={stickyOptions.style}>
-    <h4 className="categories-title">
-      {t('categories')}
-    </h4>
+const isLastCategory = (categoryIndex, categoriesLength) => (
+  categoryIndex === categoriesLength - 1
+);
 
-    <div>
-      {
-        categories.map((category) => (
-          <a key={category.id} href="/" className="categories-link">
-            {category.title}
-          </a>
-        ))
-      }
-    </div>
+const CategoriesList = ({ categories }) => (
+  <div>
+    {categories.map((category, index) => (
+      <div key={category.id}>
+        <Category category={category} />
+
+        {
+          !isLastCategory(index, categories.length) ? (
+            <div className="divider divider--dark mb-30" />
+          ) : null
+        }
+      </div>
+    ))}
   </div>
 );
 
 CategoriesList.propTypes = {
-  t: PropTypes.func.isRequired,
-  stickyOptions: PropTypes.object,
   categories: PropTypes.array.isRequired
 };
 
-CategoriesList.defaultProps = {
-  stickyOptions: {
-    style: {}
-  }
-};
-
-export default translate(['common'])(CategoriesList);
+export default CategoriesList;

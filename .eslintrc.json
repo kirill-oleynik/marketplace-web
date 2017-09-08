@@ -34,6 +34,8 @@
     "indent": ["error", 2, { "SwitchCase": 1, "MemberExpression": "off" }],
 
     "import/no-named-as-default": 0,
-    "import/prefer-default-export": 0
+    "import/prefer-default-export": 0,
+
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
   }
 }

@@ -1,7 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`#render it renders correctly 1`] = `
-<div>
-  <FakeComponent />
-</div>
+<FakeComponent
+  categories={
+    Array [
+      Object {
+        "id": 1,
+        "title": "Test1",
+      },
+      Object {
+        "id": 2,
+        "title": "Test2",
+      },
+    ]
+  }
+  dispatch={[Function]}
+/>
 `;

@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<div
+  className="mb-20"
+  id="test_1"
+>
+  <div
+    className="mb-30"
+  >
+    <h3
+      className="font-20 font-700"
+    >
+      Test1
+    </h3>
+  </div>
+  <Row
+    tag="div"
+  >
+    <Col
+      md="6"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+      xs="12"
+    >
+      <AppItem
+        position=""
+        remove=""
+      />
+    </Col>
+    <Col
+      md="6"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+      xs="12"
+    >
+      <AppItem
+        position=""
+        remove=""
+      />
+    </Col>
+    <Col
+      md="6"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+      xs="12"
+    >
+      <AppItem
+        position=""
+        remove=""
+      />
+    </Col>
+    <Col
+      md="6"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+      xs="12"
+    >
+      <AppItem
+        position=""
+        remove=""
+      />
+    </Col>
+  </Row>
+  <div
+    className="text-center text-md-left"
+  >
+    <ButtonLinkWithIcon
+      className="mb-10"
+      href="/"
+      icon="arrow-down"
+      text="Show More"
+      type="button"
+    />
+  </div>
+</div>
+`;
