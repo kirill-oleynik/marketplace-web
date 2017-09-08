@@ -7,7 +7,7 @@ import createI18n from '../services/i18n';
 import { getTranslations } from '../services/api';
 import MainFooter from '../components/footer';
 import Header from '../containers/header_container';
-import AppBlock from '../components/app_block';
+import AppBlock from '../components/app_block_vertical';
 import GoTopLink from '../components/go_top_link';
 import withReduxAndSaga from '../store';
 

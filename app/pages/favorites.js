@@ -9,10 +9,10 @@ import { getTranslations } from '../services/api';
 import MainFooter from '../components/footer';
 import Header from '../containers/header_container';
 import { fetch } from '../actions/categories_actions';
-import CategoriesList from '../components/categories/list';
 import CategoriesDropdown from '../components/categories/dropdown';
+import CategoriesLinkList from '../components/categories/link_list';
 import CategoriesContainer from '../containers/categories_container';
-import AppBlock from '../components/app_block';
+import AppBlock from '../components/app_block_vertical';
 import GoTopLink from '../components/go_top_link';
 import withReduxAndSaga from '../store';
 import MessageBlock from '../components/message_block';
@@ -75,7 +75,7 @@ class Favorites extends Component {
                                   }
                                 }}
                               >
-                                <CategoriesList />
+                                <CategoriesLinkList />
                               </CategoriesContainer>
                             )
                           }

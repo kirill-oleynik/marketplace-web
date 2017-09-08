@@ -1,16 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
-import AppItem from './../components/app_item';
-import ButtonLinkWithIcon from './../components/button_link_with_icon';
+import AppItem from '../app_item';
+import ButtonLinkWithIcon from '../button_link_with_icon';
 
-const AppBlock = () => (
-  <div className="mb-20">
+export const Category = ({ category }) => (
+  <div id={category.slug} className="mb-20">
     <div className="mb-30">
-      <h3 className="font-20 font-700">Research</h3>
-      <p className="font-16">
-        Organize, manage, and track your project with tools that build on top
-      </p>
+      <h3 className="font-20 font-700">
+        {category.title}
+      </h3>
     </div>
+
     <Row>
       <Col xs="12" md="6">
         <AppItem />
@@ -25,6 +26,7 @@ const AppBlock = () => (
         <AppItem />
       </Col>
     </Row>
+
     <div className="text-center text-md-left">
       <ButtonLinkWithIcon
         href="/"
@@ -36,4 +38,8 @@ const AppBlock = () => (
   </div>
 );
 
-export default AppBlock;
+Category.propTypes = {
+  category: PropTypes.object.isRequired
+};
+
+export default Category;

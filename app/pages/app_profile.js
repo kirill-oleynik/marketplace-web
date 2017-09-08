@@ -8,10 +8,6 @@ import createI18n from '../services/i18n';
 import { getTranslations } from '../services/api';
 import MainFooter from '../components/footer';
 import Header from '../containers/header_container';
-import { fetch } from '../actions/categories_actions';
-import CategoriesList from '../components/categories/list';
-import CategoriesDropdown from '../components/categories/dropdown';
-import CategoriesContainer from '../containers/categories_container';
 import AppBlockVertical from '../components/app_block_vertical';
 import GoTopLink from '../components/go_top_link';
 import withReduxAndSaga from '../store';
@@ -21,6 +17,14 @@ import Rating from '../components/rating';
 import RatingMarks from '../components/rating_marks';
 import ButtonLinkWithIcon from '../components/button_link_with_icon';
 import ImageGallerySlider from '../components/image_gallery';
+
+import { fetch } from '../actions/categories_actions';
+import CategoriesDropdown from '../components/categories/dropdown';
+import CategoriesLinkList from '../components/categories/link_list';
+import CategoriesContainer from '../containers/categories_container';
+
+const CategoriesDropdownContainer = CategoriesContainer(CategoriesDropdown);
+const CategoriesLinkListContainer = CategoriesContainer(CategoriesLinkList);
 
 const appProfileLogo = {
   backgroundImage: "url('http://www.geolog.com/files/img/SWN-logo.png')"
@@ -61,9 +65,7 @@ class AppProfile extends Component {
             <Header />
             <main className="flex-grow-1">
               <section className="hidden-sm-up">
-                <CategoriesContainer>
-                  <CategoriesDropdown />
-                </CategoriesContainer>
+                <CategoriesDropdownContainer />
               </section>
               <Container>
                 <section className="pt-60">
@@ -73,7 +75,7 @@ class AppProfile extends Component {
                         <Sticky topOffset={-30}>
                           {
                             (stickyOptions) => (
-                              <CategoriesContainer
+                              <CategoriesLinkListContainer
                                 stickyOptions={{
                                   ...stickyOptions,
                                   style: {
@@ -82,9 +84,7 @@ class AppProfile extends Component {
                                     zIndex: 2
                                   }
                                 }}
-                              >
-                                <CategoriesList />
-                              </CategoriesContainer>
+                              />
                             )
                           }
                         </Sticky>

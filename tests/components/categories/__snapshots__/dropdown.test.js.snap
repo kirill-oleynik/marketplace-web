@@ -20,18 +20,22 @@ exports[`#render it renders correctly 1`] = `
     className="categories__dropdown-menu"
     tag="div"
   >
-    <a
-      className="categories-link"
-      href="/"
-    >
-      Test1
-    </a>
-    <a
-      className="categories-link"
-      href="/"
-    >
-      Test2
-    </a>
+    <CategoryLink
+      category={
+        Object {
+          "id": 1,
+          "title": "Test1",
+        }
+      }
+    />
+    <CategoryLink
+      category={
+        Object {
+          "id": 2,
+          "title": "Test2",
+        }
+      }
+    />
   </DropdownMenu>
 </Dropdown>
 `;
