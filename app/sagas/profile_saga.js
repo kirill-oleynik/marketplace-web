@@ -5,7 +5,7 @@ import { home } from '../routes';
 import { createProfile, updateUser, updatePassword } from '../services/api';
 import {
   REQUEST, SUCCESS, FAILURE,
-  PROFILE_CREATE, PROFILE_UPDATE, PASSWORD_UPDATE
+  PROFILE_CREATE, PROFILE_UPDATE, PASSWORD_UPDATE, PROFILE_MODAL_TOGGLE
 } from '../constants';
 
 export function* createUserProfile(action) {
@@ -44,6 +44,13 @@ export function* updateUserProfile(action) {
         profile: getResponseData(profileResponse)
       }
     });
+
+    yield put({
+      type: PROFILE_MODAL_TOGGLE,
+      payload: {
+        modalState: false
+      }
+    });
   } catch (exception) {
     yield put({
       type: PROFILE_UPDATE + FAILURE,
@@ -62,6 +69,13 @@ export function* updateUserPassword(action) {
       type: PASSWORD_UPDATE + SUCCESS,
       payload: {
         profile: getResponseData(passwordResponse)
+      }
+    });
+
+    yield put({
+      type: PROFILE_MODAL_TOGGLE,
+      payload: {
+        modalState: false
       }
     });
   } catch (exception) {

@@ -8,7 +8,8 @@ const {
   createProfile, updateUser, updatePassword
 } = require('../../app/services/api');
 const {
-  REQUEST, SUCCESS, FAILURE, PROFILE_CREATE, PROFILE_UPDATE, PASSWORD_UPDATE
+  REQUEST, SUCCESS, FAILURE,
+  PROFILE_CREATE, PROFILE_UPDATE, PASSWORD_UPDATE, PROFILE_MODAL_TOGGLE
 } = require('../../app/constants');
 
 describe('#createUserProfile', () => {
@@ -102,9 +103,18 @@ describe('#updateUserProfile', () => {
         payload: { profile }
       })
     );
+
+    expect(generator.next().value).toEqual(
+      put({
+        type: PROFILE_MODAL_TOGGLE,
+        payload: {
+          modalState: false
+        }
+      })
+    );
   });
 
-  it('handles failed createProfile api call', () => {
+  it('handles failed updateUser api call', () => {
     const data = Symbol('data');
     const error = Symbol('error');
     const updateUserError = {
@@ -157,9 +167,18 @@ describe('#updateUserPassword', () => {
         payload: { profile }
       })
     );
+
+    expect(generator.next().value).toEqual(
+      put({
+        type: PROFILE_MODAL_TOGGLE,
+        payload: {
+          modalState: false
+        }
+      })
+    );
   });
 
-  it('handles failed createProfile api call', () => {
+  it('handles failed updatePassword api call', () => {
     const data = Symbol('data');
     const error = Symbol('error');
     const updatePasswordError = {
