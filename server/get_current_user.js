@@ -3,7 +3,7 @@ const Session = require('./session');
 const refreshSession = require('./refresh_session');
 const convertToCamelCase = require('./convert_to_camel_case');
 
-const CURRENT_USER_URL = `${process.env.API_PROXY_URL}/users/current`;
+const CURRENT_USER_URL = `${process.env.API_PROXY_URL}/current_user`;
 
 const makeRequest = (accessToken) => (
   axios.get(CURRENT_USER_URL, {

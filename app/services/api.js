@@ -29,10 +29,11 @@ export const getTranslations = (name, lang = 'en') => (
 );
 
 export const createUser = (data) => http.post('api/users', data);
-export const fetchCurrentUser = () => http.get('api/users/current');
+export const fetchCurrentUser = () => http.get('api/current_user');
 export const createSession = (data) => http.post('api/sessions', data);
 export const createProfile = (data) => http.post('api/profile', data);
 export const fetchAllCategories = () => http.get('api/categories');
-export const updateUser = (id, data) => http.put(`api/users/${id}`, data);
-export const updatePassword = (data) =>
-  http.put('api/users/current/password', data);
+export const updateUser = (data) => http.put('api/current_user', data);
+export const updatePassword = (data) => (
+  http.put('api/current_user/password', data)
+);

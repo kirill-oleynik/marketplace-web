@@ -7,9 +7,9 @@ export const createProfile = (data) => ({
   payload: { data }
 });
 
-export const updateProfile = (id, data) => ({
+export const updateProfile = (data) => ({
   type: PROFILE_UPDATE,
-  payload: { id, data }
+  payload: { data }
 });
 
 export const toggleProfileModal = (modalState) => ({

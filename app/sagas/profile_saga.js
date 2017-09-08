@@ -33,10 +33,10 @@ export function* createUserProfile(action) {
 }
 
 export function* updateUserProfile(action) {
-  const { id, data } = action.payload;
+  const { data } = action.payload;
 
   try {
-    const profileResponse = yield call(updateUser, id, data);
+    const profileResponse = yield call(updateUser, data);
 
     yield put({
       type: PROFILE_UPDATE + SUCCESS,

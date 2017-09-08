@@ -80,7 +80,6 @@ describe('#createUserProfile', () => {
 
 describe('#updateUserProfile', () => {
   it('handles successful updateUser api call', () => {
-    const id = Symbol('id');
     const data = Symbol('data');
     const profile = Symbol('profile');
     const updateUserResponse = {
@@ -90,11 +89,11 @@ describe('#updateUserProfile', () => {
     };
 
     const generator = updateUserProfile({
-      payload: { id, data }
+      payload: { data }
     });
 
     expect(generator.next().value).toEqual(
-      call(updateUser, id, data)
+      call(updateUser, data)
     );
 
     expect(generator.next(updateUserResponse).value).toEqual(
@@ -106,7 +105,6 @@ describe('#updateUserProfile', () => {
   });
 
   it('handles failed createProfile api call', () => {
-    const id = Symbol('id');
     const data = Symbol('data');
     const error = Symbol('error');
     const updateUserError = {
@@ -116,11 +114,11 @@ describe('#updateUserProfile', () => {
     };
 
     const generator = updateUserProfile({
-      payload: { id, data }
+      payload: { data }
     });
 
     expect(generator.next().value).toEqual(
-      call(updateUser, id, data)
+      call(updateUser, data)
     );
 
     expect(generator.throw(updateUserError).value).toEqual(

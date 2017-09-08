@@ -35,12 +35,11 @@ describe('#toggleProfileModal', () => {
 describe('#updateProfile', () => {
   test('it has PROFILE_UPDATE type and given id & payload', () => {
     const data = Symbol('data');
-    const id = Symbol('id');
-    const action = updateProfile(id, data);
+    const action = updateProfile(data);
 
     expect(action).toEqual({
       type: PROFILE_UPDATE,
-      payload: { id, data }
+      payload: { data }
     });
   });
 });

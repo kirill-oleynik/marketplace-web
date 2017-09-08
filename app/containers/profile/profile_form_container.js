@@ -157,10 +157,7 @@ export class ProfileFormContainer extends Component {
   dataToSubmit = (values) => getDifference(this.initialFormState, values);
 
   handleFormSubmit = (values) => {
-    this.props.updateProfile(
-      this.props.currentUser.id,
-      this.dataToSubmit(values)
-    );
+    this.props.updateProfile(this.dataToSubmit(values));
   }
 
   handleEmailChange = (event) => {
