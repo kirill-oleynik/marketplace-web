@@ -53,6 +53,7 @@ exports[`#render it renders correctly 1`] = `
   </div>
   <button
     className="main-btn main-btn--blue main-btn--lg disabled w-100 mb-20"
+    disabled={false}
     type="submit"
   >
     submit
