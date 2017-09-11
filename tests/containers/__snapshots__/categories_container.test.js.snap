@@ -5,15 +5,18 @@ exports[`#render it renders correctly 1`] = `
   categories={
     Array [
       Object {
+        "applications": Array [],
         "id": 1,
         "title": "Test1",
       },
       Object {
+        "applications": Array [],
         "id": 2,
         "title": "Test2",
       },
     ]
   }
-  dispatch={[Function]}
+  collapse={[Function]}
+  expand={[Function]}
 />
 `;

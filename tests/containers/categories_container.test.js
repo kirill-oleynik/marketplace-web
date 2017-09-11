@@ -15,12 +15,18 @@ const fakeStore = (state = {}) => ({
 
 const firstCategory = {
   id: 1,
-  title: 'Test1'
+  title: 'Test1',
+  applications: []
 };
 
 const secondCategory = {
   id: 2,
-  title: 'Test2'
+  title: 'Test2',
+  applications: []
+};
+
+const applications = {
+  byId: {}
 };
 
 const categories = {
@@ -34,7 +40,8 @@ const categories = {
 describe('#render', () => {
   test('it renders correctly', () => {
     const store = fakeStore({
-      categories
+      categories,
+      applications
     });
 
     const WrappedComponent = CategoriesContainer(FakeComponent);
@@ -52,7 +59,8 @@ describe('#render', () => {
 describe('#passedProps', () => {
   test('it passess props to component correctly', () => {
     const store = fakeStore({
-      categories
+      categories,
+      applications
     });
 
     const WrappedComponent = CategoriesContainer(FakeComponent);
@@ -64,5 +72,13 @@ describe('#passedProps', () => {
     expect(
       component.find(FakeComponent).props().categories
     ).toEqual([firstCategory, secondCategory]);
+
+    expect(
+      component.find(FakeComponent).props().expand
+    ).toBeInstanceOf(Function);
+
+    expect(
+      component.find(FakeComponent).props().collapse
+    ).toBeInstanceOf(Function);
   });
 });

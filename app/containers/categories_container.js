@@ -1,10 +1,19 @@
 import { connect } from 'react-redux';
-import { getCategories } from '../selectors/categories_selectors';
+import { expand, collapse } from '../actions/categories_actions';
+import {
+  getCategoriesWithApplications
+} from '../selectors/categories_selectors';
+
 
 const mapStateToProps = (state) => ({
-  categories: getCategories(state)
+  categories: getCategoriesWithApplications(state)
 });
 
+const mapDispatchToProps = {
+  expand,
+  collapse
+};
+
 export default (Component) => (
-  connect(mapStateToProps)(Component)
+  connect(mapStateToProps, mapDispatchToProps)(Component)
 );

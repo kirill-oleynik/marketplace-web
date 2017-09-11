@@ -3,26 +3,30 @@
 exports[`#render it renders correctly 1`] = `
 <div>
   <div>
-    <Category
+    <Translate(Category)
       category={
         Object {
           "id": 1,
           "title": "Test1",
         }
       }
+      collapse={[Function]}
+      expand={[Function]}
     />
     <div
       className="divider divider--dark mb-30"
     />
   </div>
   <div>
-    <Category
+    <Translate(Category)
       category={
         Object {
           "id": 2,
           "title": "Test2",
         }
       }
+      collapse={[Function]}
+      expand={[Function]}
     />
   </div>
 </div>

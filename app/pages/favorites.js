@@ -8,7 +8,7 @@ import createI18n from '../services/i18n';
 import { getTranslations } from '../services/api';
 import MainFooter from '../components/footer';
 import Header from '../containers/header_container';
-import { fetch } from '../actions/categories_actions';
+import { fetchAll } from '../actions/categories_actions';
 import CategoriesDropdown from '../components/categories/dropdown';
 import CategoriesLinkList from '../components/categories/link_list';
 import CategoriesContainer from '../containers/categories_container';
@@ -26,7 +26,7 @@ class Favorites extends Component {
     const commonTranslations = await getTranslations('common');
 
     store.dispatch(
-      fetch()
+      fetchAll()
     );
 
     return {

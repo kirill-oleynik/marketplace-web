@@ -1,7 +1,11 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
-import AppItem from './../components/app_item';
-import ButtonLinkWithIcon from './../components/button_link_with_icon';
+import AppItem from '../components/app_item';
+import ButtonWithIcon from '../components/button_with_icon';
+
+// TODO:
+// REMOVE '../components/app_item' FILE, WHEN
+// THIS COMPONENT WILL BE PRODUCTION READY
 
 const AppBlockVertical = () => (
   <div className="mb-20">
@@ -26,8 +30,7 @@ const AppBlockVertical = () => (
       </Col>
     </Row>
     <div className="text-center text-md-left">
-      <ButtonLinkWithIcon
-        href="/"
+      <ButtonWithIcon
         icon="arrow-down"
         text="Show More"
         className="mb-10"

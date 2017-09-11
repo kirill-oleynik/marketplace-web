@@ -6,11 +6,15 @@ const isLastCategory = (categoryIndex, categoriesLength) => (
   categoryIndex === categoriesLength - 1
 );
 
-const CategoriesList = ({ categories }) => (
+const CategoriesList = ({ expand, collapse, categories }) => (
   <div>
     {categories.map((category, index) => (
       <div key={category.id}>
-        <Category category={category} />
+        <Category
+          expand={expand}
+          collapse={collapse}
+          category={category}
+        />
 
         {
           !isLastCategory(index, categories.length) ? (
@@ -23,6 +27,8 @@ const CategoriesList = ({ categories }) => (
 );
 
 CategoriesList.propTypes = {
+  expand: PropTypes.func.isRequired,
+  collapse: PropTypes.func.isRequired,
   categories: PropTypes.array.isRequired
 };
 

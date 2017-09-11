@@ -5,6 +5,7 @@ import currentUser from './current_user';
 import addExtraInfo from './add_extra_info';
 import categories from './categories';
 import profile from './profile';
+import applications from './applications';
 
 export default combineReducers({
   signUp,
@@ -12,5 +13,6 @@ export default combineReducers({
   currentUser,
   addExtraInfo,
   categories,
-  profile
+  profile,
+  applications
 });

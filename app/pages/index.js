@@ -8,7 +8,7 @@ import createI18n from '../services/i18n';
 import { getTranslations } from '../services/api';
 import { scrollToElement } from '../helpers/dom_helpers';
 
-import { fetch } from '../actions/categories_actions';
+import { fetchAll } from '../actions/categories_actions';
 import HomeContainer from '../containers/home_container';
 
 const scrollToCategory = (url = {}) => {
@@ -31,7 +31,7 @@ class Index extends Component {
     const commonTranslations = await getTranslations('common');
 
     store.dispatch(
-      fetch()
+      fetchAll()
     );
 
     return {

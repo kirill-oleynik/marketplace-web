@@ -8,7 +8,7 @@ exports[`#render it renders correctly 1`] = `
   <h4
     className="categories-title"
   >
-    categories
+    categories.sidebarTitle
   </h4>
   <div>
     <CategoryLink

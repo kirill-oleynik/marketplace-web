@@ -6,7 +6,7 @@ import CategoryLink from './link';
 export const CategoriesLinkList = ({ t, categories, stickyOptions }) => (
   <div className="categories" style={stickyOptions.style}>
     <h4 className="categories-title">
-      {t('categories')}
+      {t('categories.sidebarTitle')}
     </h4>
 
     <div>
