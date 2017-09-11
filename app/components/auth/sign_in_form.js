@@ -4,10 +4,12 @@ import Revalidation from 'revalidation';
 import { translate } from 'react-i18next';
 import flow from 'lodash/flow';
 import some from 'lodash/some';
+import pick from 'lodash/pick';
 import MainInput from '../main_input';
 import MainButton from '../main_button';
 import Checkbox from '../form/checkbox';
 import { getValue, getChecked, getError } from '../../helpers/form_helpers';
+import { collectionIsNotEmpty } from '../../services/validations';
 
 export class SignInForm extends Component {
   static propTypes = {
@@ -54,6 +56,9 @@ export class SignInForm extends Component {
       revalidation: { form: values, onChange, errors = {} }
     } = this.props;
 
+    const requiredFields = pick(values, ['email', 'password']);
+    const submitIsActive = collectionIsNotEmpty(requiredFields);
+
     return (
       <form className="login-form" onSubmit={this.handleSubmit}>
         <MainInput
@@ -86,6 +91,7 @@ export class SignInForm extends Component {
         }
 
         <MainButton
+          disabled={!submitIsActive}
           size="lg"
           color="blue"
           className="disabled w-100 mb-20"

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import flow from 'lodash/flow';
+import pick from 'lodash/pick';
 import Revalidation from 'revalidation';
 import { translate } from 'react-i18next';
 import MainInput from './../main_input';
 import MainButton from './../main_button';
 import { getValue, getError } from '../../helpers/form_helpers';
+import { collectionIsNotEmpty } from '../../services/validations';
 
 export class SignUpForm extends Component {
   static propTypes = {
@@ -51,6 +53,11 @@ export class SignUpForm extends Component {
       errors: serverErrors,
       revalidation: { form: values, onChange, errors = {} }
     } = this.props;
+
+    const requiredFields = pick(values, [
+      'email', 'firstName', 'lastName', 'password', 'passwordConfirmation'
+    ]);
+    const submitIsActive = collectionIsNotEmpty(requiredFields);
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -108,6 +115,7 @@ export class SignUpForm extends Component {
         />
 
         <MainButton
+          disabled={!submitIsActive}
           size="lg"
           color="blue"
           type="submit"
