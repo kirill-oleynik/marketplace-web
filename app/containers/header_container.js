@@ -3,33 +3,17 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentUser } from '../selectors/current_user_selectors';
 import Header from '../components/header';
-import UserProfileModal from '../components/user_profile_modal';
+import ProfileContainer from './profile/profile_container';
+import { toggleProfileModal } from '../actions/profile_actions';
 
 export class HeaderContainer extends Component {
   static propTypes = {
-    currentUser: PropTypes.object.isRequired
+    currentUser: PropTypes.object.isRequired,
+    toggleProfileModal: PropTypes.func.isRequired
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      userProfileModalActive: false
-    };
-
-    this.openUserProfile = this.openUserProfile.bind(this);
-    this.closeUserProfile = this.closeUserProfile.bind(this);
-  }
-
-  openUserProfile() {
-    this.setState({
-      userProfileModalActive: true
-    });
-  }
-
-  closeUserProfile() {
-    this.setState({
-      userProfileModalActive: false
-    });
+  openProfileModal = () => {
+    this.props.toggleProfileModal(true);
   }
 
   render() {
@@ -39,14 +23,10 @@ export class HeaderContainer extends Component {
       <div>
         <Header
           currentUser={currentUser}
-          openUserProfile={this.openUserProfile}
+          openProfile={this.openProfileModal}
         />
 
-        <UserProfileModal
-          isOpen={this.state.userProfileModalActive}
-          closeModal={this.closeUserProfile}
-          currentUser={currentUser}
-        />
+        <ProfileContainer />
       </div>
     );
   }
@@ -56,4 +36,8 @@ const mapStateToProps = (state) => ({
   currentUser: getCurrentUser(state)
 });
 
-export default connect(mapStateToProps, null)(HeaderContainer);
+const mapDispatchToProps = {
+  toggleProfileModal
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);

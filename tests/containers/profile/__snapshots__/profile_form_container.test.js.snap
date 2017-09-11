@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<Revalidation_(ProfileForm)
+  currentUser={Object {}}
+  errors={Object {}}
+  initialState={
+    Object {
+      "email": "",
+      "firstName": "",
+      "jobTitle": "",
+      "lastName": "",
+      "organization": "",
+      "password": "",
+      "phone": "",
+    }
+  }
+  needPasswordConfirmation={false}
+  onEmailChange={[Function]}
+  onSubmit={[Function]}
+  rules={
+    Object {
+      "email": Array [
+        Array [
+          [Function],
+          undefined,
+        ],
+        Array [
+          [Function],
+          undefined,
+        ],
+      ],
+      "firstName": Array [
+        Array [
+          [Function],
+          undefined,
+        ],
+        Array [
+          [Function],
+          undefined,
+        ],
+      ],
+      "jobTitle": Array [
+        Array [
+          [Function],
+          undefined,
+        ],
+        Array [
+          [Function],
+          undefined,
+        ],
+      ],
+      "lastName": Array [
+        Array [
+          [Function],
+          undefined,
+        ],
+        Array [
+          [Function],
+          undefined,
+        ],
+      ],
+      "organization": Array [
+        Array [
+          [Function],
+          undefined,
+        ],
+        Array [
+          [Function],
+          undefined,
+        ],
+      ],
+      "phone": Array [
+        Array [
+          [Function],
+          undefined,
+        ],
+        Array [
+          [Function],
+          undefined,
+        ],
+        Array [
+          [Function],
+          undefined,
+        ],
+      ],
+    }
+  }
+  t={[Function]}
+  updateProfile={[Function]}
+  validateOnChange={true}
+  validateSingle={true}
+/>
+`;

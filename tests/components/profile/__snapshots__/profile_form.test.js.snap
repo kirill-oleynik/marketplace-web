@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<ProfileForm
+  errors={Object {}}
+  needPasswordConfirmation={false}
+  onEmailChange={[Function]}
+  onSubmit={[Function]}
+  revalidation={
+    Object {
+      "UPDATE_FIELD": "UPDATE_FIELD",
+      "VALIDATE": "VALIDATE_ALL",
+      "asyncErrors": Object {},
+      "debounce": Object {},
+      "errors": Object {},
+      "form": Object {},
+      "onChange": [Function],
+      "onSubmit": [Function],
+      "settings": Object {
+        "validateOnChange": false,
+        "validateSingle": false,
+      },
+      "submitted": false,
+      "updateAsyncErrors": [Function],
+      "updateErrors": [Function],
+      "updateState": [Function],
+      "updateValue": [Function],
+      "updateValueAndValidate": [Function],
+      "valid": false,
+      "validateValue": [Function],
+    }
+  }
+  t={[Function]}
+/>
+`;

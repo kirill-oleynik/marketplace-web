@@ -21,7 +21,7 @@ class HeaderDropdownMenu extends Component {
   }
 
   render() {
-    const { t, currentUser, openUserProfile } = this.props;
+    const { t, currentUser, openProfile } = this.props;
 
     return (
       <Dropdown
@@ -55,7 +55,7 @@ class HeaderDropdownMenu extends Component {
           <div className="header-dropdown__menu-wrap">
             <button
               className="font-14 mb-20"
-              onClick={openUserProfile}
+              onClick={openProfile}
             >
               {t('header.viewProfile')}
             </button>
@@ -94,7 +94,7 @@ class HeaderDropdownMenu extends Component {
 HeaderDropdownMenu.propTypes = {
   currentUser: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired,
-  openUserProfile: PropTypes.func.isRequired
+  openProfile: PropTypes.func.isRequired
 };
 
 export default translate(['common'])(HeaderDropdownMenu);

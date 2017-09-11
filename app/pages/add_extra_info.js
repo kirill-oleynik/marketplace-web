@@ -30,10 +30,13 @@ class AddExtraInfo extends Component {
     }
 
     const commonTranslations = await getTranslations('common');
-    const signUpTranslations = await getTranslations('add_extra_info');
+    const addExtraInfoTranslations = await getTranslations('add_extra_info');
 
     return {
-      translations: { ...commonTranslations, ...signUpTranslations }
+      translations: {
+        ...commonTranslations,
+        ...addExtraInfoTranslations
+      }
     };
   }
 

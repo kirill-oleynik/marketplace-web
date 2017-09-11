@@ -3,7 +3,7 @@ const renderer = require('react-test-renderer');
 const { HeaderContainer } = require('../../app/containers/header_container');
 
 jest.mock('../../app/components/header', () => 'Header');
-jest.mock('../../app/components/user_profile_modal', () => 'User Profile');
+jest.mock('../../app/containers/profile/profile_container', () => 'ProfileContainer');
 
 describe('#render', () => {
   test('it renders correctly', () => {
@@ -11,6 +11,7 @@ describe('#render', () => {
       <HeaderContainer
         currentUser={{}}
         t={() => {}}
+        toggleProfileModal={() => {}}
       />
     ).toJSON();
 
