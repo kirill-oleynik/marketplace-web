@@ -27,7 +27,7 @@ const CategoriesDropdownContainer = CategoriesContainer(CategoriesDropdown);
 const CategoriesLinkListContainer = CategoriesContainer(CategoriesLinkList);
 
 const appProfileLogo = {
-  backgroundImage: "url('http://www.geolog.com/files/img/SWN-logo.png')"
+  backgroundImage: "url('https://robohash.org/reiciendisdoloresdeserunt.png?size=300x300')"
 };
 
 class AppProfile extends Component {

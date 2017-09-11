@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 const AppItem = ({ position, remove }) => {
   const appLogo = {
-    backgroundImage: "url('http://www.geolog.com/files/img/SWN-logo.png')"
+    backgroundImage: "url('https://robohash.org/reiciendisdoloresdeserunt.png?size=300x300')"
   };
   return (
     <a href="" className={classNames('app-item', `app-item--${position}`, `app-item--${remove}`)}>
