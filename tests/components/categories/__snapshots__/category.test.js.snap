@@ -16,92 +16,15 @@ exports[`#render it renders correctly 1`] = `
   </div>
   <Row
     tag="div"
-  >
-    <Col
-      md="6"
-      tag="div"
-      widths={
-        Array [
-          "xs",
-          "sm",
-          "md",
-          "lg",
-          "xl",
-        ]
-      }
-      xs="12"
-    >
-      <AppItem
-        position=""
-        remove=""
-      />
-    </Col>
-    <Col
-      md="6"
-      tag="div"
-      widths={
-        Array [
-          "xs",
-          "sm",
-          "md",
-          "lg",
-          "xl",
-        ]
-      }
-      xs="12"
-    >
-      <AppItem
-        position=""
-        remove=""
-      />
-    </Col>
-    <Col
-      md="6"
-      tag="div"
-      widths={
-        Array [
-          "xs",
-          "sm",
-          "md",
-          "lg",
-          "xl",
-        ]
-      }
-      xs="12"
-    >
-      <AppItem
-        position=""
-        remove=""
-      />
-    </Col>
-    <Col
-      md="6"
-      tag="div"
-      widths={
-        Array [
-          "xs",
-          "sm",
-          "md",
-          "lg",
-          "xl",
-        ]
-      }
-      xs="12"
-    >
-      <AppItem
-        position=""
-        remove=""
-      />
-    </Col>
-  </Row>
+  />
   <div
     className="text-center text-md-left"
   >
-    <ButtonLinkWithIcon
+    <ButtonWithIcon
       className="mb-10"
-      href="/"
       icon="arrow-down"
-      text="Show More"
+      onClick={[Function]}
+      text="categories.showMore"
       type="button"
     />
   </div>

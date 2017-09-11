@@ -10,7 +10,9 @@ describe('#render', () => {
     const component = shallow(
       <Category
         t={(translation) => translation}
-        category={{ id: 1, title: 'Test1', slug: 'test_1' }}
+        expand={() => {}}
+        collapse={() => {}}
+        category={{ id: 1, title: 'Test1', slug: 'test_1', applications: [] }}
       />
     );
 

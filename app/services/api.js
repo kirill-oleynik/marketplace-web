@@ -33,6 +33,7 @@ export const fetchCurrentUser = () => http.get('api/current_user');
 export const createSession = (data) => http.post('api/sessions', data);
 export const createProfile = (data) => http.post('api/profile', data);
 export const fetchAllCategories = () => http.get('api/categories');
+export const fetchSingleCategory = (id) => http.get(`api/categories/${id}`);
 export const updateUser = (data) => http.put('api/current_user', data);
 export const updatePassword = (data) => (
   http.put('api/current_user/password', data)

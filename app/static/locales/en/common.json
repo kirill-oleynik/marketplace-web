@@ -9,7 +9,11 @@
       "logOut": "Log Out",
       "favorites": "Favorites"
     },
-    "categories": "Categories",
+    "categories": {
+      "sidebarTitle": "Categories",
+      "showMore": "Show More",
+      "showLess": "Show Less"
+    },
     "validations": {
       "isNotEmpty": "{{prop}} should not be empty.",
       "isBoolean": "{{prop}} should be true of false.",

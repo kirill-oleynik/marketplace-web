@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<span
+  className="app-item"
+>
+  <div>
+    <span
+      className="app-item__img mb-5 mr-25"
+      style={
+        Object {
+          "backgroundImage": "url('https://example.com/image.png')",
+        }
+      }
+    />
+  </div>
+  <div>
+    <div
+      className="d-flex justify-content-between"
+    >
+      <h4
+        className="app-item__title"
+      >
+        Test1
+      </h4>
+      <button
+        className="app-item__remove mb-5"
+        type="button"
+      >
+        <i
+          className="app-item__icon icon icon-cross font-8"
+        />
+      </button>
+    </div>
+    <p
+      className="app-item__text"
+    >
+      Hello World!
+    </p>
+  </div>
+</span>
+`;

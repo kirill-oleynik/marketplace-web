@@ -15,10 +15,10 @@ import MainButton from '../components/main_button';
 import AddToFavorites from '../components/add_to_favorites';
 import Rating from '../components/rating';
 import RatingMarks from '../components/rating_marks';
-import ButtonLinkWithIcon from '../components/button_link_with_icon';
+import ButtonWithIcon from '../components/button_with_icon';
 import ImageGallerySlider from '../components/image_gallery';
 
-import { fetch } from '../actions/categories_actions';
+import { fetchAll } from '../actions/categories_actions';
 import CategoriesDropdown from '../components/categories/dropdown';
 import CategoriesLinkList from '../components/categories/link_list';
 import CategoriesContainer from '../containers/categories_container';
@@ -39,7 +39,7 @@ class AppProfile extends Component {
     const commonTranslations = await getTranslations('common');
 
     store.dispatch(
-      fetch()
+      fetchAll()
     );
 
     return {
@@ -113,8 +113,7 @@ class AppProfile extends Component {
                         </div>
                         <p className="font-20 font-700">About</p>
                         <p className="in-black-050">Search Metodology is the only project management tool that integrates natively within GitHub’s user interface. No lengthy onboarding. No configuration headaches. No separate logins. Developers stay in an environment they love, and Project Managers get total visibility into the development process.</p>
-                        <ButtonLinkWithIcon
-                          href="/"
+                        <ButtonWithIcon
                           icon="arrow-down"
                           text="Read More"
                           className="mb-10"
