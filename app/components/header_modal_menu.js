@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { signIn, signUp } from '../routes';
 import MainButton from './main_button';
 
-const HeaderModalMenu = ({ isOpen, toggle, t, currentUser }) => (
+export const HeaderModalMenu = ({ isOpen, toggle, t, currentUser, openProfile }) => (
   <Modal
     isOpen={isOpen}
     toggle={toggle}
@@ -52,9 +52,12 @@ const HeaderModalMenu = ({ isOpen, toggle, t, currentUser }) => (
 
     <Container>
       <div>
-        <a href="/" className="header-modal__link">
+        <button
+          className="header-modal__link"
+          onClick={openProfile}
+        >
           {t('header.viewProfile')}
-        </a>
+        </button>
 
         <a href="/" className="header-modal__link">
           {t('header.favorites')}
@@ -88,7 +91,8 @@ HeaderModalMenu.propTypes = {
   isOpen: PropTypes.bool,
   toggle: PropTypes.func.isRequired,
   currentUser: PropTypes.object.isRequired,
-  t: PropTypes.func.isRequired
+  t: PropTypes.func.isRequired,
+  openProfile: PropTypes.func.isRequired
 };
 
 HeaderModalMenu.defaultProps = {

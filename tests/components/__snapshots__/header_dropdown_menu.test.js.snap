@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<Dropdown
+  className="main-dropdown header-dropdown"
+  isOpen={false}
+  tag="div"
+  toggle={[Function]}
+>
+  <DropdownToggle
+    aria-haspopup={true}
+    caret={true}
+    className="main-dropdown__toggle header-dropdown__btn"
+    color="secondary"
+    data-toggle="dropdown"
+  />
+  <DropdownMenu
+    className="header-dropdown__menu"
+    right={true}
+    tag="div"
+  >
+    <div
+      className="header-dropdown__menu-wrap"
+    >
+      <p
+        className="font-14 font-700 mb-5"
+      />
+      <p
+        className="font-12 in-black-050"
+      />
+    </div>
+    <div
+      className="divider divider--dark"
+    />
+    <div
+      className="header-dropdown__menu-wrap"
+    >
+      <button
+        className="font-14 mb-20"
+        onClick={[Function]}
+      >
+        header.viewProfile
+      </button>
+      <MainButton
+        className="w-100 mb-15"
+        color="blue"
+        size="sm"
+        type="button"
+      >
+        header.submitApp
+      </MainButton>
+    </div>
+    <div
+      className="divider divider--dark"
+    />
+    <div
+      className="header-dropdown__menu-wrap mb-10"
+    >
+      <a
+        className="header-modal__link header-modal__link--dark"
+        href="/"
+      >
+        <i
+          className="header-modal__logout icon icon-log-out in-black-035"
+        />
+        <span
+          className="d-inline-block align-middle"
+        >
+          header.logOut
+        </span>
+      </a>
+    </div>
+  </DropdownMenu>
+</Dropdown>
+`;

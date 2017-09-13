@@ -4,17 +4,12 @@ import { translate } from 'react-i18next';
 import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 import MainButton from './main_button';
 
-class HeaderDropdownMenu extends Component {
-  constructor(props) {
-    super(props);
-
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      dropdownOpen: false
-    };
+export class HeaderDropdownMenu extends Component {
+  state = {
+    dropdownOpen: false
   }
 
-  toggle() {
+  toggle = () => {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen
     });
