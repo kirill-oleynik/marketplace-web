@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import dynamic from 'next/dynamic';
 import { connect } from 'react-redux';
 import { Container, Row, Col } from 'reactstrap';
 import { Sticky, StickyContainer } from 'react-sticky';
 
-import Carousel from '../components/carousel';
 import MainFooter from '../components/footer';
 import InputSearch from '../components/input_search';
 import HeaderContainer from '../containers/header_container';
@@ -11,12 +12,21 @@ import CategoriesList from '../components/categories/list';
 import CategoriesDropdown from '../components/categories/dropdown';
 import CategoriesLinkList from '../components/categories/link_list';
 import CategoriesContainer from '../containers/categories_container';
+import { getApplications } from '../selectors/applications_selectors';
 
 const CategoriesListContainer = CategoriesContainer(CategoriesList);
 const CategoriesDropdownContainer = CategoriesContainer(CategoriesDropdown);
 const CategoriesLinkListContainer = CategoriesContainer(CategoriesLinkList);
 
-const HomeContainer = () => (
+const ApplicationsCarousel = dynamic(
+  import('../components/applications/carousel'),
+  {
+    ssr: false,
+    loading: () => null
+  }
+);
+
+const HomeContainer = ({ applications }) => (
   <div className="page-container">
     <HeaderContainer />
 
@@ -41,7 +51,10 @@ const HomeContainer = () => (
             </Row>
           </div>
         </Container>
-        <Carousel />
+
+        <ApplicationsCarousel
+          applications={applications}
+        />
       </section>
 
       <section className="hidden-sm-up">
@@ -84,4 +97,12 @@ const HomeContainer = () => (
   </div>
 );
 
-export default connect()(HomeContainer);
+HomeContainer.propTypes = {
+  applications: PropTypes.array.isRequired
+};
+
+const mapStateToProps = (state) => ({
+  applications: getApplications(state)
+});
+
+export default connect(mapStateToProps)(HomeContainer);

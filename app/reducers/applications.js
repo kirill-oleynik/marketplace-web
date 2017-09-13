@@ -7,6 +7,11 @@ const applicationsReduceFn = (accumulator, application) => ({
   [application.id]: application
 });
 
+const applicationIdReduceFn = (accumulator, application) => ([
+  ...accumulator,
+  application.id
+]);
+
 export const byId = (state = {}, action) => {
   switch (action.type) {
     case CATEGORIES_FETCH + SUCCESS:
@@ -25,6 +30,29 @@ export const byId = (state = {}, action) => {
   }
 };
 
+export const ids = (state = new Set([]), action) => {
+  switch (action.type) {
+    case CATEGORIES_FETCH + SUCCESS:
+      return new Set(
+        action.payload.category.applications.reduce(
+          applicationIdReduceFn, state
+        )
+      );
+    case CATEGORIES_FETCH_ALL + SUCCESS:
+      return new Set(
+        action.payload.categories.reduce((accumulator, category) => (
+          [
+            ...accumulator,
+            ...category.applications.reduce(applicationIdReduceFn, {})
+          ]
+        ), [])
+      );
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
+  ids,
   byId
 });

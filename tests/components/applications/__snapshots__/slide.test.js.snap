@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<div
+  className="carousel__item  "
+>
+  <div
+    className="carousel__item-content"
+  >
+    <span
+      className="app-item__img mb-5"
+      style={
+        Object {
+          "backgroundImage": "url('https://example.com/image.png')",
+        }
+      }
+    />
+    <p
+      className="app-item-slide__title font-16 font-700 mb-5"
+    >
+      Test1
+    </p>
+    <p
+      className="app-item-slide__descr"
+    >
+      Hello World!
+    </p>
+  </div>
+</div>
+`;

@@ -50,3 +50,15 @@
   line-height: 1.5;
   margin-bottom: 10px;
 }
+
+.app-item-slide__title,
+.app-item-slide__descr {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+.app-item-slide__descr {
+  margin-bottom: 0px;
+}
