@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<Slider
+  centerMode={true}
+  dots={false}
+  infinite={true}
+  nextArrow={
+    <Arrow
+      direction="right"
+      onClick={[Function]}
+    />
+  }
+  prevArrow={
+    <Arrow
+      direction="left"
+      onClick={[Function]}
+    />
+  }
+  responsive={
+    Array [
+      Object {
+        "breakpoint": 1200,
+        "settings": Object {
+          "slidesToShow": 3,
+        },
+      },
+      Object {
+        "breakpoint": 900,
+        "settings": Object {
+          "slidesToShow": 2,
+        },
+      },
+      Object {
+        "breakpoint": 640,
+        "settings": Object {
+          "slidesToShow": 1,
+        },
+      },
+    ]
+  }
+  slidesToScroll={1}
+  slidesToShow={4}
+  speed={500}
+>
+  <ApplicationSlide
+    application={
+      Object {
+        "description": "Hello World!",
+        "id": 1,
+        "logo": "https://example.com/image.png",
+        "title": "Test1",
+      }
+    }
+    className=""
+  />
+</Slider>
+`;
