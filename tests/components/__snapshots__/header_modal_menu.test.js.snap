@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<Modal
+  autoFocus={true}
+  backdrop={true}
+  backdropTransitionTimeout={150}
+  className="header-modal"
+  fade={true}
+  isOpen={false}
+  keyboard={true}
+  modalTransitionTimeout={300}
+  toggle={[Function]}
+  zIndex={1050}
+>
+  <Container
+    tag="div"
+  >
+    <ModalHeader
+      tag="h4"
+      toggle={[Function]}
+      wrapTag="div"
+    />
+    <div>
+      <div>
+        <Link
+          href="/sign_in"
+        >
+          <a
+            className="header-modal__link"
+          />
+        </Link>
+        <Link
+          href="/sign_up"
+        >
+          <a
+            className="header-modal__link"
+          />
+        </Link>
+      </div>
+    </div>
+  </Container>
+  <div
+    className="divider mb-20"
+  />
+  <Container
+    tag="div"
+  >
+    <div>
+      <button
+        className="header-modal__link"
+        onClick={[Function]}
+      />
+      <a
+        className="header-modal__link"
+        href="/"
+      />
+    </div>
+    <MainButton
+      className="w-100 mb-30"
+      color="white"
+      size="sm"
+      type="button"
+    />
+  </Container>
+  <div
+    className="divider mb-20"
+  />
+  <Container
+    tag="div"
+  >
+    <a
+      className="header-modal__link"
+      href="/"
+    >
+      <i
+        className="header-modal__logout icon icon-log-out"
+      />
+      <span
+        className="d-inline-block align-middle"
+      />
+    </a>
+  </Container>
+</Modal>
+`;

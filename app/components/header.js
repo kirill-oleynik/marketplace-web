@@ -101,6 +101,7 @@ class Header extends Component {
           isOpen={this.state.modal}
           toggle={this.toggle}
           currentUser={currentUser}
+          openProfile={openProfile}
         />
 
         <SubmitApp
