@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+const isServer = typeof window === 'undefined';
+const buildId = (isServer ? global.buildId : window.__NEXT_DATA__.buildId) || '';
+
 const http = {
   get(path, params = {}) {
     return this._request('get', path, { params });
@@ -24,7 +27,7 @@ const http = {
 
 export const getTranslations = (name, lang = 'en') => (
   http
-    .get(`static/locales/${lang}/${name}.json`)
+    .get(`static/locales/${lang}/${name}.json?${buildId}`)
     .then((response) => response.data)
 );
 

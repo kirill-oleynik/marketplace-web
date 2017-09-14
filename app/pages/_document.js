@@ -5,7 +5,7 @@ import styles from '../scss/main.scss';
 const isProduction = process.env.NODE_ENV === 'production';
 
 const getLink = curry((nextData, link) => (
-  isProduction ? `${link}?${nextData.buildStats['app.js'].hash}` : link
+  isProduction ? `${link}?${nextData.buildId}` : link
 ));
 
 export default class CustomDocument extends Document {

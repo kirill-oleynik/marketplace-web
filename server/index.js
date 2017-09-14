@@ -35,6 +35,8 @@ app
     const server = express();
     const nextHandler = app.getRequestHandler();
 
+    global.buildId = app.buildId;
+
     server.use(bodyParser.json());
     server.use(logger);
     server.use(session);
