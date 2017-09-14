@@ -11,47 +11,56 @@ const getApplications = (category) => (
   category.isFetched ? category.applications : take(category.applications, 4)
 );
 
-export const Category = ({ t, expand, collapse, category }) => (
-  <div id={category.slug} className="mb-20">
-    <div className="mb-30">
-      <h3 className="font-20 font-700">
-        {category.title}
-      </h3>
-    </div>
+export const Category = ({ t, expand, collapse, category }) => {
+  const needToFetch = category.isFetchable && !category.isFetched;
+  const needToHide = category.isFetchable && category.isFetched;
 
-    <Row>
-      {
-        getApplications(category).map((application) => (
-          <Col xs="12" md="6" key={application.id}>
-            <ApplicationPreview
-              application={application}
+  return (
+    <div id={category.slug} className="mb-20">
+      <div className="mb-30">
+        <h3 className="font-20 font-700">
+          {category.title}
+        </h3>
+      </div>
+
+      <Row>
+        {
+          getApplications(category).map((application) => (
+            <Col xs="12" md="6" key={application.id}>
+              <ApplicationPreview
+                application={application}
+              />
+            </Col>
+          ))
+        }
+      </Row>
+
+      <div className="text-center text-md-left">
+        {
+          needToHide ? (
+            <ButtonWithIcon
+              icon="arrow-up"
+              className="mb-10"
+              text={t('categories.showLess')}
+              onClick={() => collapse(category)}
             />
-          </Col>
-        ))
-      }
-    </Row>
+          ) : null
+        }
 
-    <div className="text-center text-md-left">
-      {
-        category.isFetched ? (
-          <ButtonWithIcon
-            icon="arrow-up"
-            className="mb-10"
-            text={t('categories.showLess')}
-            onClick={() => collapse(category)}
-          />
-        ) : (
-          <ButtonWithIcon
-            icon="arrow-down"
-            className="mb-10"
-            text={t('categories.showMore')}
-            onClick={() => expand(category)}
-          />
-        )
-      }
+        {
+          needToFetch ? (
+            <ButtonWithIcon
+              icon="arrow-down"
+              className="mb-10"
+              text={t('categories.showMore')}
+              onClick={() => expand(category)}
+            />
+          ) : null
+        }
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 Category.propTypes = {
   t: PropTypes.func.isRequired,

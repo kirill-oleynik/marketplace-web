@@ -8,6 +8,7 @@ import {
 const categoryFactory = (category, isFetched = false) => ({
   ...category,
   isFetched,
+  isFetchable: category.applicationsCount > 4,
   slug: snakeCase(category.title),
   applications: category.applications.map((applications) => (
     applications.id

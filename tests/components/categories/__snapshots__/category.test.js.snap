@@ -1,6 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`#render it renders correctly 1`] = `
+exports[`#render when it has less than preview amount apps it renders correctly 1`] = `
+<div
+  className="mb-20"
+  id="test_1"
+>
+  <div
+    className="mb-30"
+  >
+    <h3
+      className="font-20 font-700"
+    >
+      Test1
+    </h3>
+  </div>
+  <Row
+    tag="div"
+  />
+  <div
+    className="text-center text-md-left"
+  />
+</div>
+`;
+
+exports[`#render when it has more than preview amount apps and there are apps to fetch it renders correctly 1`] = `
 <div
   className="mb-20"
   id="test_1"
@@ -25,6 +48,37 @@ exports[`#render it renders correctly 1`] = `
       icon="arrow-down"
       onClick={[Function]}
       text="categories.showMore"
+      type="button"
+    />
+  </div>
+</div>
+`;
+
+exports[`#render when it has more than preview amount apps and there is no apps to fetch it renders correctly 1`] = `
+<div
+  className="mb-20"
+  id="test_1"
+>
+  <div
+    className="mb-30"
+  >
+    <h3
+      className="font-20 font-700"
+    >
+      Test1
+    </h3>
+  </div>
+  <Row
+    tag="div"
+  />
+  <div
+    className="text-center text-md-left"
+  >
+    <ButtonWithIcon
+      className="mb-10"
+      icon="arrow-up"
+      onClick={[Function]}
+      text="categories.showLess"
       type="button"
     />
   </div>

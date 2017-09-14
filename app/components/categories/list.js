@@ -9,19 +9,21 @@ const isLastCategory = (categoryIndex, categoriesLength) => (
 const CategoriesList = ({ expand, collapse, categories }) => (
   <div>
     {categories.map((category, index) => (
-      <div key={category.id}>
-        <Category
-          expand={expand}
-          collapse={collapse}
-          category={category}
-        />
+      category.applications.length > 0 ? (
+        <div key={category.id}>
+          <Category
+            expand={expand}
+            collapse={collapse}
+            category={category}
+          />
 
-        {
-          !isLastCategory(index, categories.length) ? (
-            <div className="divider divider--dark mb-30" />
-          ) : null
-        }
-      </div>
+          {
+            !isLastCategory(index, categories.length) ? (
+              <div className="divider divider--dark mb-30" />
+            ) : null
+          }
+        </div>
+      ) : null
     ))}
   </div>
 );

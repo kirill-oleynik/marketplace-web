@@ -11,8 +11,11 @@ describe('#render', () => {
         expand={() => {}}
         collapse={() => {}}
         categories={[
-          { id: 1, title: 'Test1' },
-          { id: 2, title: 'Test2' }
+          { id: 1, title: 'Test1', applications: [] },
+          { id: 2, title: 'Test2', applications: [
+            'app_one',
+            'app_two'
+          ] }
         ]}
       />
     );
