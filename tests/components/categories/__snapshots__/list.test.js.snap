@@ -6,21 +6,10 @@ exports[`#render it renders correctly 1`] = `
     <Translate(Category)
       category={
         Object {
-          "id": 1,
-          "title": "Test1",
-        }
-      }
-      collapse={[Function]}
-      expand={[Function]}
-    />
-    <div
-      className="divider divider--dark mb-30"
-    />
-  </div>
-  <div>
-    <Translate(Category)
-      category={
-        Object {
+          "applications": Array [
+            "app_one",
+            "app_two",
+          ],
           "id": 2,
           "title": "Test2",
         }
