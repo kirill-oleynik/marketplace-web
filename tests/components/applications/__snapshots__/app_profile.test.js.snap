@@ -68,12 +68,6 @@ exports[`#render it renders correctly 1`] = `
     >
       description
     </p>
-    <ButtonWithIcon
-      className="mb-10"
-      icon="arrow-down"
-      text="appProfile.description.readMore"
-      type="button"
-    />
   </div>
   <div
     className="divider divider--dark mb-30"
@@ -179,7 +173,7 @@ exports[`#render it renders correctly 1`] = `
         <p
           className="in-black-050"
         >
-          2014-05-24
+          May, 24 2014
         </p>
       </Col>
       <Col
