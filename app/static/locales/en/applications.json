@@ -1,0 +1,28 @@
+{
+  "applications": {
+    "appProfile": {
+      "requestDemo": "Reques Demo",
+      "gallery": {
+        "title": "Screenshots and Videos"
+      },
+      "description": {
+        "title": "About",
+        "readMore": "Read More",
+        "readLess": "Read Less"
+      },
+      "extra": {
+        "title": "Additional Information",
+        "founded": "Founded",
+        "email": "Email",
+        "website": "Website",
+        "phone": "Phone",
+        "address": "Address"
+      },
+      "ratings": {
+        "title": "Customer Ratings",
+        "avarage": "Average Rating",
+        "submit": "Click to Rate"
+      }
+    }
+  }
+}

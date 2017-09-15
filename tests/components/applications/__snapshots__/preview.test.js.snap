@@ -5,24 +5,50 @@ exports[`#render it renders correctly 1`] = `
   className="app-item"
 >
   <div>
-    <span
-      className="app-item__img mb-5 mr-25"
-      style={
+    <Link
+      as="/applications/undefined"
+      href={
         Object {
-          "backgroundImage": "url('https://example.com/image.png')",
+          "pathname": "/applications",
+          "query": Object {
+            "slug": undefined,
+          },
         }
       }
-    />
+      prefetch={true}
+    >
+      <span
+        className="app-item__img mb-5 mr-25"
+        style={
+          Object {
+            "backgroundImage": "url('https://example.com/image.png')",
+          }
+        }
+      />
+    </Link>
   </div>
   <div>
     <div
       className="d-flex justify-content-between"
     >
-      <h4
-        className="app-item__title"
+      <Link
+        as="/applications/undefined"
+        href={
+          Object {
+            "pathname": "/applications",
+            "query": Object {
+              "slug": undefined,
+            },
+          }
+        }
+        prefetch={true}
       >
-        Test1
-      </h4>
+        <h4
+          className="app-item__title"
+        >
+          Test1
+        </h4>
+      </Link>
       <button
         className="app-item__remove mb-5"
         type="button"
@@ -34,9 +60,7 @@ exports[`#render it renders correctly 1`] = `
     </div>
     <p
       className="app-item__text"
-    >
-      Hello World!
-    </p>
+    />
   </div>
 </span>
 `;
