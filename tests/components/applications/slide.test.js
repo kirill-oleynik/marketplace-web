@@ -10,7 +10,7 @@ describe('#render', () => {
         application={{
           id: 1,
           title: 'Test1',
-          description: 'Hello World!',
+          summary: 'Hello World!',
           logo: 'https://example.com/image.png'
         }}
       />

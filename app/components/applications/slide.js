@@ -16,7 +16,7 @@ const ApplicationSlide = ({ className, application, ...rest }) => (
       </p>
 
       <p className="app-item-slide__descr">
-        {application.description}
+        {application.summary}
       </p>
     </div>
   </div>
