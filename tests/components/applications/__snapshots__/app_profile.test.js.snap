@@ -179,7 +179,7 @@ exports[`#render it renders correctly 1`] = `
         <p
           className="in-black-050"
         >
-          2014-05-24
+          May, 24 2014
         </p>
       </Col>
       <Col

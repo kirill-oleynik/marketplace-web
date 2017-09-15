@@ -7,6 +7,7 @@ import Rating from '../rating';
 import RatingMarks from '../rating_marks';
 import ButtonWithIcon from '../button_with_icon';
 import ImageGallerySlider from '../image_gallery';
+import { asFoundedDate } from '../../helpers/dates_helpers';
 
 export const AppProfile = ({ appProfile, t }) => (
   <div>
@@ -126,7 +127,7 @@ export const AppProfile = ({ appProfile, t }) => (
               </p>
 
               <p className="in-black-050">
-                {appProfile.founded}
+                {asFoundedDate(appProfile.founded)}
               </p>
             </Col>
           ) : null
