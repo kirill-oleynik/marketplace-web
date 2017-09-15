@@ -1,6 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import Link from 'next/link';
+
+const applicationUrl = (application) => ({
+  pathname: '/applications',
+  query: {
+    slug: application.slug
+  }
+});
+
+const applicationAsUrl = (application) => `/applications/${application.slug}`;
 
 const ApplicationPreview = ({ remove, vertical, application }) => (
   <span
@@ -11,18 +21,31 @@ const ApplicationPreview = ({ remove, vertical, application }) => (
     )}
   >
     <div>
-      <span
-        className="app-item__img mb-5 mr-25"
-        style={{
-          backgroundImage: `url('${application.logo}')`
-        }}
-      />
+      <Link
+        prefetch
+        href={applicationUrl(application)}
+        as={applicationAsUrl(application)}
+      >
+        <span
+          className="app-item__img mb-5 mr-25"
+          style={{
+            backgroundImage: `url('${application.logo}')`
+          }}
+        />
+      </Link>
     </div>
+
     <div>
       <div className="d-flex justify-content-between">
-        <h4 className="app-item__title">
-          {application.title}
-        </h4>
+        <Link
+          prefetch
+          href={applicationUrl(application)}
+          as={applicationAsUrl(application)}
+        >
+          <h4 className="app-item__title">
+            {application.title}
+          </h4>
+        </Link>
 
         <button type="button" className="app-item__remove mb-5">
           <i className="app-item__icon icon icon-cross font-8" />
@@ -30,7 +53,7 @@ const ApplicationPreview = ({ remove, vertical, application }) => (
       </div>
 
       <p className="app-item__text">
-        {application.description}
+        {application.summary}
       </p>
     </div>
   </span>

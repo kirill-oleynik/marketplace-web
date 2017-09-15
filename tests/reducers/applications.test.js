@@ -1,6 +1,6 @@
-const { ids, byId } = require('../../app/reducers/applications');
+const { ids, byId, appProfile } = require('../../app/reducers/applications');
 const {
-  SUCCESS, CATEGORIES_FETCH, CATEGORIES_FETCH_ALL
+  SUCCESS, CATEGORIES_FETCH, CATEGORIES_FETCH_ALL, APPLICATION_FETCH
 } = require('./../../app/constants');
 
 describe('#byId', () => {
@@ -81,5 +81,25 @@ describe('#ids', () => {
     });
 
     expect(state).toEqual(new Set([firstApllicationId, secondApllicationId]));
+  });
+});
+
+describe('#appProfile', () => {
+  test('it has correct initial state', () => {
+    const state = appProfile(undefined, {});
+
+    expect(state).toEqual({});
+  });
+
+  test('it handles APPLICATION_FETCH', () => {
+    const application_data = Symbol('application_data');
+    const state = appProfile(undefined, {
+      type: APPLICATION_FETCH + SUCCESS,
+      payload: {
+        application: application_data
+      }
+    });
+
+    expect(state).toEqual(application_data)
   });
 });

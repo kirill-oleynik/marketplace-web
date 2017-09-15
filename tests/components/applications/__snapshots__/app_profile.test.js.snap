@@ -1,0 +1,292 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<div>
+  <div
+    className="d-flex flex-sm-wrap-down mb-50"
+  >
+    <div>
+      <span
+        className="app-item__img app-item__img--md mr-40"
+        style={
+          Object {
+            "backgroundImage": "url('undefined')",
+          }
+        }
+      />
+    </div>
+    <div
+      className="d-flex flex-wrap flex-grow-1 justify-content-between pt-15"
+    >
+      <div
+        className="mb-30"
+      >
+        <p
+          className="font-24 font-700 mb-10"
+        >
+          title
+        </p>
+        <Rating
+          className="mb-30"
+        />
+        <AddToFavorites
+          added={false}
+        />
+      </div>
+      <div>
+        <MainButton
+          className=""
+          color="blue"
+          size="lg"
+          type="button"
+        >
+          appProfile.requestDemo
+        </MainButton>
+      </div>
+    </div>
+  </div>
+  <div
+    className="mb-20"
+  >
+    <p
+      className="font-20 font-700 mb-30"
+    >
+      appProfile.gallery.title
+    </p>
+    <div
+      className="mb-30"
+    >
+      <ImageGallerySlider />
+    </div>
+    <p
+      className="font-20 font-700"
+    >
+      appProfile.description.title
+    </p>
+    <p
+      className="in-black-050"
+    >
+      description
+    </p>
+    <ButtonWithIcon
+      className="mb-10"
+      icon="arrow-down"
+      text="appProfile.description.readMore"
+      type="button"
+    />
+  </div>
+  <div
+    className="divider divider--dark mb-30"
+  />
+  <div>
+    <p
+      className="font-20 font-700"
+    >
+      appProfile.ratings.title
+    </p>
+    <div
+      className="d-flex flex-wrap justify-content-between"
+    >
+      <div
+        className="mr-70"
+      >
+        <p
+          className="font-16 font-700 mb-20"
+        >
+          appProfile.ratings.avarage
+        </p>
+        <div
+          className="d-flex mb-30"
+        >
+          <div
+            className="mr-25"
+          >
+            <p
+              className="font-54 lh-1-2 in-black-050 mb-10"
+            >
+              4.2
+            </p>
+            <Rating
+              className="rating--sm"
+            />
+          </div>
+          <div>
+            <RatingMarks />
+          </div>
+        </div>
+      </div>
+      <div>
+        <p
+          className="font-16 font-700 mb-20"
+        >
+          appProfile.ratings.submit
+        </p>
+        <div
+          className="rating__stars"
+        >
+          <i
+            className="rating__stars-item icon icon-star"
+          />
+          <i
+            className="rating__stars-item icon icon-star"
+          />
+          <i
+            className="rating__stars-item icon icon-star"
+          />
+          <i
+            className="rating__stars-item icon icon-star"
+          />
+          <i
+            className="rating__stars-item icon icon-star"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="divider divider--dark mb-30"
+  />
+  <div>
+    <p
+      className="font-20 font-700"
+    >
+      appProfile.extra.title
+    </p>
+    <Row
+      className="mb-15"
+      tag="div"
+    >
+      <Col
+        md="4"
+        sm="6"
+        tag="div"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+        xs="12"
+      >
+        <p
+          className="font-16 font-700 mb-5"
+        >
+          appProfile.extra.founded
+        </p>
+        <p
+          className="in-black-050"
+        >
+          2014-05-24
+        </p>
+      </Col>
+      <Col
+        md="4"
+        sm="6"
+        tag="div"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+        xs="12"
+      >
+        <p
+          className="font-16 font-700 mb-5"
+        >
+          appProfile.extra.email
+        </p>
+        <p
+          className="in-black-050"
+        >
+          email
+        </p>
+      </Col>
+      <Col
+        md="4"
+        sm="6"
+        tag="div"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+        xs="12"
+      >
+        <p
+          className="font-16 font-700 mb-5"
+        >
+          appProfile.extra.website
+        </p>
+        <p
+          className="in-black-050"
+        >
+          website
+        </p>
+      </Col>
+      <Col
+        md="4"
+        sm="6"
+        tag="div"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+        xs="12"
+      >
+        <p
+          className="font-16 font-700 mb-5"
+        >
+          appProfile.extra.phone
+        </p>
+        <p
+          className="in-black-050"
+        >
+          phone
+        </p>
+      </Col>
+      <Col
+        md="4"
+        sm="6"
+        tag="div"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+        xs="12"
+      >
+        <p
+          className="font-16 font-700 mb-5"
+        >
+          appProfile.extra.address
+        </p>
+        <p
+          className="in-black-050"
+        >
+          address
+        </p>
+      </Col>
+    </Row>
+  </div>
+</div>
+`;

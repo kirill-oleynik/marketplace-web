@@ -6,3 +6,5 @@ export const getById = (state) => state.applications.byId;
 export const getApplications = createSelector(
   getIds, getById, (ids, byId) => ids.map((id) => byId[id])
 );
+
+export const getAppProfile = (state) => state.applications.appProfile;

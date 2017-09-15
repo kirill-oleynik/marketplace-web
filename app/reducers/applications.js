@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 
-import { SUCCESS, CATEGORIES_FETCH, CATEGORIES_FETCH_ALL } from '../constants';
+import {
+  SUCCESS, CATEGORIES_FETCH, CATEGORIES_FETCH_ALL, APPLICATION_FETCH
+} from '../constants';
 
 const applicationsReduceFn = (accumulator, application) => ({
   ...accumulator,
@@ -52,7 +54,17 @@ export const ids = (state = new Set([]), action) => {
   }
 };
 
+export const appProfile = (state = {}, action = {}) => {
+  switch (action.type) {
+    case APPLICATION_FETCH + SUCCESS:
+      return action.payload.application;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   ids,
-  byId
+  byId,
+  appProfile
 });

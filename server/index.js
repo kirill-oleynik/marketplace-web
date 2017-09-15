@@ -57,6 +57,10 @@ app
         .then(nextMiddleware);
     });
 
+    server.get('/applications/:slug', (req, res) => {
+      app.render(req, res, '/applications', { slug: req.params.slug });
+    });
+
     server.all('*', nextHandler);
 
     server.listen(listenTo, (err) => {

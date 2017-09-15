@@ -1,7 +1,8 @@
 const {
   getById,
   getIds,
-  getApplications
+  getApplications,
+  getAppProfile
 } = require('../../app/selectors/applications_selectors');
 
 describe('#getById', () => {
@@ -44,5 +45,15 @@ describe('#getApplications', () => {
         }
       })
     ).toEqual([firstApplication, secondApplication]);
+  });
+});
+
+describe('#getAppProfile', () => {
+  test('it returns appProfile', () => {
+    expect(getAppProfile({
+      applications: {
+        appProfile: 'appProfile'
+      }
+    })).toEqual('appProfile')
   });
 });
