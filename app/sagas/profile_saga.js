@@ -1,5 +1,7 @@
 import Router from 'next/router';
 import { put, call, takeEvery } from 'redux-saga/effects';
+
+import { callApi } from '../effects';
 import { getResponseData, getResponseError } from '../helpers/response_helpers';
 import { home } from '../routes';
 import { createProfile, updateUser, updatePassword } from '../services/api';
@@ -14,7 +16,7 @@ export function* createUserProfile(action) {
   yield put({ type: PROFILE_CREATE + REQUEST });
 
   try {
-    const profileResponse = yield call(createProfile, data);
+    const profileResponse = yield callApi(createProfile, { data });
 
     yield put({
       type: PROFILE_CREATE + SUCCESS,
@@ -36,7 +38,7 @@ export function* updateUserProfile(action) {
   const { data } = action.payload;
 
   try {
-    const profileResponse = yield call(updateUser, data);
+    const profileResponse = yield callApi(updateUser, { data });
 
     yield put({
       type: PROFILE_UPDATE + SUCCESS,
@@ -63,7 +65,7 @@ export function* updateUserPassword(action) {
   const { data } = action.payload;
 
   try {
-    const passwordResponse = yield call(updatePassword, data);
+    const passwordResponse = yield callApi(updatePassword, { data });
 
     yield put({
       type: PASSWORD_UPDATE + SUCCESS,

@@ -22,6 +22,11 @@
         "title": "Customer Ratings",
         "avarage": "Average Rating",
         "submit": "Click to Rate"
+      },
+      "favorites": {
+        "add": "Add to Favorites",
+        "added": "Added to Favorites",
+        "remove": "Remove"
       }
     }
   }

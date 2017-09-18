@@ -1,4 +1,5 @@
-const { put, call } = require('redux-saga/effects');
+const { put } = require('redux-saga/effects');
+const { callApi } = require('../../app/effects');
 const {
   fetchCategory, fetchCategories
 } = require('../../app/sagas/categories_saga');
@@ -26,7 +27,7 @@ describe('#fetchCategory', () => {
     );
 
     expect(generator.next().value).toEqual(
-      call(fetchSingleCategory, id)
+      callApi(fetchSingleCategory, { id })
     );
 
     expect(generator.next(fetchCategoryResponse).value).toEqual(
@@ -53,7 +54,7 @@ describe('#fetchCategory', () => {
     );
 
     expect(generator.next().value).toEqual(
-      call(fetchSingleCategory, id)
+      callApi(fetchSingleCategory, { id })
     );
 
     expect(generator.throw(fetchCategoryError).value).toEqual(
@@ -84,7 +85,7 @@ describe('#fetchCategories', () => {
     );
 
     expect(generator.next().value).toEqual(
-      call(fetchAllCategories)
+      callApi(fetchAllCategories)
     );
 
     expect(generator.next(fetchAllCategoriesResponse).value).toEqual(
@@ -110,7 +111,7 @@ describe('#fetchCategories', () => {
     );
 
     expect(generator.next().value).toEqual(
-      call(fetchAllCategories)
+      callApi(fetchAllCategories)
     );
 
     expect(generator.throw(fetchAllCategoriesError).value).toEqual(

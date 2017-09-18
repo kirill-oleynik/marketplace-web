@@ -1,12 +1,17 @@
 const React = require('react');
 const { shallow } = require('enzyme');
 const toJSON = require('enzyme-to-json').default;
-const AppProfile = require('../../../app/components/applications/app_profile').default;
+const {
+  AppProfile
+} = require('../../../app/components/applications/app_profile');
 
 describe('#render', () => {
   test('it renders correctly', () => {
     const component = shallow(
       <AppProfile
+        canToggleFavorite
+        addToFavorites={() => {}}
+        removeFromFavorites={() => {}}
         t={(translation) => translation}
         appProfile={{
           id: '1',

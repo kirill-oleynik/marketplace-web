@@ -1,6 +1,7 @@
 const { ids, byId, appProfile } = require('../../app/reducers/applications');
 const {
-  SUCCESS, CATEGORIES_FETCH, CATEGORIES_FETCH_ALL, APPLICATION_FETCH
+  SUCCESS, FAILURE, REQUEST, CATEGORIES_FETCH, CATEGORIES_FETCH_ALL, APPLICATION_FETCH,
+  APPLICATIONS_ADD_TO_FAVORITES, APPLICATIONS_REMOVE_FROM_FAVORITES
 } = require('./../../app/constants');
 
 describe('#byId', () => {
@@ -91,15 +92,124 @@ describe('#appProfile', () => {
     expect(state).toEqual({});
   });
 
-  test('it handles APPLICATION_FETCH', () => {
-    const application_data = Symbol('application_data');
+  test('it handles APPLICATION_FETCH_SUCCESS', () => {
+    const applicationData = Symbol('applicationData');
     const state = appProfile(undefined, {
       type: APPLICATION_FETCH + SUCCESS,
       payload: {
-        application: application_data
+        application: applicationData
       }
     });
 
-    expect(state).toEqual(application_data)
+    expect(state).toEqual(applicationData);
+  });
+
+  test('it handles APPLICATIONS_ADD_TO_FAVORITES_REQUEST', () => {
+    const state = appProfile(
+      {
+        id: 1
+      },
+      {
+        type: APPLICATIONS_ADD_TO_FAVORITES + REQUEST
+      }
+    );
+
+    expect(state).toEqual({
+      id: 1,
+      inProgress: true
+    });
+  });
+
+  test('it handles APPLICATIONS_ADD_TO_FAVORITES_SUCCESS', () => {
+    const favorite = Symbol('favorite');
+    const state = appProfile(
+      {
+        id: 1,
+        inProgress: true
+      },
+      {
+        type: APPLICATIONS_ADD_TO_FAVORITES + SUCCESS,
+        payload: {
+          favorite
+        }
+      }
+    );
+
+    expect(state).toEqual({
+      favorite,
+      id: 1,
+      inProgress: false
+    });
+  });
+
+  test('it handles APPLICATIONS_ADD_TO_FAVORITES_FAILURE', () => {
+    const state = appProfile(
+      {
+        id: 1,
+        inProgress: true
+      },
+      {
+        type: APPLICATIONS_ADD_TO_FAVORITES + FAILURE
+      }
+    );
+
+    expect(state).toEqual({
+      id: 1,
+      inProgress: false
+    });
+  });
+
+  test('it handles APPLICATIONS_REMOVE_FROM_FAVORITES_REQUEST', () => {
+    const state = appProfile(
+      {
+        id: 1
+      },
+      {
+        type: APPLICATIONS_REMOVE_FROM_FAVORITES + REQUEST
+      }
+    );
+
+    expect(state).toEqual({
+      id: 1,
+      inProgress: true
+    });
+  });
+
+  test('it handles APPLICATIONS_REMOVE_FROM_FAVORITES_SUCCESS', () => {
+    const state = appProfile(
+      {
+        id: 1,
+        favorite: {},
+        inProgress: true
+      },
+      {
+        type: APPLICATIONS_REMOVE_FROM_FAVORITES + SUCCESS
+      }
+    );
+
+    expect(state).toEqual({
+      id: 1,
+      favorite: null,
+      inProgress: false
+    });
+  });
+
+  test('it handles APPLICATIONS_REMOVE_FROM_FAVORITES_FAILURE', () => {
+    const state = appProfile(
+      {
+        id: 1,
+        favorite: {},
+        inProgress: true
+      },
+      {
+        type: APPLICATIONS_REMOVE_FROM_FAVORITES + FAILURE
+      }
+    );
+
+    expect(state).toEqual({
+      id: 1,
+      favorite: {},
+      inProgress: false
+    });
   });
 });

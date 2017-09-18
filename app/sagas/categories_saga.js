@@ -1,4 +1,6 @@
-import { put, call, takeEvery } from 'redux-saga/effects';
+import { put, takeEvery } from 'redux-saga/effects';
+
+import { callApi } from '../effects';
 import { fetchSingleCategory, fetchAllCategories } from '../services/api';
 import { getResponseData, getResponseError } from '../helpers/response_helpers';
 import {
@@ -12,7 +14,7 @@ export function* fetchCategory({ payload }) {
   yield put({ type: CATEGORIES_FETCH + REQUEST });
 
   try {
-    const categoryResponse = yield call(fetchSingleCategory, id);
+    const categoryResponse = yield callApi(fetchSingleCategory, { id });
 
     yield put({
       type: CATEGORIES_FETCH + SUCCESS,
@@ -32,7 +34,7 @@ export function* fetchCategories() {
   yield put({ type: CATEGORIES_FETCH_ALL + REQUEST });
 
   try {
-    const categoriesResponse = yield call(fetchAllCategories);
+    const categoriesResponse = yield callApi(fetchAllCategories);
 
     yield put({
       type: CATEGORIES_FETCH_ALL + SUCCESS,

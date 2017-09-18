@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<button
+  className="favourites-add"
+  disabled={true}
+  onClick={[Function]}
+  type="button"
+>
+  <i
+    className="icon icon-heart in-black-035 font-16 mr-10"
+  />
+  <span
+    className="favourites-add__text"
+  />
+</button>
+`;

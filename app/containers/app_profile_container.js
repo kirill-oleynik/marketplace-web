@@ -4,7 +4,15 @@ import { Sticky, StickyContainer } from 'react-sticky';
 import { Container, Row, Col } from 'reactstrap';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
-import { getAppProfile } from '../selectors/applications_selectors';
+
+import {
+  addToFavorites, removeFromFavorites
+} from '../actions/applications_actions';
+
+import {
+  getAppProfile, getCanToggleFavorite
+} from '../selectors/applications_selectors';
+
 import MainFooter from '../components/footer';
 import Header from '../containers/header_container';
 import AppBlockVertical from '../components/app_block_vertical';
@@ -18,7 +26,7 @@ import CategoriesContainer from '../containers/categories_container';
 const CategoriesDropdownContainer = CategoriesContainer(CategoriesDropdown);
 const CategoriesLinkListContainer = CategoriesContainer(CategoriesLinkList);
 
-const AppProfileContainer = ({ appProfile, t }) => (
+const AppProfileContainer = ({ t, ...rest }) => (
   <div className="page-container">
     <Header />
 
@@ -52,10 +60,7 @@ const AppProfileContainer = ({ appProfile, t }) => (
             </Col>
 
             <Col xs="12" sm="9">
-              <AppProfile
-                appProfile={appProfile}
-                t={t}
-              />
+              <AppProfile {...rest} />
 
               <div className="divider divider--dark mb-30" />
 
@@ -73,14 +78,19 @@ const AppProfileContainer = ({ appProfile, t }) => (
 );
 
 AppProfileContainer.propTypes = {
-  appProfile: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  appProfile: getAppProfile(state)
+  appProfile: getAppProfile(state),
+  canToggleFavorite: getCanToggleFavorite(state)
 });
 
-export default connect(mapStateToProps, null)(
+const mapDispatchToProps = {
+  addToFavorites,
+  removeFromFavorites
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(
   translate(['applications', 'common'])(AppProfileContainer)
 );

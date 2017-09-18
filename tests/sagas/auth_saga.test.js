@@ -1,5 +1,6 @@
 const Router = require('next/router').default;
 const { put, fork, call, take } = require('redux-saga/effects');
+const { callApi } = require('../../app/effects');
 const { home, addExtraInfo } = require('../../app/routes');
 const {
   signUp, signIn, fetchUser, signInRedirect, signUpSignInRedirect
@@ -28,7 +29,7 @@ describe('#signUp', () => {
     );
 
     expect(generator.next().value).toEqual(
-      call(createUser, data)
+      callApi(createUser, { data })
     );
 
     expect(generator.next(createUserResponse).value).toEqual(
@@ -55,7 +56,7 @@ describe('#signUp', () => {
     );
 
     expect(generator.next().value).toEqual(
-      call(createUser, data)
+      callApi(createUser, { data })
     );
 
     expect(generator.throw(createUserError).value).toEqual(
@@ -87,7 +88,7 @@ describe('#signIn', () => {
     );
 
     expect(generator.next().value).toEqual(
-      call(createSession, data)
+      callApi(createSession, { data })
     );
 
     expect(generator.next(createSessionResponse).value).toEqual(
@@ -114,7 +115,7 @@ describe('#signIn', () => {
     );
 
     expect(generator.next().value).toEqual(
-      call(createSession, data)
+      callApi(createSession, { data })
     );
 
     expect(generator.throw(createSessionError).value).toEqual(
@@ -145,7 +146,7 @@ describe('#fetchUser', () => {
     );
 
     expect(generator.next().value).toEqual(
-      call(fetchCurrentUser)
+      callApi(fetchCurrentUser)
     );
 
     expect(generator.next(fetchUserResponse).value).toEqual(
@@ -171,7 +172,7 @@ describe('#fetchUser', () => {
     );
 
     expect(generator.next().value).toEqual(
-      call(fetchCurrentUser)
+      callApi(fetchCurrentUser)
     );
 
     expect(generator.throw(fetchUserError).value).toEqual(

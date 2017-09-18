@@ -1,5 +1,7 @@
 const Router = require('next/router').default;
 const { put, call } = require('redux-saga/effects');
+const { callApi } = require('../../app/effects');
+
 const {
   createUserProfile, updateUserProfile, updateUserPassword
 } = require('../../app/sagas/profile_saga');
@@ -31,7 +33,7 @@ describe('#createUserProfile', () => {
     );
 
     expect(generator.next().value).toEqual(
-      call(createProfile, data)
+      callApi(createProfile, { data })
     );
 
     expect(generator.next(createProfileResponse).value).toEqual(
@@ -64,7 +66,7 @@ describe('#createUserProfile', () => {
     );
 
     expect(generator.next().value).toEqual(
-      call(createProfile, data)
+      callApi(createProfile, { data })
     );
 
     expect(generator.throw(createProfileError).value).toEqual(
@@ -94,7 +96,7 @@ describe('#updateUserProfile', () => {
     });
 
     expect(generator.next().value).toEqual(
-      call(updateUser, data)
+      callApi(updateUser, { data })
     );
 
     expect(generator.next(updateUserResponse).value).toEqual(
@@ -128,7 +130,7 @@ describe('#updateUserProfile', () => {
     });
 
     expect(generator.next().value).toEqual(
-      call(updateUser, data)
+      callApi(updateUser, { data })
     );
 
     expect(generator.throw(updateUserError).value).toEqual(
@@ -158,7 +160,7 @@ describe('#updateUserPassword', () => {
     });
 
     expect(generator.next().value).toEqual(
-      call(updatePassword, data)
+      callApi(updatePassword, { data })
     );
 
     expect(generator.next(updatePasswordResponse).value).toEqual(
@@ -192,7 +194,7 @@ describe('#updateUserPassword', () => {
     });
 
     expect(generator.next().value).toEqual(
-      call(updatePassword, data)
+      callApi(updatePassword, { data })
     );
 
     expect(generator.throw(updatePasswordError).value).toEqual(

@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 
 import {
-  SUCCESS, CATEGORIES_FETCH, CATEGORIES_FETCH_ALL, APPLICATION_FETCH
+  SUCCESS, FAILURE, REQUEST, CATEGORIES_FETCH, CATEGORIES_FETCH_ALL,
+  APPLICATION_FETCH, APPLICATIONS_ADD_TO_FAVORITES, APPLICATIONS_REMOVE_FROM_FAVORITES
 } from '../constants';
 
 const applicationsReduceFn = (accumulator, application) => ({
@@ -58,6 +59,30 @@ export const appProfile = (state = {}, action = {}) => {
   switch (action.type) {
     case APPLICATION_FETCH + SUCCESS:
       return action.payload.application;
+    case APPLICATIONS_ADD_TO_FAVORITES + REQUEST:
+    case APPLICATIONS_REMOVE_FROM_FAVORITES + REQUEST:
+      return {
+        ...state,
+        inProgress: true
+      };
+    case APPLICATIONS_ADD_TO_FAVORITES + FAILURE:
+    case APPLICATIONS_REMOVE_FROM_FAVORITES + FAILURE:
+      return {
+        ...state,
+        inProgress: false
+      };
+    case APPLICATIONS_ADD_TO_FAVORITES + SUCCESS:
+      return {
+        ...state,
+        inProgress: false,
+        favorite: action.payload.favorite
+      };
+    case APPLICATIONS_REMOVE_FROM_FAVORITES + SUCCESS:
+      return {
+        ...state,
+        inProgress: false,
+        favorite: null
+      };
     default:
       return state;
   }
