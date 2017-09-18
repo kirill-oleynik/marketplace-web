@@ -1,5 +1,9 @@
 import { createSelector } from 'reselect';
-import { getById as getApplicationsById } from './applications_selectors';
+import compact from 'lodash/compact';
+import map from 'lodash/map';
+import {
+  getById as getApplicationsById, getAppProfileId
+} from './applications_selectors';
 
 export const getIds = (state) => state.categories.ids;
 export const getById = (state) => state.categories.byId;
@@ -9,21 +13,20 @@ export const getRelatedIds = (state) => {
   return categoriesIds || [];
 };
 
-export const getCategories = createSelector(
-  getIds, getById, (ids, byId) => ids.map((id) => byId[id])
+const categoriesGetter = (idsGetter) => createSelector(
+  idsGetter, getById, (ids, byId) => ids.map((id) => byId[id])
 );
 
-export const getRelatedCategories = createSelector(
-  getRelatedIds, getById, (ids, byId) => ids.map((id) => byId[id])
-);
+export const getCategories = categoriesGetter(getIds);
+export const getRelatedCategories = categoriesGetter(getRelatedIds);
 
 export const getRelatedCategoriesWithApplications = createSelector(
-  getRelatedCategories, getApplicationsById,
-  (categories, applications) => categories.map((category) => ({
+  getAppProfileId, getRelatedCategories, getApplicationsById,
+  (appProfileId, categories, applications) => categories.map((category) => ({
     ...category,
-    applications: category.applications.map((applicationId) => (
-      applications[applicationId]
-    ))
+    applications: compact(map(category.applications, (applicationId) => (
+      appProfileId !== applicationId ? applications[applicationId] : null
+    )))
   }))
 );
 
