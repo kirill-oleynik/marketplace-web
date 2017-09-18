@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<button
+  className="favourites-activities"
+  disabled={true}
+  onClick={[Function]}
+  type="button"
+>
+  <span
+    className="favourites-activities__addeded"
+  >
+    <i
+      className="icon icon-heart-filled in-black-035 font-16 mr-10"
+    />
+    <span
+      className="favourites-add__text"
+    />
+  </span>
+  <span
+    className="favourites-activities__remove"
+  >
+    <span
+      className="relative mr-10"
+    >
+      <i
+        className="icon icon-heart-filled in-black-035 font-16"
+      />
+      <i
+        className="icon icon-cross favourites-activities__remove-cross"
+      />
+    </span>
+    <span
+      className="favourites-add__text"
+    />
+  </span>
+</button>
+`;

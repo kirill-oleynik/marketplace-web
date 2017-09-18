@@ -6,7 +6,11 @@ import {
 import {
   watchCategoryExpand, watchCategoriesFetchAll
 } from './categories_saga';
-import { watchFetchSingleApplication } from './applications_saga';
+import {
+  watchFetchSingleApplication,
+  watchAddToFavorites,
+  watchRemoveFromFavorites
+} from './applications_saga';
 
 export default function* rootSaga() {
   yield all([
@@ -17,6 +21,8 @@ export default function* rootSaga() {
     watchPasswordUpdate(),
     watchCategoryExpand(),
     watchCategoriesFetchAll(),
-    watchFetchSingleApplication()
+    watchFetchSingleApplication(),
+    watchAddToFavorites(),
+    watchRemoveFromFavorites()
   ]);
 }

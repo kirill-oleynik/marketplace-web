@@ -16,15 +16,16 @@ class Applications extends Component {
     translations: PropTypes.object.isRequired
   }
 
-  static async getInitialProps(ctx) {
+  static async getInitialProps({ store, query }) {
     const commonTranslations = await getTranslations('common');
     const applicationsTranslations = await getTranslations('applications');
 
-    ctx.store.dispatch(
+    store.dispatch(
       fetchAll()
     );
-    ctx.store.dispatch(
-      fetchApplication(ctx.query.slug)
+
+    store.dispatch(
+      fetchApplication(query.slug)
     );
 
     return {

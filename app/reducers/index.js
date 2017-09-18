@@ -1,4 +1,6 @@
 import { combineReducers } from 'redux';
+
+import cookie from './cookie';
 import signUp from './sign_up';
 import signIn from './sign_in';
 import currentUser from './current_user';
@@ -8,6 +10,7 @@ import profile from './profile';
 import applications from './applications';
 
 export default combineReducers({
+  cookie,
   signUp,
   signIn,
   currentUser,

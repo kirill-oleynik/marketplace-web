@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
+import { translate } from 'react-i18next';
+
 import MainButton from '../main_button';
-import AddToFavorites from '../add_to_favorites';
+import ToggleFavorite from './toggle_favorite';
 import Rating from '../rating';
 import RatingMarks from '../rating_marks';
 import ButtonWithIcon from '../button_with_icon';
@@ -10,7 +12,7 @@ import ImageGallerySlider from '../image_gallery';
 import { asFoundedDate } from '../../helpers/dates_helpers';
 import { truncateParagraph } from '../../helpers/text_helpers';
 
-class AppProfile extends Component {
+export class AppProfile extends Component {
   state = {
     descriptionTruncated: true
   };
@@ -48,7 +50,9 @@ class AppProfile extends Component {
   showMoreDescription = () => this.setDescriptionTruncated(false);
 
   render() {
-    const { appProfile, t } = this.props;
+    const {
+      t, appProfile, canToggleFavorite, addToFavorites, removeFromFavorites
+    } = this.props;
 
     return (
       <div>
@@ -70,7 +74,12 @@ class AppProfile extends Component {
 
               <Rating className="mb-30" />
 
-              <AddToFavorites />
+              <ToggleFavorite
+                application={appProfile}
+                addToFavorites={addToFavorites}
+                removeFromFavorites={removeFromFavorites}
+                disabled={!canToggleFavorite}
+              />
             </div>
 
             <div>
@@ -258,8 +267,11 @@ class AppProfile extends Component {
 }
 
 AppProfile.propTypes = {
+  t: PropTypes.func.isRequired,
   appProfile: PropTypes.object.isRequired,
-  t: PropTypes.func.isRequired
+  addToFavorites: PropTypes.func.isRequired,
+  removeFromFavorites: PropTypes.func.isRequired,
+  canToggleFavorite: PropTypes.bool.isRequired
 };
 
-export default AppProfile;
+export default translate(['applications'])(AppProfile);

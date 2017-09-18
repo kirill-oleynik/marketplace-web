@@ -2,7 +2,8 @@ const {
   getById,
   getIds,
   getApplications,
-  getAppProfile
+  getAppProfile,
+  getCanToggleFavorite
 } = require('../../app/selectors/applications_selectors');
 
 describe('#getById', () => {
@@ -54,6 +55,49 @@ describe('#getAppProfile', () => {
       applications: {
         appProfile: 'appProfile'
       }
-    })).toEqual('appProfile')
+    })).toEqual('appProfile');
+  });
+});
+
+describe('#getCanToggleFavorite', () => {
+  describe('when current user present', () => {
+    describe('when app in progress', () => {
+      test('it returns false', () => {
+        expect(getCanToggleFavorite({
+          currentUser: { id: 1 },
+          applications: {
+            appProfile: {
+              inProgress: true
+            }
+          }
+        })).toEqual(false);
+      });
+    });
+
+    describe('when app not in progress', () => {
+      test('it returns true', () => {
+        expect(getCanToggleFavorite({
+          currentUser: { id: 1 },
+          applications: {
+            appProfile: {
+              inProgress: false
+            }
+          }
+        })).toEqual(true);
+      });
+    });
+  });
+
+  describe('when current user not present', () => {
+    test('it returns false', () => {
+      expect(getCanToggleFavorite({
+        currentUser: {},
+        applications: {
+          appProfile: {
+            inProgress: false
+          }
+        }
+      })).toEqual(false);
+    });
   });
 });

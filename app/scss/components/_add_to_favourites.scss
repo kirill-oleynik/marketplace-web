@@ -1,30 +1,48 @@
-.favourites-add:hover .favourites-add__text {
+.favourites-add:hover .favourites-add__text,
+.favourites-activities:hover .favourites-add__text,
+.favourites-activities:hover .icon {
   opacity: 0.6;
 }
+
+.favourites-add:disabled,
+.favourites-activities:disabled {
+  opacity: 0.8;
+  cursor: default;
+
+  &:hover {
+    .icon,
+    .favourites-add__text {
+      opacity: 1;
+    }
+  }
+}
+
 .favourites-add__text {
   font-size: 14px;
   font-weight: 700;
   line-height: 1.4;
 }
+
 .favourites-activities {
-  display: inline-block;
+  min-width: 155px;
+  text-align: left;
   position: relative;
+  display: inline-block;
 }
+
 .favourites-activities__remove {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
+  display: none;
 }
+
 .favourites-activities:hover {
   .favourites-activities__addeded {
-    opacity: 0;
+    display: none;
   }
   .favourites-activities__remove {
-    opacity: 1;
+    display: inline;
   }
 }
+
 .favourites-activities__remove-cross {
   color: black;
   font-size: 6px;
@@ -32,5 +50,4 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  margin-top: -1px;
 }

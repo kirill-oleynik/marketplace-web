@@ -29,8 +29,24 @@ exports[`#render it renders correctly 1`] = `
         <Rating
           className="mb-30"
         />
-        <AddToFavorites
-          added={false}
+        <ToggleFavorite
+          addToFavorites={[Function]}
+          application={
+            Object {
+              "address": "address",
+              "description": "description",
+              "email": "email",
+              "founded": "2014-05-24",
+              "id": "1",
+              "phone": "phone",
+              "slug": "slug",
+              "summary": "summary",
+              "title": "title",
+              "website": "website",
+            }
+          }
+          disabled={false}
+          removeFromFavorites={[Function]}
         />
       </div>
       <div>

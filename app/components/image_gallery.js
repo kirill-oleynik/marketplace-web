@@ -5,16 +5,16 @@ class ImageGallerySlider extends Component {
   render() {
     const images = [
       {
-        original: 'http://lorempixel.com/1000/600/nature/1/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/1/'
+        original: 'https://via.placeholder.com/1000x600',
+        thumbnail: 'https://via.placeholder.com/250x150'
       },
       {
-        original: 'http://lorempixel.com/1000/600/nature/2/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/2/'
+        original: 'https://via.placeholder.com/1000x600',
+        thumbnail: 'https://via.placeholder.com/250x150'
       },
       {
-        original: 'http://lorempixel.com/1000/600/nature/3/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/3/'
+        original: 'https://via.placeholder.com/1000x600',
+        thumbnail: 'https://via.placeholder.com/250x150'
       }
     ];
 

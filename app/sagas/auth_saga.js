@@ -1,5 +1,7 @@
 import Router from 'next/router';
-import { put, fork, call, take, takeLatest } from 'redux-saga/effects';
+import { put, call, fork, take, takeLatest } from 'redux-saga/effects';
+
+import { callApi } from '../effects';
 import { getResponseData, getResponseError } from '../helpers/response_helpers';
 import { createUser, createSession, fetchCurrentUser } from '../services/api';
 import { home, addExtraInfo } from '../routes';
@@ -7,11 +9,11 @@ import {
   REQUEST, SUCCESS, FAILURE, AUTH_SIGN_UP, AUTH_SIGN_IN, AUTH_FETCH_USER
 } from '../constants';
 
-export function* signUp(userData) {
+export function* signUp(data) {
   yield put({ type: AUTH_SIGN_UP + REQUEST });
 
   try {
-    const userResponse = yield call(createUser, userData);
+    const userResponse = yield callApi(createUser, { data });
 
     yield put({
       type: AUTH_SIGN_UP + SUCCESS,
@@ -27,11 +29,11 @@ export function* signUp(userData) {
   }
 }
 
-export function* signIn(sessionData) {
+export function* signIn(data) {
   yield put({ type: AUTH_SIGN_IN + REQUEST });
 
   try {
-    const sessionResponse = yield call(createSession, sessionData);
+    const sessionResponse = yield callApi(createSession, { data });
 
     yield put({
       type: AUTH_SIGN_IN + SUCCESS,
@@ -51,7 +53,7 @@ export function* fetchUser() {
   yield put({ type: AUTH_FETCH_USER + REQUEST });
 
   try {
-    const userResponse = yield call(fetchCurrentUser);
+    const userResponse = yield callApi(fetchCurrentUser);
 
     yield put({
       type: AUTH_FETCH_USER + SUCCESS,
