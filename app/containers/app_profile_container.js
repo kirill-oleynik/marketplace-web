@@ -15,15 +15,13 @@ import {
 
 import MainFooter from '../components/footer';
 import Header from '../containers/header_container';
-import AppBlockVertical from '../components/app_block_vertical';
 import GoTopLink from '../components/go_top_link';
 import AppProfile from '../components/applications/app_profile';
 
-import CategoriesDropdown from '../components/categories/dropdown';
 import CategoriesLinkList from '../components/categories/link_list';
 import CategoriesContainer from '../containers/categories_container';
+import RelatedCategoriesContainer from '../containers/related_categories_container';
 
-const CategoriesDropdownContainer = CategoriesContainer(CategoriesDropdown);
 const CategoriesLinkListContainer = CategoriesContainer(CategoriesLinkList);
 
 const AppProfileContainer = ({ t, ...rest }) => (
@@ -31,10 +29,6 @@ const AppProfileContainer = ({ t, ...rest }) => (
     <Header />
 
     <main className="flex-grow-1">
-      <section className="hidden-sm-up">
-        <CategoriesDropdownContainer />
-      </section>
-
       <Container>
         <section className="pt-60">
           <Row>
@@ -64,7 +58,7 @@ const AppProfileContainer = ({ t, ...rest }) => (
 
               <div className="divider divider--dark mb-30" />
 
-              <AppBlockVertical />
+              <RelatedCategoriesContainer />
             </Col>
           </Row>
         </section>

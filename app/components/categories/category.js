@@ -11,7 +11,7 @@ const getApplications = (category) => (
   category.isFetched ? category.applications : take(category.applications, 4)
 );
 
-export const Category = ({ t, expand, collapse, category }) => {
+export const Category = ({ t, expand, collapse, category, verticalLayout }) => {
   const needToFetch = category.isFetchable && !category.isFetched;
   const needToHide = category.isFetchable && category.isFetched;
 
@@ -26,9 +26,15 @@ export const Category = ({ t, expand, collapse, category }) => {
       <Row>
         {
           getApplications(category).map((application) => (
-            <Col xs="12" md="6" key={application.id}>
+            <Col
+              key={application.id}
+              xs="12"
+              sm={verticalLayout && '6'}
+              md={verticalLayout ? '3' : '6'}
+            >
               <ApplicationPreview
                 application={application}
+                vertical={verticalLayout}
               />
             </Col>
           ))
@@ -66,7 +72,12 @@ Category.propTypes = {
   t: PropTypes.func.isRequired,
   expand: PropTypes.func.isRequired,
   collapse: PropTypes.func.isRequired,
-  category: PropTypes.object.isRequired
+  category: PropTypes.object.isRequired,
+  verticalLayout: PropTypes.bool
+};
+
+Category.defaultProps = {
+  verticalLayout: false
 };
 
 export default translate(['common'])(Category);

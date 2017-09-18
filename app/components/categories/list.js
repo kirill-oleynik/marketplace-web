@@ -6,7 +6,7 @@ const isLastCategory = (categoryIndex, categoriesLength) => (
   categoryIndex === categoriesLength - 1
 );
 
-const CategoriesList = ({ expand, collapse, categories }) => (
+const CategoriesList = ({ expand, collapse, categories, verticalLayout }) => (
   <div>
     {categories.map((category, index) => (
       category.applications.length > 0 ? (
@@ -15,6 +15,7 @@ const CategoriesList = ({ expand, collapse, categories }) => (
             expand={expand}
             collapse={collapse}
             category={category}
+            verticalLayout={verticalLayout}
           />
 
           {
@@ -31,7 +32,12 @@ const CategoriesList = ({ expand, collapse, categories }) => (
 CategoriesList.propTypes = {
   expand: PropTypes.func.isRequired,
   collapse: PropTypes.func.isRequired,
-  categories: PropTypes.array.isRequired
+  categories: PropTypes.array.isRequired,
+  verticalLayout: PropTypes.bool
+};
+
+CategoriesList.defaultProps = {
+  verticalLayout: false
 };
 
 export default CategoriesList;

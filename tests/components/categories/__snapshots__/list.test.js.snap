@@ -16,6 +16,7 @@ exports[`#render it renders correctly 1`] = `
       }
       collapse={[Function]}
       expand={[Function]}
+      verticalLayout={false}
     />
   </div>
 </div>

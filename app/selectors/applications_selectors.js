@@ -17,3 +17,5 @@ export const getCanToggleFavorite = createSelector(
     (currentUser.id && !application.inProgress) || false
   )
 );
+
+export const getAppProfileId = (state) => getAppProfile(state).id;
