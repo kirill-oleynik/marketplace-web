@@ -72,7 +72,7 @@ exports[`#render it renders correctly 1`] = `
     <div
       className="mb-30"
     >
-      <ImageGallerySlider />
+      <ApplicationGalerry />
     </div>
     <p
       className="font-20 font-700"

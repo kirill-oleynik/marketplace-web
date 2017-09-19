@@ -5730,9 +5730,9 @@ react-i18next@^5.0.0:
   dependencies:
     hoist-non-react-statics "1.2.0"
 
-react-image-gallery@^0.8.3:
-  version "0.8.3"
-  resolved "https://registry.yarnpkg.com/react-image-gallery/-/react-image-gallery-0.8.3.tgz#508577a261e643487b344f05e9ec1a24b2f10573"
+"react-image-gallery@https://github.com/sleekybadger/react-image-gallery.git":
+  version "0.8.0"
+  resolved "https://github.com/sleekybadger/react-image-gallery.git#1a358956ab753f84a43a2402ddc3ccbc4d1e75b4"
   dependencies:
     lodash.debounce "^4.0.8"
     lodash.throttle "^4.1.1"
