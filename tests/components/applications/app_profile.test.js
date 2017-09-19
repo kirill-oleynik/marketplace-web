@@ -10,6 +10,7 @@ describe('#render', () => {
     const component = shallow(
       <AppProfile
         canToggleFavorite
+        createReview={() => {}}
         addToFavorites={() => {}}
         removeFromFavorites={() => {}}
         t={(translation) => translation}
@@ -23,7 +24,8 @@ describe('#render', () => {
           email: 'email',
           website: 'website',
           address: 'address',
-          founded: '2014-05-24'
+          founded: '2014-05-24',
+          review: 3
         }}
       />
     );

@@ -11,6 +11,9 @@ import {
   watchAddToFavorites,
   watchRemoveFromFavorites
 } from './applications_saga';
+import {
+  watchReviewCreate
+} from './reviews_saga';
 
 export default function* rootSaga() {
   yield all([
@@ -23,6 +26,7 @@ export default function* rootSaga() {
     watchCategoriesFetchAll(),
     watchFetchSingleApplication(),
     watchAddToFavorites(),
-    watchRemoveFromFavorites()
+    watchRemoveFromFavorites(),
+    watchReviewCreate()
   ]);
 }

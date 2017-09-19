@@ -10,6 +10,10 @@ import {
 } from '../actions/applications_actions';
 
 import {
+  createReview
+} from '../actions/reviews_actions';
+
+import {
   getAppProfile, getCanToggleFavorite
 } from '../selectors/applications_selectors';
 
@@ -82,7 +86,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   addToFavorites,
-  removeFromFavorites
+  removeFromFavorites,
+  createReview
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(

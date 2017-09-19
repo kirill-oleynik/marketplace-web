@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<div>
+  <p
+    className="font-16 font-700 mb-20"
+  >
+    appProfile.ratings.submit
+  </p>
+  <div
+    className="rating__stars rating__stars-4"
+  >
+    <i
+      className="rating__stars-item icon icon-star"
+      onClick={[Function]}
+    />
+    <i
+      className="rating__stars-item icon icon-star"
+      onClick={[Function]}
+    />
+    <i
+      className="rating__stars-item icon icon-star"
+      onClick={[Function]}
+    />
+    <i
+      className="rating__stars-item icon icon-star"
+      onClick={[Function]}
+    />
+    <i
+      className="rating__stars-item icon icon-star"
+      onClick={[Function]}
+    />
+  </div>
+</div>
+`;
