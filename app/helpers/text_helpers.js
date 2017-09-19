@@ -9,4 +9,16 @@ const truncateText = curry((separator, text, length) => (
   })
 ));
 
+const replaceText = curry((rule, replaceValue, text) => (
+  text.replace(rule, replaceValue)
+));
+
+const prependText = curry((prependValue, text) => (prependValue + text));
+
 export const truncateParagraph = truncateText('. ');
+
+export const humanizeUrl = replaceText(/(^\w+:|^)\/\//, '');
+
+export const emailLink = prependText('mailto:');
+
+export const phoneLink = prependText('tel:');
