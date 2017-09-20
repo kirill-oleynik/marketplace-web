@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<div>
+  <ImageGallery
+    autoPlay={false}
+    disableArrowKeys={false}
+    disableSwipe={false}
+    disableThumbnailScroll={false}
+    indexSeparator=" / "
+    infinite={true}
+    items={
+      Array [
+        Object {
+          "original": "https://example.com/1.png",
+          "thumbnail": "https://example.com/1.png",
+        },
+        Object {
+          "original": "https://example.com/2.png",
+          "thumbnail": "https://example.com/2.png",
+        },
+      ]
+    }
+    lazyLoad={false}
+    onSlide={[Function]}
+    renderFullscreenButton={[Function]}
+    renderLeftNav={[Function]}
+    renderPlayPauseButton={[Function]}
+    renderRightNav={[Function]}
+    renderThumbnailsLeftNav={[Function]}
+    renderThumbnailsRightNav={[Function]}
+    showBullets={false}
+    showFullscreenButton={true}
+    showIndex={false}
+    showNav={true}
+    showPlayButton={false}
+    showThumbnails={true}
+    showThumbnailsNav={true}
+    slideDuration={450}
+    slideInterval={2000}
+    slideOnThumbnailHover={false}
+    startIndex={0}
+    swipingTransitionDuration={0}
+    thumbnailPosition="bottom"
+    useBrowserFullscreen={true}
+  />
+  <ApplicationGalleryModal
+    currentIndex={0}
+    isOpen={false}
+    onCloseClick={[Function]}
+    renderLeftNav={[Function]}
+    renderRightNav={[Function]}
+    slide={
+      Object {
+        "description": "Pam Pam",
+        "id": 1,
+        "title": "Hello World!",
+        "url": "https://example.com/1.png",
+      }
+    }
+    slidesLength={2}
+  />
+</div>
+`;

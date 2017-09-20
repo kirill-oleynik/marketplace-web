@@ -8,6 +8,7 @@ import {
 } from './categories_saga';
 import {
   watchFetchSingleApplication,
+  watchFetchApplicationGallery,
   watchAddToFavorites,
   watchRemoveFromFavorites
 } from './applications_saga';
@@ -25,6 +26,7 @@ export default function* rootSaga() {
     watchCategoryExpand(),
     watchCategoriesFetchAll(),
     watchFetchSingleApplication(),
+    watchFetchApplicationGallery(),
     watchAddToFavorites(),
     watchRemoveFromFavorites(),
     watchReviewCreate()

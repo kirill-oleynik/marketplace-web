@@ -4,14 +4,16 @@ import { Row, Col } from 'reactstrap';
 import { translate } from 'react-i18next';
 
 import MainButton from '../main_button';
+import ApplicationGallery from './gallery';
 import ToggleFavorite from './toggle_favorite';
 import Rating from '../rating';
 import RatingMarks from '../rating_marks';
 import ButtonWithIcon from '../button_with_icon';
-import ImageGallerySlider from '../image_gallery';
 import { asFoundedDate } from '../../helpers/dates_helpers';
-import { truncateParagraph } from '../../helpers/text_helpers';
 import SubmitReview from './submit_review';
+import {
+  truncateParagraph, humanizeUrl, emailLink, phoneLink
+} from '../../helpers/text_helpers';
 
 export class AppProfile extends Component {
   state = {
@@ -58,7 +60,8 @@ export class AppProfile extends Component {
 
   render() {
     const {
-      t, appProfile, canToggleFavorite, addToFavorites, removeFromFavorites
+      t, appProfile, gallery, canToggleFavorite,
+      addToFavorites, removeFromFavorites
     } = this.props;
 
     return (
@@ -105,9 +108,15 @@ export class AppProfile extends Component {
             {t('appProfile.gallery.title')}
           </p>
 
-          <div className="mb-30">
-            <ImageGallerySlider />
-          </div>
+          {
+            gallery.slides && gallery.slides.length ? (
+              <div className="mb-30">
+                <ApplicationGallery
+                  slides={gallery.slides}
+                />
+              </div>
+            ) : null
+          }
 
           <p className="font-20 font-700">
             {t('appProfile.description.title')}
@@ -213,9 +222,12 @@ export class AppProfile extends Component {
                     {t('appProfile.extra.email')}
                   </p>
 
-                  <p className="in-black-050">
+                  <a
+                    href={emailLink(appProfile.email)}
+                    className="in-black-050"
+                  >
                     {appProfile.email}
-                  </p>
+                  </a>
                 </Col>
               ) : null
             }
@@ -227,9 +239,13 @@ export class AppProfile extends Component {
                     {t('appProfile.extra.website')}
                   </p>
 
-                  <p className="in-black-050">
-                    {appProfile.website}
-                  </p>
+                  <a
+                    href={appProfile.website}
+                    target="_blank"
+                    className="in-black-050"
+                  >
+                    {humanizeUrl(appProfile.website)}
+                  </a>
                 </Col>
               ) : null
             }
@@ -241,9 +257,12 @@ export class AppProfile extends Component {
                     {t('appProfile.extra.phone')}
                   </p>
 
-                  <p className="in-black-050">
+                  <a
+                    href={phoneLink(appProfile.phone)}
+                    className="in-black-050"
+                  >
                     {appProfile.phone}
-                  </p>
+                  </a>
                 </Col>
               ) : null
             }
@@ -270,6 +289,7 @@ export class AppProfile extends Component {
 
 AppProfile.propTypes = {
   t: PropTypes.func.isRequired,
+  gallery: PropTypes.object.isRequired,
   appProfile: PropTypes.object.isRequired,
   addToFavorites: PropTypes.func.isRequired,
   removeFromFavorites: PropTypes.func.isRequired,

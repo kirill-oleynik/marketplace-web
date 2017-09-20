@@ -1,10 +1,19 @@
 const { put } = require('redux-saga/effects');
 const { callApi } = require('../../app/effects');
-const { fetchApplication, addToFavorites, removeFromFavorites } = require('../../app/sagas/applications_saga');
-const { fetchSingleApplication, createFavorites, deleteFavorites } = require('../../app/services/api');
+
+const {
+  fetchGallery, fetchApplication, addToFavorites, removeFromFavorites
+} = require('../../app/sagas/applications_saga');
+
+const {
+  fetchSingleApplication, createFavorites,
+  deleteFavorites, fetchApplicationGallery
+} = require('../../app/services/api');
+
 const {
   REQUEST, SUCCESS, FAILURE, APPLICATION_FETCH,
-  APPLICATIONS_ADD_TO_FAVORITES, APPLICATIONS_REMOVE_FROM_FAVORITES
+  APPLICATIONS_ADD_TO_FAVORITES, APPLICATIONS_REMOVE_FROM_FAVORITES,
+  APPLICATIONS_FETCH_GALLERY
 } = require('../../app/constants');
 
 describe('#fetchApplication', () => {
@@ -178,6 +187,65 @@ describe('#removeFromFavorites', () => {
         payload: {
           error,
           response: deleteFavoritesError.response
+        }
+      })
+    );
+  });
+});
+
+describe('#fetchGallery', () => {
+  it('handles successful fetchApplicationGallery api call', () => {
+    const slug = Symbol('slug');
+    const gallery = Symbol('gallery');
+    const fetchGalleryResponse = {
+      data: {
+        data: gallery
+      }
+    };
+
+    const generator = fetchGallery({ payload: { slug } });
+
+    expect(generator.next().value).toEqual(
+      put({ type: APPLICATIONS_FETCH_GALLERY + REQUEST })
+    );
+
+    expect(generator.next().value).toEqual(
+      callApi(fetchApplicationGallery, { slug })
+    );
+
+    expect(generator.next(fetchGalleryResponse).value).toEqual(
+      put({
+        type: APPLICATIONS_FETCH_GALLERY + SUCCESS,
+        payload: { gallery }
+      })
+    );
+  });
+
+  it('handles failed fetchApplicationGallery api call', () => {
+    const slug = Symbol('slug');
+    const error = Symbol('error');
+    const fetchGalleryError = {
+      response: {
+        data: { error }
+      }
+    };
+
+    const generator = fetchGallery({ payload: { slug } });
+
+    expect(generator.next().value).toEqual(
+      put({ type: APPLICATIONS_FETCH_GALLERY + REQUEST })
+    );
+
+    expect(generator.next().value).toEqual(
+      callApi(fetchApplicationGallery, { slug })
+    );
+
+    expect(generator.throw(fetchGalleryError).value).toEqual(
+      put({
+        type: APPLICATIONS_FETCH_GALLERY + FAILURE,
+        payload: {
+          error,
+          response: fetchGalleryError.response
         }
       })
     );
