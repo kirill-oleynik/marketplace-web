@@ -5,12 +5,6 @@ const ApplicationsCarousel = require('../../../app/components/applications/carou
 
 describe('#render', () => {
   test('it renders correctly', () => {
-    window.matchMedia = () => ({
-      matches: false,
-      addListener() {},
-      removeListener() {}
-    });
-
     const component = shallow(
       <ApplicationsCarousel
         applications={[{

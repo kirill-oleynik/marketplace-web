@@ -60,6 +60,10 @@ export const fetchSingleApplication = ({ id, ...rest }) => (
   request('get', `api/applications/${id}`, rest)
 );
 
+export const fetchApplicationGallery = ({ slug }) => (
+  request('get', `api/applications/${slug}/gallery`)
+);
+
 export const createFavorites = ({ id, ...rest }) => (
   request('post', `api/applications/${id}/favorites`, rest)
 );

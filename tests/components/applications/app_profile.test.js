@@ -13,6 +13,9 @@ describe('#render', () => {
         addToFavorites={() => {}}
         removeFromFavorites={() => {}}
         t={(translation) => translation}
+        gallery={{
+          slides: []
+        }}
         appProfile={{
           id: '1',
           slug: 'slug',

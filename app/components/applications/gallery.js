@@ -3,14 +3,8 @@ import PropTypes from 'prop-types';
 import { Row, Col, Modal, Container } from 'reactstrap';
 import ImageGallery from 'react-image-gallery/build/image-gallery';
 
-const images = new Array(15).fill(null).map((_, index) => ({
-  original: `https://via.placeholder.com/1000x600?text=${index + 1}`,
-  thumbnail: `https://via.placeholder.com/1000x600?text=${index + 1}`
-}));
-
 const ApplicationGalleryModal = ({
-  isOpen, onCloseClick, currentIndex, slidesLength,
-  description, currentImage, renderLeftNav, renderRightNav
+  isOpen, onCloseClick, currentIndex, slidesLength, slide, renderLeftNav, renderRightNav
 }) => (
   <Modal isOpen={isOpen} className="main-modal main-modal--image-gallery-fullscreen">
     <Container>
@@ -35,17 +29,21 @@ const ApplicationGalleryModal = ({
               {renderLeftNav()}
 
               <img
-                alt={description}
-                src={currentImage}
+                src={slide.url}
+                alt={slide.description}
                 className="image-gallery-fullscreen__slide"
               />
 
               {renderRightNav()}
             </div>
 
-            <p className="image-gallery-fullscreen__description">
-              {description}
-            </p>
+            {
+              slide.description ? (
+                <p className="image-gallery-fullscreen__description">
+                  {slide.description}
+                </p>
+              ) : null
+            }
           </div>
         </Col>
       </Row>
@@ -55,8 +53,7 @@ const ApplicationGalleryModal = ({
 
 ApplicationGalleryModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  description: PropTypes.string.isRequired,
-  currentImage: PropTypes.string.isRequired,
+  slide: PropTypes.object.isRequired,
   currentIndex: PropTypes.number.isRequired,
   slidesLength: PropTypes.number.isRequired,
   onCloseClick: PropTypes.func.isRequired,
@@ -65,6 +62,10 @@ ApplicationGalleryModal.propTypes = {
 };
 
 class ApplicationGalerry extends Component {
+  static propTypes = {
+    slides: PropTypes.array.isRequired
+  }
+
   state = {
     isOpen: false,
     currentIndex: 0
@@ -145,19 +146,13 @@ class ApplicationGalerry extends Component {
   )
 
   render() {
+    const { slides } = this.props;
     const { isOpen, currentIndex } = this.state;
 
-    const slidesLength = images.length;
-    const currentImage = images[currentIndex].original;
-    const description = `
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit
-      amet mauris finibus dui commodo lacinia id ut lorem. Vivamus tincidunt
-      leo et magna bibendum, sed pharetra enim mattis. Fusce tellus purus,
-      elementum in sem et, suscipit tristique sapien. Vestibulum id accumsan
-      dui, ac dignissim augue. Quisque at ante ullamcorper, porta lorem et,
-      efficitur sapien. Fusce efficitur, ligula a pretium dapibus, sapien
-      ante tristique est, at posuere libero dolor nec erat.
-    `;
+    const images = slides.map((slide) => ({
+      original: slide.url,
+      thumbnail: slide.url
+    }));
 
     return (
       <div>
@@ -177,10 +172,9 @@ class ApplicationGalerry extends Component {
 
         <ApplicationGalleryModal
           isOpen={isOpen}
-          description={description}
           currentIndex={currentIndex}
-          slidesLength={slidesLength}
-          currentImage={currentImage}
+          slide={slides[currentIndex]}
+          slidesLength={slides.length}
           renderLeftNav={this.renderLeftNav}
           renderRightNav={this.renderRightNav}
           onCloseClick={this.handleCloseClick}

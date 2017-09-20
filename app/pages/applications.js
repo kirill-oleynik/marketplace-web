@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { I18nextProvider } from 'react-i18next';
+
 import createI18n from '../services/i18n';
 import { getTranslations } from '../services/api';
 import withReduxAndSaga from '../store';
-
 import { fetchAll } from '../actions/categories_actions';
-import { fetch as fetchApplication } from '../actions/applications_actions';
+import {
+  fetch as fetchApplication, fetchApplicationGallery
+} from '../actions/applications_actions';
 
 import AppProfileContainer from '../containers/app_profile_container';
 
@@ -26,6 +28,10 @@ class Applications extends Component {
 
     store.dispatch(
       fetchApplication(query.slug)
+    );
+
+    store.dispatch(
+      fetchApplicationGallery(query.slug)
     );
 
     return {
