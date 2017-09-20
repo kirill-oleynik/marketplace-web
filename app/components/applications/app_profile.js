@@ -4,11 +4,11 @@ import { Row, Col } from 'reactstrap';
 import { translate } from 'react-i18next';
 
 import MainButton from '../main_button';
+import ApplicationGallery from './gallery';
 import ToggleFavorite from './toggle_favorite';
 import Rating from '../rating';
 import RatingMarks from '../rating_marks';
 import ButtonWithIcon from '../button_with_icon';
-import ImageGallerySlider from '../image_gallery';
 import { asFoundedDate } from '../../helpers/dates_helpers';
 import { truncateParagraph } from '../../helpers/text_helpers';
 
@@ -51,7 +51,8 @@ export class AppProfile extends Component {
 
   render() {
     const {
-      t, appProfile, canToggleFavorite, addToFavorites, removeFromFavorites
+      t, appProfile, gallery, canToggleFavorite,
+      addToFavorites, removeFromFavorites
     } = this.props;
 
     return (
@@ -98,9 +99,15 @@ export class AppProfile extends Component {
             {t('appProfile.gallery.title')}
           </p>
 
-          <div className="mb-30">
-            <ImageGallerySlider />
-          </div>
+          {
+            gallery.slides.length ? (
+              <div className="mb-30">
+                <ApplicationGallery
+                  slides={gallery.slides}
+                />
+              </div>
+            ) : null
+          }
 
           <p className="font-20 font-700">
             {t('appProfile.description.title')}
@@ -268,6 +275,7 @@ export class AppProfile extends Component {
 
 AppProfile.propTypes = {
   t: PropTypes.func.isRequired,
+  gallery: PropTypes.object.isRequired,
   appProfile: PropTypes.object.isRequired,
   addToFavorites: PropTypes.func.isRequired,
   removeFromFavorites: PropTypes.func.isRequired,

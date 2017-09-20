@@ -7,6 +7,7 @@ import currentUser from './current_user';
 import addExtraInfo from './add_extra_info';
 import categories from './categories';
 import profile from './profile';
+import application from './application';
 import applications from './applications';
 
 export default combineReducers({
@@ -17,5 +18,6 @@ export default combineReducers({
   addExtraInfo,
   categories,
   profile,
+  application,
   applications
 });

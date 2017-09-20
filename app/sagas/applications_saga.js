@@ -2,10 +2,13 @@ import { put, takeEvery } from 'redux-saga/effects';
 
 import { callApi } from '../effects';
 import { getResponseData, getResponseError } from '../helpers/response_helpers';
-import { fetchSingleApplication, createFavorites, deleteFavorites } from '../services/api';
+import {
+  fetchSingleApplication, fetchApplicationGallery, createFavorites,
+  deleteFavorites
+} from '../services/api';
 
 import {
-  REQUEST, SUCCESS, FAILURE, APPLICATION_FETCH,
+  REQUEST, SUCCESS, FAILURE, APPLICATION_FETCH, APPLICATIONS_FETCH_GALLERY,
   APPLICATIONS_ADD_TO_FAVORITES, APPLICATIONS_REMOVE_FROM_FAVORITES
 } from '../constants';
 
@@ -26,6 +29,28 @@ export function* fetchApplication({ payload }) {
   } catch (exception) {
     yield put({
       type: APPLICATION_FETCH + FAILURE,
+      payload: getResponseError(exception)
+    });
+  }
+}
+
+export function* fetchGallery({ payload }) {
+  const { slug } = payload;
+
+  yield put({ type: APPLICATIONS_FETCH_GALLERY + REQUEST });
+
+  try {
+    const applicationResponse = yield callApi(fetchApplicationGallery, { slug });
+
+    yield put({
+      type: APPLICATIONS_FETCH_GALLERY + SUCCESS,
+      payload: {
+        gallery: getResponseData(applicationResponse)
+      }
+    });
+  } catch (exception) {
+    yield put({
+      type: APPLICATIONS_FETCH_GALLERY + FAILURE,
       payload: getResponseError(exception)
     });
   }
@@ -77,6 +102,10 @@ export function* removeFromFavorites({ payload }) {
 
 export function* watchFetchSingleApplication() {
   yield takeEvery(APPLICATION_FETCH, fetchApplication);
+}
+
+export function* watchFetchApplicationGallery() {
+  yield takeEvery(APPLICATIONS_FETCH_GALLERY, fetchGallery);
 }
 
 export function* watchAddToFavorites() {

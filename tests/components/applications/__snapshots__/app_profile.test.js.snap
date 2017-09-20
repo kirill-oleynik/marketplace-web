@@ -69,11 +69,6 @@ exports[`#render it renders correctly 1`] = `
     >
       appProfile.gallery.title
     </p>
-    <div
-      className="mb-30"
-    >
-      <ApplicationGalerry />
-    </div>
     <p
       className="font-20 font-700"
     >

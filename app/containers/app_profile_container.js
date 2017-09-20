@@ -9,6 +9,8 @@ import {
   addToFavorites, removeFromFavorites
 } from '../actions/applications_actions';
 
+import { getGallery } from '../selectors/application_selectors';
+
 import {
   getAppProfile, getCanToggleFavorite
 } from '../selectors/applications_selectors';
@@ -82,6 +84,7 @@ AppProfileContainer.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
+  gallery: getGallery(state),
   appProfile: getAppProfile(state),
   canToggleFavorite: getCanToggleFavorite(state)
 });
