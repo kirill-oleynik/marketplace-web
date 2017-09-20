@@ -10,7 +10,9 @@ import Rating from '../rating';
 import RatingMarks from '../rating_marks';
 import ButtonWithIcon from '../button_with_icon';
 import { asFoundedDate } from '../../helpers/dates_helpers';
-import { truncateParagraph } from '../../helpers/text_helpers';
+import {
+  truncateParagraph, humanizeUrl, emailLink, phoneLink
+} from '../../helpers/text_helpers';
 
 export class AppProfile extends Component {
   state = {
@@ -218,9 +220,12 @@ export class AppProfile extends Component {
                     {t('appProfile.extra.email')}
                   </p>
 
-                  <p className="in-black-050">
+                  <a
+                    href={emailLink(appProfile.email)}
+                    className="in-black-050"
+                  >
                     {appProfile.email}
-                  </p>
+                  </a>
                 </Col>
               ) : null
             }
@@ -232,9 +237,13 @@ export class AppProfile extends Component {
                     {t('appProfile.extra.website')}
                   </p>
 
-                  <p className="in-black-050">
-                    {appProfile.website}
-                  </p>
+                  <a
+                    href={appProfile.website}
+                    target="_blank"
+                    className="in-black-050"
+                  >
+                    {humanizeUrl(appProfile.website)}
+                  </a>
                 </Col>
               ) : null
             }
@@ -246,9 +255,12 @@ export class AppProfile extends Component {
                     {t('appProfile.extra.phone')}
                   </p>
 
-                  <p className="in-black-050">
+                  <a
+                    href={phoneLink(appProfile.phone)}
+                    className="in-black-050"
+                  >
                     {appProfile.phone}
-                  </p>
+                  </a>
                 </Col>
               ) : null
             }
