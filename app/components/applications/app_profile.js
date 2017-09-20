@@ -100,7 +100,7 @@ export class AppProfile extends Component {
           </p>
 
           {
-            gallery.slides.length ? (
+            gallery.slides && gallery.slides.length ? (
               <div className="mb-30">
                 <ApplicationGallery
                   slides={gallery.slides}
