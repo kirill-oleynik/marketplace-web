@@ -1,7 +1,8 @@
 const { ids, byId, appProfile } = require('../../app/reducers/applications');
 const {
   SUCCESS, FAILURE, REQUEST, CATEGORIES_FETCH, CATEGORIES_FETCH_ALL, APPLICATION_FETCH,
-  APPLICATIONS_ADD_TO_FAVORITES, APPLICATIONS_REMOVE_FROM_FAVORITES
+  APPLICATIONS_ADD_TO_FAVORITES, APPLICATIONS_REMOVE_FROM_FAVORITES,
+  REVIEW_CREATE
 } = require('./../../app/constants');
 
 describe('#byId', () => {
@@ -210,6 +211,26 @@ describe('#appProfile', () => {
       id: 1,
       favorite: {},
       inProgress: false
+    });
+  });
+
+  test('it handles REVIEW_CREATE_SUCCESS', () => {
+    const applicationData = Symbol('applicationData');
+    const state = appProfile({
+      id: 1,
+      review: null
+    }, {
+      type: REVIEW_CREATE + SUCCESS,
+      payload: {
+        review: {
+          value: 3
+        }
+      }
+    });
+
+    expect(state).toEqual({
+      id: 1,
+      review: 3
     });
   });
 });

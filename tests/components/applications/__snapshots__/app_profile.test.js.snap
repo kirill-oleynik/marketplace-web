@@ -39,6 +39,7 @@ exports[`#render it renders correctly 1`] = `
               "founded": "2014-05-24",
               "id": "1",
               "phone": "phone",
+              "review": 3,
               "slug": "slug",
               "summary": "summary",
               "title": "title",
@@ -121,30 +122,12 @@ exports[`#render it renders correctly 1`] = `
         </div>
       </div>
       <div>
-        <p
-          className="font-16 font-700 mb-20"
-        >
-          appProfile.ratings.submit
-        </p>
-        <div
-          className="rating__stars"
-        >
-          <i
-            className="rating__stars-item icon icon-star"
-          />
-          <i
-            className="rating__stars-item icon icon-star"
-          />
-          <i
-            className="rating__stars-item icon icon-star"
-          />
-          <i
-            className="rating__stars-item icon icon-star"
-          />
-          <i
-            className="rating__stars-item icon icon-star"
-          />
-        </div>
+        <SubmitReview
+          id="1"
+          onSubmit={[Function]}
+          t={[Function]}
+          value={3}
+        />
       </div>
     </div>
   </div>

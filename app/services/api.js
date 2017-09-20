@@ -71,3 +71,7 @@ export const createFavorites = ({ id, ...rest }) => (
 export const deleteFavorites = ({ id, ...rest }) => (
   request('delete', `api/favorites/${id}`, rest)
 );
+
+export const createReview = (options) => (
+  request('post', 'api/reviews', options)
+);

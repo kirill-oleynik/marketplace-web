@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
+/* eslint-disable max-len */
 import {
   SUCCESS, FAILURE, REQUEST, CATEGORIES_FETCH, CATEGORIES_FETCH_ALL,
-  APPLICATION_FETCH, APPLICATIONS_ADD_TO_FAVORITES, APPLICATIONS_REMOVE_FROM_FAVORITES
+  APPLICATION_FETCH, APPLICATIONS_ADD_TO_FAVORITES, APPLICATIONS_REMOVE_FROM_FAVORITES, REVIEW_CREATE
 } from '../constants';
+/* eslint-enable max-len */
 
 const applicationsReduceFn = (accumulator, application) => ({
   ...accumulator,
@@ -82,6 +84,11 @@ export const appProfile = (state = {}, action = {}) => {
         ...state,
         inProgress: false,
         favorite: null
+      };
+    case REVIEW_CREATE + SUCCESS:
+      return {
+        ...state,
+        review: action.payload.review.value
       };
     default:
       return state;

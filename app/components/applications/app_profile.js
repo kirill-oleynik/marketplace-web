@@ -10,6 +10,7 @@ import Rating from '../rating';
 import RatingMarks from '../rating_marks';
 import ButtonWithIcon from '../button_with_icon';
 import { asFoundedDate } from '../../helpers/dates_helpers';
+import SubmitReview from './submit_review';
 import {
   truncateParagraph, humanizeUrl, emailLink, phoneLink
 } from '../../helpers/text_helpers';
@@ -50,6 +51,12 @@ export class AppProfile extends Component {
 
   showLessDescription = () => this.setDescriptionTruncated(true);
   showMoreDescription = () => this.setDescriptionTruncated(false);
+
+  submitApplicationReview = (reviewValue) => (
+    this.props.createReview({
+      applicationId: this.props.appProfile.id, value: reviewValue
+    })
+  );
 
   render() {
     const {
@@ -176,17 +183,12 @@ export class AppProfile extends Component {
             </div>
 
             <div>
-              <p className="font-16 font-700 mb-20">
-                {t('appProfile.ratings.submit')}
-              </p>
-
-              <div className="rating__stars">
-                <i className="rating__stars-item icon icon-star" />
-                <i className="rating__stars-item icon icon-star" />
-                <i className="rating__stars-item icon icon-star" />
-                <i className="rating__stars-item icon icon-star" />
-                <i className="rating__stars-item icon icon-star" />
-              </div>
+              <SubmitReview
+                value={appProfile.review}
+                onSubmit={this.submitApplicationReview}
+                id={appProfile.id}
+                t={t}
+              />
             </div>
           </div>
         </div>
@@ -291,7 +293,8 @@ AppProfile.propTypes = {
   appProfile: PropTypes.object.isRequired,
   addToFavorites: PropTypes.func.isRequired,
   removeFromFavorites: PropTypes.func.isRequired,
-  canToggleFavorite: PropTypes.bool.isRequired
+  canToggleFavorite: PropTypes.bool.isRequired,
+  createReview: PropTypes.func.isRequired
 };
 
 export default translate(['applications'])(AppProfile);
