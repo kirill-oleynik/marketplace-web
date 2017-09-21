@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Container } from 'reactstrap';
 import Link from 'next/link';
 import { translate } from 'react-i18next';
-import { signIn, signUp } from '../routes';
+import { home, signIn, signUp, favorites } from '../routes';
 import HeaderDropdownMenu from '../components/header_dropdown_menu';
 import ButtonCircle from '../components/button_circle';
 import MainButton from '../components/main_button';
@@ -11,18 +11,18 @@ import HeaderModalMenu from '../components/header_modal_menu';
 import SubmitApp from '../components/submit_app';
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modal: false
-    };
-    this.toggle = this.toggle.bind(this);
+  static propTypes = {
+    t: PropTypes.func.isRequired,
+    openProfile: PropTypes.func.isRequired,
+    currentUser: PropTypes.object.isRequired
   }
 
-  toggle() {
-    this.setState({
-      modal: !this.state.modal
-    });
+  state = {
+    modal: false
+  }
+
+  toggle = () => {
+    this.setState({ modal: !this.state.modal });
   }
 
   render() {
@@ -41,19 +41,23 @@ class Header extends Component {
                 />
               </div>
 
-              <a href="/" className="page-main-logo">
-                {t('header.applicationName')}
-              </a>
+              <Link href={home}>
+                <a className="page-main-logo">
+                  {t('header.applicationName')}
+                </a>
+              </Link>
 
               {
                 currentUser.id ? (
                   <div className="d-flex align-items-center hidden-xs-down">
-                    <ButtonCircle
-                      size="sm"
-                      color="grey-light"
-                      icon="heart-filled"
-                      className="in-white mr-20"
-                    />
+                    <Link href={favorites}>
+                      <ButtonCircle
+                        size="sm"
+                        color="grey-light"
+                        icon="heart-filled"
+                        className="in-white mr-20"
+                      />
+                    </Link>
 
                     <HeaderDropdownMenu
                       currentUser={currentUser}
@@ -111,11 +115,5 @@ class Header extends Component {
     );
   }
 }
-
-Header.propTypes = {
-  t: PropTypes.func.isRequired,
-  currentUser: PropTypes.object.isRequired,
-  openProfile: PropTypes.func.isRequired
-};
 
 export default translate(['common'])(Header);

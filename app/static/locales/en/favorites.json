@@ -1,0 +1,14 @@
+{
+  "favorites": {
+    "pageTitle": "Favorites - Appreviewer",
+    "title": "Favorites",
+    "description": "You can access your Favorites anytime and the applications will remain in your list until you remove them by clicking the cross at the top right of each appication.",
+    "showMore": "Show More",
+    "showLess": "Show Less",
+    "empty": {
+      "title": "We sincerely apologize...",
+      "description": "Your Favourites list will live here. To add applications to your Favourites, tap the heart button after opening a Profile application page.",
+      "backToHome": "Back To Home"
+    }
+  }
+}

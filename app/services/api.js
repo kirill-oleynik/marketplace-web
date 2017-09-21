@@ -75,3 +75,7 @@ export const deleteFavorites = ({ id, ...rest }) => (
 export const createReview = (options) => (
   request('post', 'api/reviews', options)
 );
+
+export const fetchAllFavorites = (options) => (
+  request('get', 'api/favorites', options)
+);

@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<div
+  className="message-block"
+>
+  <img
+    alt="Favorites"
+    className="message-block__img message-block__img--favorites"
+    src="static/images/favorites.png"
+    srcSet="static/images/favorites@2x.png 2x, static/images/favorites@3x.png 3x"
+  />
+  <p
+    className="font-24 mb-10"
+  >
+    empty.title
+  </p>
+  <p
+    className="font-14 mb-30"
+  >
+    empty.description
+  </p>
+  <Link
+    href="/"
+  >
+    <MainButton
+      className=""
+      color="blue"
+      size="md"
+      type="button"
+    >
+      empty.backToHome
+    </MainButton>
+  </Link>
+</div>
+`;

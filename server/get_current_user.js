@@ -29,9 +29,9 @@ module.exports = function getCurrentUser(req) {
         return refreshSession(clientId, refreshToken)
           .then((res) => {
             Session.update(convertToCamelCase(res.data), req.session);
-
-            return makeRequest(req.session.accessToken);
           })
+          .then(() => new Promise((resolve) => req.session.save(resolve)))
+          .then(() => makeRequest(req.session.accessToken))
           .then((res) => resolve(convertToCamelCase(res.data.data)))
           .catch(() => resolve({}));
       })

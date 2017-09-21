@@ -35,7 +35,7 @@ export class CategoriesDropdown extends Component {
             `categories__dropdown-btn--${color}`
           )}
         >
-          {t('categories')}
+          {t('categories.dropdownTitle')}
         </DropdownToggle>
 
         <DropdownMenu className="categories__dropdown-menu">

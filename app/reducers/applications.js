@@ -1,11 +1,10 @@
 import { combineReducers } from 'redux';
 
-/* eslint-disable max-len */
 import {
   SUCCESS, FAILURE, REQUEST, CATEGORIES_FETCH, CATEGORIES_FETCH_ALL,
-  APPLICATION_FETCH, APPLICATIONS_ADD_TO_FAVORITES, APPLICATIONS_REMOVE_FROM_FAVORITES, REVIEW_CREATE
+  APPLICATION_FETCH, APPLICATIONS_ADD_TO_FAVORITES, FAVORITES_FETCH_ALL,
+  APPLICATIONS_REMOVE_FROM_FAVORITES, REVIEW_CREATE
 } from '../constants';
-/* eslint-enable max-len */
 
 const applicationsReduceFn = (accumulator, application) => ({
   ...accumulator,
@@ -29,7 +28,14 @@ export const byId = (state = {}, action) => {
           ...accumulator,
           ...category.applications.reduce(applicationsReduceFn, {})
         }
-      ), {});
+      ), state);
+    case FAVORITES_FETCH_ALL + SUCCESS:
+      return action.payload.favorites.reduce((accumulator, favorite) => (
+        {
+          ...accumulator,
+          ...[favorite.application].reduce(applicationsReduceFn, {})
+        }
+      ), state);
     default:
       return state;
   }

@@ -14,7 +14,7 @@ exports[`#render it renders correctly 1`] = `
     color="secondary"
     data-toggle="dropdown"
   >
-    categories
+    categories.dropdownTitle
   </DropdownToggle>
   <DropdownMenu
     className="categories__dropdown-menu"

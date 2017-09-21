@@ -1,7 +1,7 @@
 {
   "common": {
     "header": {
-      "applicationName": "Appreview",
+      "applicationName": "Appreviewer",
       "submitApp": "Submit App",
       "logIn": "Log In",
       "signUp": "Sign Up",
@@ -10,6 +10,7 @@
       "favorites": "Favorites"
     },
     "categories": {
+      "dropdownTitle": "Categories",
       "sidebarTitle": "Categories",
       "showMore": "Show More",
       "showLess": "Show Less"

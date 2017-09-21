@@ -1,44 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`#render it renders correctly 1`] = `
-<div>
-  <div
-    className="page-container"
+<div
+  className="page-container"
+>
+  <Connect(HeaderContainer) />
+  <main
+    className="login__container flex-grow-1"
   >
-    <Header />
-    <main
-      className="login__container flex-grow-1"
+    <div
+      className="login__wrap"
     >
-      <div
-        className="login__wrap"
+      <Container
+        tag="div"
       >
-        <div
-          className="container"
-        >
-          <div>
-            Hello
-          </div>
-          <p
-            className="font-12 in-black-035"
-          >
-            ©2017 All Rights Reserved. Appreview®.
-            <a
-              className="rights-link"
-              href="/"
-            >
-              Privacy Policy
-            </a>
-            and
-            <a
-              className="rights-link"
-              href="/"
-            >
-              Terms of Use
-            </a>
-          </p>
+        <div>
+          Hello
         </div>
-      </div>
-    </main>
-  </div>
+        <Component />
+      </Container>
+    </div>
+  </main>
 </div>
 `;
