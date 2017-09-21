@@ -18,7 +18,7 @@ exports[`#render it renders correctly 1`] = `
       <p
         className="font-54 lh-1-2 in-black-050 mb-10"
       >
-        0.0
+        0
       </p>
       <RatingPreview
         average={0}
@@ -54,7 +54,7 @@ exports[`#render it renders correctly 1`] = `
                   className="rating-marks__line-value"
                   style={
                     Object {
-                      "width": "NaN%",
+                      "width": "0%",
                     }
                   }
                 />
@@ -89,7 +89,7 @@ exports[`#render it renders correctly 1`] = `
                   className="rating-marks__line-value"
                   style={
                     Object {
-                      "width": "NaN%",
+                      "width": "0%",
                     }
                   }
                 />
@@ -124,7 +124,7 @@ exports[`#render it renders correctly 1`] = `
                   className="rating-marks__line-value"
                   style={
                     Object {
-                      "width": "NaN%",
+                      "width": "0%",
                     }
                   }
                 />
@@ -159,7 +159,7 @@ exports[`#render it renders correctly 1`] = `
                   className="rating-marks__line-value"
                   style={
                     Object {
-                      "width": "NaN%",
+                      "width": "0%",
                     }
                   }
                 />
@@ -194,7 +194,7 @@ exports[`#render it renders correctly 1`] = `
                   className="rating-marks__line-value"
                   style={
                     Object {
-                      "width": "NaN%",
+                      "width": "0%",
                     }
                   }
                 />

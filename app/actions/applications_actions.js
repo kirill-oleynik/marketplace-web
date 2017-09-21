@@ -37,6 +37,8 @@ export const fetchApplicationGallery = (slug) => ({
 export const fetchRating = (slug) => ({
   type: APPLICATIONS_RATING_FETCH,
   payload: {
-    slug
+    data: {
+      slug
+    }
   }
 });

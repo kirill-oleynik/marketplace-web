@@ -1,25 +1,36 @@
 import curry from 'lodash/curry';
 import flow from 'lodash/flow';
 import sum from 'lodash/sum';
+import values from 'lodash/values';
+import multiply from 'lodash/multiply';
 import { asPercentage } from './text_helpers';
 
-// toFloat :: Number -> Integer -> String
-const toFloat = curry((precision, number) => (number).toFixed(precision));
+// _cMultiply :: Number -> Number -> Number
+const _cMultiply = curry(multiply);
 
-// sumOfValues :: Object -> Number
-const sumOfValues = flow([
-  Object.values,
-  sum
-]);
+// _toFloat :: Number -> Integer -> Float
+const _toFloat = curry((precision, number) => (
+  parseFloat((number).toFixed(precision))
+));
 
-// collectionShare :: (Object, Integer) -> Float
-const collectionShare = (object, index) => object[index] / sumOfValues(object);
+// _collectionShare :: (Object, Integer) -> (Number || NaN || Infinity)
+const _collectionShare = (object, index) => (
+  object[index] / sum(values(object))
+);
+
+// _rescueZeroDivision :: (NaN || Infinity || Number) -> Number
+const _rescueZeroDivision = (value) => (
+  isFinite(value) ? value : 0
+);
 
 // averageRating :: Integer -> String
-export const averageRating = toFloat(1);
-export const roundedRating = toFloat(0);
+export const averageRating = _toFloat(1);
+export const roundedRating = _toFloat(0);
 
 // votePercentage :: (Object, Integer) -> String
-export const votePercentage = (votesCollection, voteIndex) => (
-  asPercentage(collectionShare(votesCollection, voteIndex) * 100)
-);
+export const votePercentage = flow([
+  _collectionShare,
+  _rescueZeroDivision,
+  _cMultiply(100),
+  asPercentage
+]);

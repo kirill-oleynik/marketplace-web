@@ -54,7 +54,9 @@ export class AppProfile extends Component {
 
   submitApplicationReview = (reviewValue) => (
     this.props.createReview({
-      applicationId: this.props.appProfile.id, value: reviewValue
+      applicationId: this.props.appProfile.id,
+      value: reviewValue,
+      slug: this.props.appProfile.slug
     })
   );
 

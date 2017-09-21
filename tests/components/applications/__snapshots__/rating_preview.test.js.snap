@@ -26,7 +26,8 @@ exports[`#render it renders correctly 1`] = `
   <span
     className="align-middle"
   >
-    1.0
+    1
+     
     <span
       className="in-black-050"
     >

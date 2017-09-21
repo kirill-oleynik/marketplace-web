@@ -16,7 +16,7 @@ export const RatingPreview = ({ t, total, average, className }) => (
     </div>
 
     <span className="align-middle">
-      {averageRating(average)}
+      {averageRating(average)}&nbsp;
 
       <span className="in-black-050">
         {t('appProfile.ratings.totalVotes', { value: total })}

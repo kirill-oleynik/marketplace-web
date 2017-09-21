@@ -66,7 +66,9 @@ describe('#fetchRating', () => {
 
     expect(action).toEqual({
       type: APPLICATIONS_RATING_FETCH,
-      payload: { slug }
+      payload: {
+        data: { slug }
+      }
     });
   });
 });

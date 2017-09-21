@@ -1,21 +1,21 @@
-const { put } = require('redux-saga/effects');
+const { put, call } = require('redux-saga/effects');
 const { callApi } = require('../../app/effects');
 
 const {
   fetchGallery, fetchApplication, addToFavorites, removeFromFavorites,
-  fetchApplicationRating
+  fetchApplicationRating, createApplicationReview
 } = require('../../app/sagas/applications_saga');
 
 const {
   fetchSingleApplication, createFavorites,
-  deleteFavorites, fetchApplicationGallery, fetchRating
+  deleteFavorites, fetchApplicationGallery, fetchRating, createReview
 } = require('../../app/services/api');
 
 const {
   REQUEST, SUCCESS, FAILURE, APPLICATION_FETCH,
   APPLICATIONS_ADD_TO_FAVORITES, APPLICATIONS_REMOVE_FROM_FAVORITES,
   APPLICATIONS_FETCH_GALLERY,
-  APPLICATIONS_RATING_FETCH
+  APPLICATIONS_RATING_FETCH, REVIEW_CREATE
 } = require('../../app/constants');
 
 describe('#fetchApplication', () => {
@@ -265,7 +265,9 @@ describe('#fetchApplicationRating', () => {
     };
 
     const generator = fetchApplicationRating({
-      payload: { slug }
+      payload: {
+        data: { slug }
+      }
     });
 
     expect(generator.next().value).toEqual(
@@ -290,7 +292,9 @@ describe('#fetchApplicationRating', () => {
     };
 
     const generator = fetchApplicationRating({
-      payload: { slug }
+      payload: {
+        data: { slug }
+      }
     });
 
     expect(generator.next().value).toEqual(
@@ -303,6 +307,69 @@ describe('#fetchApplicationRating', () => {
         payload: {
           error,
           response: fetchRatingError.response
+        }
+      })
+    );
+  });
+});
+
+describe('#createApplicationReview', () => {
+  it('handles successful createReview api call', () => {
+    const data = Symbol('data');
+    const review = Symbol('review');
+    const createReviewResponse = {
+      data: {
+        data: review
+      }
+    };
+
+    const generator = createApplicationReview({
+      payload: { data }
+    });
+
+    expect(generator.next().value).toEqual(
+      put({ type: REVIEW_CREATE + REQUEST })
+    );
+
+    expect(generator.next().value).toEqual(
+      callApi(createReview, { data })
+    );
+
+    expect(generator.next(createReviewResponse).value).toEqual(
+      put({
+        type: REVIEW_CREATE + SUCCESS,
+        payload: { review }
+      })
+    );
+  });
+
+  it('handles failed createReview api call', () => {
+    const data = Symbol('data');
+    const error = Symbol('error');
+    const createReviewError = {
+      response: {
+        data: { error }
+      }
+    };
+
+    const generator = createApplicationReview({
+      payload: { data }
+    });
+
+    expect(generator.next().value).toEqual(
+      put({ type: REVIEW_CREATE + REQUEST })
+    );
+
+    expect(generator.next().value).toEqual(
+      callApi(createReview, { data })
+    );
+
+    expect(generator.throw(createReviewError).value).toEqual(
+      put({
+        type: REVIEW_CREATE + FAILURE,
+        payload: {
+          error,
+          response: createReviewError.response
         }
       })
     );
