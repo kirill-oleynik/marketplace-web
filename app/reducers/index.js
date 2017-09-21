@@ -9,6 +9,7 @@ import categories from './categories';
 import profile from './profile';
 import application from './application';
 import applications from './applications';
+import favorites from './favorites';
 
 export default combineReducers({
   cookie,
@@ -19,5 +20,6 @@ export default combineReducers({
   categories,
   profile,
   application,
-  applications
+  applications,
+  favorites
 });

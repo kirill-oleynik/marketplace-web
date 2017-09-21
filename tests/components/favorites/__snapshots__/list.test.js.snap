@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<div>
+  <Row
+    tag="div"
+  >
+    <Col
+      sm="6"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+      xs="12"
+    >
+      <ApplicationPreview
+        application={
+          Object {
+            "id": 2,
+            "logo": "https://example.com",
+            "slug": "hello",
+            "summary": "Hello World",
+            "title": "Hello",
+          }
+        }
+        remove={false}
+        vertical={false}
+      />
+    </Col>
+  </Row>
+</div>
+`;

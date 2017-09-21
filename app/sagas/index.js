@@ -1,5 +1,6 @@
 import { all } from 'redux-saga/effects';
 import { watchSignUp, watchSignIn } from './auth_saga';
+import { watchFavoritesFetchAll } from './favorites_saga';
 import {
   watchProfileCreate, watchProfileUpdate, watchPasswordUpdate
 } from './profile_saga';
@@ -29,6 +30,7 @@ export default function* rootSaga() {
     watchFetchApplicationGallery(),
     watchAddToFavorites(),
     watchRemoveFromFavorites(),
-    watchReviewCreate()
+    watchReviewCreate(),
+    watchFavoritesFetchAll()
   ]);
 }

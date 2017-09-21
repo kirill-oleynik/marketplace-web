@@ -1,14 +1,14 @@
 const React = require('react');
 const { shallow } = require('enzyme');
 const toJSON = require('enzyme-to-json').default;
-const AuthLayout = require('../../app/layouts/auth_layout').default;
+const MainLayout = require('../../app/layouts/main_layout').default;
 
 describe('#render', () => {
   test('it renders correctly', () => {
     const component = shallow(
-      <AuthLayout>
+      <MainLayout>
         <div>Hello</div>
-      </AuthLayout>
+      </MainLayout>
     );
 
     expect(

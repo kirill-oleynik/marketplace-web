@@ -40,10 +40,9 @@ app
     server.use(bodyParser.json());
     server.use(logger);
     server.use(session);
-    server.use('/api', apiProxy);
 
-    server.use('/', (req, res, nextMiddleware) => {
-      if (req.path.match(/(_next|static)/g)) {
+    server.use((req, res, nextMiddleware) => {
+      if (req.path.match(/(_next|static|api)/g)) {
         return nextMiddleware();
       }
 
@@ -56,6 +55,8 @@ app
         })
         .then(nextMiddleware);
     });
+
+    server.use('/api', apiProxy);
 
     server.get('/applications/:slug', (req, res) => {
       app.render(req, res, '/applications', { slug: req.params.slug });

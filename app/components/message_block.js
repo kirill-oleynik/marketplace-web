@@ -4,19 +4,16 @@ import classNames from 'classnames';
 import MainButton from './../components/main_button';
 
 const MessageBlock = ({ image, imageSize }) => (
-  <div className="mb-60">
-    <h3 className="font-20 font-700 mb-30">Favorites</h3>
-    <div className="message-block">
-      <img
-        className={classNames('message-block__img', `message-block__img--${imageSize}`)}
-        src={`static/images/${image}.png`}
-        srcSet={`static/images/${image}@2x.png 2x, static/images/${image}@3x.png 3x`}
-        alt=""
-      />
-      <p className="font-24 mb-10">We sincerely apologize..</p>
-      <p className="font-14 mb-30">Your Favourites list will live here. To add applications to your Favourites, tap the heart button after opening a Profile  application page.</p>
-      <MainButton size="md" color="blue">Go to Apps</MainButton>
-    </div>
+  <div className="message-block">
+    <img
+      className={classNames('message-block__img', `message-block__img--${imageSize}`)}
+      src={`static/images/${image}.png`}
+      srcSet={`static/images/${image}@2x.png 2x, static/images/${image}@3x.png 3x`}
+      alt=""
+    />
+    <p className="font-24 mb-10">We sincerely apologize..</p>
+    <p className="font-14 mb-30">Your Favourites list will live here. To add applications to your Favourites, tap the heart button after opening a Profile  application page.</p>
+    <MainButton size="md" color="blue">Go to Apps</MainButton>
   </div>
 );
 

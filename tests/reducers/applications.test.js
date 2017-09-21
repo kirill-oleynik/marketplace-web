@@ -1,8 +1,8 @@
 const { ids, byId, appProfile } = require('../../app/reducers/applications');
 const {
-  SUCCESS, FAILURE, REQUEST, CATEGORIES_FETCH, CATEGORIES_FETCH_ALL, APPLICATION_FETCH,
-  APPLICATIONS_ADD_TO_FAVORITES, APPLICATIONS_REMOVE_FROM_FAVORITES,
-  REVIEW_CREATE
+  SUCCESS, FAILURE, REQUEST, CATEGORIES_FETCH, CATEGORIES_FETCH_ALL,
+  APPLICATION_FETCH, REVIEW_CREATE, APPLICATIONS_ADD_TO_FAVORITES,
+  APPLICATIONS_REMOVE_FROM_FAVORITES, FAVORITES_FETCH_ALL
 } = require('./../../app/constants');
 
 describe('#byId', () => {
@@ -36,6 +36,23 @@ describe('#byId', () => {
       type: CATEGORIES_FETCH_ALL + SUCCESS,
       payload: {
         categories: [category]
+      }
+    });
+
+    expect(state).toEqual({
+      [applicationId]: application
+    });
+  });
+
+  test('it handles FAVORITES_FETCH_ALL_SUCCESS', () => {
+    const applicationId = Symbol('applicationId');
+    const application = { id: applicationId };
+    const favorite = { application };
+
+    const state = byId(undefined, {
+      type: FAVORITES_FETCH_ALL + SUCCESS,
+      payload: {
+        favorites: [favorite]
       }
     });
 
