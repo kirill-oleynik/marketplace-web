@@ -26,8 +26,11 @@ exports[`#render it renders correctly 1`] = `
         >
           title
         </p>
-        <Rating
+        <RatingPreview
+          average={0}
           className="mb-30"
+          t={[Function]}
+          total={0}
         />
         <ToggleFavorite
           addToFavorites={[Function]}
@@ -93,34 +96,22 @@ exports[`#render it renders correctly 1`] = `
     <div
       className="d-flex flex-wrap justify-content-between"
     >
-      <div
-        className="mr-70"
-      >
-        <p
-          className="font-16 font-700 mb-20"
-        >
-          appProfile.ratings.avarage
-        </p>
-        <div
-          className="d-flex mb-30"
-        >
-          <div
-            className="mr-25"
-          >
-            <p
-              className="font-54 lh-1-2 in-black-050 mb-10"
-            >
-              4.2
-            </p>
-            <Rating
-              className="rating--sm"
-            />
-          </div>
-          <div>
-            <RatingMarks />
-          </div>
-        </div>
-      </div>
+      <ApplicationRating
+        data={
+          Object {
+            "average": 0,
+            "total": 0,
+            "votes": Object {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+            },
+          }
+        }
+        t={[Function]}
+      />
       <div>
         <SubmitReview
           id="1"

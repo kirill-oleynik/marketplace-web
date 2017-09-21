@@ -1,8 +1,12 @@
-const { ids, byId, appProfile } = require('../../app/reducers/applications');
+const {
+  ids, byId, appProfile, appRating
+} = require('../../app/reducers/applications');
+
 const {
   SUCCESS, FAILURE, REQUEST, CATEGORIES_FETCH, CATEGORIES_FETCH_ALL,
   APPLICATION_FETCH, REVIEW_CREATE, APPLICATIONS_ADD_TO_FAVORITES,
-  APPLICATIONS_REMOVE_FROM_FAVORITES, FAVORITES_FETCH_ALL, AUTH_SIGN_OUT
+  APPLICATIONS_REMOVE_FROM_FAVORITES, FAVORITES_FETCH_ALL, AUTH_SIGN_OUT,
+  APPLICATIONS_RATING_FETCH
 } = require('./../../app/constants');
 
 describe('#byId', () => {
@@ -278,5 +282,35 @@ describe('#appProfile', () => {
     );
 
     expect(state).toEqual({});
+  });
+});
+
+describe('#appRating', () => {
+  test('it has correct initial state', () => {
+    const state = appRating(undefined, {});
+
+    expect(state).toEqual({
+      average: 0,
+      total: 0,
+      votes: {
+        1: 0,
+        2: 0,
+        3: 0,
+        4: 0,
+        5: 0
+      }
+    });
+  });
+
+  test('it handles APPLICATIONS_RATING_FETCH_SUCCESS', () => {
+    const ratingData = Symbol('ratingData');
+    const state = appRating(undefined, {
+      type: APPLICATIONS_RATING_FETCH + SUCCESS,
+      payload: {
+        rating: ratingData
+      }
+    });
+
+    expect(state).toEqual(ratingData);
   });
 });

@@ -3,7 +3,8 @@ const {
   getIds,
   getApplications,
   getAppProfile,
-  getCanToggleFavorite
+  getCanToggleFavorite,
+  getAppRating
 } = require('../../app/selectors/applications_selectors');
 
 describe('#getById', () => {
@@ -99,5 +100,17 @@ describe('#getCanToggleFavorite', () => {
         }
       })).toEqual(false);
     });
+  });
+});
+
+describe('#getAppRating', () => {
+  test('it returns appRating', () => {
+    const appRating = Symbol('appRating');
+
+    expect(getAppRating({
+      applications: {
+        appRating: appRating
+      }
+    })).toEqual(appRating);
   });
 });

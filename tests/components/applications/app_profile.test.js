@@ -30,6 +30,17 @@ describe('#render', () => {
           founded: '2014-05-24',
           review: 3
         }}
+        appRating={{
+          average: 0,
+          total: 0,
+          votes: {
+            1: 0,
+            2: 0,
+            3: 0,
+            4: 0,
+            5: 0
+          }
+        }}
       />
     );
 

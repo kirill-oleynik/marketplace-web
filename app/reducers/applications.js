@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import {
   SUCCESS, FAILURE, REQUEST, CATEGORIES_FETCH, CATEGORIES_FETCH_ALL,
   APPLICATION_FETCH, APPLICATIONS_ADD_TO_FAVORITES, FAVORITES_FETCH_ALL,
-  APPLICATIONS_REMOVE_FROM_FAVORITES, REVIEW_CREATE, AUTH_SIGN_OUT
+  APPLICATIONS_REMOVE_FROM_FAVORITES, REVIEW_CREATE, AUTH_SIGN_OUT, APPLICATIONS_RATING_FETCH
 } from '../constants';
 
 const applicationsReduceFn = (accumulator, application) => ({
@@ -15,6 +15,18 @@ const applicationIdReduceFn = (accumulator, application) => ([
   ...accumulator,
   application.id
 ]);
+
+const zeroAppRating = {
+  average: 0,
+  total: 0,
+  votes: {
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0
+  }
+};
 
 export const byId = (state = {}, action) => {
   switch (action.type) {
@@ -108,8 +120,18 @@ export const appProfile = (state = {}, action = {}) => {
   }
 };
 
+export const appRating = (state = zeroAppRating, action = {}) => {
+  switch (action.type) {
+    case APPLICATIONS_RATING_FETCH + SUCCESS:
+      return action.payload.rating;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   ids,
   byId,
-  appProfile
+  appProfile,
+  appRating
 });

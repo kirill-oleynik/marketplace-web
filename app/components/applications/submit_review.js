@@ -27,4 +27,8 @@ SubmitReview.propTypes = {
   onSubmit: PropTypes.func.isRequired
 };
 
+SubmitReview.defaultProps = {
+  value: 0
+};
+
 export default SubmitReview;

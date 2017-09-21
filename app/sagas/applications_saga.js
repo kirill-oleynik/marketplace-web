@@ -4,12 +4,13 @@ import { callApi } from '../effects';
 import { getResponseData, getResponseError } from '../helpers/response_helpers';
 import {
   fetchSingleApplication, fetchApplicationGallery, createFavorites,
-  deleteFavorites
+  deleteFavorites, fetchRating
 } from '../services/api';
 
 import {
   REQUEST, SUCCESS, FAILURE, APPLICATION_FETCH, APPLICATIONS_FETCH_GALLERY,
-  APPLICATIONS_ADD_TO_FAVORITES, APPLICATIONS_REMOVE_FROM_FAVORITES
+  APPLICATIONS_ADD_TO_FAVORITES, APPLICATIONS_REMOVE_FROM_FAVORITES,
+  APPLICATIONS_RATING_FETCH
 } from '../constants';
 
 export function* fetchApplication({ payload }) {
@@ -98,6 +99,30 @@ export function* removeFromFavorites({ payload }) {
       payload: getResponseError(exception)
     });
   }
+}
+
+export function* fetchApplicationRating(action) {
+  const { slug } = action.payload;
+
+  try {
+    const ratingResponse = yield callApi(fetchRating, { slug });
+
+    yield put({
+      type: APPLICATIONS_RATING_FETCH + SUCCESS,
+      payload: {
+        rating: getResponseData(ratingResponse)
+      }
+    });
+  } catch (exception) {
+    yield put({
+      type: APPLICATIONS_RATING_FETCH + FAILURE,
+      payload: getResponseError(exception)
+    });
+  }
+}
+
+export function* watchRatingFetch() {
+  yield takeEvery(APPLICATIONS_RATING_FETCH, fetchApplicationRating);
 }
 
 export function* watchFetchSingleApplication() {

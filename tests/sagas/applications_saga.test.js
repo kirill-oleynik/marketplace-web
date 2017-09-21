@@ -2,18 +2,20 @@ const { put } = require('redux-saga/effects');
 const { callApi } = require('../../app/effects');
 
 const {
-  fetchGallery, fetchApplication, addToFavorites, removeFromFavorites
+  fetchGallery, fetchApplication, addToFavorites, removeFromFavorites,
+  fetchApplicationRating
 } = require('../../app/sagas/applications_saga');
 
 const {
   fetchSingleApplication, createFavorites,
-  deleteFavorites, fetchApplicationGallery
+  deleteFavorites, fetchApplicationGallery, fetchRating
 } = require('../../app/services/api');
 
 const {
   REQUEST, SUCCESS, FAILURE, APPLICATION_FETCH,
   APPLICATIONS_ADD_TO_FAVORITES, APPLICATIONS_REMOVE_FROM_FAVORITES,
-  APPLICATIONS_FETCH_GALLERY
+  APPLICATIONS_FETCH_GALLERY,
+  APPLICATIONS_RATING_FETCH
 } = require('../../app/constants');
 
 describe('#fetchApplication', () => {
@@ -246,6 +248,61 @@ describe('#fetchGallery', () => {
         payload: {
           error,
           response: fetchGalleryError.response
+        }
+      })
+    );
+  });
+});
+
+describe('#fetchApplicationRating', () => {
+  it('handles successful fetchRating api call', () => {
+    const slug = Symbol('slug');
+    const rating = Symbol('rating');
+    const fetchRatingResponse = {
+      data: {
+        data: rating
+      }
+    };
+
+    const generator = fetchApplicationRating({
+      payload: { slug }
+    });
+
+    expect(generator.next().value).toEqual(
+      callApi(fetchRating, { slug })
+    );
+
+    expect(generator.next(fetchRatingResponse).value).toEqual(
+      put({
+        type: APPLICATIONS_RATING_FETCH + SUCCESS,
+        payload: { rating }
+      })
+    );
+  });
+
+  it('handles failed fetchRating api call', () => {
+    const slug = Symbol('slug');
+    const error = Symbol('error');
+    const fetchRatingError = {
+      response: {
+        data: { error }
+      }
+    };
+
+    const generator = fetchApplicationRating({
+      payload: { slug }
+    });
+
+    expect(generator.next().value).toEqual(
+      callApi(fetchRating, { slug })
+    );
+
+    expect(generator.throw(fetchRatingError).value).toEqual(
+      put({
+        type: APPLICATIONS_RATING_FETCH + FAILURE,
+        payload: {
+          error,
+          response: fetchRatingError.response
         }
       })
     );

@@ -21,7 +21,9 @@
       "ratings": {
         "title": "Customer Ratings",
         "avarage": "Average Rating",
-        "submit": "Click to Rate"
+        "submit": "Click to Rate",
+        "totalVotes": "({{value}} votes)",
+        "votesPoints": "{{value}} stars"
       },
       "favorites": {
         "add": "Add to Favorites",

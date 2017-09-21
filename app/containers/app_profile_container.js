@@ -16,7 +16,7 @@ import {
 } from '../actions/reviews_actions';
 
 import {
-  getAppProfile, getCanToggleFavorite
+  getAppProfile, getCanToggleFavorite, getAppRating
 } from '../selectors/applications_selectors';
 
 import MainFooter from '../components/footer';
@@ -84,7 +84,8 @@ AppProfileContainer.propTypes = {
 const mapStateToProps = (state) => ({
   gallery: getGallery(state),
   appProfile: getAppProfile(state),
-  canToggleFavorite: getCanToggleFavorite(state)
+  canToggleFavorite: getCanToggleFavorite(state),
+  appRating: getAppRating(state)
 });
 
 const mapDispatchToProps = {

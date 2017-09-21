@@ -11,7 +11,8 @@ import {
   watchFetchSingleApplication,
   watchFetchApplicationGallery,
   watchAddToFavorites,
-  watchRemoveFromFavorites
+  watchRemoveFromFavorites,
+  watchRatingFetch
 } from './applications_saga';
 import {
   watchReviewCreate
@@ -32,6 +33,7 @@ export default function* rootSaga() {
     watchAddToFavorites(),
     watchRemoveFromFavorites(),
     watchReviewCreate(),
+    watchRatingFetch(),
     watchFavoritesFetchAll()
   ]);
 }

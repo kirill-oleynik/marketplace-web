@@ -1,12 +1,14 @@
 const {
-  fetch, addToFavorites, removeFromFavorites, fetchApplicationGallery
+  fetch, addToFavorites, removeFromFavorites, fetchApplicationGallery,
+  fetchRating
 } = require('./../../app/actions/applications_actions');
 
 const {
   APPLICATION_FETCH,
   APPLICATIONS_ADD_TO_FAVORITES,
   APPLICATIONS_REMOVE_FROM_FAVORITES,
-  APPLICATIONS_FETCH_GALLERY
+  APPLICATIONS_FETCH_GALLERY,
+  APPLICATIONS_RATING_FETCH
 } = require('./../../app/constants');
 
 describe('#fetch', () => {
@@ -52,6 +54,18 @@ describe('#fetch', () => {
 
     expect(action).toEqual({
       type: APPLICATIONS_FETCH_GALLERY,
+      payload: { slug }
+    });
+  });
+});
+
+describe('#fetchRating', () => {
+  test('it has APPLICATIONS_RATING_FETCH type and passed payload', () => {
+    const slug = Symbol('slug');
+    const action = fetchRating(slug);
+
+    expect(action).toEqual({
+      type: APPLICATIONS_RATING_FETCH,
       payload: { slug }
     });
   });

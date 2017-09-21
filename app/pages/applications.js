@@ -8,7 +8,7 @@ import { getTranslations } from '../services/api';
 import withReduxAndSaga from '../store';
 import { fetchAll } from '../actions/categories_actions';
 import {
-  fetch as fetchApplication, fetchApplicationGallery
+  fetch as fetchApplication, fetchApplicationGallery, fetchRating
 } from '../actions/applications_actions';
 
 import AppProfileContainer from '../containers/app_profile_container';
@@ -28,6 +28,10 @@ class Applications extends Component {
 
     store.dispatch(
       fetchApplication(query.slug)
+    );
+
+    store.dispatch(
+      fetchRating(query.slug)
     );
 
     store.dispatch(
