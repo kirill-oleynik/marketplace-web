@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<Modal
+  autoFocus={true}
+  backdrop={true}
+  backdropTransitionTimeout={150}
+  fade={true}
+  isOpen={true}
+  keyboard={true}
+  modalTransitionTimeout={300}
+  toggle={[Function]}
+  zIndex={1050}
+>
+  <ModalHeader
+    tag="h4"
+    toggle={[Function]}
+    wrapTag="div"
+  />
+  <ModalBody
+    tag="div"
+  >
+    confirmation.text
+  </ModalBody>
+  <ModalFooter
+    tag="div"
+  >
+    <Button
+      color="primary"
+      onClick={[Function]}
+      tag="button"
+    >
+      confirmation.accept
+    </Button>
+    <Button
+      color="secondary"
+      onClick={[Function]}
+      tag="button"
+    >
+      confirmation.cancel
+    </Button>
+  </ModalFooter>
+</Modal>
+`;

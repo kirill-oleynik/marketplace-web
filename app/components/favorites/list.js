@@ -4,15 +4,16 @@ import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
 import { translate } from 'react-i18next';
 
+import FavoritesListItem from './list_item';
 import ButtonWithIcon from '../button_with_icon';
-import ApplicationPreview from '../applications/preview';
 
 const EXPAND_LIMIT = 4;
 
 export class FavoritesList extends Component {
   static propTypes = {
     t: PropTypes.func.isRequired,
-    favorites: PropTypes.array.isRequired
+    favorites: PropTypes.array.isRequired,
+    removeFromFavorites: PropTypes.func.isRequired
   }
 
   state = {
@@ -34,7 +35,7 @@ export class FavoritesList extends Component {
 
   render() {
     const { isExpanded } = this.state;
-    const { t, favorites } = this.props;
+    const { t, favorites, removeFromFavorites } = this.props;
 
     return (
       <div>
@@ -42,8 +43,9 @@ export class FavoritesList extends Component {
           {
             this.favoritesToShow().map((favorite) => (
               <Col key={favorite.id} xs="12" sm="6">
-                <ApplicationPreview
-                  application={favorite.application}
+                <FavoritesListItem
+                  favorite={favorite}
+                  removeFromFavorites={removeFromFavorites}
                 />
               </Col>
             ))

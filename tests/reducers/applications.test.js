@@ -60,6 +60,22 @@ describe('#byId', () => {
       [applicationId]: application
     });
   });
+
+  test('it handles APPLICATION_FETCH_SUCCESS', () => {
+    const applicationId = Symbol('applicationId');
+    const application = { id: applicationId };
+
+    const state = byId(undefined, {
+      type: APPLICATION_FETCH + SUCCESS,
+      payload: {
+        application
+      }
+    });
+
+    expect(state).toEqual({
+      [applicationId]: application
+    });
+  });
 });
 
 describe('#ids', () => {

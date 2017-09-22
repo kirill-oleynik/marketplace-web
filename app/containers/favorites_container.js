@@ -5,6 +5,9 @@ import { translate } from 'react-i18next';
 import { Container, Row, Col } from 'reactstrap';
 import { Sticky, StickyContainer } from 'react-sticky';
 
+import {
+  removeFromFavorites as removeFromFavoritesAction
+} from '../actions/applications_actions';
 import { getFavoritesWithApplications } from '../selectors/favorites_selectors';
 
 import CategoriesContainer from './categories_container';
@@ -16,7 +19,7 @@ import CategoriesLinkList from '../components/categories/link_list';
 const CategoriesDropdownContainer = CategoriesContainer(CategoriesDropdown);
 const CategoriesLinkListContainer = CategoriesContainer(CategoriesLinkList);
 
-const FavoritesContainer = ({ t, favorites }) => (
+const FavoritesContainer = ({ t, favorites, removeFromFavorites }) => (
   <main className="flex-grow-1">
     <section className="hidden-sm-up">
       <CategoriesDropdownContainer />
@@ -56,6 +59,7 @@ const FavoritesContainer = ({ t, favorites }) => (
 
                   <FavoritesList
                     favorites={favorites}
+                    removeFromFavorites={removeFromFavorites}
                   />
                 </div>
               ) : (
@@ -71,13 +75,18 @@ const FavoritesContainer = ({ t, favorites }) => (
 
 FavoritesContainer.propTypes = {
   t: PropTypes.func.isRequired,
-  favorites: PropTypes.array.isRequired
+  favorites: PropTypes.array.isRequired,
+  removeFromFavorites: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
   favorites: getFavoritesWithApplications(state)
 });
 
-export default connect(mapStateToProps)(
+const mapDispatchToProps = {
+  removeFromFavorites: removeFromFavoritesAction
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(
   translate(['favorites'])(FavoritesContainer)
 );

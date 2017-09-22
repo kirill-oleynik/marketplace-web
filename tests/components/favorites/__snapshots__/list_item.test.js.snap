@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<div>
+  <ApplicationPreview
+    application={
+      Object {
+        "id": 2,
+        "logo": "https://example.com",
+        "slug": "hello",
+        "summary": "Hello World",
+        "title": "Hello",
+      }
+    }
+    onRemoveClick={[Function]}
+    remove={true}
+    vertical={false}
+  />
+  <Translate(ConfirmationModal)
+    action={[Function]}
+    close={[Function]}
+    isOpen={false}
+  />
+</div>
+`;

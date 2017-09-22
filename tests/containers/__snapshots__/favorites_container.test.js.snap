@@ -2,7 +2,6 @@
 
 exports[`#render it renders correctly 1`] = `
 <Translate(FavoritesContainer)
-  dispatch={[Function]}
   favorites={
     Array [
       Object {
@@ -15,6 +14,7 @@ exports[`#render it renders correctly 1`] = `
       },
     ]
   }
+  removeFromFavorites={[Function]}
   t={[Function]}
 />
 `;

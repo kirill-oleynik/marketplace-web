@@ -28,6 +28,7 @@ class ProfileModal extends Component {
     return (
       <Modal
         isOpen={isOpen}
+        backdrop={false}
         className="main-modal"
       >
         <Container>

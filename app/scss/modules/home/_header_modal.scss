@@ -1,6 +1,3 @@
-.modal-backdrop {
-  background-color: transparent;
-}
 .header-modal {
   &.modal-dialog {
     width: 100%;
@@ -37,9 +34,6 @@
     span {
       display: none;
     }
-  }
-  & + .modal-backdrop {
-    background-color: transparent;
   }
 }
 .header-modal__link {

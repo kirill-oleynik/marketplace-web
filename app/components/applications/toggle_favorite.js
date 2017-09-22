@@ -10,7 +10,7 @@ const ToggleFavorite = ({
   application.favorite ? (
     <RemoveFromFavorites
       disabled={disabled}
-      onClick={() => removeFromFavorites(application)}
+      onClick={() => removeFromFavorites(application.favorite)}
     />
   ) : (
     <AddToFavorites

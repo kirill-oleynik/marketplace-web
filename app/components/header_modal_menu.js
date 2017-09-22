@@ -10,6 +10,7 @@ export const HeaderModalMenu = ({ isOpen, toggle, t, currentUser, openProfile })
   <Modal
     isOpen={isOpen}
     toggle={toggle}
+    backdrop={false}
     className="header-modal"
   >
     <Container>

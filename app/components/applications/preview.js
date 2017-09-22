@@ -12,7 +12,7 @@ const applicationUrl = (application) => ({
 
 const applicationAsUrl = (application) => `/applications/${application.slug}`;
 
-const ApplicationPreview = ({ remove, vertical, application }) => (
+const ApplicationPreview = ({ remove, vertical, application, onRemoveClick }) => (
   <span
     className={classNames(
       'app-item',
@@ -47,7 +47,11 @@ const ApplicationPreview = ({ remove, vertical, application }) => (
           </h4>
         </Link>
 
-        <button type="button" className="app-item__remove mb-5">
+        <button
+          type="button"
+          onClick={onRemoveClick}
+          className="app-item__remove mb-5"
+        >
           <i className="app-item__icon icon icon-cross font-8" />
         </button>
       </div>
@@ -62,12 +66,14 @@ const ApplicationPreview = ({ remove, vertical, application }) => (
 ApplicationPreview.propTypes = {
   remove: PropTypes.bool,
   vertical: PropTypes.bool,
+  onRemoveClick: PropTypes.func,
   application: PropTypes.object.isRequired
 };
 
 ApplicationPreview.defaultProps = {
   remove: false,
-  vertical: false
+  vertical: false,
+  onRemoveClick: () => {}
 };
 
 export default ApplicationPreview;
