@@ -34,11 +34,9 @@ describe('#addToFavorites', () => {
 });
 
 describe('#removeFromFavorites', () => {
-  test('it has APPLICATIONS_REMOVE_FROM_FAVORITES type and application favorite id in payload', () => {
+  test('it has APPLICATIONS_REMOVE_FROM_FAVORITES type and favorite id in payload', () => {
     const id = Symbol('id');
-    const action = removeFromFavorites({
-      favorite: { id }
-    });
+    const action = removeFromFavorites({ id });
 
     expect(action).toEqual({
       type: APPLICATIONS_REMOVE_FROM_FAVORITES,

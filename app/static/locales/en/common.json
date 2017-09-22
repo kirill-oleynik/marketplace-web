@@ -46,6 +46,11 @@
         },
         "submit": "Change Password"
       }
+    },
+    "confirmation": {
+      "accept": "Accept",
+      "cancel": "Cancel",
+      "text": "Are you sure you want to perform this action?"
     }
   }
 }

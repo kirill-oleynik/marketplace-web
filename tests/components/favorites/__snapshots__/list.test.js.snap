@@ -19,18 +19,20 @@ exports[`#render it renders correctly 1`] = `
       }
       xs="12"
     >
-      <ApplicationPreview
-        application={
+      <FavoritesListItem
+        favorite={
           Object {
-            "id": 2,
-            "logo": "https://example.com",
-            "slug": "hello",
-            "summary": "Hello World",
-            "title": "Hello",
+            "application": Object {
+              "id": 2,
+              "logo": "https://example.com",
+              "slug": "hello",
+              "summary": "Hello World",
+              "title": "Hello",
+            },
+            "id": 1,
           }
         }
-        remove={false}
-        vertical={false}
+        removeFromFavorites={[Function]}
       />
     </Col>
   </Row>

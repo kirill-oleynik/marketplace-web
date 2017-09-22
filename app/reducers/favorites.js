@@ -29,7 +29,7 @@ export const ids = (state = [], action) => {
 export const byId = (state = {}, action) => {
   switch (action.type) {
     case FAVORITES_FETCH_ALL + SUCCESS:
-      return action.payload.favorites.reduce(favoritesReduceFn, {});
+      return action.payload.favorites.reduce(favoritesReduceFn, state);
     case APPLICATIONS_ADD_TO_FAVORITES + SUCCESS:
       return [action.payload.favorite].reduce(favoritesReduceFn, state);
     default:

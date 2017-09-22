@@ -19,10 +19,10 @@ export const addToFavorites = (application) => ({
   }
 });
 
-export const removeFromFavorites = (application) => ({
+export const removeFromFavorites = (favorite) => ({
   type: APPLICATIONS_REMOVE_FROM_FAVORITES,
   payload: {
-    id: application.favorite.id
+    id: favorite.id
   }
 });
 

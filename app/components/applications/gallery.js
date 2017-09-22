@@ -6,7 +6,7 @@ import ImageGallery from 'react-image-gallery/build/image-gallery';
 const ApplicationGalleryModal = ({
   isOpen, onCloseClick, currentIndex, slidesLength, slide, renderLeftNav, renderRightNav
 }) => (
-  <Modal isOpen={isOpen} className="main-modal main-modal--image-gallery-fullscreen">
+  <Modal isOpen={isOpen} backdrop={false} className="main-modal main-modal--image-gallery-fullscreen">
     <Container>
       <Row className="pt-30">
         <Col xs="6">

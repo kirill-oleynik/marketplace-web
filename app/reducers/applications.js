@@ -36,6 +36,11 @@ export const byId = (state = {}, action) => {
           ...[favorite.application].reduce(applicationsReduceFn, {})
         }
       ), state);
+    case APPLICATION_FETCH + SUCCESS:
+      return {
+        ...state,
+        [action.payload.application.id]: action.payload.application
+      };
     default:
       return state;
   }

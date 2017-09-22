@@ -51,6 +51,7 @@ exports[`#render it renders correctly 1`] = `
       </Link>
       <button
         className="app-item__remove mb-5"
+        onClick={[Function]}
         type="button"
       >
         <i

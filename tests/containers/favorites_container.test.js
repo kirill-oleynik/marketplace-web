@@ -67,11 +67,9 @@ describe('#passedProps', () => {
       { context: { store } }
     );
 
-    expect(
-      component.props().favorites
-    ).toEqual([{
-      application,
-      ...favorite
-    }]);
+    const props = component.props();
+
+    expect(props.favorites).toEqual([{ application, ...favorite }]);
+    expect(props.removeFromFavorites).toBeInstanceOf(Function);
   });
 });

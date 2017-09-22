@@ -3,7 +3,7 @@
 exports[`#render it renders correctly 1`] = `
 <Modal
   autoFocus={true}
-  backdrop={true}
+  backdrop={false}
   backdropTransitionTimeout={150}
   className="header-modal"
   fade={true}
