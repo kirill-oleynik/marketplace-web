@@ -63,7 +63,7 @@ export function* signOut() {
       type: AUTH_SIGN_OUT + SUCCESS
     });
 
-    yield call([Router, 'push'], home);
+    yield call([Router, 'push'], home, home, { shallow: true });
   } catch (exception) {
     yield put({
       type: AUTH_SIGN_OUT + FAILURE,

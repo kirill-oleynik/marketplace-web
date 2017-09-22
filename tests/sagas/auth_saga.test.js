@@ -154,7 +154,7 @@ describe('#signOut', () => {
     );
 
     expect(generator.next().value).toEqual(
-      call([Router, 'push'], home)
+      call([Router, 'push'], home, home, { shallow: true })
     );
   });
 
