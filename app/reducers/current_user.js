@@ -1,5 +1,5 @@
 import {
-  SUCCESS, PROFILE_CREATE, AUTH_FETCH_USER, PROFILE_UPDATE
+  SUCCESS, PROFILE_CREATE, AUTH_FETCH_USER, AUTH_SIGN_OUT, PROFILE_UPDATE
 } from '../constants';
 
 const currentUser = (state = {}, action) => {
@@ -9,6 +9,8 @@ const currentUser = (state = {}, action) => {
     case PROFILE_CREATE + SUCCESS:
     case PROFILE_UPDATE + SUCCESS:
       return { ...state, ...action.payload.profile };
+    case AUTH_SIGN_OUT + SUCCESS:
+      return {};
     default:
       return state;
   }

@@ -5,6 +5,8 @@ exports[`#render it renders correctly 1`] = `
   <Header
     currentUser={Object {}}
     openProfile={[Function]}
+    t={[Function]}
+    toggleProfileModal={[Function]}
   />
   <ProfileContainer />
 </div>

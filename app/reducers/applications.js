@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import {
   SUCCESS, FAILURE, REQUEST, CATEGORIES_FETCH, CATEGORIES_FETCH_ALL,
   APPLICATION_FETCH, APPLICATIONS_ADD_TO_FAVORITES, FAVORITES_FETCH_ALL,
-  APPLICATIONS_REMOVE_FROM_FAVORITES, REVIEW_CREATE
+  APPLICATIONS_REMOVE_FROM_FAVORITES, REVIEW_CREATE, AUTH_SIGN_OUT
 } from '../constants';
 
 const applicationsReduceFn = (accumulator, application) => ({
@@ -101,6 +101,8 @@ export const appProfile = (state = {}, action = {}) => {
         ...state,
         review: action.payload.review.value
       };
+    case AUTH_SIGN_OUT + SUCCESS:
+      return {};
     default:
       return state;
   }

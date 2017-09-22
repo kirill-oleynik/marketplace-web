@@ -2,7 +2,7 @@ const { ids, byId, appProfile } = require('../../app/reducers/applications');
 const {
   SUCCESS, FAILURE, REQUEST, CATEGORIES_FETCH, CATEGORIES_FETCH_ALL,
   APPLICATION_FETCH, REVIEW_CREATE, APPLICATIONS_ADD_TO_FAVORITES,
-  APPLICATIONS_REMOVE_FROM_FAVORITES, FAVORITES_FETCH_ALL
+  APPLICATIONS_REMOVE_FROM_FAVORITES, FAVORITES_FETCH_ALL, AUTH_SIGN_OUT
 } = require('./../../app/constants');
 
 describe('#byId', () => {
@@ -265,5 +265,18 @@ describe('#appProfile', () => {
       id: 1,
       review: 3
     });
+  });
+
+  test('it handles AUTH_SIGN_OUT', () => {
+    const state = appProfile(
+      {
+        id: 1
+      },
+      {
+        type: AUTH_SIGN_OUT + SUCCESS
+      }
+    );
+
+    expect(state).toEqual({});
   });
 });

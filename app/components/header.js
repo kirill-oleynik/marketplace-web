@@ -13,6 +13,7 @@ import SubmitApp from '../components/submit_app';
 class Header extends Component {
   static propTypes = {
     t: PropTypes.func.isRequired,
+    signOut: PropTypes.func.isRequired,
     openProfile: PropTypes.func.isRequired,
     currentUser: PropTypes.object.isRequired
   }
@@ -26,7 +27,7 @@ class Header extends Component {
   }
 
   render() {
-    const { t, currentUser, openProfile } = this.props;
+    const { t, signOut, currentUser, openProfile } = this.props;
 
     return (
       <div>
@@ -60,6 +61,7 @@ class Header extends Component {
                     </Link>
 
                     <HeaderDropdownMenu
+                      signOut={signOut}
                       currentUser={currentUser}
                       openProfile={openProfile}
                     />

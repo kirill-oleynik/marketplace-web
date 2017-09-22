@@ -1,6 +1,6 @@
 const { ids, byId } = require('../../app/reducers/favorites');
 const {
-  SUCCESS, APPLICATIONS_ADD_TO_FAVORITES,
+  SUCCESS, APPLICATIONS_ADD_TO_FAVORITES, AUTH_SIGN_OUT,
   APPLICATIONS_REMOVE_FROM_FAVORITES, FAVORITES_FETCH_ALL
 } = require('../../app/constants');
 
@@ -57,6 +57,17 @@ describe('#ids', () => {
     });
 
     expect(nextState).toEqual([firstFavoriteId]);
+  });
+
+  test('it handles AUTH_SIGN_OUT_SUCCESS action type', () => {
+    const firstFavoriteId = Symbol('firstFavoriteId');
+    const secondFavoriteId = Symbol('secondFavoriteId');
+
+    const nextState = ids([firstFavoriteId, secondFavoriteId], {
+      type: AUTH_SIGN_OUT + SUCCESS
+    });
+
+    expect(nextState).toEqual([]);
   });
 });
 

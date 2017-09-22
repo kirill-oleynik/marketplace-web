@@ -5,7 +5,7 @@ const copyResponse = require('./copy_response');
 const refreshSession = require('./refresh_session');
 const convertToCamelCase = require('./convert_to_camel_case');
 
-const CREATE_SESSIONS_URL = '/sessions';
+const SESSIONS_URL = '/sessions';
 
 const proxy = httpProxy(process.env.API_PROXY_URL, {
   proxyReqOptDecorator: (proxyReqOpts, srcReq) => (
@@ -16,10 +16,12 @@ const proxy = httpProxy(process.env.API_PROXY_URL, {
 
   userResDecorator: (proxyRes, proxyResData, userReq, userRes) => {
     const responseData = convertToCamelCase(
-      JSON.parse(proxyResData.toString('utf8'))
+      JSON.parse(
+        proxyResData.length ? proxyResData.toString('utf8') : '{ "data": "{}" }'
+      )
     );
 
-    if (userReq.url === CREATE_SESSIONS_URL) {
+    if (userReq.url === SESSIONS_URL) {
       if (proxyRes.statusCode < 400) {
         Session.update(responseData, userReq.session);
       }

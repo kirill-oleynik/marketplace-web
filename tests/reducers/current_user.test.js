@@ -1,6 +1,6 @@
 const currentUser = require('../../app/reducers/current_user').default;
 const {
-  SUCCESS, PROFILE_CREATE, AUTH_FETCH_USER, PROFILE_UPDATE
+  SUCCESS, PROFILE_CREATE, AUTH_FETCH_USER, AUTH_SIGN_OUT, PROFILE_UPDATE
 } = require('./../../app/constants');
 
 describe('#currentUser', () => {
@@ -54,5 +54,18 @@ describe('#currentUser', () => {
       id: 1,
       email: 'johndou@example.com'
     });
+  });
+
+  test('it handles AUTH_SIGN_OUT_SUCCESS action type', () => {
+    const nextState = currentUser(
+      {
+        id: 1
+      },
+      {
+        type: AUTH_SIGN_OUT + SUCCESS
+      }
+    );
+
+    expect(nextState).toEqual({});
   });
 });

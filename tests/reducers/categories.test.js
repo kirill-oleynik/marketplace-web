@@ -1,6 +1,7 @@
 const { ids, byId } = require('../../app/reducers/categories');
 const {
-  SUCCESS, CATEGORIES_FETCH, CATEGORIES_FETCH_ALL, CATEGORIES_COLLAPSE
+  SUCCESS, CATEGORIES_FETCH, CATEGORIES_FETCH_ALL, CATEGORIES_COLLAPSE,
+  AUTH_SIGN_OUT
 } = require('./../../app/constants');
 
 describe('#ids', () => {
@@ -134,6 +135,30 @@ describe('#byId', () => {
       [id]: {
         id,
         applications: [],
+        isFetched: false
+      }
+    });
+  });
+
+  test('it handles AUTH_SIGN_OUT', () => {
+    const id = Symbol('id');
+    const category = {
+      id,
+      isFetched: true
+    };
+
+    const state = byId(
+      {
+        [id]: category
+      },
+      {
+        type: AUTH_SIGN_OUT
+      }
+    );
+
+    expect(state).toEqual({
+      [id]: {
+        ...category,
         isFetched: false
       }
     });

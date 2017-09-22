@@ -56,9 +56,9 @@ exports[`#render it renders correctly 1`] = `
     <div
       className="header-dropdown__menu-wrap mb-10"
     >
-      <a
+      <span
         className="header-modal__link header-modal__link--dark"
-        href="/"
+        onClick={[Function]}
       >
         <i
           className="header-modal__logout icon icon-log-out in-black-035"
@@ -68,7 +68,7 @@ exports[`#render it renders correctly 1`] = `
         >
           header.logOut
         </span>
-      </a>
+      </span>
     </div>
   </DropdownMenu>
 </Dropdown>
