@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
+import { signOut } from '../actions/auth_actions';
+import { toggleProfileModal } from '../actions/profile_actions';
 import { getCurrentUser } from '../selectors/current_user_selectors';
+
 import Header from '../components/header';
 import ProfileContainer from './profile/profile_container';
-import { toggleProfileModal } from '../actions/profile_actions';
 
 export class HeaderContainer extends Component {
   static propTypes = {
-    currentUser: PropTypes.object.isRequired,
     toggleProfileModal: PropTypes.func.isRequired
   }
 
@@ -17,12 +19,10 @@ export class HeaderContainer extends Component {
   }
 
   render() {
-    const { currentUser } = this.props;
-
     return (
       <div>
         <Header
-          currentUser={currentUser}
+          {...this.props}
           openProfile={this.openProfileModal}
         />
 
@@ -37,6 +37,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
+  signOut,
   toggleProfileModal
 };
 

@@ -28,6 +28,10 @@ export const createSession = (options) => (
   request('post', 'api/sessions', options)
 );
 
+export const destroySession = (options) => (
+  request('delete', 'api/sessions', options)
+);
+
 export const createUser = (options) => (
   request('post', 'api/users', options)
 );

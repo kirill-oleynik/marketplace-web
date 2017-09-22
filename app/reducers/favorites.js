@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 import {
-  SUCCESS, FAVORITES_FETCH_ALL,
+  SUCCESS, FAVORITES_FETCH_ALL, AUTH_SIGN_OUT,
   APPLICATIONS_ADD_TO_FAVORITES, APPLICATIONS_REMOVE_FROM_FAVORITES
 } from '../constants';
 
@@ -21,6 +21,8 @@ export const ids = (state = [], action) => {
       return [action.payload.favorite.id, ...state];
     case APPLICATIONS_REMOVE_FROM_FAVORITES + SUCCESS:
       return state.filter((id) => id !== action.payload.favorite.id);
+    case AUTH_SIGN_OUT + SUCCESS:
+      return [];
     default:
       return state;
   }

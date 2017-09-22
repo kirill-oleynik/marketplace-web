@@ -5,6 +5,13 @@ import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 import MainButton from './main_button';
 
 export class HeaderDropdownMenu extends Component {
+  static propTypes = {
+    t: PropTypes.func.isRequired,
+    signOut: PropTypes.func.isRequired,
+    openProfile: PropTypes.func.isRequired,
+    currentUser: PropTypes.object.isRequired
+  }
+
   state = {
     dropdownOpen: false
   }
@@ -16,7 +23,7 @@ export class HeaderDropdownMenu extends Component {
   }
 
   render() {
-    const { t, currentUser, openProfile } = this.props;
+    const { t, signOut, currentUser, openProfile } = this.props;
 
     return (
       <Dropdown
@@ -67,29 +74,21 @@ export class HeaderDropdownMenu extends Component {
           <div className="divider divider--dark" />
 
           <div className="header-dropdown__menu-wrap mb-10">
-            <a
-              href="/"
+            <span
+              onClick={signOut}
               className="header-modal__link header-modal__link--dark"
             >
-              <i
-                className="header-modal__logout icon icon-log-out in-black-035"
-              />
+              <i className="header-modal__logout icon icon-log-out in-black-035" />
 
               <span className="d-inline-block align-middle">
                 {t('header.logOut')}
               </span>
-            </a>
+            </span>
           </div>
         </DropdownMenu>
       </Dropdown>
     );
   }
 }
-
-HeaderDropdownMenu.propTypes = {
-  currentUser: PropTypes.object.isRequired,
-  t: PropTypes.func.isRequired,
-  openProfile: PropTypes.func.isRequired
-};
 
 export default translate(['common'])(HeaderDropdownMenu);

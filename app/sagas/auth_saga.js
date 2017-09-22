@@ -2,11 +2,15 @@ import Router from 'next/router';
 import { put, call, fork, take, takeLatest } from 'redux-saga/effects';
 
 import { callApi } from '../effects';
-import { getResponseData, getResponseError } from '../helpers/response_helpers';
-import { createUser, createSession, fetchCurrentUser } from '../services/api';
 import { home, addExtraInfo } from '../routes';
+import { getResponseData, getResponseError } from '../helpers/response_helpers';
 import {
-  REQUEST, SUCCESS, FAILURE, AUTH_SIGN_UP, AUTH_SIGN_IN, AUTH_FETCH_USER
+  createUser, createSession, destroySession, fetchCurrentUser
+} from '../services/api';
+
+import {
+  REQUEST, SUCCESS, FAILURE, AUTH_SIGN_UP,
+  AUTH_SIGN_IN, AUTH_SIGN_OUT, AUTH_FETCH_USER
 } from '../constants';
 
 export function* signUp(data) {
@@ -44,6 +48,25 @@ export function* signIn(data) {
   } catch (exception) {
     yield put({
       type: AUTH_SIGN_IN + FAILURE,
+      payload: getResponseError(exception)
+    });
+  }
+}
+
+export function* signOut() {
+  yield put({ type: AUTH_SIGN_OUT + REQUEST });
+
+  try {
+    yield callApi(destroySession);
+
+    yield put({
+      type: AUTH_SIGN_OUT + SUCCESS
+    });
+
+    yield call([Router, 'push'], home);
+  } catch (exception) {
+    yield put({
+      type: AUTH_SIGN_OUT + FAILURE,
       payload: getResponseError(exception)
     });
   }
@@ -97,4 +120,8 @@ export function* watchSignIn() {
 
 export function* watchSignUp() {
   yield takeLatest(AUTH_SIGN_UP, signUpSignInRedirect);
+}
+
+export function* watchSignOut() {
+  yield takeLatest(AUTH_SIGN_OUT, signOut);
 }

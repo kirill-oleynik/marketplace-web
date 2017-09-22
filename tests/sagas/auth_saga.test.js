@@ -3,13 +3,14 @@ const { put, fork, call, take } = require('redux-saga/effects');
 const { callApi } = require('../../app/effects');
 const { home, addExtraInfo } = require('../../app/routes');
 const {
-  signUp, signIn, fetchUser, signInRedirect, signUpSignInRedirect
+  signUp, signIn, signOut, fetchUser, signInRedirect, signUpSignInRedirect
 } = require('../../app/sagas/auth_saga');
 const {
-  createUser, createSession, fetchCurrentUser
+  createUser, createSession, destroySession, fetchCurrentUser
 } = require('../../app/services/api');
 const {
-  REQUEST, SUCCESS, FAILURE, AUTH_SIGN_UP, AUTH_SIGN_IN, AUTH_FETCH_USER
+  REQUEST, SUCCESS, FAILURE, AUTH_SIGN_UP,
+  AUTH_SIGN_IN, AUTH_SIGN_OUT, AUTH_FETCH_USER
 } = require('../../app/constants');
 
 describe('#signUp', () => {
@@ -124,6 +125,63 @@ describe('#signIn', () => {
         payload: {
           error,
           response: createSessionError.response
+        }
+      })
+    );
+  });
+});
+
+describe('#signOut', () => {
+  it('handles successful destroySession api call', () => {
+    const destroySessionResponse = {
+      data: {}
+    };
+
+    const generator = signOut();
+
+    expect(generator.next().value).toEqual(
+      put({ type: AUTH_SIGN_OUT + REQUEST })
+    );
+
+    expect(generator.next().value).toEqual(
+      callApi(destroySession)
+    );
+
+    expect(generator.next(destroySessionResponse).value).toEqual(
+      put({
+        type: AUTH_SIGN_OUT + SUCCESS
+      })
+    );
+
+    expect(generator.next().value).toEqual(
+      call([Router, 'push'], home)
+    );
+  });
+
+  it('handles failed destroySession api call', () => {
+    const error = Symbol('error');
+    const destroySessionError = {
+      response: {
+        data: { error }
+      }
+    };
+
+    const generator = signOut();
+
+    expect(generator.next().value).toEqual(
+      put({ type: AUTH_SIGN_OUT + REQUEST })
+    );
+
+    expect(generator.next().value).toEqual(
+      callApi(destroySession)
+    );
+
+    expect(generator.throw(destroySessionError).value).toEqual(
+      put({
+        type: AUTH_SIGN_OUT + FAILURE,
+        payload: {
+          error,
+          response: destroySessionError.response
         }
       })
     );

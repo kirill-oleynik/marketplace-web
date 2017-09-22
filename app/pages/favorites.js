@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Head from 'next/head';
+import PropTypes from 'prop-types';
+import redirect from 'next-redirect';
 import { I18nextProvider } from 'react-i18next';
 
+import { signIn } from '../routes';
 import withReduxAndSaga from '../store';
 import createI18n from '../services/i18n';
 import { getTranslations } from '../services/api';
-
+import { getCurrentUser } from '../selectors/current_user_selectors';
 import { fetchAll as fetchAllFavorites } from '../actions/favorites_actions';
 import { fetchAll as fetchAllCategories } from '../actions/categories_actions';
 
@@ -18,7 +20,15 @@ class Favorites extends Component {
     translations: PropTypes.object.isRequired
   };
 
-  static async getInitialProps({ store }) {
+  static async getInitialProps({ store, ...ctx }) {
+    const currentUser = getCurrentUser(
+      store.getState()
+    );
+
+    if (!currentUser.id) {
+      return redirect(ctx, signIn);
+    }
+
     const commonTranslations = await getTranslations('common');
     const favoritesTranslations = await getTranslations('favorites');
 

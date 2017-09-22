@@ -5,14 +5,19 @@ const {
   HeaderDropdownMenu
 } = require('../../app/components/header_dropdown_menu');
 
+const renderHeaderDropdownMenu = () => (
+  <HeaderDropdownMenu
+    currentUser={{}}
+    signOut={() => {}}
+    openProfile={() => {}}
+    t={(translation) => translation}
+  />
+);
+
 describe('#render', () => {
   test('it renders correctly', () => {
     const component = shallow(
-      <HeaderDropdownMenu
-        t={(translation) => translation}
-        currentUser={{}}
-        openProfile={() => {}}
-      />
+      renderHeaderDropdownMenu()
     );
 
     expect(
@@ -24,17 +29,11 @@ describe('#render', () => {
 describe('#toggle', () => {
   test('it changes dropdownOpen state', () => {
     const component = shallow(
-      <HeaderDropdownMenu
-        t={(translation) => translation}
-        currentUser={{}}
-        openProfile={() => {}}
-      />
+      renderHeaderDropdownMenu()
     );
 
     expect(component.state().dropdownOpen).toEqual(false);
-
     component.instance().toggle();
-
     expect(component.state().dropdownOpen).toEqual(true);
   });
 });

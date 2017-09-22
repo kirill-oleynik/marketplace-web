@@ -1,10 +1,22 @@
 const {
-  signIn, signUp, fetchUser
+  signUp, signIn, signOut, fetchUser
 } = require('./../../app/actions/auth_actions');
 
 const {
-  AUTH_SIGN_IN, AUTH_SIGN_UP, AUTH_FETCH_USER
+  AUTH_SIGN_UP, AUTH_SIGN_IN, AUTH_SIGN_OUT, AUTH_FETCH_USER
 } = require('./../../app/constants');
+
+describe('#signUp', () => {
+  test('it has AUTH_SIGN_UP type and passed data in payload', () => {
+    const data = Symbol('data');
+    const action = signUp(data);
+
+    expect(action).toEqual({
+      type: AUTH_SIGN_UP,
+      payload: { data }
+    });
+  });
+});
 
 describe('#signIn', () => {
   test('it has AUTH_SIGN_IN type and passed data in payload', () => {
@@ -18,14 +30,12 @@ describe('#signIn', () => {
   });
 });
 
-describe('#signUp', () => {
-  test('it has AUTH_SIGN_UP type and passed data in payload', () => {
-    const data = Symbol('data');
-    const action = signUp(data);
+describe('#signOut', () => {
+  test('it has AUTH_SIGN_OUT type', () => {
+    const action = signOut();
 
     expect(action).toEqual({
-      type: AUTH_SIGN_UP,
-      payload: { data }
+      type: AUTH_SIGN_OUT
     });
   });
 });

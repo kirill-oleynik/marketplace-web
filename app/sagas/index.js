@@ -1,5 +1,5 @@
 import { all } from 'redux-saga/effects';
-import { watchSignUp, watchSignIn } from './auth_saga';
+import { watchSignUp, watchSignIn, watchSignOut } from './auth_saga';
 import { watchFavoritesFetchAll } from './favorites_saga';
 import {
   watchProfileCreate, watchProfileUpdate, watchPasswordUpdate
@@ -21,6 +21,7 @@ export default function* rootSaga() {
   yield all([
     watchSignUp(),
     watchSignIn(),
+    watchSignOut(),
     watchProfileCreate(),
     watchProfileUpdate(),
     watchPasswordUpdate(),

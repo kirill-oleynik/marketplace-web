@@ -1,5 +1,7 @@
 const { gallery } = require('../../app/reducers/application');
-const { SUCCESS, APPLICATIONS_FETCH_GALLERY } = require('./../../app/constants');
+const {
+  SUCCESS, APPLICATIONS_FETCH_GALLERY, AUTH_SIGN_OUT
+} = require('./../../app/constants');
 
 describe('#gallery', () => {
   test('it has correct initial state', () => {
@@ -17,5 +19,18 @@ describe('#gallery', () => {
     });
 
     expect(state).toEqual(galleryData);
+  });
+
+  test('it handles AUTH_SIGN_OUT_SUCESS', () => {
+    const state = gallery(
+      {
+        id: 1
+      },
+      {
+        type: AUTH_SIGN_OUT + SUCCESS
+      }
+    );
+
+    expect(state).toEqual({});
   });
 });

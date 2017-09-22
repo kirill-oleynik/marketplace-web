@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
+import mapValues from 'lodash/mapValues';
 import snakeCase from 'lodash/snakeCase';
 
 import {
-  SUCCESS, CATEGORIES_FETCH, CATEGORIES_FETCH_ALL, CATEGORIES_COLLAPSE
+  SUCCESS, CATEGORIES_FETCH, CATEGORIES_FETCH_ALL,
+  CATEGORIES_COLLAPSE, AUTH_SIGN_OUT
 } from '../constants';
 
 const categoryFactory = (category, isFetched = false) => ({
@@ -46,6 +48,11 @@ export const byId = (state = {}, action) => {
           isFetched: false
         }
       };
+    case AUTH_SIGN_OUT + SUCCESS:
+      return mapValues(state, (category) => ({
+        ...category,
+        isFetched: false
+      }));
     default:
       return state;
   }
