@@ -83,3 +83,7 @@ export const createReview = (options) => (
 export const fetchAllFavorites = (options) => (
   request('get', 'api/favorites', options)
 );
+
+export const fetchRating = ({ slug }) => (
+  request('get', `api/applications/${slug}/rating`)
+);

@@ -23,8 +23,12 @@ export const SubmitReview = ({ t, value, onSubmit }) => (
 
 SubmitReview.propTypes = {
   t: PropTypes.func.isRequired,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.number,
   onSubmit: PropTypes.func.isRequired
+};
+
+SubmitReview.defaultProps = {
+  value: 0
 };
 
 export default SubmitReview;

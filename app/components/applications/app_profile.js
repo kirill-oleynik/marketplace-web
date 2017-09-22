@@ -6,11 +6,11 @@ import { translate } from 'react-i18next';
 import MainButton from '../main_button';
 import ApplicationGallery from './gallery';
 import ToggleFavorite from './toggle_favorite';
-import Rating from '../rating';
-import RatingMarks from '../rating_marks';
+import RatingPreview from './rating_preview';
 import ButtonWithIcon from '../button_with_icon';
 import { asFoundedDate } from '../../helpers/dates_helpers';
 import SubmitReview from './submit_review';
+import ApplicationRating from './application_rating';
 import {
   truncateParagraph, humanizeUrl, emailLink, phoneLink
 } from '../../helpers/text_helpers';
@@ -54,14 +54,16 @@ export class AppProfile extends Component {
 
   submitApplicationReview = (reviewValue) => (
     this.props.createReview({
-      applicationId: this.props.appProfile.id, value: reviewValue
+      applicationId: this.props.appProfile.id,
+      value: reviewValue,
+      slug: this.props.appProfile.slug
     })
   );
 
   render() {
     const {
       t, appProfile, gallery, canToggleFavorite,
-      addToFavorites, removeFromFavorites
+      addToFavorites, removeFromFavorites, appRating
     } = this.props;
 
     return (
@@ -82,7 +84,12 @@ export class AppProfile extends Component {
                 {appProfile.title}
               </p>
 
-              <Rating className="mb-30" />
+              <RatingPreview
+                t={t}
+                total={appRating.total}
+                average={appRating.average}
+                className="mb-30"
+              />
 
               <ToggleFavorite
                 application={appProfile}
@@ -162,25 +169,10 @@ export class AppProfile extends Component {
           </p>
 
           <div className="d-flex flex-wrap justify-content-between">
-            <div className="mr-70">
-              <p className="font-16 font-700 mb-20">
-                {t('appProfile.ratings.avarage')}
-              </p>
-
-              <div className="d-flex mb-30">
-                <div className="mr-25">
-                  <p className="font-54 lh-1-2 in-black-050 mb-10">
-                    4.2
-                  </p>
-
-                  <Rating className="rating--sm" />
-                </div>
-
-                <div>
-                  <RatingMarks />
-                </div>
-              </div>
-            </div>
+            <ApplicationRating
+              data={appRating}
+              t={t}
+            />
 
             <div>
               <SubmitReview
@@ -294,7 +286,8 @@ AppProfile.propTypes = {
   addToFavorites: PropTypes.func.isRequired,
   removeFromFavorites: PropTypes.func.isRequired,
   canToggleFavorite: PropTypes.bool.isRequired,
-  createReview: PropTypes.func.isRequired
+  createReview: PropTypes.func.isRequired,
+  appRating: PropTypes.object.isRequired
 };
 
 export default translate(['applications'])(AppProfile);

@@ -1,0 +1,216 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<div
+  className="mr-70"
+>
+  <p
+    className="font-16 font-700 mb-20"
+  >
+    appProfile.ratings.avarage
+  </p>
+  <div
+    className="d-flex mb-30"
+  >
+    <div
+      className="mr-25"
+    >
+      <p
+        className="font-54 lh-1-2 in-black-050 mb-10"
+      >
+        0
+      </p>
+      <RatingPreview
+        average={0}
+        className="rating--sm"
+        t={[Function]}
+        total={0}
+      />
+    </div>
+    <div>
+      <table
+        cellPadding="0"
+        cellSpacing="0"
+      >
+        <tbody>
+          <tr
+            className="rating-marks"
+          >
+            <td>
+              <span
+                className="font-12 mr-20"
+              >
+                appProfile.ratings.votesPoints
+              </span>
+            </td>
+            <td>
+              <div
+                className="relative"
+              >
+                <div
+                  className="rating-marks__line"
+                />
+                <div
+                  className="rating-marks__line-value"
+                  style={
+                    Object {
+                      "width": "0%",
+                    }
+                  }
+                />
+              </div>
+            </td>
+            <td>
+              <div
+                className="rating-marks__value"
+              >
+                0
+              </div>
+            </td>
+          </tr>
+          <tr
+            className="rating-marks"
+          >
+            <td>
+              <span
+                className="font-12 mr-20"
+              >
+                appProfile.ratings.votesPoints
+              </span>
+            </td>
+            <td>
+              <div
+                className="relative"
+              >
+                <div
+                  className="rating-marks__line"
+                />
+                <div
+                  className="rating-marks__line-value"
+                  style={
+                    Object {
+                      "width": "0%",
+                    }
+                  }
+                />
+              </div>
+            </td>
+            <td>
+              <div
+                className="rating-marks__value"
+              >
+                0
+              </div>
+            </td>
+          </tr>
+          <tr
+            className="rating-marks"
+          >
+            <td>
+              <span
+                className="font-12 mr-20"
+              >
+                appProfile.ratings.votesPoints
+              </span>
+            </td>
+            <td>
+              <div
+                className="relative"
+              >
+                <div
+                  className="rating-marks__line"
+                />
+                <div
+                  className="rating-marks__line-value"
+                  style={
+                    Object {
+                      "width": "0%",
+                    }
+                  }
+                />
+              </div>
+            </td>
+            <td>
+              <div
+                className="rating-marks__value"
+              >
+                0
+              </div>
+            </td>
+          </tr>
+          <tr
+            className="rating-marks"
+          >
+            <td>
+              <span
+                className="font-12 mr-20"
+              >
+                appProfile.ratings.votesPoints
+              </span>
+            </td>
+            <td>
+              <div
+                className="relative"
+              >
+                <div
+                  className="rating-marks__line"
+                />
+                <div
+                  className="rating-marks__line-value"
+                  style={
+                    Object {
+                      "width": "0%",
+                    }
+                  }
+                />
+              </div>
+            </td>
+            <td>
+              <div
+                className="rating-marks__value"
+              >
+                0
+              </div>
+            </td>
+          </tr>
+          <tr
+            className="rating-marks"
+          >
+            <td>
+              <span
+                className="font-12 mr-20"
+              >
+                appProfile.ratings.votesPoints
+              </span>
+            </td>
+            <td>
+              <div
+                className="relative"
+              >
+                <div
+                  className="rating-marks__line"
+                />
+                <div
+                  className="rating-marks__line-value"
+                  style={
+                    Object {
+                      "width": "0%",
+                    }
+                  }
+                />
+              </div>
+            </td>
+            <td>
+              <div
+                className="rating-marks__value"
+              >
+                0
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;

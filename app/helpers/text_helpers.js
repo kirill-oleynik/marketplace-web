@@ -14,6 +14,7 @@ const replaceText = curry((rule, replaceValue, text) => (
 ));
 
 const prependText = curry((prependValue, text) => (prependValue + text));
+const appendText = curry((appendValue, text) => (text + appendValue));
 
 export const truncateParagraph = truncateText('. ');
 
@@ -22,3 +23,5 @@ export const humanizeUrl = replaceText(/(^\w+:|^)\/\//, '');
 export const emailLink = prependText('mailto:');
 
 export const phoneLink = prependText('tel:');
+
+export const asPercentage = appendText('%');

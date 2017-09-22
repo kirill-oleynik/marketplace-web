@@ -2,7 +2,8 @@ import {
   APPLICATION_FETCH,
   APPLICATIONS_ADD_TO_FAVORITES,
   APPLICATIONS_REMOVE_FROM_FAVORITES,
-  APPLICATIONS_FETCH_GALLERY
+  APPLICATIONS_FETCH_GALLERY,
+  APPLICATIONS_RATING_FETCH
 } from '../constants';
 
 export const fetch = (applicationId) => ({
@@ -30,5 +31,14 @@ export const fetchApplicationGallery = (slug) => ({
   type: APPLICATIONS_FETCH_GALLERY,
   payload: {
     slug
+  }
+});
+
+export const fetchRating = (slug) => ({
+  type: APPLICATIONS_RATING_FETCH,
+  payload: {
+    data: {
+      slug
+    }
   }
 });

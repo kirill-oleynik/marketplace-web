@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<div
+  className="rating mb-30"
+>
+  <div
+    className="rating__stars rating__stars-1 mr-15"
+  >
+    <i
+      className="rating__stars-item icon icon-star"
+    />
+    <i
+      className="rating__stars-item icon icon-star"
+    />
+    <i
+      className="rating__stars-item icon icon-star"
+    />
+    <i
+      className="rating__stars-item icon icon-star"
+    />
+    <i
+      className="rating__stars-item icon icon-star"
+    />
+  </div>
+  <span
+    className="align-middle"
+  >
+    1
+     
+    <span
+      className="in-black-050"
+    >
+      appProfile.ratings.totalVotes
+    </span>
+  </span>
+</div>
+`;

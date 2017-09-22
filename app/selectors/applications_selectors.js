@@ -18,4 +18,6 @@ export const getCanToggleFavorite = createSelector(
   )
 );
 
+export const getAppRating = (state) => state.applications.appRating;
+
 export const getAppProfileId = (state) => getAppProfile(state).id;
