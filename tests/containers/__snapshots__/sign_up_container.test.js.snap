@@ -23,17 +23,9 @@ exports[`#render it renders correctly 1`] = `
         logInHere
       </a>
     </span>
-    <button
-      className="button-login-with-socials button-login-with-socials--linkedin w-100 mb-20"
-      type="button"
-    >
-      <i
-        className="icon icon-linkedin button-login-with-socials__icon"
-      />
-      <span>
-        Log in with Linkedin
-      </span>
-    </button>
+    <LogInWithLinkedin
+      className="w-100 mb-20"
+    />
     <div
       className="d-flex align-items-center justify-content-between mb-10"
     >

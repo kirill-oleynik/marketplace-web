@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<a
+  className="button-login-with-socials button-login-with-socials--linkedin"
+  href="undefined/auth/linkedin"
+>
+  <i
+    className="icon icon-linkedin button-login-with-socials__icon"
+  />
+  <span>
+    linkedin
+  </span>
+</a>
+`;

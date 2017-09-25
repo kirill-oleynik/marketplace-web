@@ -7,7 +7,7 @@ import { signUp } from '../routes';
 import { signIn } from '../actions/auth_actions';
 import { getSignInErrors } from '../selectors/sign_in_selectors';
 import { isNotEmpty, isBoolean } from '../services/validations';
-import LogInWithSocials from './../components/auth/log_in_with_socials';
+import LogInWithLinkedin from './../components/auth/log_in_with_linkedin';
 import SignInForm from '../components/auth/sign_in_form';
 import AuthTypesDivider from '../components/auth/auth_types_divider';
 
@@ -79,8 +79,7 @@ export class SignInContainer extends Component {
             </Link>
           </span>
 
-          <LogInWithSocials
-            type="button"
+          <LogInWithLinkedin
             className="w-100 mb-20"
           />
 
