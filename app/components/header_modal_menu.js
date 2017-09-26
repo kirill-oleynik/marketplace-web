@@ -6,7 +6,9 @@ import Link from 'next/link';
 import { signIn, signUp } from '../routes';
 import MainButton from './main_button';
 
-export const HeaderModalMenu = ({ isOpen, toggle, t, currentUser, openProfile }) => (
+export const HeaderModalMenu = ({
+  isOpen, toggle, t, currentUser, openProfile, openSubmitApplication
+}) => (
   <Modal
     isOpen={isOpen}
     toggle={toggle}
@@ -49,42 +51,49 @@ export const HeaderModalMenu = ({ isOpen, toggle, t, currentUser, openProfile })
       </div>
     </Container>
 
-    <div className="divider mb-20" />
+    {
+      currentUser.id ? (
+        <div>
+          <div className="divider mb-20" />
 
-    <Container>
-      <div>
-        <button
-          className="header-modal__link"
-          onClick={openProfile}
-        >
-          {t('header.viewProfile')}
-        </button>
+          <Container>
+            <div>
+              <button
+                className="header-modal__link"
+                onClick={openProfile}
+              >
+                {t('header.viewProfile')}
+              </button>
 
-        <a href="/" className="header-modal__link">
-          {t('header.favorites')}
-        </a>
-      </div>
+              <a href="/" className="header-modal__link">
+                {t('header.favorites')}
+              </a>
+            </div>
 
-      <MainButton
-        color="white"
-        size="sm"
-        className="w-100 mb-30"
-      >
-        {t('header.submitApp')}
-      </MainButton>
-    </Container>
+            <MainButton
+              color="white"
+              size="sm"
+              className="w-100 mb-30"
+              onClick={openSubmitApplication}
+            >
+              {t('header.submitApp')}
+            </MainButton>
+          </Container>
 
-    <div className="divider mb-20" />
+          <div className="divider mb-20" />
 
-    <Container>
-      <a href="/" className="header-modal__link">
-        <i className="header-modal__logout icon icon-log-out" />
+          <Container>
+            <a href="/" className="header-modal__link">
+              <i className="header-modal__logout icon icon-log-out" />
 
-        <span className="d-inline-block align-middle">
-          {t('header.logOut')}
-        </span>
-      </a>
-    </Container>
+              <span className="d-inline-block align-middle">
+                {t('header.logOut')}
+              </span>
+            </a>
+          </Container>
+        </div>
+      ) : null
+    }
   </Modal>
 );
 
@@ -93,7 +102,8 @@ HeaderModalMenu.propTypes = {
   toggle: PropTypes.func.isRequired,
   currentUser: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired,
-  openProfile: PropTypes.func.isRequired
+  openProfile: PropTypes.func.isRequired,
+  openSubmitApplication: PropTypes.func.isRequired
 };
 
 HeaderModalMenu.defaultProps = {

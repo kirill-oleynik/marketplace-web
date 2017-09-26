@@ -15,6 +15,7 @@ class Header extends Component {
     t: PropTypes.func.isRequired,
     signOut: PropTypes.func.isRequired,
     openProfile: PropTypes.func.isRequired,
+    openSubmitApplication: PropTypes.func.isRequired,
     currentUser: PropTypes.object.isRequired
   }
 
@@ -27,7 +28,9 @@ class Header extends Component {
   }
 
   render() {
-    const { t, signOut, currentUser, openProfile } = this.props;
+    const {
+      t, signOut, currentUser, openProfile, openSubmitApplication
+    } = this.props;
 
     return (
       <div>
@@ -64,17 +67,11 @@ class Header extends Component {
                       signOut={signOut}
                       currentUser={currentUser}
                       openProfile={openProfile}
+                      openSubmitApplication={openSubmitApplication}
                     />
                   </div>
                 ) : (
                   <div className="hidden-xs-down">
-                    <MainButton
-                      color="transparent"
-                      size="md"
-                    >
-                      {t('header.submitApp')}
-                    </MainButton>
-
                     <Link href={signIn}>
                       <a className="main-header__link">
                         {t('header.logIn')}
@@ -108,6 +105,7 @@ class Header extends Component {
           toggle={this.toggle}
           currentUser={currentUser}
           openProfile={openProfile}
+          openSubmitApplication={openSubmitApplication}
         />
 
         <SubmitApp

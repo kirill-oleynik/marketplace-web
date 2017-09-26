@@ -9,6 +9,7 @@ export class HeaderDropdownMenu extends Component {
     t: PropTypes.func.isRequired,
     signOut: PropTypes.func.isRequired,
     openProfile: PropTypes.func.isRequired,
+    openSubmitApplication: PropTypes.func.isRequired,
     currentUser: PropTypes.object.isRequired
   }
 
@@ -23,7 +24,9 @@ export class HeaderDropdownMenu extends Component {
   }
 
   render() {
-    const { t, signOut, currentUser, openProfile } = this.props;
+    const {
+      t, signOut, currentUser, openProfile, openSubmitApplication
+    } = this.props;
 
     return (
       <Dropdown
@@ -66,6 +69,7 @@ export class HeaderDropdownMenu extends Component {
               color="blue"
               size="sm"
               className="w-100 mb-15"
+              onClick={openSubmitApplication}
             >
               {t('header.submitApp')}
             </MainButton>

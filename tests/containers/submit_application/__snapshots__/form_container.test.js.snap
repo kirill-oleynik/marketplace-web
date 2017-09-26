@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<Translate(SubmitApplicationFormContainer)
+  errors={Object {}}
+  submitApplication={[Function]}
+  t={[Function]}
+  toggleSubmitApplicationModal={[Function]}
+/>
+`;

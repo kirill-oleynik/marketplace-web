@@ -1,7 +1,7 @@
 const React = require('react');
 const { shallow } = require('enzyme');
 const toJSON = require('enzyme-to-json').default;
-const { HeaderContainer } = require('../../app/containers/header_container');
+const SubmitApplicationModalContainer = require('../../../app/containers/submit_application/modal_container').default;
 
 const fakeStore = (state = {}) => ({
   subscribe() {},
@@ -9,25 +9,21 @@ const fakeStore = (state = {}) => ({
   getState() { return state; }
 });
 
-const currentUser = {
-  id: 1
+const submitApplication = {
+  modalIsActive: false,
+  errors: {}
 }
 
 describe('#render', () => {
   test('it renders correctly', () => {
     const store = fakeStore({
-      currentUser
+      submitApplication
     });
 
     const component = shallow(
-      <HeaderContainer
-        t={(translation) => translation}
-        toggleProfileModal={() => {}}
-        openSubmitApplication={() => {}}
-        toggleSubmitApplicationModal={() => {}}
-      />,
+      <SubmitApplicationModalContainer />,
       { context: { store } }
-    );
+    )
 
     expect(
       toJSON(component)
