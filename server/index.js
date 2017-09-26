@@ -7,7 +7,8 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const express = require('express');
 const apiProxy = require('./proxy');
-const Session = require('./session.js');
+const Session = require('./session');
+const oauthCallback = require('./oauth_callback');
 const getCurrentUser = require('./get_current_user');
 
 const session = Session.create();
@@ -57,6 +58,8 @@ app
     });
 
     server.use('/api', apiProxy);
+
+    server.get('/oauth/callback', oauthCallback);
 
     server.get('/applications/:slug', (req, res) => {
       app.render(req, res, '/applications', { slug: req.params.slug });

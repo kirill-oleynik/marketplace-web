@@ -7,7 +7,7 @@ import { signIn } from '../routes';
 import { signUp } from '../actions/auth_actions';
 import { getSignUpErrors } from '../selectors/sign_up_selectors';
 import { isNotEmpty } from '../services/validations';
-import LogInWithSocials from '../components/auth/log_in_with_socials';
+import LogInWithLinkedin from '../components/auth/log_in_with_linkedin';
 import SignUpForm from '../components/auth/sign_up_form';
 import AuthTypesDivider from '../components/auth/auth_types_divider';
 
@@ -97,7 +97,9 @@ export class SignUpContainer extends Component {
             </Link>
           </span>
 
-          <LogInWithSocials type="button" className="w-100 mb-20" />
+          <LogInWithLinkedin
+            className="w-100 mb-20"
+          />
 
           <AuthTypesDivider dividerText={t('or')} />
         </div>
