@@ -14,6 +14,7 @@ describe('#render', () => {
         currentUser={{}}
         t={() => {}}
         openProfile={() => {}}
+        openSubmitApplication={() => {}}
       />
     );
 

@@ -2,12 +2,14 @@
 
 exports[`#render it renders correctly 1`] = `
 <div>
-  <Header
-    currentUser={Object {}}
+  <Translate(Header)
     openProfile={[Function]}
+    openSubmitApplication={[Function]}
     t={[Function]}
     toggleProfileModal={[Function]}
+    toggleSubmitApplicationModal={[Function]}
   />
-  <ProfileContainer />
+  <Connect(Translate(ProfileContainer)) />
+  <Connect(SubmitApplicationModalContainer) />
 </div>
 `;

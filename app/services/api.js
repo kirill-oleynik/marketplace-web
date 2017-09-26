@@ -87,3 +87,7 @@ export const fetchAllFavorites = (options) => (
 export const fetchRating = ({ slug }) => (
   request('get', `api/applications/${slug}/rating`)
 );
+
+export const submitApplication = (options) => (
+  request('post', 'api/application_candidates', options)
+);

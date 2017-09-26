@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render when modal is closed it renders correctly 1`] = `
+<Modal
+  autoFocus={true}
+  backdrop={true}
+  backdropTransitionTimeout={150}
+  className="main-modal"
+  fade={true}
+  isOpen={false}
+  keyboard={true}
+  modalTransitionTimeout={300}
+  zIndex={1050}
+>
+  <Container
+    tag="div"
+  >
+    <div
+      className="text-right pt-30"
+    >
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        <i
+          className="icon icon-cross font-16 in-black-035"
+        />
+      </button>
+    </div>
+    <Row
+      className="main-modal__content"
+      tag="div"
+    >
+      <Col
+        md={
+          Object {
+            "offset": 4,
+            "size": 4,
+          }
+        }
+        sm={
+          Object {
+            "offset": 2,
+            "size": 8,
+          }
+        }
+        tag="div"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+        xs="12"
+      >
+        <Connect(Translate(SubmitApplicationFormContainer)) />
+      </Col>
+    </Row>
+  </Container>
+</Modal>
+`;
+
+exports[`#render when modal is opend it renders correctly 1`] = `
+<Modal
+  autoFocus={true}
+  backdrop={true}
+  backdropTransitionTimeout={150}
+  className="main-modal"
+  fade={true}
+  isOpen={true}
+  keyboard={true}
+  modalTransitionTimeout={300}
+  zIndex={1050}
+>
+  <Container
+    tag="div"
+  >
+    <div
+      className="text-right pt-30"
+    >
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        <i
+          className="icon icon-cross font-16 in-black-035"
+        />
+      </button>
+    </div>
+    <Row
+      className="main-modal__content"
+      tag="div"
+    >
+      <Col
+        md={
+          Object {
+            "offset": 4,
+            "size": 4,
+          }
+        }
+        sm={
+          Object {
+            "offset": 2,
+            "size": 8,
+          }
+        }
+        tag="div"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+        xs="12"
+      >
+        <Connect(Translate(SubmitApplicationFormContainer)) />
+      </Col>
+    </Row>
+  </Container>
+</Modal>
+`;

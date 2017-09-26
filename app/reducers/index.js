@@ -10,6 +10,7 @@ import profile from './profile';
 import application from './application';
 import applications from './applications';
 import favorites from './favorites';
+import submitApplication from './submit_application';
 
 export default combineReducers({
   cookie,
@@ -21,5 +22,6 @@ export default combineReducers({
   profile,
   application,
   applications,
-  favorites
+  favorites,
+  submitApplication
 });

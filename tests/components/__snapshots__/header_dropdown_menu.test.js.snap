@@ -44,6 +44,7 @@ exports[`#render it renders correctly 1`] = `
       <MainButton
         className="w-100 mb-15"
         color="blue"
+        onClick={[Function]}
         size="sm"
         type="button"
       >

@@ -40,46 +40,5 @@ exports[`#render it renders correctly 1`] = `
       </div>
     </div>
   </Container>
-  <div
-    className="divider mb-20"
-  />
-  <Container
-    tag="div"
-  >
-    <div>
-      <button
-        className="header-modal__link"
-        onClick={[Function]}
-      />
-      <a
-        className="header-modal__link"
-        href="/"
-      />
-    </div>
-    <MainButton
-      className="w-100 mb-30"
-      color="white"
-      size="sm"
-      type="button"
-    />
-  </Container>
-  <div
-    className="divider mb-20"
-  />
-  <Container
-    tag="div"
-  >
-    <a
-      className="header-modal__link"
-      href="/"
-    >
-      <i
-        className="header-modal__logout icon icon-log-out"
-      />
-      <span
-        className="d-inline-block align-middle"
-      />
-    </a>
-  </Container>
 </Modal>
 `;

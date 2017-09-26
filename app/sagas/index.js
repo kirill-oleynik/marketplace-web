@@ -15,6 +15,9 @@ import {
   watchReviewCreate,
   watchRatingFetch
 } from './applications_saga';
+import {
+  watchSubmitApplication
+} from './submit_application_saga';
 
 export default function* rootSaga() {
   yield all([
@@ -32,6 +35,7 @@ export default function* rootSaga() {
     watchRemoveFromFavorites(),
     watchReviewCreate(),
     watchRatingFetch(),
-    watchFavoritesFetchAll()
+    watchFavoritesFetchAll(),
+    watchSubmitApplication()
   ]);
 }

@@ -10,6 +10,7 @@ const renderHeaderDropdownMenu = () => (
     currentUser={{}}
     signOut={() => {}}
     openProfile={() => {}}
+    openSubmitApplication={() => {}}
     t={(translation) => translation}
   />
 );

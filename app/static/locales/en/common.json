@@ -20,7 +20,9 @@
       "isBoolean": "{{prop}} should be true of false.",
       "isNumeric": "{{prop}} should contain only numbers.",
       "isLessThan": "{{prop}} should contain less than {{count}} chars.",
-      "isEmail": "{{prop}} should have format 'example@email.com'"
+      "isMoreThan": "{{prop}} should contain at least {{count}} chars.",
+      "isEmail": "{{prop}} should have format 'example@email.com'",
+      "isUrl": "{{prop}} should have format 'www.website.com'"
     },
     "profile": {
       "profileTab": {
@@ -52,6 +54,15 @@
       "cancel": "Cancel",
       "text": "Are you sure you want to perform this action?"
     },
-    "linkedin": "Sign in with LinkedIn"
+    "linkedin": "Sign in with LinkedIn",
+    "submitAppilcation": {
+      "title": "Submit your app for review",
+      "fields": {
+        "url": "App URL",
+        "description": "App Description"
+      },
+      "submit": "Submit",
+      "cancel": "Cancel"
+    }
   }
 }
