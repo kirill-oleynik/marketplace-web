@@ -65,6 +65,12 @@ app
       app.render(req, res, '/applications', { slug: req.params.slug });
     });
 
+    server.get('/password_recovery/:recovery_token', (req, res) => {
+      app.render(req, res, '/reset_password/confirm', {
+        recoveryToken: req.params.recovery_token
+      });
+    });
+
     server.all('*', nextHandler);
 
     server.listen(listenTo, (err) => {

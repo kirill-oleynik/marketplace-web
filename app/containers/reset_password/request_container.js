@@ -61,7 +61,11 @@ class ResetPasswordRequestContainer extends Component {
   }
 }
 
-const handleFormCancel = () => Router.push(signIn);
+const handleFormCancel = (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+  Router.push(signIn);
+};
 
 const mapStateToProps = (state) => ({
   errors: getResetPasswordRequestErrors(state)

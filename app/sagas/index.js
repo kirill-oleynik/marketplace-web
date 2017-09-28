@@ -19,7 +19,7 @@ import {
   watchSubmitApplication
 } from './submit_application_saga';
 import {
-  watchResetPasswordRequest
+  watchResetPasswordRequest, watchResetPasswordConfirm
 } from './reset_password_saga';
 
 export default function* rootSaga() {
@@ -40,6 +40,7 @@ export default function* rootSaga() {
     watchRatingFetch(),
     watchFavoritesFetchAll(),
     watchSubmitApplication(),
-    watchResetPasswordRequest()
+    watchResetPasswordRequest(),
+    watchResetPasswordConfirm()
   ]);
 }

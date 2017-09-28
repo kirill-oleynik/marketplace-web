@@ -95,3 +95,7 @@ export const submitApplication = (options) => (
 export const resetPasswordRequest = (options) => (
   request('post', 'api/user/password_recovery', options)
 );
+
+export const resetPasswordConfirm = (options) => (
+  request('put', 'api/user/password_recovery', options)
+);
