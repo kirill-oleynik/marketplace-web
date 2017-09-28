@@ -18,6 +18,9 @@ import {
 import {
   watchSubmitApplication
 } from './submit_application_saga';
+import {
+  watchResetPasswordRequest
+} from './reset_password_saga';
 
 export default function* rootSaga() {
   yield all([
@@ -36,6 +39,7 @@ export default function* rootSaga() {
     watchReviewCreate(),
     watchRatingFetch(),
     watchFavoritesFetchAll(),
-    watchSubmitApplication()
+    watchSubmitApplication(),
+    watchResetPasswordRequest()
   ]);
 }

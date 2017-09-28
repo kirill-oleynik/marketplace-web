@@ -61,12 +61,12 @@ exports[`#render it renders correctly 1`] = `
   <div
     className="login-form__info-wrap mb-20"
   >
-    <a
+    <button
       className="login-form__link mb-20"
-      href="/"
+      onClick={[Function]}
     >
       forgotPassword
-    </a>
+    </button>
     <div>
       <label
         className="checkbox mb-20"
