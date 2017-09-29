@@ -16,8 +16,12 @@ import SubmitApplicationModalContainer from './submit_application/modal_containe
 export class HeaderContainer extends Component {
   static propTypes = {
     toggleProfileModal: PropTypes.func.isRequired,
-    openSubmitApplication: PropTypes.func.isRequired,
+    openSubmitApplication: PropTypes.func,
     toggleSubmitApplicationModal: PropTypes.func.isRequired
+  }
+
+  static defaultProps = {
+    openSubmitApplication: () => {}
   }
 
   openProfileModal = () => {

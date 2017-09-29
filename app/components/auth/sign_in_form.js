@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Router from 'next/router';
 import Revalidation from 'revalidation';
 import { translate } from 'react-i18next';
 import flow from 'lodash/flow';
@@ -10,6 +11,7 @@ import MainButton from '../main_button';
 import Checkbox from '../form/checkbox';
 import { getValue, getChecked, getError } from '../../helpers/form_helpers';
 import { collectionIsNotEmpty } from '../../services/validations';
+import { resetPassword } from '../../routes';
 
 export class SignInForm extends Component {
   static propTypes = {
@@ -45,6 +47,10 @@ export class SignInForm extends Component {
     this.setState({
       passwordShown: !this.state.passwordShown
     });
+  }
+
+  handleResetPasswordClick = () => {
+    Router.push(resetPassword);
   }
 
   render() {
@@ -101,9 +107,12 @@ export class SignInForm extends Component {
         </MainButton>
 
         <div className="login-form__info-wrap mb-20">
-          <a href="/" className="login-form__link mb-20">
+          <button
+            className="login-form__link mb-20"
+            onClick={this.handleResetPasswordClick}
+          >
             {t('forgotPassword')}
-          </a>
+          </button>
 
           <Checkbox
             className="mb-20"
