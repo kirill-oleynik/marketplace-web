@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<button
+  className="button-circle button-circle--grey button-circle-- test"
+  type="button"
+>
+  <i
+    className="icon icon-arrow-up"
+  />
+</button>
+`;

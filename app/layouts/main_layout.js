@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import Footer from '../components/footer';
-import GoTopLink from '../components/go_top_link';
 import Header from '../containers/header_container';
+import ScrollTopButton from '../components/scroll_top_button';
 
 const MainLayout = ({ children }) => (
   <div className="page-container">
@@ -13,7 +14,7 @@ const MainLayout = ({ children }) => (
     </main>
 
     <Footer />
-    <GoTopLink />
+    <ScrollTopButton />
   </div>
 );
 

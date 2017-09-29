@@ -14,8 +14,9 @@ import {
 
 import MainFooter from '../components/footer';
 import Autocomplete from '../components/autocomplete';
-import HeaderContainer from '../containers/header_container';
 import CategoriesList from '../components/categories/list';
+import HeaderContainer from '../containers/header_container';
+import ScrollTopButton from '../components/scroll_top_button';
 import CategoriesDropdown from '../components/categories/dropdown';
 import CategoriesLinkList from '../components/categories/link_list';
 import CategoriesContainer from '../containers/categories_container';
@@ -110,6 +111,7 @@ const HomeContainer = ({
       </Container>
     </main>
 
+    <ScrollTopButton />
     <MainFooter />
   </div>
 );
