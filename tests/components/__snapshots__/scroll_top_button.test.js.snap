@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<div
+  className="scroll-top fade-out"
+>
+  <ButtonCircle
+    className="in-blue-500 scroll-top__button"
+    color="grey"
+    disabled={true}
+    icon="arrow-up"
+    onClick={[Function]}
+    size=""
+    type="button"
+  />
+</div>
+`;

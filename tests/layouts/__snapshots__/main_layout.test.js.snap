@@ -13,6 +13,6 @@ exports[`#render it renders correctly 1`] = `
     </div>
   </main>
   <MainFooter />
-  <Component />
+  <ScrollTopButton />
 </div>
 `;

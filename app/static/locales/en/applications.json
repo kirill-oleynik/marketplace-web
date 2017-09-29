@@ -1,5 +1,6 @@
 {
   "applications": {
+    "pageTitle": "Appreviewer",
     "appProfile": {
       "requestDemo": "Request Demo",
       "gallery": {

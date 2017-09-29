@@ -8,7 +8,6 @@ import createI18n from '../services/i18n';
 import { getTranslations } from '../services/api';
 import Header from '../containers/header_container';
 import MainFooter from '../components/footer';
-import GoTopLink from '../components/go_top_link';
 import MessageBlock from '../components/message_block';
 
 class Favorites extends Component {
@@ -46,7 +45,6 @@ class Favorites extends Component {
                   <MessageBlock image="404" imageSize="lg" />
                 </section>
               </Container>
-              <GoTopLink />
             </main>
             <MainFooter />
           </div>

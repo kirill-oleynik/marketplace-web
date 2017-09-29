@@ -1,0 +1,9 @@
+.scroll-top {
+  right: 20px;
+  bottom: 20px;
+  position: fixed;
+}
+
+.scroll-top__button:disabled {
+  cursor: default;
+}
