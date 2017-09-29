@@ -5,10 +5,10 @@ exports[`#render it renders correctly 1`] = `
   className="message-block"
 >
   <img
-    alt="Favorites"
+    alt=""
     className="message-block__img message-block__img--favorites"
-    src="static/images/favorites.png"
-    srcSet="static/images/favorites@2x.png 2x, static/images/favorites@3x.png 3x"
+    src="/static/images/favorites.png"
+    srcSet="/static/images/favorites@2x.png 2x, /static/images/favorites@3x.png 3x"
   />
   <p
     className="font-24 mb-10"

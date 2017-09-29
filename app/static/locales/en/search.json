@@ -2,6 +2,11 @@
   "search": {
     "pageTitle": "Search Results - Appreviewer",
     "categories": "Categories",
-    "applications": "Applications"
+    "applications": "Applications",
+    "empty": {
+      "title": "No results found",
+      "description": "Sorry, but nothing matched your search criteria. Please try again with some different words.",
+      "backToHome": "Back To Home"
+    }
   }
 }

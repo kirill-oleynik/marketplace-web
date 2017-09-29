@@ -10,10 +10,10 @@ import MainButton from '../main_button';
 export const EmptyFavorites = ({ t }) => (
   <div className="message-block">
     <img
-      alt="Favorites"
-      src="static/images/favorites.png"
+      alt=""
+      src="/static/images/favorites.png"
       className="message-block__img message-block__img--favorites"
-      srcSet="static/images/favorites@2x.png 2x, static/images/favorites@3x.png 3x"
+      srcSet="/static/images/favorites@2x.png 2x, /static/images/favorites@3x.png 3x"
     />
 
     <p className="font-24 mb-10">
