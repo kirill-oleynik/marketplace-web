@@ -99,3 +99,7 @@ export const resetPasswordRequest = (options) => (
 export const resetPasswordConfirm = (options) => (
   request('put', 'api/user/password_recovery', options)
 );
+
+export const fetchSearchResults = ({ query, ...rest }) => (
+  request('get', 'api/search', { data: { query }, ...rest })
+);

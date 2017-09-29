@@ -63,6 +63,10 @@
       },
       "submit": "Submit",
       "cancel": "Cancel"
+    },
+    "search": {
+      "categories": "Categories",
+      "applications": "Applications"
     }
   }
 }
