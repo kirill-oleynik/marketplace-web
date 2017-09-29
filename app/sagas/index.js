@@ -4,23 +4,17 @@ import { watchFavoritesFetchAll } from './favorites_saga';
 import {
   watchProfileCreate, watchProfileUpdate, watchPasswordUpdate
 } from './profile_saga';
+import { watchCategoryExpand, watchCategoriesFetchAll } from './categories_saga';
 import {
-  watchCategoryExpand, watchCategoriesFetchAll
-} from './categories_saga';
-import {
-  watchFetchSingleApplication,
-  watchFetchApplicationGallery,
-  watchAddToFavorites,
-  watchRemoveFromFavorites,
-  watchReviewCreate,
+  watchFetchSingleApplication, watchFetchApplicationGallery,
+  watchAddToFavorites, watchRemoveFromFavorites, watchReviewCreate,
   watchRatingFetch
 } from './applications_saga';
-import {
-  watchSubmitApplication
-} from './submit_application_saga';
+import { watchSubmitApplication } from './submit_application_saga';
 import {
   watchResetPasswordRequest, watchResetPasswordConfirm
 } from './reset_password_saga';
+import { watchSearch } from './search_saga';
 
 export default function* rootSaga() {
   yield all([
@@ -38,9 +32,10 @@ export default function* rootSaga() {
     watchRemoveFromFavorites(),
     watchReviewCreate(),
     watchRatingFetch(),
-    watchFavoritesFetchAll(),
     watchSubmitApplication(),
     watchResetPasswordRequest(),
-    watchResetPasswordConfirm()
+    watchResetPasswordConfirm(),
+    watchFavoritesFetchAll(),
+    watchSearch()
   ]);
 }

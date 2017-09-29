@@ -14,6 +14,11 @@ const application = {
   title: 'Test1'
 };
 
+const category = {
+  id: 2,
+  title: 'Test2'
+};
+
 const applications = {
   ids: [1],
   byId: {
@@ -21,9 +26,22 @@ const applications = {
   }
 };
 
+const categories = {
+  byId: {
+    2: category
+  }
+};
+
+const search = {
+  categoryIds: [2],
+  applicationIds: [1]
+};
+
 describe('#render', () => {
   test('it renders correctly', () => {
     const store = fakeStore({
+      search,
+      categories,
       applications
     });
 
@@ -41,6 +59,8 @@ describe('#render', () => {
 describe('#passedProps', () => {
   test('it passess props to component correctly', () => {
     const store = fakeStore({
+      search,
+      categories,
       applications
     });
 
@@ -50,7 +70,15 @@ describe('#passedProps', () => {
     );
 
     expect(
-      component.props().applications
+      component.props().featuredApplications
+    ).toEqual([application]);
+
+    expect(
+      component.props().searchCategories
+    ).toEqual([category]);
+
+    expect(
+      component.props().searchApplications
     ).toEqual([application]);
   });
 });

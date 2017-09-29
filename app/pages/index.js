@@ -61,7 +61,7 @@ class Index extends Component {
         <div>
           <Head>
             <title>
-              {this.i18n.t('home:title')}
+              {this.i18n.t('home:pageTitle')}
             </title>
           </Head>
 

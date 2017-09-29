@@ -4,7 +4,7 @@ import snakeCase from 'lodash/snakeCase';
 
 import {
   SUCCESS, CATEGORIES_FETCH, CATEGORIES_FETCH_ALL,
-  CATEGORIES_COLLAPSE, AUTH_SIGN_OUT
+  CATEGORIES_COLLAPSE, AUTH_SIGN_OUT, SEARCH_FETCH
 } from '../constants';
 
 const categoryFactory = (category, isFetched = false) => ({
@@ -53,6 +53,11 @@ export const byId = (state = {}, action) => {
         ...category,
         isFetched: false
       }));
+    case SEARCH_FETCH + SUCCESS:
+      return action.payload.data.categories.reduce((accumulator, category) => ({
+        ...accumulator,
+        [category.id]: categoryFactory(category)
+      }), state);
     default:
       return state;
   }

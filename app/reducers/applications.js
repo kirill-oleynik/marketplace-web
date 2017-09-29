@@ -3,7 +3,8 @@ import { combineReducers } from 'redux';
 import {
   SUCCESS, FAILURE, REQUEST, CATEGORIES_FETCH, CATEGORIES_FETCH_ALL,
   APPLICATION_FETCH, APPLICATIONS_ADD_TO_FAVORITES, FAVORITES_FETCH_ALL,
-  APPLICATIONS_REMOVE_FROM_FAVORITES, REVIEW_CREATE, AUTH_SIGN_OUT, APPLICATIONS_RATING_FETCH
+  APPLICATIONS_REMOVE_FROM_FAVORITES, REVIEW_CREATE, AUTH_SIGN_OUT,
+  APPLICATIONS_RATING_FETCH, SEARCH_FETCH
 } from '../constants';
 
 const applicationsReduceFn = (accumulator, application) => ({
@@ -52,6 +53,16 @@ export const byId = (state = {}, action) => {
       return {
         ...state,
         [action.payload.application.id]: action.payload.application
+      };
+    case SEARCH_FETCH + SUCCESS:
+      return {
+        ...action.payload.data.applications.reduce(applicationsReduceFn, state),
+        ...action.payload.data.categories.reduce((accumulator, category) => (
+          {
+            ...accumulator,
+            ...category.applications.reduce(applicationsReduceFn, {})
+          }
+        ), state)
       };
     default:
       return state;

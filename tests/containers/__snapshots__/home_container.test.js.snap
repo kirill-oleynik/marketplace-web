@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`#render it renders correctly 1`] = `
-<HomeContainer
-  applications={
+<Translate(HomeContainer)
+  featuredApplications={
     Array [
       Object {
         "id": 1,
@@ -10,6 +10,22 @@ exports[`#render it renders correctly 1`] = `
       },
     ]
   }
-  dispatch={[Function]}
+  fetch={[Function]}
+  searchApplications={
+    Array [
+      Object {
+        "id": 1,
+        "title": "Test1",
+      },
+    ]
+  }
+  searchCategories={
+    Array [
+      Object {
+        "id": 2,
+        "title": "Test2",
+      },
+    ]
+  }
 />
 `;

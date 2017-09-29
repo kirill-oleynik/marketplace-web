@@ -1,5 +1,10 @@
 {
   "home": {
-    "title": "Appreviewer"
+    "pageTitle": "Appreviewer",
+    "title": "Discover, Compare, and Choose the Best Business Applications",
+    "description": "Discover categories in order to find more than 100 resources to make your business",
+    "search": {
+      "placeholder": "Search by Applications and Categories"
+    }
   }
 }

@@ -2,17 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
 import { connect } from 'react-redux';
+import { translate } from 'react-i18next';
 import { Container, Row, Col } from 'reactstrap';
 import { Sticky, StickyContainer } from 'react-sticky';
 
+import { fetch as searchFetch } from '../actions/search_actions';
+import { getCategories, getApplications } from '../selectors/search_selectors';
+import {
+  getApplications as getFeaturedApplications
+} from '../selectors/applications_selectors';
+
 import MainFooter from '../components/footer';
-import InputSearch from '../components/input_search';
+import Autocomplete from '../components/autocomplete';
 import HeaderContainer from '../containers/header_container';
 import CategoriesList from '../components/categories/list';
 import CategoriesDropdown from '../components/categories/dropdown';
 import CategoriesLinkList from '../components/categories/link_list';
 import CategoriesContainer from '../containers/categories_container';
-import { getApplications } from '../selectors/applications_selectors';
 
 const CategoriesListContainer = CategoriesContainer(CategoriesList);
 const CategoriesDropdownContainer = CategoriesContainer(CategoriesDropdown);
@@ -26,7 +32,9 @@ const ApplicationsCarousel = dynamic(
   }
 );
 
-const HomeContainer = ({ applications }) => (
+const HomeContainer = ({
+  t, fetch, searchCategories, searchApplications, featuredApplications
+}) => (
   <div className="page-container">
     <HeaderContainer />
 
@@ -36,24 +44,33 @@ const HomeContainer = ({ applications }) => (
           <div className="home-header__content">
             <div className="mb-45">
               <h1 className="home-header__main-title">
-                Discover, Compare, and Choose the Best Business Apps
+                {t('title')}
               </h1>
 
               <p className="home-header__descr">
-                Discover categories in order to find more
-                than 100 resources to make your business
+                {t('description')}
               </p>
             </div>
             <Row>
-              <Col xs="12" sm={{ size: 8, offset: 2 }} md={{ size: 6, offset: 3 }} >
-                <InputSearch />
+
+              <Col
+                xs="12"
+                sm={{ size: 8, offset: 2 }}
+                md={{ size: 6, offset: 3 }}
+              >
+                <Autocomplete
+                  fetch={fetch}
+                  categories={searchCategories}
+                  applications={searchApplications}
+                  placeholder={t('search.placeholder')}
+                />
               </Col>
             </Row>
           </div>
         </Container>
 
         <ApplicationsCarousel
-          applications={applications}
+          applications={featuredApplications}
         />
       </section>
 
@@ -98,11 +115,23 @@ const HomeContainer = ({ applications }) => (
 );
 
 HomeContainer.propTypes = {
-  applications: PropTypes.array.isRequired
+  t: PropTypes.func.isRequired,
+  fetch: PropTypes.func.isRequired,
+  searchCategories: PropTypes.array.isRequired,
+  searchApplications: PropTypes.array.isRequired,
+  featuredApplications: PropTypes.array.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  applications: getApplications(state)
+  searchCategories: getCategories(state),
+  searchApplications: getApplications(state),
+  featuredApplications: getFeaturedApplications(state)
 });
 
-export default connect(mapStateToProps)(HomeContainer);
+const mapDispatchToProps = {
+  fetch: searchFetch
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(
+  translate(['home'])(HomeContainer)
+);
