@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { I18nextProvider } from 'react-i18next';
 
 import withReduxAndSaga from '../store';
-import createI18n from '../services/i18n';
-import { getTranslations } from '../services/api';
+import withTranslations from '../with_translations';
+
 import { scrollToElement } from '../helpers/dom_helpers';
 
 import { fetchAll } from '../actions/categories_actions';
@@ -23,26 +23,13 @@ const scrollToCategory = (url = {}) => {
 class Index extends Component {
   static propTypes = {
     url: PropTypes.object.isRequired,
-    translations: PropTypes.object.isRequired
+    i18n: PropTypes.object.isRequired
   }
 
   static async getInitialProps({ store }) {
-    const homeTranslations = await getTranslations('home');
-    const commonTranslations = await getTranslations('common');
-
     store.dispatch(
       fetchAll()
     );
-
-    return {
-      translations: { ...homeTranslations, ...commonTranslations }
-    };
-  }
-
-  constructor(props) {
-    super(props);
-
-    this.i18n = createI18n(props.translations);
   }
 
   componentDidMount() {
@@ -56,12 +43,14 @@ class Index extends Component {
   }
 
   render() {
+    const { i18n } = this.props;
+
     return (
-      <I18nextProvider i18n={this.i18n}>
+      <I18nextProvider i18n={i18n}>
         <div>
           <Head>
             <title>
-              {this.i18n.t('home:pageTitle')}
+              {i18n.t('home:pageTitle')}
             </title>
           </Head>
 
@@ -72,4 +61,6 @@ class Index extends Component {
   }
 }
 
-export default withReduxAndSaga(Index);
+export default withReduxAndSaga(
+  withTranslations('home', 'common')(Index)
+);

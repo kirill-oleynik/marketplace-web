@@ -1,52 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import { I18nextProvider } from 'react-i18next';
 
 import withReduxAndSaga from '../store';
-import createI18n from '../services/i18n';
-import { getTranslations } from '../services/api';
+import withTranslations from '../with_translations';
 
 import MainLayout from '../layouts/main_layout';
 import SearchContainer from '../containers/search_container';
 
-class Search extends Component {
-  static propTypes = {
-    translations: PropTypes.object.isRequired
-  }
+const Search = ({ i18n }) => (
+  <I18nextProvider i18n={i18n}>
+    <div>
+      <Head>
+        <title>
+          {i18n.t('search:pageTitle')}
+        </title>
+      </Head>
 
-  static async getInitialProps() {
-    const commonTranslations = await getTranslations('common');
-    const searchTranslations = await getTranslations('search');
+      <MainLayout>
+        <SearchContainer />
+      </MainLayout>
+    </div>
+  </I18nextProvider>
+);
 
-    return {
-      translations: { ...commonTranslations, ...searchTranslations }
-    };
-  }
+Search.propTypes = {
+  i18n: PropTypes.object.isRequired
+};
 
-  constructor(props) {
-    super(props);
-
-    this.i18n = createI18n(props.translations);
-  }
-
-  render() {
-    return (
-      <I18nextProvider i18n={this.i18n}>
-        <div>
-          <Head>
-            <title>
-              {this.i18n.t('search:pageTitle')}
-            </title>
-          </Head>
-
-          <MainLayout>
-            <SearchContainer />
-          </MainLayout>
-        </div>
-      </I18nextProvider>
-    );
-  }
-}
-
-export default withReduxAndSaga(Search);
+export default withReduxAndSaga(
+  withTranslations('search', 'common')(Search)
+);
