@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import redirect from 'next-redirect';
 import { I18nextProvider } from 'react-i18next';
 
-import { signIn } from '../routes';
 import withReduxAndSaga from '../store';
-import createI18n from '../services/i18n';
-import { getTranslations } from '../services/api';
+import withTranslations from '../with_translations';
+
+import { signIn } from '../routes';
 import { getCurrentUser } from '../selectors/current_user_selectors';
 import { fetchAll as fetchAllFavorites } from '../actions/favorites_actions';
 import { fetchAll as fetchAllCategories } from '../actions/categories_actions';
@@ -17,7 +17,7 @@ import FavoritesContainer from '../containers/favorites_container';
 
 class Favorites extends Component {
   static propTypes = {
-    translations: PropTypes.object.isRequired
+    i18n: PropTypes.object.isRequired
   };
 
   static async getInitialProps({ store, ...ctx }) {
@@ -29,9 +29,6 @@ class Favorites extends Component {
       return redirect(ctx, signIn);
     }
 
-    const commonTranslations = await getTranslations('common');
-    const favoritesTranslations = await getTranslations('favorites');
-
     store.dispatch(
       fetchAllFavorites()
     );
@@ -40,24 +37,18 @@ class Favorites extends Component {
       fetchAllCategories()
     );
 
-    return {
-      translations: { ...commonTranslations, ...favoritesTranslations }
-    };
-  }
-
-  constructor(props) {
-    super(props);
-
-    this.i18n = createI18n(props.translations);
+    return {};
   }
 
   render() {
+    const { i18n } = this.props;
+
     return (
-      <I18nextProvider i18n={this.i18n}>
+      <I18nextProvider i18n={i18n}>
         <div>
           <Head>
             <title>
-              {this.i18n.t('favorites:pageTitle')}
+              {i18n.t('favorites:pageTitle')}
             </title>
           </Head>
 
@@ -70,4 +61,6 @@ class Favorites extends Component {
   }
 }
 
-export default withReduxAndSaga(Favorites);
+export default withReduxAndSaga(
+  withTranslations('favorites', 'common')(Favorites)
+);

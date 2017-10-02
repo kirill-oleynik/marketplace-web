@@ -3,17 +3,18 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import redirect from 'next-redirect';
 import { I18nextProvider } from 'react-i18next';
+
 import withReduxAndSaga from '../store';
-import createI18n from '../services/i18n';
+import withTranslations from '../with_translations';
+
 import { getCurrentUser } from '../selectors/current_user_selectors';
-import { getTranslations } from '../services/api';
 import AuthLayout from '../layouts/auth_layout';
 import AddExtraInfoContainer from '../containers/add_extra_info_container';
 import { signIn, home } from '../routes';
 
 class AddExtraInfo extends Component {
   static propTypes = {
-    translations: PropTypes.object.isRequired
+    i18n: PropTypes.object.isRequired
   }
 
   static async getInitialProps(ctx) {
@@ -29,30 +30,18 @@ class AddExtraInfo extends Component {
       return redirect(ctx, home);
     }
 
-    const commonTranslations = await getTranslations('common');
-    const addExtraInfoTranslations = await getTranslations('add_extra_info');
-
-    return {
-      translations: {
-        ...commonTranslations,
-        ...addExtraInfoTranslations
-      }
-    };
-  }
-
-  constructor(props) {
-    super(props);
-
-    this.i18n = createI18n(props.translations);
+    return {};
   }
 
   render() {
+    const { i18n } = this.props;
+
     return (
-      <I18nextProvider i18n={this.i18n}>
+      <I18nextProvider i18n={this.props.i18n}>
         <div>
           <Head>
             <title>
-              {this.i18n.t('addExtraInfo:title')}
+              {i18n.t('addExtraInfo:title')}
             </title>
           </Head>
 
@@ -65,4 +54,6 @@ class AddExtraInfo extends Component {
   }
 }
 
-export default withReduxAndSaga(AddExtraInfo);
+export default withReduxAndSaga(
+  withTranslations('common', 'addExtraInfo')(AddExtraInfo)
+);

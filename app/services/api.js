@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const isServer = typeof window === 'undefined';
-const buildId = (isServer ? global.buildId : window.__NEXT_DATA__.buildId) || '';
 
 const request = (method, path, { data, cookie, ...rest } = {}) => {
   const url = `${process.env.WEB_URL}/${path}`;
@@ -19,10 +18,12 @@ const request = (method, path, { data, cookie, ...rest } = {}) => {
   });
 };
 
-export const getTranslations = (name, lang = 'en') => (
-  request('get', `static/locales/${lang}/${name}.json?${buildId}`)
-    .then((response) => response.data)
-);
+export const fetchTranslations = (translation, lang = 'en') => {
+  const [name, buildId] = translation.split('?');
+
+  return request('get', `static/locales/${lang}/${name}.json?${buildId}`)
+    .then((response) => response.data);
+};
 
 export const createSession = (options) => (
   request('post', 'api/sessions', options)
