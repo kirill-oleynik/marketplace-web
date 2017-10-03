@@ -1,5 +1,8 @@
 const { put, call } = require('redux-saga/effects');
-const { callApi } = require('../../app/effects');
+
+const {
+  callApi, isUserSignedIn, saveUnfinishedAndRedirect
+} = require('../../app/effects');
 
 const {
   fetchGallery, fetchApplication, addToFavorites, removeFromFavorites,
@@ -78,61 +81,88 @@ describe('#fetchApplication', () => {
 });
 
 describe('#addToFavorites', () => {
-  it('handles successful createFavorites api call', () => {
-    const id = Symbol('id');
-    const favorite = Symbol('favorite');
-    const createFavoritesResponse = {
-      data: {
-        data: favorite
-      }
-    };
+  describe('when user signed in', () => {
+    it('handles successful createFavorites api call', () => {
+      const id = Symbol('id');
+      const favorite = Symbol('favorite');
+      const createFavoritesResponse = {
+        data: {
+          data: favorite
+        }
+      };
 
-    const generator = addToFavorites({ payload: { id } });
+      const generator = addToFavorites({ payload: { id } });
 
-    expect(generator.next().value).toEqual(
-      put({ type: APPLICATIONS_ADD_TO_FAVORITES + REQUEST })
-    );
+      expect(generator.next().value).toEqual(
+        call(isUserSignedIn)
+      );
 
-    expect(generator.next().value).toEqual(
-      callApi(createFavorites, { id })
-    );
+      expect(generator.next(true).value).toEqual(
+        put({ type: APPLICATIONS_ADD_TO_FAVORITES + REQUEST })
+      );
 
-    expect(generator.next(createFavoritesResponse).value).toEqual(
-      put({
-        type: APPLICATIONS_ADD_TO_FAVORITES + SUCCESS,
-        payload: { favorite }
-      })
-    );
+      expect(generator.next().value).toEqual(
+        callApi(createFavorites, { id })
+      );
+
+      expect(generator.next(createFavoritesResponse).value).toEqual(
+        put({
+          type: APPLICATIONS_ADD_TO_FAVORITES + SUCCESS,
+          payload: { favorite }
+        })
+      );
+    });
+
+    it('handles failed createFavorites api call', () => {
+      const id = Symbol('id');
+      const error = Symbol('error');
+      const createFavoritesError = {
+        response: {
+          data: { error }
+        }
+      };
+
+      const generator = addToFavorites({ payload: { id } });
+
+      expect(generator.next().value).toEqual(
+        call(isUserSignedIn)
+      );
+
+      expect(generator.next(true).value).toEqual(
+        put({ type: APPLICATIONS_ADD_TO_FAVORITES + REQUEST })
+      );
+
+      expect(generator.next().value).toEqual(
+        callApi(createFavorites, { id })
+      );
+
+      expect(generator.throw(createFavoritesError).value).toEqual(
+        put({
+          type: APPLICATIONS_ADD_TO_FAVORITES + FAILURE,
+          payload: {
+            error,
+            response: createFavoritesError.response
+          }
+        })
+      );
+    });
   });
 
-  it('handles failed createFavorites api call', () => {
-    const id = Symbol('id');
-    const error = Symbol('error');
-    const createFavoritesError = {
-      response: {
-        data: { error }
-      }
-    };
+  describe('when user not signed in', () => {
+    it('saves unfinished action', () => {
+      const id = Symbol('id');
+      const action = { payload: { id } };
 
-    const generator = addToFavorites({ payload: { id } });
+      const generator = addToFavorites(action);
 
-    expect(generator.next().value).toEqual(
-      put({ type: APPLICATIONS_ADD_TO_FAVORITES + REQUEST })
-    );
+      expect(generator.next().value).toEqual(
+        call(isUserSignedIn)
+      );
 
-    expect(generator.next().value).toEqual(
-      callApi(createFavorites, { id })
-    );
-
-    expect(generator.throw(createFavoritesError).value).toEqual(
-      put({
-        type: APPLICATIONS_ADD_TO_FAVORITES + FAILURE,
-        payload: {
-          error,
-          response: createFavoritesError.response
-        }
-      })
-    );
+      expect(generator.next(false).value).toEqual(
+        call(saveUnfinishedAndRedirect, action)
+      );
+    });
   });
 });
 
@@ -314,64 +344,91 @@ describe('#fetchApplicationRating', () => {
 });
 
 describe('#createApplicationReview', () => {
-  it('handles successful createReview api call', () => {
-    const data = Symbol('data');
-    const review = Symbol('review');
-    const createReviewResponse = {
-      data: {
-        data: review
-      }
-    };
+  describe('when user signed in', () => {
+    it('handles successful createReview api call', () => {
+      const data = Symbol('data');
+      const review = Symbol('review');
+      const createReviewResponse = {
+        data: {
+          data: review
+        }
+      };
 
-    const generator = createApplicationReview({
-      payload: { data }
+      const generator = createApplicationReview({
+        payload: { data }
+      });
+
+      expect(generator.next().value).toEqual(
+        call(isUserSignedIn)
+      );
+
+      expect(generator.next(true).value).toEqual(
+        put({ type: REVIEW_CREATE + REQUEST })
+      );
+
+      expect(generator.next().value).toEqual(
+        callApi(createReview, { data })
+      );
+
+      expect(generator.next(createReviewResponse).value).toEqual(
+        put({
+          type: REVIEW_CREATE + SUCCESS,
+          payload: { review }
+        })
+      );
     });
 
-    expect(generator.next().value).toEqual(
-      put({ type: REVIEW_CREATE + REQUEST })
-    );
+    it('handles failed createReview api call', () => {
+      const data = Symbol('data');
+      const error = Symbol('error');
+      const createReviewError = {
+        response: {
+          data: { error }
+        }
+      };
 
-    expect(generator.next().value).toEqual(
-      callApi(createReview, { data })
-    );
+      const generator = createApplicationReview({
+        payload: { data }
+      });
 
-    expect(generator.next(createReviewResponse).value).toEqual(
-      put({
-        type: REVIEW_CREATE + SUCCESS,
-        payload: { review }
-      })
-    );
+      expect(generator.next().value).toEqual(
+        call(isUserSignedIn)
+      );
+
+      expect(generator.next(true).value).toEqual(
+        put({ type: REVIEW_CREATE + REQUEST })
+      );
+
+      expect(generator.next().value).toEqual(
+        callApi(createReview, { data })
+      );
+
+      expect(generator.throw(createReviewError).value).toEqual(
+        put({
+          type: REVIEW_CREATE + FAILURE,
+          payload: {
+            error,
+            response: createReviewError.response
+          }
+        })
+      );
+    });
   });
 
-  it('handles failed createReview api call', () => {
-    const data = Symbol('data');
-    const error = Symbol('error');
-    const createReviewError = {
-      response: {
-        data: { error }
-      }
-    };
+  describe('when user not signed in', () => {
+    it('saves unfinished action', () => {
+      const id = Symbol('id');
+      const action = { payload: { id } };
 
-    const generator = createApplicationReview({
-      payload: { data }
+      const generator = createApplicationReview(action);
+
+      expect(generator.next().value).toEqual(
+        call(isUserSignedIn)
+      );
+
+      expect(generator.next(false).value).toEqual(
+        call(saveUnfinishedAndRedirect, action)
+      );
     });
-
-    expect(generator.next().value).toEqual(
-      put({ type: REVIEW_CREATE + REQUEST })
-    );
-
-    expect(generator.next().value).toEqual(
-      callApi(createReview, { data })
-    );
-
-    expect(generator.throw(createReviewError).value).toEqual(
-      put({
-        type: REVIEW_CREATE + FAILURE,
-        payload: {
-          error,
-          response: createReviewError.response
-        }
-      })
-    );
   });
 });

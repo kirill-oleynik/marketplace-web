@@ -1,9 +1,13 @@
 import Router from 'next/router';
 import { put, call, fork, take, takeLatest } from 'redux-saga/effects';
 
-import { callApi } from '../effects';
 import { home, addExtraInfo } from '../routes';
 import { getResponseData, getResponseError } from '../helpers/response_helpers';
+
+import {
+  callApi, replyUnfinishedRoute, replyUnfinishedAction
+} from '../effects';
+
 import {
   createUser, createSession, destroySession, fetchCurrentUser
 } from '../services/api';
@@ -99,7 +103,13 @@ export function* signInRedirect(action) {
   yield take(AUTH_SIGN_IN + SUCCESS);
   yield fork(fetchUser);
   yield take(AUTH_FETCH_USER + SUCCESS);
-  yield call([Router, 'replace'], home);
+
+  const isRedirected = yield call(replyUnfinishedRoute);
+  if (isRedirected) {
+    yield replyUnfinishedAction();
+  } else {
+    yield call([Router, 'replace'], home);
+  }
 }
 
 export function* signUpSignInRedirect(action) {
@@ -111,7 +121,13 @@ export function* signUpSignInRedirect(action) {
   yield take(AUTH_SIGN_IN + SUCCESS);
   yield fork(fetchUser);
   yield take(AUTH_FETCH_USER + SUCCESS);
-  yield call([Router, 'replace'], addExtraInfo);
+
+  const isRedirected = yield call(replyUnfinishedRoute);
+  if (isRedirected) {
+    yield replyUnfinishedAction();
+  } else {
+    yield call([Router, 'replace'], addExtraInfo);
+  }
 }
 
 export function* watchSignIn() {

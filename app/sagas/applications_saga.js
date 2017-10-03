@@ -1,7 +1,8 @@
-import { put, fork, take, takeEvery } from 'redux-saga/effects';
+import { put, call, fork, take, takeEvery } from 'redux-saga/effects';
 
-import { callApi } from '../effects';
+import { callApi, isUserSignedIn, saveUnfinishedAndRedirect } from '../effects';
 import { getResponseData, getResponseError } from '../helpers/response_helpers';
+
 import {
   fetchSingleApplication, fetchApplicationGallery, createFavorites,
   deleteFavorites, fetchRating, createReview
@@ -57,8 +58,14 @@ export function* fetchGallery({ payload }) {
   }
 }
 
-export function* addToFavorites({ payload }) {
-  const { id } = payload;
+export function* addToFavorites(action) {
+  const { id } = action.payload;
+  const userSignedIn = yield call(isUserSignedIn);
+
+  if (!userSignedIn) {
+    yield call(saveUnfinishedAndRedirect, action);
+    return;
+  }
 
   yield put({ type: APPLICATIONS_ADD_TO_FAVORITES + REQUEST });
 
@@ -123,6 +130,12 @@ export function* fetchApplicationRating(action) {
 
 export function* createApplicationReview(action) {
   const { data } = action.payload;
+  const userSignedIn = yield call(isUserSignedIn);
+
+  if (!userSignedIn) {
+    yield call(saveUnfinishedAndRedirect, action);
+    return;
+  }
 
   yield put({ type: REVIEW_CREATE + REQUEST });
 

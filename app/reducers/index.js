@@ -13,6 +13,7 @@ import favorites from './favorites';
 import submitApplication from './submit_application';
 import resetPassword from './reset_password';
 import search from './search';
+import unfinished from './unfinished';
 
 export default combineReducers({
   cookie,
@@ -27,5 +28,6 @@ export default combineReducers({
   favorites,
   submitApplication,
   resetPassword,
-  search
+  search,
+  unfinished
 });

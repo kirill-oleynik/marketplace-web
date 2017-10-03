@@ -65,7 +65,6 @@ describe('#getCanToggleFavorite', () => {
     describe('when app in progress', () => {
       test('it returns false', () => {
         expect(getCanToggleFavorite({
-          currentUser: { id: 1 },
           applications: {
             appProfile: {
               inProgress: true
@@ -78,7 +77,6 @@ describe('#getCanToggleFavorite', () => {
     describe('when app not in progress', () => {
       test('it returns true', () => {
         expect(getCanToggleFavorite({
-          currentUser: { id: 1 },
           applications: {
             appProfile: {
               inProgress: false
@@ -86,19 +84,6 @@ describe('#getCanToggleFavorite', () => {
           }
         })).toEqual(true);
       });
-    });
-  });
-
-  describe('when current user not present', () => {
-    test('it returns false', () => {
-      expect(getCanToggleFavorite({
-        currentUser: {},
-        applications: {
-          appProfile: {
-            inProgress: false
-          }
-        }
-      })).toEqual(false);
     });
   });
 });
@@ -109,7 +94,7 @@ describe('#getAppRating', () => {
 
     expect(getAppRating({
       applications: {
-        appRating: appRating
+        appRating
       }
     })).toEqual(appRating);
   });
