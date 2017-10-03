@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<div>
+  <Translate(Footer)
+    onPrivacyPolicyClick={[Function]}
+    onTermsOfUseClick={[Function]}
+  />
+  <Translate(TermsOfUse)
+    isOpen={true}
+    toggle={[Function]}
+  />
+</div>
+`;

@@ -12,7 +12,7 @@ exports[`#render it renders correctly 1`] = `
       Hello
     </div>
   </main>
-  <MainFooter />
+  <FooterContainer />
   <ScrollTopButton />
 </div>
 `;

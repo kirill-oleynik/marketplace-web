@@ -12,9 +12,9 @@ import {
   getApplications as getFeaturedApplications
 } from '../selectors/applications_selectors';
 
-import MainFooter from '../components/footer';
 import Autocomplete from '../components/autocomplete';
 import CategoriesList from '../components/categories/list';
+import FooterContainer from '../containers/footer_container';
 import HeaderContainer from '../containers/header_container';
 import ScrollTopButton from '../components/scroll_top_button';
 import CategoriesDropdown from '../components/categories/dropdown';
@@ -112,7 +112,7 @@ const HomeContainer = ({
     </main>
 
     <ScrollTopButton />
-    <MainFooter />
+    <FooterContainer />
   </div>
 );
 

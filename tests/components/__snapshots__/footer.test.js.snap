@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<footer>
+  <Container
+    tag="div"
+  >
+    <div
+      className="main-footer main-footer-js"
+    >
+      <div
+        className="main-footer__wrap"
+      >
+        <Link
+          href="/"
+        >
+          <a
+            className="page-main-logo in-blue-500"
+          >
+            footer.applicationName
+          </a>
+        </Link>
+        <p
+          className="font-14 in-black-035 ml-10 mb-0"
+        >
+          footer.copyright
+        </p>
+      </div>
+      <div
+        className="main-footer__wrap"
+      >
+        <span
+          className="main-footer__link main-footer__terms-link"
+          onClick={[Function]}
+        >
+          footer.termsOfUse
+        </span>
+        <span
+          className="main-footer__link main-footer__privacy-link"
+          onClick={[Function]}
+        >
+          footer.privacyPolicy
+        </span>
+      </div>
+    </div>
+  </Container>
+</footer>
+`;

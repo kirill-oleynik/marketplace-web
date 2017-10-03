@@ -1,44 +1,55 @@
 import React from 'react';
+import Link from 'next/link';
+import PropTypes from 'prop-types';
 import { Container } from 'reactstrap';
-import TermsOfUse from '../components/terms_of_use';
+import { translate } from 'react-i18next';
 
-class MainFooter extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modal: false
-    };
-    this.toggle = this.toggle.bind(this);
-  }
+import { home } from '../routes';
 
-  toggle() {
-    this.setState({
-      modal: !this.state.modal
-    });
-  }
+const getCurrentYear = () => (
+  new Date().getFullYear()
+);
 
-  render() {
-    return (
-      <footer>
-        <Container>
-          <div className="main-footer main-footer-js">
-            <div className="main-footer__wrap">
-              <a href="/" className="page-main-logo in-blue-500">Appreview</a>
-              <p className="font-14 in-black-035 ml-10 mb-0">©2017 All Rights Reserved</p>
-            </div>
-            <div className="main-footer__wrap">
-              <a href="/#" className="main-footer__link" onClick={this.toggle}>Terms of Use</a>
-              <a href="/" className="main-footer__link">Privacy Policy</a>
-            </div>
-          </div>
-        </Container>
-        <TermsOfUse
-          isOpen={this.state.modal}
-          toggle={this.toggle}
-        />
-      </footer>
-    );
-  }
-}
+export const Footer = ({ t, onTermsOfUseClick, onPrivacyPolicyClick }) => (
+  <footer>
+    <Container>
+      <div className="main-footer main-footer-js">
+        <div className="main-footer__wrap">
+          <Link href={home}>
+            <a className="page-main-logo in-blue-500">
+              {t('footer.applicationName')}
+            </a>
+          </Link>
 
-export default MainFooter;
+          <p className="font-14 in-black-035 ml-10 mb-0">
+            {t('footer.copyright', { year: getCurrentYear() })}
+          </p>
+        </div>
+
+        <div className="main-footer__wrap">
+          <span
+            onClick={onTermsOfUseClick}
+            className="main-footer__link main-footer__terms-link"
+          >
+            {t('footer.termsOfUse')}
+          </span>
+
+          <span
+            onClick={onPrivacyPolicyClick}
+            className="main-footer__link main-footer__privacy-link"
+          >
+            {t('footer.privacyPolicy')}
+          </span>
+        </div>
+      </div>
+    </Container>
+  </footer>
+);
+
+Footer.propTypes = {
+  t: PropTypes.func.isRequired,
+  onTermsOfUseClick: PropTypes.func.isRequired,
+  onPrivacyPolicyClick: PropTypes.func.isRequired
+};
+
+export default translate(['common'])(Footer);
