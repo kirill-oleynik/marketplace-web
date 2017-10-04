@@ -1,6 +1,7 @@
 const Router = require('next/router').default;
 const { put, fork, call, take } = require('redux-saga/effects');
-const { callApi } = require('../../app/effects');
+
+const { callApi, replyUnfinishedRoute } = require('../../app/effects');
 const { home, addExtraInfo } = require('../../app/routes');
 const {
   signUp, signIn, signOut, fetchUser, signInRedirect, signUpSignInRedirect
@@ -275,6 +276,10 @@ describe('#signInRedirect', () => {
     );
 
     expect(generator.next().value).toEqual(
+      call(replyUnfinishedRoute)
+    );
+
+    expect(generator.next().value).toEqual(
       call([Router, 'replace'], home)
     );
   });
@@ -323,6 +328,10 @@ describe('#signUpSignInRedirect', () => {
 
     expect(generator.next().value).toEqual(
       take(AUTH_FETCH_USER + SUCCESS)
+    );
+
+    expect(generator.next().value).toEqual(
+      call(replyUnfinishedRoute)
     );
 
     expect(generator.next().value).toEqual(
