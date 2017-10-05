@@ -18,6 +18,7 @@ exports[`#render it renders correctly 1`] = `
           Hello
         </div>
         <Component />
+        <Connect(Translate(NotificationsContainer)) />
       </Container>
     </div>
   </main>

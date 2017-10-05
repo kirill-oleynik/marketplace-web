@@ -3,7 +3,7 @@
 exports[`#render when modal is closed it renders correctly 1`] = `
 <Modal
   autoFocus={true}
-  backdrop={true}
+  backdrop={false}
   backdropTransitionTimeout={150}
   className="main-modal"
   fade={true}
@@ -66,7 +66,7 @@ exports[`#render when modal is closed it renders correctly 1`] = `
 exports[`#render when modal is opend it renders correctly 1`] = `
 <Modal
   autoFocus={true}
-  backdrop={true}
+  backdrop={false}
   backdropTransitionTimeout={150}
   className="main-modal"
   fade={true}

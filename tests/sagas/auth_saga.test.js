@@ -10,7 +10,7 @@ const {
   createUser, createSession, destroySession, fetchCurrentUser
 } = require('../../app/services/api');
 const {
-  REQUEST, SUCCESS, FAILURE, AUTH_SIGN_UP,
+  REQUEST, SUCCESS, FAILURE, AUTH_SIGN_UP, NOTIFICATION_SHOW,
   AUTH_SIGN_IN, AUTH_SIGN_OUT, AUTH_FETCH_USER
 } = require('../../app/constants');
 
@@ -157,6 +157,15 @@ describe('#signOut', () => {
     expect(generator.next().value).toEqual(
       call([Router, 'push'], home, home, { shallow: true })
     );
+
+    expect(generator.next().value).toEqual(
+      put({
+        type: NOTIFICATION_SHOW,
+        payload: {
+          event: 'auth:sign_out'
+        }
+      })
+    );
   });
 
   it('handles failed destroySession api call', () => {
@@ -282,6 +291,15 @@ describe('#signInRedirect', () => {
     expect(generator.next().value).toEqual(
       call([Router, 'replace'], home)
     );
+
+    expect(generator.next().value).toEqual(
+      put({
+        type: NOTIFICATION_SHOW,
+        payload: {
+          event: 'auth:sign_in'
+        }
+      })
+    );
   });
 });
 
@@ -336,6 +354,15 @@ describe('#signUpSignInRedirect', () => {
 
     expect(generator.next().value).toEqual(
       call([Router, 'replace'], addExtraInfo)
+    );
+
+    expect(generator.next().value).toEqual(
+      put({
+        type: NOTIFICATION_SHOW,
+        payload: {
+          event: 'auth:sign_up'
+        }
+      })
     );
   });
 });

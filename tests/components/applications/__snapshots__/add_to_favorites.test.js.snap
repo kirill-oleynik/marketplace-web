@@ -8,7 +8,7 @@ exports[`#render it renders correctly 1`] = `
   type="button"
 >
   <i
-    className="icon icon-heart in-black-035 font-16 mr-10"
+    className="icon icon-heart font-16 mr-10 favourites-heart__icon"
   />
   <span
     className="favourites-add__text"

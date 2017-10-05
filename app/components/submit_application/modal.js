@@ -6,6 +6,7 @@ import SubmitApplicationFormContainer from '../../containers/submit_application/
 export const SubmitApplicationModal = ({ isOpen, closeModal }) => (
   <Modal
     isOpen={isOpen}
+    backdrop={false}
     className="main-modal"
   >
     <Container>

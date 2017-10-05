@@ -11,7 +11,7 @@ import {
 import {
   REQUEST, SUCCESS, FAILURE, APPLICATION_FETCH, APPLICATIONS_FETCH_GALLERY,
   APPLICATIONS_ADD_TO_FAVORITES, APPLICATIONS_REMOVE_FROM_FAVORITES,
-  APPLICATIONS_RATING_FETCH, REVIEW_CREATE
+  APPLICATIONS_RATING_FETCH, REVIEW_CREATE, NOTIFICATION_SHOW
 } from '../constants';
 
 export function* fetchApplication({ payload }) {
@@ -78,6 +78,13 @@ export function* addToFavorites(action) {
         favorite: getResponseData(favoriteResponse)
       }
     });
+
+    yield put({
+      type: NOTIFICATION_SHOW,
+      payload: {
+        event: 'favorites:add'
+      }
+    });
   } catch (exception) {
     yield put({
       type: APPLICATIONS_ADD_TO_FAVORITES + FAILURE,
@@ -98,6 +105,13 @@ export function* removeFromFavorites({ payload }) {
       type: APPLICATIONS_REMOVE_FROM_FAVORITES + SUCCESS,
       payload: {
         favorite: getResponseData(favoriteResponse)
+      }
+    });
+
+    yield put({
+      type: NOTIFICATION_SHOW,
+      payload: {
+        event: 'favorites:remove'
       }
     });
   } catch (exception) {
