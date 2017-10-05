@@ -13,8 +13,8 @@ import {
 } from '../services/api';
 
 import {
-  REQUEST, SUCCESS, FAILURE, AUTH_SIGN_UP,
-  AUTH_SIGN_IN, AUTH_SIGN_OUT, AUTH_FETCH_USER
+  REQUEST, SUCCESS, FAILURE, AUTH_SIGN_UP, AUTH_SIGN_IN,
+  AUTH_SIGN_OUT, AUTH_FETCH_USER, NOTIFICATION_SHOW
 } from '../constants';
 
 export function* signUp(data) {
@@ -68,6 +68,13 @@ export function* signOut() {
     });
 
     yield call([Router, 'push'], home, home, { shallow: true });
+
+    yield put({
+      type: NOTIFICATION_SHOW,
+      payload: {
+        event: 'auth:sign_out'
+      }
+    });
   } catch (exception) {
     yield put({
       type: AUTH_SIGN_OUT + FAILURE,
@@ -110,6 +117,13 @@ export function* signInRedirect(action) {
   } else {
     yield call([Router, 'replace'], home);
   }
+
+  yield put({
+    type: NOTIFICATION_SHOW,
+    payload: {
+      event: 'auth:sign_in'
+    }
+  });
 }
 
 export function* signUpSignInRedirect(action) {
@@ -128,6 +142,13 @@ export function* signUpSignInRedirect(action) {
   } else {
     yield call([Router, 'replace'], addExtraInfo);
   }
+
+  yield put({
+    type: NOTIFICATION_SHOW,
+    payload: {
+      event: 'auth:sign_up'
+    }
+  });
 }
 
 export function* watchSignIn() {

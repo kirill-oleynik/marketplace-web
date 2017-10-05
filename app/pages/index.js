@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
+
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import { I18nextProvider } from 'react-i18next';
 
 import withReduxAndSaga from '../store';
 import withTranslations from '../with_translations';
-
 import { scrollToElement } from '../helpers/dom_helpers';
-
 import { fetchAll } from '../actions/categories_actions';
+
 import HomeContainer from '../containers/home_container';
+import NotificationsContainer from '../containers/notifications_container';
 
 const scrollToCategory = (url = {}) => {
   const { category } = url.query || {};
@@ -55,6 +56,7 @@ class Index extends Component {
           </Head>
 
           <HomeContainer />
+          <NotificationsContainer />
         </div>
       </I18nextProvider>
     );

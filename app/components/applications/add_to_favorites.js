@@ -9,7 +9,7 @@ export const AddToFavorites = ({ t, onClick, disabled }) => (
     disabled={disabled}
     className="favourites-add"
   >
-    <i className="icon icon-heart in-black-035 font-16 mr-10" />
+    <i className="icon icon-heart font-16 mr-10 favourites-heart__icon" />
 
     <span className="favourites-add__text">
       {t('appProfile.favorites.add')}

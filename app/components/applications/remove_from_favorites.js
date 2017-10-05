@@ -10,7 +10,7 @@ export const RemoveFromFavorites = ({ t, onClick, disabled }) => (
     className="favourites-activities"
   >
     <span className="favourites-activities__addeded">
-      <i className="icon icon-heart-filled in-black-035 font-16 mr-10" />
+      <i className="icon icon-heart-filled favourites-heart__icon font-16 mr-10" />
 
       <span className="favourites-add__text">
         {t('appProfile.favorites.added')}
@@ -19,7 +19,7 @@ export const RemoveFromFavorites = ({ t, onClick, disabled }) => (
 
     <span className="favourites-activities__remove">
       <span className="relative mr-10">
-        <i className="icon icon-heart-filled in-black-035 font-16" />
+        <i className="icon icon-heart-filled favourites-heart__icon font-16" />
         <i className="icon icon-cross favourites-activities__remove-cross" />
       </span>
 

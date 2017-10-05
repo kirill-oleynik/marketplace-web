@@ -24,6 +24,20 @@
       "isEmail": "{{prop}} should have format 'example@email.com'",
       "isUrl": "{{prop}} should have format 'www.website.com'"
     },
+    "notifications": {
+      "favorites": {
+        "add": "Application successfully added to favorites",
+        "remove": "Application removed from favorites"
+      },
+      "application": {
+        "submit": "Your request successfully submitted"
+      },
+      "auth": {
+        "sign_in": "Logged in successfully",
+        "sign_up": "Your account successfully created",
+        "sign_out": "You have logged out of your account"
+      }
+    },
     "profile": {
       "profileTab": {
         "title": "Profile",

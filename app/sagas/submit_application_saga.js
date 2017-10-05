@@ -1,8 +1,12 @@
 import { put, takeEvery } from 'redux-saga/effects';
+
 import { callApi } from '../effects';
-import { getResponseData, getResponseError } from '../helpers/response_helpers';
 import { submitApplication } from '../services/api';
-import { SUCCESS, FAILURE, SUBMIT_APPLICATION } from '../constants';
+import { getResponseData, getResponseError } from '../helpers/response_helpers';
+
+import {
+  SUCCESS, FAILURE, SUBMIT_APPLICATION, NOTIFICATION_SHOW
+} from '../constants';
 
 export function* submitApplicationCandidate(action) {
   const { data } = action.payload;
@@ -14,6 +18,13 @@ export function* submitApplicationCandidate(action) {
       type: SUBMIT_APPLICATION + SUCCESS,
       payload: {
         applicationCandidate: getResponseData(submitResponse)
+      }
+    });
+
+    yield put({
+      type: NOTIFICATION_SHOW,
+      payload: {
+        event: 'application:submit'
       }
     });
   } catch (exception) {

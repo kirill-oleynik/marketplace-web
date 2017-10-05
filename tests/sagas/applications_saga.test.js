@@ -17,8 +17,8 @@ const {
 const {
   REQUEST, SUCCESS, FAILURE, APPLICATION_FETCH,
   APPLICATIONS_ADD_TO_FAVORITES, APPLICATIONS_REMOVE_FROM_FAVORITES,
-  APPLICATIONS_FETCH_GALLERY,
-  APPLICATIONS_RATING_FETCH, REVIEW_CREATE
+  APPLICATIONS_FETCH_GALLERY, APPLICATIONS_RATING_FETCH, REVIEW_CREATE,
+  NOTIFICATION_SHOW
 } = require('../../app/constants');
 
 describe('#fetchApplication', () => {
@@ -111,6 +111,15 @@ describe('#addToFavorites', () => {
           payload: { favorite }
         })
       );
+
+      expect(generator.next().value).toEqual(
+        put({
+          type: NOTIFICATION_SHOW,
+          payload: {
+            event: 'favorites:add'
+          }
+        })
+      );
     });
 
     it('handles failed createFavorites api call', () => {
@@ -190,6 +199,15 @@ describe('#removeFromFavorites', () => {
       put({
         type: APPLICATIONS_REMOVE_FROM_FAVORITES + SUCCESS,
         payload: { favorite }
+      })
+    );
+
+    expect(generator.next().value).toEqual(
+      put({
+        type: NOTIFICATION_SHOW,
+        payload: {
+          event: 'favorites:remove'
+        }
       })
     );
   });

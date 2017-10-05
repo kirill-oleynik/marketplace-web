@@ -14,6 +14,7 @@ import submitApplication from './submit_application';
 import resetPassword from './reset_password';
 import search from './search';
 import unfinished from './unfinished';
+import notifications from './notifications';
 
 export default combineReducers({
   cookie,
@@ -29,5 +30,6 @@ export default combineReducers({
   submitApplication,
   resetPassword,
   search,
-  unfinished
+  unfinished,
+  notifications
 });

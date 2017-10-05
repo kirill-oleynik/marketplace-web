@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
+
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { Container } from 'reactstrap';
-import Link from 'next/link';
 import { translate } from 'react-i18next';
+
 import { home, signIn, signUp, favorites } from '../routes';
-import HeaderDropdownMenu from '../components/header_dropdown_menu';
-import ButtonCircle from '../components/button_circle';
+
 import MainButton from '../components/main_button';
+import ButtonCircle from '../components/button_circle';
 import HeaderModalMenu from '../components/header_modal_menu';
-import SubmitApp from '../components/submit_app';
+import HeaderDropdownMenu from '../components/header_dropdown_menu';
 
 class Header extends Component {
   static propTypes = {
     t: PropTypes.func.isRequired,
     signOut: PropTypes.func.isRequired,
     openProfile: PropTypes.func.isRequired,
-    openSubmitApplication: PropTypes.func.isRequired,
-    currentUser: PropTypes.object.isRequired
+    currentUser: PropTypes.object.isRequired,
+    openSubmitApplication: PropTypes.func.isRequired
   }
 
   state = {
@@ -38,8 +40,7 @@ class Header extends Component {
           <Container>
             <div className="main-header__content">
               <div className="hidden-sm-up">
-                <a
-                  href="/#"
+                <span
                   className="main-header__btn-menu icon icon-menu in-white"
                   onClick={this.toggle}
                 />
@@ -106,10 +107,6 @@ class Header extends Component {
           currentUser={currentUser}
           openProfile={openProfile}
           openSubmitApplication={openSubmitApplication}
-        />
-
-        <SubmitApp
-          toggle={this.toggle}
         />
       </div>
     );

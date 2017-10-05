@@ -14,5 +14,6 @@ exports[`#render it renders correctly 1`] = `
   </main>
   <FooterContainer />
   <ScrollTopButton />
+  <Connect(Translate(NotificationsContainer)) />
 </div>
 `;
