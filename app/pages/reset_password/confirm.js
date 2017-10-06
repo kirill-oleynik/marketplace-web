@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+
 import Head from 'next/head';
+import PropTypes from 'prop-types';
 import redirect from 'next-redirect';
-import { Container } from 'reactstrap';
 import { I18nextProvider } from 'react-i18next';
 
 import withReduxAndSaga from '../../store';
@@ -10,10 +10,9 @@ import withTranslations from '../../with_translations';
 
 import { home } from '../../routes';
 import { getCurrentUser } from '../../selectors/current_user_selectors';
-import Header from '../../containers/header_container';
-import AllRights from '../../components/all_rights';
-import ResetPasswordConfirmContainer
-  from '../../containers/reset_password/confirm_container';
+
+import AuthLayout from '../../layouts/auth_layout';
+import ResetPasswordConfirmContainer from '../../containers/reset_password/confirm_container';
 
 class ResetPasswordConfirm extends Component {
   static propTypes = {
@@ -47,21 +46,11 @@ class ResetPasswordConfirm extends Component {
             </title>
           </Head>
 
-          <div className="page-container">
-            <Header />
-
-            <main className="login__container flex-grow-1">
-              <div className="login__wrap">
-                <Container>
-                  <ResetPasswordConfirmContainer
-                    requestParams={requestParams}
-                  />
-
-                  <AllRights />
-                </Container>
-              </div>
-            </main>
-          </div>
+          <AuthLayout>
+            <ResetPasswordConfirmContainer
+              requestParams={requestParams}
+            />
+          </AuthLayout>
         </div>
       </I18nextProvider>
     );

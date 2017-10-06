@@ -1,5 +1,13 @@
 .main-header {
+  height: 60px;
   background-color: color(blue-200);
+}
+.main-header--fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
 }
 .main-header__content {
   min-height: 60px;

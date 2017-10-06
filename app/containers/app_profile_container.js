@@ -25,7 +25,7 @@ const AppProfileContainer = (props) => (
       <Row>
         <Col xs="12" sm="3" className="hidden-xs-down">
           <StickyContainer style={{ height: '100%' }}>
-            <Sticky topOffset={-30}>
+            <Sticky topOffset={-60}>
               {
                 (stickyOptions) => (
                   <CategoriesLinkListContainer
@@ -33,7 +33,7 @@ const AppProfileContainer = (props) => (
                       ...stickyOptions,
                       style: {
                         ...stickyOptions.style,
-                        top: '30px',
+                        top: '61px',
                         zIndex: 2
                       }
                     }}

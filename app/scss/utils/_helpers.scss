@@ -41,6 +41,9 @@
 .flex-sm-wrap-down {
   flex-wrap: wrap;
 }
+.max-550 {
+  max-width: 550px;
+}
 @include media-breakpoint-up(sm) {
   .flex-sm-wrap-down {
     flex-wrap: nowrap;

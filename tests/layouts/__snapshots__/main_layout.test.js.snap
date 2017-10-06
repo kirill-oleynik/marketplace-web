@@ -1,19 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`#render it renders correctly 1`] = `
-<div
-  className="page-container"
+<MainLayout
+  isHeaderFixed={false}
 >
-  <Connect(HeaderContainer) />
-  <main
-    className="flex-grow-1"
-  >
-    <div>
-      Hello
-    </div>
-  </main>
-  <FooterContainer />
-  <ScrollTopButton />
-  <Connect(Translate(NotificationsContainer)) />
-</div>
+  <div>
+    Hello
+  </div>
+</MainLayout>
 `;

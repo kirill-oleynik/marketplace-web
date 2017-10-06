@@ -48,7 +48,7 @@ class Index extends Component {
 
     return (
       <I18nextProvider i18n={i18n}>
-        <div>
+        <div className="home-page">
           <Head>
             <title>
               {i18n.t('home:pageTitle')}

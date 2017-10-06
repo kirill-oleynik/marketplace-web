@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+
 import Router from 'next/router';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import debounce from 'lodash/debounce';
 import { translate } from 'react-i18next';
 import Autosuggest from 'react-autosuggest';
@@ -141,8 +143,8 @@ class Autocomplete extends Component {
   )
 
   render() {
-    const { placeholder } = this.props;
     const { value, suggestions } = this.state;
+    const { className, placeholder } = this.props;
 
     const inputProps = {
       value,
@@ -152,7 +154,7 @@ class Autocomplete extends Component {
     };
 
     return (
-      <div className="autocomplete">
+      <div className={classNames('autocomplete', ...className.split(' '))}>
         <Autosuggest
           multiSection
           inputProps={inputProps}
@@ -174,11 +176,13 @@ class Autocomplete extends Component {
 }
 
 Autocomplete.propTypes = {
+  className: PropTypes.string,
   placeholder: PropTypes.string,
   fetch: PropTypes.func.isRequired
 };
 
 Autocomplete.defaultProps = {
+  className: '',
   placeholder: ''
 };
 

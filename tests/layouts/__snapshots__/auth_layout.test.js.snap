@@ -1,26 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`#render it renders correctly 1`] = `
-<div
-  className="page-container"
+<AuthLayout
+  isHeaderFixed={false}
 >
-  <Connect(HeaderContainer) />
-  <main
-    className="login__container flex-grow-1"
-  >
-    <div
-      className="login__wrap"
-    >
-      <Container
-        tag="div"
-      >
-        <div>
-          Hello
-        </div>
-        <Component />
-        <Connect(Translate(NotificationsContainer)) />
-      </Container>
-    </div>
-  </main>
-</div>
+  <div>
+    Hello
+  </div>
+</AuthLayout>
 `;
