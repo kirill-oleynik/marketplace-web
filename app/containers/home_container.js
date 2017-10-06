@@ -1,4 +1,5 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
 import { connect } from 'react-redux';
@@ -6,6 +7,7 @@ import { translate } from 'react-i18next';
 import { Container, Row, Col } from 'reactstrap';
 import { Sticky, StickyContainer } from 'react-sticky';
 
+import withFixedHeader from '../with_fixed_header';
 import { fetch as searchFetch } from '../actions/search_actions';
 import { getCategories, getApplications } from '../selectors/search_selectors';
 import {
@@ -34,10 +36,12 @@ const ApplicationsCarousel = dynamic(
 );
 
 const HomeContainer = ({
-  t, fetch, searchCategories, searchApplications, featuredApplications
+  t, fetch, searchCategories, isHeaderFixed, searchApplications, featuredApplications
 }) => (
-  <div className="page-container">
-    <HeaderContainer />
+  <div className={`page-container ${isHeaderFixed ? 'pt-60' : ''}`}>
+    <HeaderContainer
+      fixed={isHeaderFixed}
+    />
 
     <main className="flex-grow-1">
       <section className="home-header">
@@ -52,8 +56,8 @@ const HomeContainer = ({
                 {t('description')}
               </p>
             </div>
-            <Row>
 
+            <Row>
               <Col
                 xs="12"
                 sm={{ size: 8, offset: 2 }}
@@ -84,7 +88,7 @@ const HomeContainer = ({
           <Row>
             <Col xs="12" sm="3" className="hidden-xs-down">
               <StickyContainer style={{ height: '100%' }}>
-                <Sticky topOffset={-30}>
+                <Sticky topOffset={-60}>
                   {
                     (stickyOptions) => (
                       <CategoriesLinkListContainer
@@ -92,7 +96,7 @@ const HomeContainer = ({
                           ...stickyOptions,
                           style: {
                             ...stickyOptions.style,
-                            top: '30px',
+                            top: '61px',
                             zIndex: 2
                           }
                         }}
@@ -119,6 +123,7 @@ const HomeContainer = ({
 HomeContainer.propTypes = {
   t: PropTypes.func.isRequired,
   fetch: PropTypes.func.isRequired,
+  isHeaderFixed: PropTypes.bool.isRequired,
   searchCategories: PropTypes.array.isRequired,
   searchApplications: PropTypes.array.isRequired,
   featuredApplications: PropTypes.array.isRequired
@@ -135,5 +140,7 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  translate(['home'])(HomeContainer)
+  translate(['home'])(
+    withFixedHeader('.home-page main > .container')(HomeContainer)
+  )
 );

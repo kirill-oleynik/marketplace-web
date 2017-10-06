@@ -1,14 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 import Head from 'next/head';
-import { Container } from 'reactstrap';
+import PropTypes from 'prop-types';
 import { I18nextProvider } from 'react-i18next';
 
 import withReduxAndSaga from '../../store';
 import withTranslations from '../../with_translations';
 
-import Header from '../../containers/header_container';
-import AllRights from '../../components/all_rights';
+import AuthLayout from '../../layouts/auth_layout';
 import ResetPasswordRequestContainer from '../../containers/reset_password/request_container';
 
 const ResetPasswordRequest = ({ i18n }) => (
@@ -20,19 +19,9 @@ const ResetPasswordRequest = ({ i18n }) => (
         </title>
       </Head>
 
-      <div className="page-container">
-        <Header />
-
-        <main className="login__container flex-grow-1">
-          <div className="login__wrap">
-            <Container>
-              <ResetPasswordRequestContainer />
-
-              <AllRights />
-            </Container>
-          </div>
-        </main>
-      </div>
+      <AuthLayout>
+        <ResetPasswordRequestContainer />
+      </AuthLayout>
     </div>
   </I18nextProvider>
 );

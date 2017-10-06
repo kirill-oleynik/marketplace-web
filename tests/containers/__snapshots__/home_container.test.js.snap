@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`#render it renders correctly 1`] = `
-<Translate(HomeContainer)
+<Translate(WithFixedHeader)
   featuredApplications={
     Array [
       Object {

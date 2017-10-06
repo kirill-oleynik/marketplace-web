@@ -1,15 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`#render it renders correctly 1`] = `
-<div>
-  <Translate(Header)
-    openProfile={[Function]}
-    openSubmitApplication={[Function]}
-    t={[Function]}
-    toggleProfileModal={[Function]}
-    toggleSubmitApplicationModal={[Function]}
-  />
-  <Connect(Translate(ProfileContainer)) />
-  <Connect(SubmitApplicationModalContainer) />
-</div>
+<HeaderContainer
+  currentUser={
+    Object {
+      "id": Symbol(userId),
+    }
+  }
+  fixed={false}
+  searchApplications={
+    Array [
+      Object {
+        "id": 1,
+        "title": "Test1",
+      },
+    ]
+  }
+  searchCategories={
+    Array [
+      Object {
+        "id": 2,
+        "title": "Test2",
+      },
+    ]
+  }
+  searchFetch={[Function]}
+  signOut={[Function]}
+  toggleProfileModal={[Function]}
+  toggleSubmitApplicationModal={[Function]}
+/>
 `;

@@ -80,7 +80,8 @@
     },
     "search": {
       "categories": "Categories",
-      "applications": "Applications"
+      "applications": "Applications",
+      "placeholder": "Search by Applications and Categories"
     },
     "footer": {
       "applicationName": "Appreviewer",

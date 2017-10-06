@@ -2,7 +2,7 @@ const getDocumentTop = () => (
   document.documentElement.scrollTop + document.body.scrollTop
 );
 
-const getElementTop = (node) => {
+export const getElementTop = (node) => {
   const coords = node.getBoundingClientRect();
 
   const body = document.body;
