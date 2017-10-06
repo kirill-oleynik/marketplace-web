@@ -24,18 +24,16 @@ export function* isUserSignedIn() {
   return !!currentUser.id;
 }
 
-export function* saveUnfinishedAndRedirect(action = {}) {
-  const route = {
-    path: Router.route,
-    query: Router.query,
-    asPath: Router.asPath
-  };
-
+export function* saveUnfinishedAndRedirect(action = {}, route = null) {
   yield put({
     type: UNFINISHED_SET,
     payload: {
-      route,
-      action
+      action,
+      route: route || {
+        path: Router.route,
+        query: Router.query,
+        asPath: Router.asPath
+      }
     }
   });
 
@@ -44,7 +42,7 @@ export function* saveUnfinishedAndRedirect(action = {}) {
 
 export function* replyUnfinishedRoute() {
   const state = yield select();
-  const { path, query, asPath } = yield getRoute(state);
+  const { path, query, asPath } = getRoute(state);
 
   if (!path) {
     return false;
@@ -53,14 +51,14 @@ export function* replyUnfinishedRoute() {
   yield call([Router, 'replace'], {
     pathname: path,
     query: query || {}
-  }, asPath);
+  }, asPath || path);
 
   return true;
 }
 
 export function* replyUnfinishedAction() {
   const state = yield select();
-  const action = yield getAction(state);
+  const action = getAction(state);
 
   if (action.type) {
     yield put(action);

@@ -1,11 +1,11 @@
-const { route, unfinishedAction } = require('../../app/reducers/unfinished');
-const { UNFINISHED_SET, UNFINISHED_CLEAR } = require('./../../app/constants');
+import { route, unfinishedAction } from 'app/reducers/unfinished';
+import { FINISH, PAGE_LOAD, UNFINISHED_SET, UNFINISHED_CLEAR } from 'app/constants';
 
 describe('#route', () => {
   test('it has correct initial state', () => {
-    const state = route(undefined, {});
-
-    expect(state).toEqual({});
+    expect(
+      route(undefined, {})
+    ).toEqual({});
   });
 
   test('it handles UNFINISHED_SET', () => {
@@ -32,13 +32,25 @@ describe('#route', () => {
 
     expect(state).toEqual({});
   });
+
+  test('it handles PAGE_LOAD_FINISH action type', () => {
+    const routeData = Symbol('RouteData');
+    const state = route({ routeData }, {
+      type: PAGE_LOAD + FINISH,
+      payload: {
+        name: 'home'
+      }
+    });
+
+    expect(state).toEqual({});
+  });
 });
 
 describe('#unfinishedAction', () => {
   test('it has correct initial state', () => {
-    const state = unfinishedAction(undefined, {});
-
-    expect(state).toEqual({});
+    expect(
+      unfinishedAction(undefined, {})
+    ).toEqual({});
   });
 
   test('it handles UNFINISHED_SET', () => {
@@ -64,6 +76,18 @@ describe('#unfinishedAction', () => {
         type: UNFINISHED_CLEAR
       }
     );
+
+    expect(state).toEqual({});
+  });
+
+  test('it handles PAGE_LOAD_FINISH action type', () => {
+    const action = Symbol('Action');
+    const state = unfinishedAction({ action }, {
+      type: PAGE_LOAD + FINISH,
+      payload: {
+        name: 'home'
+      }
+    });
 
     expect(state).toEqual({});
   });

@@ -1,11 +1,11 @@
-const { errors } = require('../../app/reducers/sign_in');
-const { FAILURE, AUTH_SIGN_IN } = require('./../../app/constants');
+import { errors } from 'app/reducers/sign_in';
+import { FINISH, FAILURE, PAGE_LOAD, AUTH_SIGN_IN } from 'app/constants';
 
 describe('#errors', () => {
   test('it has correct initial state', () => {
-    const state = errors(undefined, {});
-
-    expect(state).toEqual({});
+    expect(
+      errors(undefined, {})
+    ).toEqual({});
   });
 
   test('it handles AUTH_SIGN_IN_FAILURE', () => {
@@ -18,5 +18,14 @@ describe('#errors', () => {
     });
 
     expect(state).toEqual(violations);
+  });
+
+  test('it handles PAGE_LOAD_FINISH action type', () => {
+    const violations = Symbol('Violations');
+    const state = errors({ violations }, {
+      type: PAGE_LOAD + FINISH
+    });
+
+    expect(state).toEqual({});
   });
 });

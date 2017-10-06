@@ -6,11 +6,8 @@ import { I18nextProvider } from 'react-i18next';
 import withReduxAndSaga from '../store';
 import withTranslations from '../with_translations';
 
+import { load } from '../actions/page_actions';
 import { getAppProfile } from '../selectors/applications_selectors';
-import { fetchAll } from '../actions/categories_actions';
-import {
-  fetch as fetchApplication, fetchApplicationGallery, fetchRating
-} from '../actions/applications_actions';
 
 import MainLayout from '../layouts/main_layout';
 import AppProfileContainer from '../containers/app_profile_container';
@@ -21,21 +18,12 @@ class Applications extends Component {
     application: PropTypes.object.isRequired
   }
 
-  static async getInitialProps({ store, query }) {
+  static async getInitialProps({ store, ...rest }) {
     store.dispatch(
-      fetchAll()
-    );
-
-    store.dispatch(
-      fetchApplication(query.slug)
-    );
-
-    store.dispatch(
-      fetchRating(query.slug)
-    );
-
-    store.dispatch(
-      fetchApplicationGallery(query.slug)
+      load({
+        name: 'applications',
+        context: rest
+      })
     );
   }
 

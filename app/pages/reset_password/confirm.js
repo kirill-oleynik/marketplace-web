@@ -2,14 +2,11 @@ import React, { Component } from 'react';
 
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-import redirect from 'next-redirect';
 import { I18nextProvider } from 'react-i18next';
 
 import withReduxAndSaga from '../../store';
 import withTranslations from '../../with_translations';
-
-import { home } from '../../routes';
-import { getCurrentUser } from '../../selectors/current_user_selectors';
+import { load } from '../../actions/page_actions';
 
 import AuthLayout from '../../layouts/auth_layout';
 import ResetPasswordConfirmContainer from '../../containers/reset_password/confirm_container';
@@ -20,17 +17,16 @@ class ResetPasswordConfirm extends Component {
     requestParams: PropTypes.object.isRequired
   }
 
-  static async getInitialProps(ctx) {
-    const currentUser = getCurrentUser(
-      ctx.store.getState()
+  static async getInitialProps({ store, ...rest }) {
+    store.dispatch(
+      load({
+        name: 'reset_password/confirm',
+        context: rest
+      })
     );
 
-    if (currentUser.id) {
-      return redirect(ctx, home);
-    }
-
     return {
-      requestParams: { recoveryToken: ctx.query.recoveryToken }
+      requestParams: { recoveryToken: rest.query.recoveryToken }
     };
   }
 

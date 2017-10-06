@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-import redirect from 'next-redirect';
 import { I18nextProvider } from 'react-i18next';
 
 import withReduxAndSaga from '../store';
 import withTranslations from '../with_translations';
 
-import { signIn } from '../routes';
-import { getCurrentUser } from '../selectors/current_user_selectors';
-import { fetchAll as fetchAllFavorites } from '../actions/favorites_actions';
-import { fetchAll as fetchAllCategories } from '../actions/categories_actions';
+import { load } from '../actions/page_actions';
 
 import MainLayout from '../layouts/main_layout';
 import FavoritesContainer from '../containers/favorites_container';
@@ -20,24 +16,13 @@ class Favorites extends Component {
     i18n: PropTypes.object.isRequired
   };
 
-  static async getInitialProps({ store, ...ctx }) {
-    const currentUser = getCurrentUser(
-      store.getState()
-    );
-
-    if (!currentUser.id) {
-      return redirect(ctx, signIn);
-    }
-
+  static async getInitialProps({ store, ...rest }) {
     store.dispatch(
-      fetchAllFavorites()
+      load({
+        name: 'favorites',
+        context: rest
+      })
     );
-
-    store.dispatch(
-      fetchAllCategories()
-    );
-
-    return {};
   }
 
   render() {
