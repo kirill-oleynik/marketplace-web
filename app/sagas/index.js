@@ -15,6 +15,7 @@ import {
   watchResetPasswordRequest, watchResetPasswordConfirm
 } from './reset_password_saga';
 import { watchSearch } from './search_saga';
+import pagesRootSaga from './pages_saga';
 
 export default function* rootSaga() {
   yield all([
@@ -36,6 +37,7 @@ export default function* rootSaga() {
     watchResetPasswordRequest(),
     watchResetPasswordConfirm(),
     watchFavoritesFetchAll(),
-    watchSearch()
+    watchSearch(),
+    pagesRootSaga()
   ]);
 }

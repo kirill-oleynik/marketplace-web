@@ -1,10 +1,15 @@
 import { combineReducers } from 'redux';
-import { REQUEST, SUCCESS, FAILURE, PROFILE_CREATE } from '../constants';
+
+import {
+  FINISH, REQUEST, SUCCESS, FAILURE, PAGE_LOAD, PROFILE_CREATE
+} from '../constants';
 
 export const errors = (state = {}, action) => {
   switch (action.type) {
     case PROFILE_CREATE + FAILURE:
       return action.payload.error.violations || {};
+    case PAGE_LOAD + FINISH:
+      return {};
     default:
       return state;
   }

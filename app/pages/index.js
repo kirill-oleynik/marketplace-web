@@ -6,8 +6,8 @@ import { I18nextProvider } from 'react-i18next';
 
 import withReduxAndSaga from '../store';
 import withTranslations from '../with_translations';
+import { load } from '../actions/page_actions';
 import { scrollToElement } from '../helpers/dom_helpers';
-import { fetchAll } from '../actions/categories_actions';
 
 import HomeContainer from '../containers/home_container';
 import NotificationsContainer from '../containers/notifications_container';
@@ -27,9 +27,12 @@ class Index extends Component {
     i18n: PropTypes.object.isRequired
   }
 
-  static async getInitialProps({ store }) {
+  static async getInitialProps({ store, ...rest }) {
     store.dispatch(
-      fetchAll()
+      load({
+        name: 'home',
+        context: rest
+      })
     );
   }
 

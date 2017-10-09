@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
-import { FAILURE, AUTH_SIGN_IN } from '../constants';
+
+import { FINISH, FAILURE, PAGE_LOAD, AUTH_SIGN_IN } from '../constants';
 
 export const errors = (state = {}, action) => {
   switch (action.type) {
@@ -7,6 +8,8 @@ export const errors = (state = {}, action) => {
       return action.payload.error.violations
         ? action.payload.error.violations
         : { authentication: action.payload.error.message };
+    case PAGE_LOAD + FINISH:
+      return {};
     default:
       return state;
   }

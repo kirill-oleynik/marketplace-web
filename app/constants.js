@@ -1,6 +1,10 @@
+export const START = '_START';
+export const FINISH = '_FINISH';
 export const REQUEST = '_REQUEST';
 export const SUCCESS = '_SUCCESS';
 export const FAILURE = '_FAILURE';
+
+export const PAGE_LOAD = 'PAGE_LOAD';
 
 export const AUTH_SIGN_UP = 'AUTH_SIGN_UP';
 export const AUTH_SIGN_IN = 'AUTH_SIGN_IN';
