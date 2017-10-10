@@ -10,5 +10,9 @@ exports[`#render it renders correctly 1`] = `
     isOpen={true}
     toggle={[Function]}
   />
+  <Translate(PrivacyPolicy)
+    isOpen={true}
+    toggle={[Function]}
+  />
 </div>
 `;

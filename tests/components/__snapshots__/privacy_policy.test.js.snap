@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<Modal
+  autoFocus={true}
+  backdrop={false}
+  backdropTransitionTimeout={150}
+  className="main-modal"
+  fade={true}
+  isOpen={true}
+  keyboard={true}
+  modalTransitionTimeout={300}
+  toggle={[Function]}
+  zIndex={1050}
+>
+  <Container
+    tag="div"
+  >
+    <div
+      className="text-right pt-30"
+    >
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        <i
+          className="icon icon-cross font-16 in-black-035"
+        />
+      </button>
+    </div>
+    <div
+      className="main-modal__content pt-20 pb-20"
+    >
+      <h1
+        className="font-24 font-700 mb-30"
+      >
+        privacyPolicy.title
+      </h1>
+      <p
+        className="in-black-050 mb-30"
+      >
+        privacyPolicy.test1
+      </p>
+      <p
+        className="in-black-050 mb-30"
+      >
+        privacyPolicy.test2
+      </p>
+      <p
+        className="in-black-050 mb-30"
+      >
+        privacyPolicy.test3
+      </p>
+    </div>
+  </Container>
+</Modal>
+`;

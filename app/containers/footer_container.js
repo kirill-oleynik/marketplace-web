@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Footer from '../components/footer';
 import TermsOfUse from '../components/terms_of_use';
+import PrivacyPolicy from '../components/privacy_policy';
 
 class FooterContainer extends Component {
   state = {
@@ -22,7 +23,7 @@ class FooterContainer extends Component {
   }
 
   render() {
-    const { isTermsOfUseShown } = this.state;
+    const { isTermsOfUseShown, isPrivacyPolicyShown } = this.state;
 
     return (
       <div>
@@ -34,6 +35,11 @@ class FooterContainer extends Component {
         <TermsOfUse
           isOpen={isTermsOfUseShown}
           toggle={this.handleTermsOfUseClick}
+        />
+
+        <PrivacyPolicy
+          isOpen={isPrivacyPolicyShown}
+          toggle={this.handlePrivacyPolicyClick}
         />
       </div>
     );

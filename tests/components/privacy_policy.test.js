@@ -3,12 +3,12 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import toJSON from 'enzyme-to-json';
 
-import { TermsOfUse } from 'app/components/terms_of_use';
+import { PrivacyPolicy } from 'app/components/privacy_policy';
 
 describe('#render', () => {
   test('it renders correctly', () => {
     const component = shallow(
-      <TermsOfUse
+      <PrivacyPolicy
         isOpen
         toggle={() => {}}
         t={(translation) => translation}
