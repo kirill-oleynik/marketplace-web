@@ -7,6 +7,7 @@ import withFixedHeader from '../with_fixed_header';
 import HeaderContainer from '../containers/header_container';
 import FooterContainer from '../containers/footer_container';
 import ScrollTopButton from '../components/scroll_top_button';
+import GeneralFooter from '../components/footer/general_footer';
 import NotificationsContainer from '../containers/notifications_container';
 
 export const MainLayout = ({ children, isHeaderFixed }) => (
@@ -19,8 +20,12 @@ export const MainLayout = ({ children, isHeaderFixed }) => (
       {children}
     </main>
 
-    <FooterContainer />
+    <FooterContainer>
+      <GeneralFooter />
+    </FooterContainer>
+
     <ScrollTopButton />
+
     <NotificationsContainer />
   </div>
 );

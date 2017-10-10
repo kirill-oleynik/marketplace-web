@@ -2,11 +2,15 @@
 
 exports[`#render it renders correctly 1`] = `
 <div>
-  <Translate(Footer)
+  <DummyComponent
     onPrivacyPolicyClick={[Function]}
     onTermsOfUseClick={[Function]}
   />
   <Translate(TermsOfUse)
+    isOpen={true}
+    toggle={[Function]}
+  />
+  <Translate(PrivacyPolicy)
     isOpen={true}
     toggle={[Function]}
   />

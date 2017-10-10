@@ -5,8 +5,9 @@ import { Container } from 'reactstrap';
 
 import withFixedHeader from '../with_fixed_header';
 
-import AllRights from '../components/all_rights';
+import AuthFooter from '../components/footer/auth_footer';
 import HeaderContainer from '../containers/header_container';
+import FooterContainer from '../containers/footer_container';
 import NotificationsContainer from '../containers/notifications_container';
 
 export const AuthLayout = ({ children }) => (
@@ -18,7 +19,10 @@ export const AuthLayout = ({ children }) => (
         <Container>
           {children}
 
-          <AllRights />
+          <FooterContainer>
+            <AuthFooter />
+          </FooterContainer>
+
           <NotificationsContainer />
         </Container>
       </div>

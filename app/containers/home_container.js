@@ -19,6 +19,7 @@ import CategoriesList from '../components/categories/list';
 import FooterContainer from '../containers/footer_container';
 import HeaderContainer from '../containers/header_container';
 import ScrollTopButton from '../components/scroll_top_button';
+import GeneralFooter from '../components/footer/general_footer';
 import CategoriesDropdown from '../components/categories/dropdown';
 import CategoriesLinkList from '../components/categories/link_list';
 import CategoriesContainer from '../containers/categories_container';
@@ -115,8 +116,11 @@ const HomeContainer = ({
       </Container>
     </main>
 
+    <FooterContainer>
+      <GeneralFooter />
+    </FooterContainer>
+
     <ScrollTopButton />
-    <FooterContainer />
   </div>
 );
 

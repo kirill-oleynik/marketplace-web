@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 
-import Footer from '../components/footer';
+import PropTypes from 'prop-types';
+
 import TermsOfUse from '../components/terms_of_use';
+import PrivacyPolicy from '../components/privacy_policy';
 
 class FooterContainer extends Component {
+  static propTypes = {
+    children: PropTypes.node.isRequired
+  }
+
   state = {
     isTermsOfUseShown: false,
     isPrivacyPolicyShown: false
@@ -22,18 +28,26 @@ class FooterContainer extends Component {
   }
 
   render() {
-    const { isTermsOfUseShown } = this.state;
+    const { children } = this.props;
+    const { isTermsOfUseShown, isPrivacyPolicyShown } = this.state;
 
     return (
       <div>
-        <Footer
-          onTermsOfUseClick={this.handleTermsOfUseClick}
-          onPrivacyPolicyClick={this.handlePrivacyPolicyClick}
-        />
+        {
+          React.cloneElement(children, {
+            onTermsOfUseClick: this.handleTermsOfUseClick,
+            onPrivacyPolicyClick: this.handlePrivacyPolicyClick
+          })
+        }
 
         <TermsOfUse
           isOpen={isTermsOfUseShown}
           toggle={this.handleTermsOfUseClick}
+        />
+
+        <PrivacyPolicy
+          isOpen={isPrivacyPolicyShown}
+          toggle={this.handlePrivacyPolicyClick}
         />
       </div>
     );

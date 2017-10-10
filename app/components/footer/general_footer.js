@@ -4,13 +4,10 @@ import PropTypes from 'prop-types';
 import { Container } from 'reactstrap';
 import { translate } from 'react-i18next';
 
-import { home } from '../routes';
+import { home } from '../../routes';
+import { getCurrentYear } from '../../helpers/dates_helpers';
 
-const getCurrentYear = () => (
-  new Date().getFullYear()
-);
-
-export const Footer = ({ t, onTermsOfUseClick, onPrivacyPolicyClick }) => (
+export const GeneralFooter = ({ t, onTermsOfUseClick, onPrivacyPolicyClick }) => (
   <footer>
     <Container>
       <div className="main-footer main-footer-js">
@@ -46,10 +43,10 @@ export const Footer = ({ t, onTermsOfUseClick, onPrivacyPolicyClick }) => (
   </footer>
 );
 
-Footer.propTypes = {
+GeneralFooter.propTypes = {
   t: PropTypes.func.isRequired,
   onTermsOfUseClick: PropTypes.func.isRequired,
   onPrivacyPolicyClick: PropTypes.func.isRequired
 };
 
-export default translate(['common'])(Footer);
+export default translate(['common'])(GeneralFooter);

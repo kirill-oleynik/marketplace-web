@@ -12,6 +12,7 @@ import { load } from '../actions/page_actions';
 import MessageBlock from '../components/message_block';
 import HeaderContainer from '../containers/header_container';
 import FooterContainer from '../containers/footer_container';
+import GeneralFooter from '../components/footer/general_footer';
 
 class NotFound extends Component {
   static propTypes = {
@@ -48,7 +49,9 @@ class NotFound extends Component {
               </Container>
             </main>
 
-            <FooterContainer />
+            <FooterContainer>
+              <GeneralFooter />
+            </FooterContainer>
           </div>
         </div>
       </I18nextProvider>
