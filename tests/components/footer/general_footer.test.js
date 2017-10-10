@@ -1,13 +1,14 @@
-const React = require('react');
-const { shallow } = require('enzyme');
-const toJSON = require('enzyme-to-json').default;
-const { Footer } = require('../../app/components/footer');
+import React from 'react';
+import { shallow } from 'enzyme';
+import toJSON from 'enzyme-to-json';
+
+import { GeneralFooter } from 'app/components/footer/general_footer';
 
 const onTermsOfUseClickSpy = jest.fn();
 const onPrivacyPolicyClickSpy = jest.fn();
 
 const renderFooter = () => (
-  <Footer
+  <GeneralFooter
     t={(translation) => translation}
     onTermsOfUseClick={onTermsOfUseClickSpy}
     onPrivacyPolicyClick={onPrivacyPolicyClickSpy}

@@ -87,7 +87,8 @@
       "applicationName": "Appreviewer",
       "copyright": "© {{year}} All Rights Reserved",
       "termsOfUse": "Terms of Use",
-      "privacyPolicy": "Privacy Policy"
+      "privacyPolicy": "Privacy Policy",
+      "and": "and"
     },
     "termsOfUse": {
       "title": "Terms of Use",

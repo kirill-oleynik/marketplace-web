@@ -24,6 +24,16 @@ footer {
   }
 }
 
+.rights-link {
+  cursor: pointer;
+  color: color(black-035);
+  text-decoration: underline;
+
+  &:hover {
+    color: black;
+  }
+}
+
 @include media-breakpoint-up(sm) {
   .main-footer {
     display: flex;

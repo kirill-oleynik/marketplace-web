@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render it renders correctly 1`] = `
+<footer>
+  <p
+    className="font-12 in-black-035 mb-0"
+  >
+    footer.applicationName
+     
+    footer.copyright
+  </p>
+  <p
+    className="font-12 in-black-035 mb-0"
+  >
+    <span
+      className="rights-link rights-link__privacy"
+      onClick={[Function]}
+    >
+      footer.privacyPolicy
+    </span>
+     
+    footer.and
+     
+    <span
+      className="rights-link rights-link__terms"
+      onClick={[Function]}
+    >
+      footer.termsOfUse
+    </span>
+  </p>
+</footer>
+`;

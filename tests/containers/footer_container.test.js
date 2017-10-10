@@ -1,12 +1,23 @@
-const React = require('react');
-const { shallow } = require('enzyme');
-const toJSON = require('enzyme-to-json').default;
-const FooterContainer = require('../../app/containers/footer_container').default;
+import React from 'react';
+import { shallow } from 'enzyme';
+import toJSON from 'enzyme-to-json';
+
+import FooterContainer from 'app/containers/footer_container';
+
+const DummyComponent = () => (
+  <div />
+);
+
+const renderFooterContainer = () => (
+  <FooterContainer>
+    <DummyComponent />
+  </FooterContainer>
+);
 
 describe('#render', () => {
   test('it renders correctly', () => {
     const component = shallow(
-      <FooterContainer />
+      renderFooterContainer()
     );
 
     component.setState({
@@ -23,7 +34,7 @@ describe('#render', () => {
 describe('#handleTermsOfUseClick', () => {
   it('toggles isTermsOfUseShown state', () => {
     const component = shallow(
-      <FooterContainer />
+      renderFooterContainer()
     );
 
     expect(component.state().isTermsOfUseShown).toEqual(false);
@@ -39,7 +50,7 @@ describe('#handleTermsOfUseClick', () => {
 describe('#handlePrivacyPolicyClick', () => {
   it('toggles isPrivacyPolicyShown state', () => {
     const component = shallow(
-      <FooterContainer />
+      renderFooterContainer()
     );
 
     expect(component.state().isPrivacyPolicyShown).toEqual(false);

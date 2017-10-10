@@ -8,10 +8,13 @@ const formatDate = curry((formatFn, dateString) => (
 ));
 
 const fullDate = (dateString) => new Date(dateString).toString();
+
 const truncateDay = (dateString) => dateString.slice(4, -1);
+
 const formatMonth = (dateString) => (
   `${dateString.slice(0, 3)}, ${dateString.slice(4, -1)}`
 );
+
 const truncateTime = (dateString) => dateString.slice(0, 12);
 
 export const asFoundedDate = formatDate(flow([
@@ -20,3 +23,7 @@ export const asFoundedDate = formatDate(flow([
   formatMonth,
   truncateTime
 ]));
+
+export const getCurrentYear = () => (
+  new Date().getFullYear()
+);
