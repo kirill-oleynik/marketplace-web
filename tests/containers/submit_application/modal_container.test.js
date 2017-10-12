@@ -1,7 +1,9 @@
-const React = require('react');
-const { shallow } = require('enzyme');
-const toJSON = require('enzyme-to-json').default;
-const SubmitApplicationModalContainer = require('../../../app/containers/submit_application/modal_container').default;
+import React from 'react';
+
+import { shallow } from 'enzyme';
+import toJSON from 'enzyme-to-json';
+
+import SubmitApplicationModalContainer from 'app/containers/submit_application/modal_container';
 
 const fakeStore = (state = {}) => ({
   subscribe() {},

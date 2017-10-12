@@ -1,15 +1,16 @@
-const React = require('react');
-const { shallow } = require('enzyme');
-const toJSON = require('enzyme-to-json').default;
-const {
-  AppProfile
-} = require('../../../app/components/applications/app_profile');
+import React from 'react';
+
+import { shallow } from 'enzyme';
+import toJSON from 'enzyme-to-json';
+
+import { Application } from 'app/components/applications/application';
 
 describe('#render', () => {
   test('it renders correctly', () => {
     const component = shallow(
-      <AppProfile
+      <Application
         canToggleFavorite
+        deleteReview={() => {}}
         createReview={() => {}}
         addToFavorites={() => {}}
         removeFromFavorites={() => {}}

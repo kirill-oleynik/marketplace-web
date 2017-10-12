@@ -4,7 +4,9 @@ import classNames from 'classnames';
 
 const ButtonWithIcon = ({ text, icon, type, className, ...rest }) => (
   <button type={type} className={`btn-with-icon ${className}`} {...rest}>
-    {text}
+    <span className="btn-with-icon__text">
+      {text}
+    </span>
 
     <i
       className={classNames(

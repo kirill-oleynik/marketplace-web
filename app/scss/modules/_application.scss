@@ -1,0 +1,31 @@
+.application__submit-review {
+  .rating__stars-open {
+    .rating__stars-item {
+      cursor: pointer;
+
+      &:hover {
+        color: color(blue-500);
+      }
+    }
+  }
+}
+
+.application__remove-review {
+  margin-top: 5px;
+}
+
+.application__remove-review__link {
+  color: black;
+
+  .icon {
+    font-size: 10px;
+  }
+
+  &:hover {
+    color: black;
+
+    .btn-with-icon__text {
+      text-decoration: underline;
+    }
+  }
+}

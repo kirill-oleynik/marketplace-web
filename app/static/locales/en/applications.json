@@ -23,6 +23,7 @@
         "title": "Customer Ratings",
         "avarage": "Average Rating",
         "submit": "Click to Rate",
+        "remove": "Remove",
         "totalVotes": "({{value}} votes)",
         "votesPoints": "{{value}} stars"
       },

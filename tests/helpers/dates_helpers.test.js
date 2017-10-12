@@ -1,4 +1,4 @@
-const { asFoundedDate } = require('../../app/helpers/dates_helpers');
+import { asFoundedDate } from 'app/helpers/dates_helpers';
 
 describe('#asFoundedDate', () => {
   describe('when given string is valid date', () => {
@@ -14,6 +14,6 @@ describe('#asFoundedDate', () => {
   describe('when given string is not a valid date', () => {
     it('returns empty string', () => {
       expect(asFoundedDate('invalid')).toEqual('');
-    })
+    });
   });
 });

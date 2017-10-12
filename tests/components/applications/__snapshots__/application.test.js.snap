@@ -113,11 +113,28 @@ exports[`#render it renders correctly 1`] = `
         t={[Function]}
       />
       <div>
-        <SubmitReview
-          id="1"
+        <Translate(SubmitReview)
           onSubmit={[Function]}
-          t={[Function]}
-          value={3}
+          review={3}
+        />
+        <Translate(RemoveReview)
+          application={
+            Object {
+              "address": "address",
+              "description": "description",
+              "email": "email",
+              "founded": "2014-05-24",
+              "id": "1",
+              "phone": "phone",
+              "review": 3,
+              "slug": "slug",
+              "summary": "summary",
+              "title": "title",
+              "website": "website",
+            }
+          }
+          deleteReview={[Function]}
+          review={3}
         />
       </div>
     </div>

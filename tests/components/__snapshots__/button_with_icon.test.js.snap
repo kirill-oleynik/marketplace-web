@@ -5,7 +5,11 @@ exports[`#render it renders correctly 1`] = `
   className="btn-with-icon "
   type="button"
 >
-  TestText
+  <span
+    className="btn-with-icon__text"
+  >
+    TestText
+  </span>
   <i
     className="icon icon-TestIcon btn-with-icon__icon"
   />

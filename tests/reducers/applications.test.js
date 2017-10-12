@@ -252,22 +252,20 @@ describe('#appProfile', () => {
   });
 
   test('it handles REVIEW_CREATE_SUCCESS', () => {
-    const applicationData = Symbol('applicationData');
-    const state = appProfile({
-      id: 1,
-      review: null
-    }, {
-      type: REVIEW_CREATE + SUCCESS,
-      payload: {
-        review: {
-          value: 3
-        }
+    const review = Symbol('review');
+    const state = appProfile(
+      {
+        id: 1,
+        review: null
+      }, {
+        type: REVIEW_CREATE + SUCCESS,
+        payload: { review }
       }
-    });
+    );
 
     expect(state).toEqual({
       id: 1,
-      review: 3
+      review
     });
   });
 

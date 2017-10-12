@@ -1,7 +1,9 @@
-const React = require('react');
-const { shallow } = require('enzyme');
-const toJSON = require('enzyme-to-json').default;
-const ResetPasswordConfirmContainer = require('../../../app/containers/reset_password/confirm_container').default;
+import React from 'react';
+
+import { shallow } from 'enzyme';
+import toJSON from 'enzyme-to-json';
+
+import ResetPasswordConfirmContainer from 'app/containers/reset_password/confirm_container';
 
 const fakeStore = (state = {}) => ({
   subscribe() {},
@@ -11,7 +13,7 @@ const fakeStore = (state = {}) => ({
 
 const resetPassword = {
   errors: {}
-}
+};
 
 describe('#render', () => {
   test('it renders correctly', () => {
@@ -26,7 +28,7 @@ describe('#render', () => {
         handleFormCancel={() => {}}
       />,
       { context: { store } }
-    )
+    );
 
     expect(
       toJSON(component)

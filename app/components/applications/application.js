@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
+
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
 import { translate } from 'react-i18next';
 
-import MainButton from '../main_button';
-import ApplicationGallery from './gallery';
-import ToggleFavorite from './toggle_favorite';
-import RatingPreview from './rating_preview';
-import ButtonWithIcon from '../button_with_icon';
 import { asFoundedDate } from '../../helpers/dates_helpers';
-import SubmitReview from './submit_review';
-import ApplicationRating from './application_rating';
 import {
   truncateParagraph, humanizeUrl, emailLink, phoneLink
 } from '../../helpers/text_helpers';
 
-export class AppProfile extends Component {
+import MainButton from '../main_button';
+import RemoveReview from './remove_review';
+import SubmitReview from './submit_review';
+import ApplicationGallery from './gallery';
+import RatingPreview from './rating_preview';
+import ToggleFavorite from './toggle_favorite';
+import ButtonWithIcon from '../button_with_icon';
+import ApplicationRating from './application_rating';
+
+export class Application extends Component {
   state = {
     descriptionTruncated: true
   };
@@ -62,7 +65,7 @@ export class AppProfile extends Component {
 
   render() {
     const {
-      t, appProfile, gallery, canToggleFavorite,
+      t, appProfile, gallery, canToggleFavorite, deleteReview,
       addToFavorites, removeFromFavorites, appRating
     } = this.props;
 
@@ -170,17 +173,24 @@ export class AppProfile extends Component {
 
           <div className="d-flex flex-wrap justify-content-between">
             <ApplicationRating
-              data={appRating}
               t={t}
+              data={appRating}
             />
-
             <div>
               <SubmitReview
-                value={appProfile.review}
+                review={appProfile.review || undefined}
                 onSubmit={this.submitApplicationReview}
-                id={appProfile.id}
-                t={t}
               />
+
+              {
+                appProfile.review ? (
+                  <RemoveReview
+                    application={appProfile}
+                    review={appProfile.review}
+                    deleteReview={deleteReview}
+                  />
+                ) : null
+              }
             </div>
           </div>
         </div>
@@ -279,7 +289,7 @@ export class AppProfile extends Component {
   }
 }
 
-AppProfile.propTypes = {
+Application.propTypes = {
   t: PropTypes.func.isRequired,
   gallery: PropTypes.object.isRequired,
   appProfile: PropTypes.object.isRequired,
@@ -287,7 +297,8 @@ AppProfile.propTypes = {
   removeFromFavorites: PropTypes.func.isRequired,
   canToggleFavorite: PropTypes.bool.isRequired,
   createReview: PropTypes.func.isRequired,
+  deleteReview: PropTypes.func.isRequired,
   appRating: PropTypes.object.isRequired
 };
 
-export default translate(['applications'])(AppProfile);
+export default translate(['applications'])(Application);

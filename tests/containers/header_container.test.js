@@ -1,7 +1,9 @@
-const React = require('react');
-const { shallow } = require('enzyme');
-const toJSON = require('enzyme-to-json').default;
-const Components = require('../../app/containers/header_container');
+import React from 'react';
+
+import { shallow } from 'enzyme';
+import toJSON from 'enzyme-to-json';
+
+import ConnectedHeaderContainer, { HeaderContainer } from 'app/containers/header_container';
 
 const fakeStore = (state = {}) => ({
   subscribe() {},
@@ -51,7 +53,7 @@ describe('#render', () => {
     });
 
     const component = shallow(
-      <Components.default />,
+      <ConnectedHeaderContainer />,
       { context: { store } }
     );
 
@@ -71,7 +73,7 @@ describe('#passedProps', () => {
     });
 
     const component = shallow(
-      <Components.default />,
+      <ConnectedHeaderContainer />,
       { context: { store } }
     );
 
@@ -92,7 +94,7 @@ describe('#openProfileModal', () => {
     const toggleProfileModalSpy = jest.fn();
 
     const component = shallow(
-      <Components.HeaderContainer
+      <HeaderContainer
         currentUser={{}}
         toggleProfileModal={toggleProfileModalSpy}
         toggleSubmitApplicationModal={() => {}}
@@ -113,7 +115,7 @@ describe('#openSubmitApplicationModal', () => {
     const toggleSubmitApplicationModalSpy = jest.fn();
 
     const component = shallow(
-      <Components.HeaderContainer
+      <HeaderContainer
         currentUser={{}}
         toggleProfileModal={() => {}}
         toggleSubmitApplicationModal={toggleSubmitApplicationModalSpy}
@@ -132,7 +134,7 @@ describe('#openSubmitApplicationModal', () => {
 describe('#handleMenuClick', () => {
   test('it toggles isMenuOpen state', () => {
     const component = shallow(
-      <Components.HeaderContainer
+      <HeaderContainer
         currentUser={{}}
         toggleProfileModal={() => {}}
         toggleSubmitApplicationModal={() => {}}
