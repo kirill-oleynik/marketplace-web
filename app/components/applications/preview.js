@@ -1,7 +1,8 @@
 import React from 'react';
+
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Link from 'next/link';
 
 const applicationUrl = (application) => ({
   pathname: '/applications',
@@ -13,54 +14,50 @@ const applicationUrl = (application) => ({
 const applicationAsUrl = (application) => `/applications/${application.slug}`;
 
 const ApplicationPreview = ({ remove, vertical, application, onRemoveClick }) => (
-  <span
-    className={classNames(
-      'app-item',
-      { 'app-item--remove': remove },
-      { 'app-item--vertical': vertical }
-    )}
-  >
-    <div>
-      <Link
-        prefetch
-        href={applicationUrl(application)}
-        as={applicationAsUrl(application)}
-      >
+  <Link prefetch href={applicationUrl(application)} as={applicationAsUrl(application)}>
+    <span
+      className={classNames(
+        'app-item',
+        { 'app-item--remove': remove },
+        { 'app-item--vertical': vertical }
+      )}
+    >
+      <div>
+
         <span
           className="app-item__img mb-5 mr-25"
           style={{
             backgroundImage: `url('${application.logo}')`
           }}
         />
-      </Link>
-    </div>
+      </div>
 
-    <div>
-      <div className="d-flex justify-content-between">
-        <Link
-          prefetch
-          href={applicationUrl(application)}
-          as={applicationAsUrl(application)}
-        >
+      <div>
+        <div className="d-flex justify-content-between">
           <h4 className="app-item__title">
             {application.title}
           </h4>
-        </Link>
 
-        <button
-          type="button"
-          onClick={onRemoveClick}
-          className="app-item__remove mb-5"
-        >
-          <i className="app-item__icon icon icon-cross font-8" />
-        </button>
+          <button
+            type="button"
+            onClick={(event) => {
+              event.preventDefault();
+              event.stopPropagation();
+
+              onRemoveClick();
+            }}
+            className="app-item__remove mb-5"
+          >
+            <i className="app-item__icon icon icon-cross font-8" />
+          </button>
+        </div>
+
+        <p className="app-item__text">
+          {application.summary}
+        </p>
       </div>
-
-      <p className="app-item__text">
-        {application.summary}
-      </p>
-    </div>
-  </span>
+    </span>
+  </Link>
 );
 
 ApplicationPreview.propTypes = {

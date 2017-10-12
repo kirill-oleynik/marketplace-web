@@ -1,5 +1,6 @@
 .app-item {
   display: flex;
+  cursor: pointer;
   margin-bottom: 20px;
   &:hover {
     .app-item__img {
@@ -9,6 +10,10 @@
       color: color(blue-500);
     }
   }
+}
+.app-item__remove {
+  z-index: 5;
+  position: relative;
 }
 .app-item--remove:hover {
   .app-item__icon {
