@@ -81,6 +81,10 @@ export const createReview = (options) => (
   request('post', 'api/reviews', options)
 );
 
+export const deleteReview = ({ id, ...rest }) => (
+  request('delete', `api/reviews/${id}`, rest)
+);
+
 export const fetchAllFavorites = (options) => (
   request('get', 'api/favorites', options)
 );

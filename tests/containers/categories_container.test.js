@@ -1,7 +1,9 @@
-const React = require('react');
-const { shallow } = require('enzyme');
-const toJSON = require('enzyme-to-json').default;
-const CategoriesContainer = require('../../app/containers/categories_container').default;
+import React from 'react';
+
+import { shallow } from 'enzyme';
+import toJSON from 'enzyme-to-json';
+
+import CategoriesContainer from 'app/containers/categories_container';
 
 const FakeComponent = () => (
   <div />

@@ -1,25 +1,24 @@
 import React from 'react';
-import { Sticky, StickyContainer } from 'react-sticky';
-import { Container, Row, Col } from 'reactstrap';
-import { connect } from 'react-redux';
 
-import {
-  addToFavorites, removeFromFavorites
-} from '../actions/applications_actions';
-import { createReview } from '../actions/reviews_actions';
+import { connect } from 'react-redux';
+import { Container, Row, Col } from 'reactstrap';
+import { Sticky, StickyContainer } from 'react-sticky';
+
 import { getGallery } from '../selectors/application_selectors';
+import { createReview, deleteReview } from '../actions/reviews_actions';
+import { addToFavorites, removeFromFavorites } from '../actions/applications_actions';
 import {
   getAppProfile, getCanToggleFavorite, getAppRating
 } from '../selectors/applications_selectors';
 
-import AppProfile from '../components/applications/app_profile';
+import Application from '../components/applications/application';
 import CategoriesLinkList from '../components/categories/link_list';
 import CategoriesContainer from '../containers/categories_container';
 import RelatedCategoriesContainer from '../containers/related_categories_container';
 
 const CategoriesLinkListContainer = CategoriesContainer(CategoriesLinkList);
 
-const AppProfileContainer = (props) => (
+const ApplicationContainer = (props) => (
   <Container>
     <section className="pt-60">
       <Row>
@@ -45,7 +44,7 @@ const AppProfileContainer = (props) => (
         </Col>
 
         <Col xs="12" sm="9">
-          <AppProfile {...props} />
+          <Application {...props} />
           <RelatedCategoriesContainer />
         </Col>
       </Row>
@@ -62,10 +61,11 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   createReview,
+  deleteReview,
   addToFavorites,
   removeFromFavorites
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  AppProfileContainer
+  ApplicationContainer
 );

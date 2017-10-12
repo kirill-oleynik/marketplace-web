@@ -1,25 +1,18 @@
-const { put, call } = require('redux-saga/effects');
+import { put, call } from 'redux-saga/effects';
 
-const {
+import {
   callApi, isUserSignedIn, saveUnfinishedAndRedirect
-} = require('../../app/effects');
-
-const {
-  fetchGallery, fetchApplication, addToFavorites, removeFromFavorites,
-  fetchApplicationRating, createApplicationReview
-} = require('../../app/sagas/applications_saga');
-
-const {
-  fetchSingleApplication, createFavorites,
-  deleteFavorites, fetchApplicationGallery, fetchRating, createReview
-} = require('../../app/services/api');
-
-const {
-  REQUEST, SUCCESS, FAILURE, APPLICATION_FETCH,
-  APPLICATIONS_ADD_TO_FAVORITES, APPLICATIONS_REMOVE_FROM_FAVORITES,
-  APPLICATIONS_FETCH_GALLERY, APPLICATIONS_RATING_FETCH, REVIEW_CREATE,
-  NOTIFICATION_SHOW
-} = require('../../app/constants');
+} from 'app/effects';
+import {
+  fetchGallery, fetchApplication, addToFavorites, removeFromFavorites
+} from 'app/sagas/applications_saga';
+import {
+  fetchSingleApplication, createFavorites, deleteFavorites, fetchApplicationGallery
+} from 'app/services/api';
+import {
+  REQUEST, SUCCESS, FAILURE, APPLICATION_FETCH, APPLICATIONS_ADD_TO_FAVORITES,
+  APPLICATIONS_REMOVE_FROM_FAVORITES, APPLICATIONS_FETCH_GALLERY, NOTIFICATION_SHOW
+} from 'app/constants';
 
 describe('#fetchApplication', () => {
   it('handles successful fetchSingleApplication api call', () => {
@@ -299,154 +292,5 @@ describe('#fetchGallery', () => {
         }
       })
     );
-  });
-});
-
-describe('#fetchApplicationRating', () => {
-  it('handles successful fetchRating api call', () => {
-    const slug = Symbol('slug');
-    const rating = Symbol('rating');
-    const fetchRatingResponse = {
-      data: {
-        data: rating
-      }
-    };
-
-    const generator = fetchApplicationRating({
-      payload: {
-        data: { slug }
-      }
-    });
-
-    expect(generator.next().value).toEqual(
-      callApi(fetchRating, { slug })
-    );
-
-    expect(generator.next(fetchRatingResponse).value).toEqual(
-      put({
-        type: APPLICATIONS_RATING_FETCH + SUCCESS,
-        payload: { rating }
-      })
-    );
-  });
-
-  it('handles failed fetchRating api call', () => {
-    const slug = Symbol('slug');
-    const error = Symbol('error');
-    const fetchRatingError = {
-      response: {
-        data: { error }
-      }
-    };
-
-    const generator = fetchApplicationRating({
-      payload: {
-        data: { slug }
-      }
-    });
-
-    expect(generator.next().value).toEqual(
-      callApi(fetchRating, { slug })
-    );
-
-    expect(generator.throw(fetchRatingError).value).toEqual(
-      put({
-        type: APPLICATIONS_RATING_FETCH + FAILURE,
-        payload: {
-          error,
-          response: fetchRatingError.response
-        }
-      })
-    );
-  });
-});
-
-describe('#createApplicationReview', () => {
-  describe('when user signed in', () => {
-    it('handles successful createReview api call', () => {
-      const data = Symbol('data');
-      const review = Symbol('review');
-      const createReviewResponse = {
-        data: {
-          data: review
-        }
-      };
-
-      const generator = createApplicationReview({
-        payload: { data }
-      });
-
-      expect(generator.next().value).toEqual(
-        call(isUserSignedIn)
-      );
-
-      expect(generator.next(true).value).toEqual(
-        put({ type: REVIEW_CREATE + REQUEST })
-      );
-
-      expect(generator.next().value).toEqual(
-        callApi(createReview, { data })
-      );
-
-      expect(generator.next(createReviewResponse).value).toEqual(
-        put({
-          type: REVIEW_CREATE + SUCCESS,
-          payload: { review }
-        })
-      );
-    });
-
-    it('handles failed createReview api call', () => {
-      const data = Symbol('data');
-      const error = Symbol('error');
-      const createReviewError = {
-        response: {
-          data: { error }
-        }
-      };
-
-      const generator = createApplicationReview({
-        payload: { data }
-      });
-
-      expect(generator.next().value).toEqual(
-        call(isUserSignedIn)
-      );
-
-      expect(generator.next(true).value).toEqual(
-        put({ type: REVIEW_CREATE + REQUEST })
-      );
-
-      expect(generator.next().value).toEqual(
-        callApi(createReview, { data })
-      );
-
-      expect(generator.throw(createReviewError).value).toEqual(
-        put({
-          type: REVIEW_CREATE + FAILURE,
-          payload: {
-            error,
-            response: createReviewError.response
-          }
-        })
-      );
-    });
-  });
-
-  describe('when user not signed in', () => {
-    it('saves unfinished action', () => {
-      const id = Symbol('id');
-      const action = { payload: { id } };
-
-      const generator = createApplicationReview(action);
-
-      expect(generator.next().value).toEqual(
-        call(isUserSignedIn)
-      );
-
-      expect(generator.next(false).value).toEqual(
-        call(saveUnfinishedAndRedirect, action)
-      );
-    });
   });
 });

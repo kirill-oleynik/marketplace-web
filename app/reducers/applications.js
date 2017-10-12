@@ -4,7 +4,7 @@ import {
   SUCCESS, FAILURE, REQUEST, CATEGORIES_FETCH, CATEGORIES_FETCH_ALL,
   APPLICATION_FETCH, APPLICATIONS_ADD_TO_FAVORITES, FAVORITES_FETCH_ALL,
   APPLICATIONS_REMOVE_FROM_FAVORITES, REVIEW_CREATE, AUTH_SIGN_OUT,
-  APPLICATIONS_RATING_FETCH, SEARCH_FETCH
+  APPLICATIONS_RATING_FETCH, SEARCH_FETCH, REVIEW_DELETE
 } from '../constants';
 
 const applicationsReduceFn = (accumulator, application) => ({
@@ -122,7 +122,12 @@ export const appProfile = (state = {}, action = {}) => {
     case REVIEW_CREATE + SUCCESS:
       return {
         ...state,
-        review: action.payload.review.value
+        review: action.payload.review
+      };
+    case REVIEW_DELETE + SUCCESS:
+      return {
+        ...state,
+        review: undefined
       };
     case AUTH_SIGN_OUT + SUCCESS:
       return {};

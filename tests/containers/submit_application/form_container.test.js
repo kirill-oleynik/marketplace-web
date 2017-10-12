@@ -1,7 +1,9 @@
-const React = require('react');
-const { shallow } = require('enzyme');
-const toJSON = require('enzyme-to-json').default;
-const SubmitApplicationFormContainer = require('../../../app/containers/submit_application/form_container').default;
+import React from 'react';
+
+import { shallow } from 'enzyme';
+import toJSON from 'enzyme-to-json';
+
+import SubmitApplicationFormContainer from 'app/containers/submit_application/form_container';
 
 const fakeStore = (state = {}) => ({
   subscribe() {},
@@ -11,7 +13,7 @@ const fakeStore = (state = {}) => ({
 
 const submitApplication = {
   errors: {}
-}
+};
 
 describe('#render', () => {
   test('it renders correctly', () => {
@@ -26,7 +28,7 @@ describe('#render', () => {
         toggleSubmitApplicationModal={() => {}}
       />,
       { context: { store } }
-    )
+    );
 
     expect(
       toJSON(component)

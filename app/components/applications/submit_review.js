@@ -1,13 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-export const SubmitReview = ({ t, value, onSubmit }) => (
-  <div>
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { translate } from 'react-i18next';
+
+export const SubmitReview = ({ t, review, onSubmit }) => (
+  <div className="application__submit-review">
     <p className="font-16 font-700 mb-20">
       {t('appProfile.ratings.submit')}
     </p>
 
-    <div className={`rating__stars rating__stars-${value}`}>
+    <div
+      className={classNames(
+        'rating__stars',
+        `rating__stars-${review.value}`,
+        { 'rating__stars-open': !review.value }
+      )}
+    >
       {
         [1, 2, 3, 4, 5].map((reviewValue) => (
           <i
@@ -22,13 +31,15 @@ export const SubmitReview = ({ t, value, onSubmit }) => (
 );
 
 SubmitReview.propTypes = {
+  review: PropTypes.object,
   t: PropTypes.func.isRequired,
-  value: PropTypes.number,
   onSubmit: PropTypes.func.isRequired
 };
 
 SubmitReview.defaultProps = {
-  value: 0
+  review: {
+    value: 0
+  }
 };
 
-export default SubmitReview;
+export default translate(['applications'])(SubmitReview);

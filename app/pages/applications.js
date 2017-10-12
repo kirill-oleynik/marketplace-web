@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+
 import Head from 'next/head';
+import PropTypes from 'prop-types';
 import { I18nextProvider } from 'react-i18next';
 
 import withReduxAndSaga from '../store';
@@ -10,7 +11,7 @@ import { load } from '../actions/page_actions';
 import { getAppProfile } from '../selectors/applications_selectors';
 
 import MainLayout from '../layouts/main_layout';
-import AppProfileContainer from '../containers/app_profile_container';
+import ApplicationContainer from '../containers/application_container';
 
 class Applications extends Component {
   static propTypes = {
@@ -41,7 +42,7 @@ class Applications extends Component {
           </Head>
 
           <MainLayout>
-            <AppProfileContainer />
+            <ApplicationContainer />
           </MainLayout>
         </div>
       </I18nextProvider>
